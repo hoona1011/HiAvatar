@@ -33,24 +33,21 @@ const common = {
 
 // font 관련
 const fontSizes = {
-  region: '12rem',
-  entryTitle: '4rem',
-  title: '2rem',
-  subtitle: '1.5rem',
-
-  inputText: '1.8rem',
-  buttonText: '1.5rem',
-
-  bigParagraph: '1.8rem',
-  paragraph: '1.6rem',
-  smallParagraph: '1.4rem',
-
-  inputErrorMessage: '1.4rem'
+  // region: '12rem',
+  // entryTitle: '4rem',
+  // title: '2rem',
+  // subtitle: '1.5rem',
+  // inputText: '1.8rem',
+  // buttonText: '1.5rem',
+  // bigParagraph: '1.8rem',
+  // paragraph: '1.6rem',
+  // smallParagraph: '1.4rem',
+  // inputErrorMessage: '1.4rem'
 }
 const fontWeight = {
-  bold: 800,
-  medium: 700,
-  normal: 400
+  // bold: 800,
+  // medium: 700,
+  // normal: 400
 }
 
 // 지정해둔 값 내보내기
