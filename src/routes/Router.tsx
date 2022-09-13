@@ -1,6 +1,15 @@
 import { Route, Routes } from 'react-router-dom'
-import { Button, TheHeader, TheFooter } from '../components'
-import { SignIn, SignUp } from '../pages'
+import { TheHeader, TheFooter } from '../components'
+import {
+  SignIn,
+  SignUp,
+  MyPage,
+  LandingPage,
+  ProjectHistory,
+  ProjectAvatar,
+  ProjectTextEdit,
+  ProjectTextEnter
+} from '../pages'
 
 const Router = () => {
   return (
