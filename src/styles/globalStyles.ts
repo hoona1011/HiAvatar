@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import PretendardVariable from '../assets/font/PretendardVariable.ttf'
 
 export default createGlobalStyle`
 
