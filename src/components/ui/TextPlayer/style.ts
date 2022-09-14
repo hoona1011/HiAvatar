@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Wrapper = styled.div`
-  width: 912px;
+  width: 91.2rem;
 `
 export const PlayerBar = styled.ul`
   & > li {
