@@ -2,12 +2,11 @@ import { createGlobalStyle } from 'styled-components'
 import PretendardVariable from '../assets/font/PretendardVariable.ttf'
 
 export default createGlobalStyle`
-@font-face {
-    font-family: "PretendardVariable";
-    src: url(${PretendardVariable}) format('truetype');
-  }
-  * {
+
+ * {
     box-sizing: border-box;
+    font-family: 'Pretendard Variable';
+    
   }
 
   html {
