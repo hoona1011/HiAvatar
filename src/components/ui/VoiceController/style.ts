@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 9.6rem;
   border-radius: 1rem;
   padding: 1.6rem 0.8rem;
-  box-shadow: 5px 5px 5px gray;
+  box-shadow: 0.5rem 0.5rem 0.5rem gray;
 
   label {
     font-weight: 600;
