@@ -4,6 +4,7 @@ import * as S from './style'
 interface VoiceProps {
   label: string
   min: number
+  median?: number
   max: number
   step: number
   controlType: string
@@ -12,35 +13,39 @@ interface VoiceProps {
 export const VoiceController = ({
   label,
   min,
+  median,
   max,
   step,
   controlType
 }: VoiceProps) => {
-  const [optionValue, setOptionValue] = useState({ speed: 0 })
+  interface InitialOption {
+    [key: string]: number
+  }
+  const initialOption: InitialOption = { speed: 0.5, tone: 0, term: 0 }
+  const [optionValue, setOptionValue] = useState(initialOption)
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
-    setOptionValue({ ...optionValue, [name]: value })
+    setOptionValue({ ...optionValue, [name]: Number(value) })
   }
   return (
     <S.Container>
       <label>{label}</label>
-      <span> value: {optionValue.speed}</span>
       <S.RangeContainer>
         <input
           type='range'
-          name={controlType} // speed, tone, term
-          value={optionValue.speed}
+          name={controlType} // ex) speed, tone, term
+          value={optionValue[controlType]}
           min={min}
           max={max}
           step={step}
           onChange={onChangeHandler}
         />
         <S.RangeLabel>
-          <span>-0.5</span>
-          <span>0</span>
-          <span>0.5</span>
+          <span>{min}</span>
+          <span>{median}</span>
+          <span>{max}</span>
         </S.RangeLabel>
       </S.RangeContainer>
     </S.Container>
