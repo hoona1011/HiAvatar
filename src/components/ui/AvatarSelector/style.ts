@@ -7,8 +7,6 @@ export const Container = styled.div`
   padding: 3.2rem 0 0 3.2rem;
   border-radius: 1rem;
   background-color: #f5f5f5;
-
-  font-family: 'PretendardVariable';
 `
 
 export const Title = styled.div`
@@ -16,6 +14,7 @@ export const Title = styled.div`
   height: 2.5rem;
 
   font-size: 2rem;
+  font-weight: 500;
 `
 
 export const AvatarContainer = styled.div`
@@ -48,5 +47,6 @@ export const AvatarName = styled.div`
   margin-top: 0.8rem;
 
   font-size: 1.6rem;
+  font-weight: 600;
   text-align: center;
 `
