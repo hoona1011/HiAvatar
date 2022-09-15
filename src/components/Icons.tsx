@@ -1,42 +1,27 @@
-interface colorProps {
+interface iconProps {
   bgColor?: string
   fontColor?: string
   borderColor?: string
   fillColor?: string
+  width: string
+  height: string
 }
 
-export const Play = ({
-  bgColor = 'white',
-  fontColor = 'black'
-}: colorProps) => (
-  <svg
-    width='30'
-    height='30'
-    viewBox='0 0 30 30'
-    fill='none'
-    xmlns='http://www.w3.org/2000/svg'
-  >
-    <rect width='30' height='30' rx='15' fill={bgColor} />
-    <path
-      d='M14.9998 19.8333C14.7237 19.8333 14.4998 20.0572 14.4998 20.3333C14.4998 20.6095 14.7237 20.8333 14.9998 20.8333V19.8333ZM20.6665 20.8333C20.9426 20.8333 21.1665 20.6095 21.1665 20.3333C21.1665 20.0572 20.9426 19.8333 20.6665 19.8333V20.8333ZM9.6665 20.3333H9.1665C9.1665 20.6095 9.39036 20.8333 9.6665 20.8333V20.3333ZM9.6665 17.6667L9.31295 17.3131C9.21918 17.4069 9.1665 17.5341 9.1665 17.6667H9.6665ZM18.3332 9L18.6867 8.64645C18.4915 8.45118 18.1749 8.45118 17.9796 8.64645L18.3332 9ZM20.9998 11.6667L21.3534 12.0202C21.5487 11.825 21.5487 11.5084 21.3534 11.3131L20.9998 11.6667ZM12.3332 20.3333V20.8333C12.4658 20.8333 12.593 20.7807 12.6867 20.6869L12.3332 20.3333ZM14.9998 20.8333H20.6665V19.8333H14.9998V20.8333ZM10.1665 20.3333V17.6667H9.1665V20.3333H10.1665ZM17.9796 9.35355L20.6463 12.0202L21.3534 11.3131L18.6867 8.64645L17.9796 9.35355ZM12.3332 19.8333H9.6665V20.8333H12.3332V19.8333ZM20.6463 11.3131L18.6463 13.3131L19.3534 14.0202L21.3534 12.0202L20.6463 11.3131ZM18.6463 13.3131L11.9796 19.9798L12.6867 20.6869L19.3534 14.0202L18.6463 13.3131ZM10.0201 18.0202L16.6867 11.3536L15.9796 10.6464L9.31295 17.3131L10.0201 18.0202ZM16.6867 11.3536L18.6867 9.35355L17.9796 8.64645L15.9796 10.6464L16.6867 11.3536ZM19.3534 13.3131L16.6867 10.6464L15.9796 11.3536L18.6463 14.0202L19.3534 13.3131Z'
-      fill={fontColor}
-    />
-  </svg>
-)
-
-export const TextPlayBtn = ({
+export const PlayIcon = ({
   bgColor = '#858585',
   borderColor = 'white',
-  fillColor = 'white'
-}: colorProps) => (
+  fillColor = 'white',
+  width,
+  height
+}: iconProps) => (
   <svg
-    width='41'
-    height='40'
+    width={width}
+    height={height}
     viewBox='0 0 41 40'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <circle cx='20.5' cy='20' r='20' fill={bgColor} fill-opacity='0.5' />
+    <circle cx='20.5' cy='20' r='20' fill={bgColor} fillOpacity='0.5' />
     <path
       d='M17.5215 15.3193V25.5321L26.0321 20.4257L17.5215 15.3193Z'
       fill={borderColor}
@@ -48,19 +33,21 @@ export const TextPlayBtn = ({
   </svg>
 )
 
-export const TextStopBtn = ({
+export const StopIcon = ({
   bgColor = '#858585',
   borderColor = 'white',
-  fillColor = 'white'
-}: colorProps) => (
+  fillColor = 'white',
+  width,
+  height
+}: iconProps) => (
   <svg
-    width='41'
-    height='40'
+    width={width}
+    height={height}
     viewBox='0 0 41 40'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <circle cx='20.5' cy='20' r='20' fill={bgColor} fill-opacity='0.5' />
+    <circle cx='20.5' cy='20' r='20' fill={bgColor} fillOpacity='0.5' />
     <path
       d='M15.8193 15.3193V14.5693C15.4051 14.5693 15.0693 14.9051 15.0693 15.3193H15.8193ZM26.0321 15.3193H26.7821C26.7821 14.9051 26.4463 14.5693 26.0321 14.5693V15.3193ZM26.0321 25.5321V26.2821C26.4463 26.2821 26.7821 25.9463 26.7821 25.5321H26.0321ZM15.8193 25.5321H15.0693C15.0693 25.9463 15.4051 26.2821 15.8193 26.2821V25.5321ZM15.8193 16.0693H26.0321V14.5693H15.8193V16.0693ZM25.2821 15.3193V25.5321H26.7821V15.3193H25.2821ZM26.0321 24.7821H15.8193V26.2821H26.0321V24.7821ZM16.5693 25.5321V15.3193H15.0693V25.5321H16.5693Z'
       fill={borderColor}
