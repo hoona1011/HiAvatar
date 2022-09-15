@@ -2,21 +2,42 @@ import React from 'react'
 import * as S from './style'
 import { PlayIcon, StopIcon } from '../../Icons'
 
-export const AvatarVoicePlayer = () => {
+interface AvatarVoicePlayerProps {
+  characterName: string
+  hashtag1?: string
+  hashtag2?: string
+  hashtag3?: string
+}
+export const AvatarVoicePlayer = ({
+  characterName,
+  hashtag1,
+  hashtag2,
+  hashtag3
+}: AvatarVoicePlayerProps) => {
+  const audio = new Audio('/src/assets/test.mp3')
+
+  const playAudio = () => {
+    audio.play()
+  }
+  const stopAudio = () => {
+    audio.pause()
+  }
   return (
     <S.Container>
-      <S.TextWrapper>
-        <S.AvatarName>가영</S.AvatarName>
-        <S.Language>#가나다</S.Language>
-        <S.Language>#가나다</S.Language>
-        <S.Language>#가나다</S.Language>
-      </S.TextWrapper>
-      <S.BtnWrapper>
-        <S.PlayBtnWrapper>
-          <PlayIcon width='51' height='50' />
-        </S.PlayBtnWrapper>
-        <StopIcon width='51' height='50' />
-      </S.BtnWrapper>
+      <S.TextContainer>
+        <S.AvatarName>{characterName}</S.AvatarName>
+        {hashtag1 && <S.Language>#{hashtag1}</S.Language>}
+        {hashtag2 && <S.Language>#{hashtag2}</S.Language>}
+        {hashtag3 && <S.Language>#{hashtag3}</S.Language>}
+      </S.TextContainer>
+      <S.BtnContainer>
+        <S.PlayBtn onClick={playAudio}>
+          <PlayIcon width='51.25' height='51.25' />
+        </S.PlayBtn>
+        <S.StopBtn onClick={stopAudio}>
+          <StopIcon width='51.25' height='51.25' />
+        </S.StopBtn>
+      </S.BtnContainer>
     </S.Container>
   )
 }

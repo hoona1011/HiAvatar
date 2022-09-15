@@ -21,7 +21,7 @@ export const PlayIcon = ({
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <circle cx='20.5' cy='20' r='20' fill={bgColor} fill-opacity='0.5' />
+    <circle cx='20.5' cy='20' r='20' fill={bgColor} fillOpacity='0.5' />
     <path
       d='M17.5215 15.3193V25.5321L26.0321 20.4257L17.5215 15.3193Z'
       fill={borderColor}
@@ -47,7 +47,7 @@ export const StopIcon = ({
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <circle cx='20.5' cy='20' r='20' fill={bgColor} fill-opacity='0.5' />
+    <circle cx='20.5' cy='20' r='20' fill={bgColor} fillOpacity='0.5' />
     <path
       d='M15.8193 15.3193V14.5693C15.4051 14.5693 15.0693 14.9051 15.0693 15.3193H15.8193ZM26.0321 15.3193H26.7821C26.7821 14.9051 26.4463 14.5693 26.0321 14.5693V15.3193ZM26.0321 25.5321V26.2821C26.4463 26.2821 26.7821 25.9463 26.7821 25.5321H26.0321ZM15.8193 25.5321H15.0693C15.0693 25.9463 15.4051 26.2821 15.8193 26.2821V25.5321ZM15.8193 16.0693H26.0321V14.5693H15.8193V16.0693ZM25.2821 15.3193V25.5321H26.7821V15.3193H25.2821ZM26.0321 24.7821H15.8193V26.2821H26.0321V24.7821ZM16.5693 25.5321V15.3193H15.0693V25.5321H16.5693Z'
       fill={borderColor}

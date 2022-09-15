@@ -3,13 +3,13 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 36rem;
   height: 12rem;
-  background-color: pink;
+  background-color: #ffffff;
   border-radius: 1rem;
 
   display: flex;
   flex-direction: row;
 `
-export const TextWrapper = styled.div`
+export const TextContainer = styled.div`
   margin: auto;
 `
 export const AvatarName = styled.div`
@@ -28,12 +28,15 @@ export const Language = styled.button`
   padding: 0.8rem;
   margin-right: 0.5rem;
 `
-export const BtnWrapper = styled.div`
+export const BtnContainer = styled.div`
   display: flex;
   flex-direction: row;
-
   margin: auto;
 `
-export const PlayBtnWrapper = styled.div`
+export const PlayBtn = styled.div`
   margin-right: 0.5rem;
+  cursor: pointer;
+`
+export const StopBtn = styled.div`
+  cursor: pointer;
 `
