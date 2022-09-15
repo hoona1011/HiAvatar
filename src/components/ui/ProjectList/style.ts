@@ -2,10 +2,10 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   width: 120rem;
-  height: 33.6rem;
-  padding: 3.2rem 0 0 3.2rem;
+  height: 26rem;
+  padding: 1.6rem 0 0 2.4rem;
 
-  border-radius: 2rem;
+  border-radius: 1rem;
   background-color: #f1f1f1;
 
   font-family: 'PretendardVariable';
@@ -14,40 +14,46 @@ export const Container = styled.div`
 export const Title = styled.div`
   width: max-content;
 
-  font-size: 2.1rem;
+  font-size: 1.5rem;
+  font-weight: 600;
 `
 
 export const ProjectContainer = styled.div`
   display: flex;
 
-  width: 113.6rem;
-  height: 23.9rem;
+  width: 115.2rem;
+  height: 19.4rem;
   margin-top: 1.6rem;
 `
 
 export const ProjectInner = styled.div`
   flex-shrink: 0;
-  width: 19.84rem;
-  margin-right: 3.6rem;
+
+  width: 21.6rem;
+  height: 19.4rem;
+  margin-right: 1.8rem;
 `
 
 export const Project = styled.div`
-  height: 19rem;
+  height: 16rem;
 
   background-color: #d9d9d9;
   border-radius: 1rem;
 `
 
 export const ProjectName = styled.div`
-  margin-top: 0.9rem;
+  margin-top: 0.8rem;
 
-  font-size: 1.6rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   text-align: center;
-  line-height: 2rem;
+  line-height: 1.432rem;
 `
 
 export const ProjectDate = styled.div`
-  font-size: 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+
   text-align: center;
-  line-height: 1.6rem;
+  line-height: 1.193rem;
 `
