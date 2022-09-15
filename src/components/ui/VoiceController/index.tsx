@@ -1,5 +1,6 @@
-import React, { useState } from 'react'
+import React from 'react'
 import * as S from './style'
+import { InitialOption } from '../../../pages/ProjectTextEnter'
 
 interface VoiceProps {
   label: string
@@ -8,6 +9,8 @@ interface VoiceProps {
   max: number
   step: number
   controlType: string
+  optionValue: InitialOption
+  setOptionValue: React.Dispatch<React.SetStateAction<InitialOption>>
 }
 
 export const VoiceController = ({
@@ -16,14 +19,10 @@ export const VoiceController = ({
   median,
   max,
   step,
-  controlType
+  controlType,
+  optionValue,
+  setOptionValue
 }: VoiceProps) => {
-  interface InitialOption {
-    [key: string]: number
-  }
-  const initialOption: InitialOption = { speed: 0.5, tone: 0, term: 0 }
-  const [optionValue, setOptionValue] = useState(initialOption)
-
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
@@ -35,7 +34,7 @@ export const VoiceController = ({
       <S.RangeContainer>
         <input
           type='range'
-          name={controlType} // ex) speed, tone, term
+          name={controlType} // ex) speed, pitch, sentenceSpacing
           value={optionValue[controlType]}
           min={min}
           max={max}

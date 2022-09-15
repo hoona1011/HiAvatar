@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 9.6rem;
   border-radius: 1rem;
   padding: 1.6rem 0.8rem;
-  box-shadow: 0.5rem 0.5rem 0.5rem gray;
+  background-color: #ffffff;
 
   label {
     font-weight: 600;
@@ -42,7 +42,6 @@ export const RangeLabel = styled.div`
   display: flex;
   justify-content: space-between;
   width: 100%;
-
   color: #b5b5b5;
   font-size: 1.2rem;
   font-weight: 500;
