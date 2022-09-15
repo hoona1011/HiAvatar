@@ -1,6 +1,6 @@
 import React from 'react'
-import * as S from './styles'
-import { TextPlayBtn, TextStopBtn } from '../../Icons'
+import * as S from './style'
+import { PlayIcon, StopIcon } from '../../Icons'
 
 export const TextPlayer = () => {
   return (
@@ -14,10 +14,10 @@ export const TextPlayer = () => {
         </li>
         <li>
           <div>
-            <TextPlayBtn />
+            <PlayIcon width='41' height='40' />
           </div>
           <div>
-            <TextStopBtn />
+            <StopIcon width='41' height='40' />
           </div>
         </li>
       </S.PlayerBar>
