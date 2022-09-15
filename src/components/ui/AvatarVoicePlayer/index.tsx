@@ -14,9 +14,7 @@ export const AvatarVoicePlayer = ({
   hashtag2,
   hashtag3
 }: AvatarVoicePlayerProps) => {
-  const audio = new Audio(
-    '../../../../public/tuesday-glitch-soft-hip-hop-118327.mp3'
-  )
+  const audio = new Audio('/src/assets/test.mp3')
 
   const playAudio = () => {
     audio.play()
