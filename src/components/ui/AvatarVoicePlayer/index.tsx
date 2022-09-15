@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './style'
-import { AvatarVoicePlayBtn, AvatarVoiceStopBtn } from '../../Icons'
+import { PlayIcon, StopIcon } from '../../Icons'
 
 export const AvatarVoicePlayer = () => {
   return (
@@ -13,9 +13,9 @@ export const AvatarVoicePlayer = () => {
       </S.TextWrapper>
       <S.BtnWrapper>
         <S.PlayBtnWrapper>
-          <AvatarVoicePlayBtn />
+          <PlayIcon width='51' height='50' />
         </S.PlayBtnWrapper>
-        <AvatarVoiceStopBtn />
+        <StopIcon width='51' height='50' />
       </S.BtnWrapper>
     </S.Container>
   )
