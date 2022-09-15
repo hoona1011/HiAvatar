@@ -7,8 +7,6 @@ export const Container = styled.div`
 
   border-radius: 1rem;
   background-color: #f1f1f1;
-
-  font-family: 'PretendardVariable';
 `
 
 export const Title = styled.div`
