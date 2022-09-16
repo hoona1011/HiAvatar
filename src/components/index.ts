@@ -4,7 +4,6 @@ export { TheFooter } from './layout/TheFooter'
 export { ProjectHeader } from './layout/ProjectHeader'
 
 // ui
-
 export { VoiceController } from './ui/VoiceController'
 export { ProjectSaveButton } from './ui/ProjectSaveButton'
 export { TextPlayer } from './ui/TextPlayer'
@@ -14,3 +13,8 @@ export { AvatarSelector } from './ui/AvatarSelector'
 export { ProjectList } from './ui/ProjectList'
 export { NextButton } from './ui/NextButton'
 export { VoiceUploadButton } from './ui/VoiceUploadButton'
+export { ProjectRightNav } from './ui/ProjectRightNav'
+export { SelectedAvatar } from './ui/SelectedAvatar'
+export { SelectedVoiceOptions } from './ui/SelectedVoiceOptions'
+export { AvatarSort } from './ui/AvatarSort'
+export { AvatarBg } from './ui/AvatarBg'
