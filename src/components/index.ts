@@ -8,7 +8,6 @@ export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
 export { ProjectText } from './layout/ProjectText'
 
 // ui
-
 export { VoiceController } from './ui/VoiceController'
 export { ProjectSaveButton } from './ui/ProjectSaveButton'
 export { TextPlayer } from './ui/TextPlayer'
@@ -18,4 +17,9 @@ export { AvatarSelector } from './ui/AvatarSelector'
 export { ProjectList } from './ui/ProjectList'
 export { NextButton } from './ui/NextButton'
 export { VoiceUploadButton } from './ui/VoiceUploadButton'
+export { ProjectRightNav } from './ui/ProjectRightNav'
+export { SelectedAvatar } from './ui/SelectedAvatar'
+export { SelectedVoiceOptions } from './ui/SelectedVoiceOptions'
+export { AvatarSort } from './ui/AvatarSort'
+export { AvatarBg } from './ui/AvatarBg'
 export { TextEnterButton } from './ui/TextEnterButton'
