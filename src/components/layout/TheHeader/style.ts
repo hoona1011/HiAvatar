@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   width: 100%;
-  height: 8rem;
+  height: 5.6rem;
   background-color: #e7e7e7;
 `
 
@@ -13,6 +13,8 @@ export const Inner = styled.div`
   }
   & > div:nth-child(2) {
     flex-grow: 1;
+    padding-left: 3.7rem;
+    font-size: 2.1rem;
   }
 
   display: flex;
@@ -22,17 +24,26 @@ export const Inner = styled.div`
   margin: 0 auto;
 `
 
-export const SignUpBtn = styled.button`
+export const BtnForm = styled.button`
   display: flex;
   align-items: center;
 
-  height: 4rem;
-  padding: 0 2.8rem;
+  height: 3.6rem;
+  padding: 0 2.4rem;
+  margin-left: 1.6rem;
 
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   color: #fff;
 
   border-radius: 0.8rem;
   border: none;
   background-color: #757575;
+`
+
+export const EditBtn = styled.button`
+  margin-left: 0.8rem;
+`
+
+export const ProjectName = styled.span`
+  font-size: 1.7rem;
 `
