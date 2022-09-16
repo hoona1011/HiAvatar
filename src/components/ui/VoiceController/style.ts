@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 100%;
+  width: 28.8rem;
   height: 9.6rem;
   border-radius: 1rem;
   padding: 1.6rem 0.8rem;
@@ -17,7 +17,6 @@ export const Container = styled.div`
 
 export const RangeContainer = styled.div`
   width: 25rem;
-  /* width: 100%; */
   right: 0;
   left: 0;
   margin: 0.8rem auto;
