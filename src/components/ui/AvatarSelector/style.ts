@@ -1,12 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 79.2rem;
   height: 18rem;
 
   padding: 1.6rem 0 0 2.4rem;
   border-radius: 1rem;
   background-color: #f5f5f5;
+  margin-bottom: 2.4rem;
 `
 
 export const Title = styled.div`
@@ -23,7 +23,6 @@ export const AvatarContainer = styled.div`
   width: 74.4rem;
   margin-top: 0.8rem;
 
-  overflow-x: scroll;
   overflow-y: hidden;
 `
 
