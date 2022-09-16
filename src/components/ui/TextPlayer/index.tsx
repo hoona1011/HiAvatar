@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './style'
-import { PlayIcon, StopIcon } from '../../Icons'
+import { PlayIcon, StopIcon, CloseIcon } from '../../Icons'
 
 export const TextPlayer = () => {
   return (

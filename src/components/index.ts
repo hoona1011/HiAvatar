@@ -2,6 +2,10 @@
 export { TheHeader } from './layout/TheHeader'
 export { TheFooter } from './layout/TheFooter'
 export { ProjectHeader } from './layout/ProjectHeader'
+export { VoiceControlMenu } from './layout/VoiceControlMenu'
+export { TextEditList } from './layout/TextEditList'
+export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
+export { ProjectText } from './layout/ProjectText'
 
 // ui
 export { VoiceController } from './ui/VoiceController'
@@ -18,3 +22,4 @@ export { SelectedAvatar } from './ui/SelectedAvatar'
 export { SelectedVoiceOptions } from './ui/SelectedVoiceOptions'
 export { AvatarSort } from './ui/AvatarSort'
 export { AvatarBg } from './ui/AvatarBg'
+export { TextEnterButton } from './ui/TextEnterButton'
