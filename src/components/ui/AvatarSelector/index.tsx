@@ -10,6 +10,30 @@ export const AvatarSelector = () => {
           <S.Avatar></S.Avatar>
           <S.AvatarName>아바타 1기</S.AvatarName>
         </S.AvatarInner>
+        <S.AvatarInner>
+          <S.Avatar></S.Avatar>
+          <S.AvatarName>아바타 2기</S.AvatarName>
+        </S.AvatarInner>
+        <S.AvatarInner>
+          <S.Avatar></S.Avatar>
+          <S.AvatarName>아바타 3기</S.AvatarName>
+        </S.AvatarInner>
+        <S.AvatarInner>
+          <S.Avatar></S.Avatar>
+          <S.AvatarName>아바타 4기</S.AvatarName>
+        </S.AvatarInner>
+        <S.AvatarInner>
+          <S.Avatar></S.Avatar>
+          <S.AvatarName>아바타 5기</S.AvatarName>
+        </S.AvatarInner>
+        <S.AvatarInner>
+          <S.Avatar></S.Avatar>
+          <S.AvatarName>아바타 6기</S.AvatarName>
+        </S.AvatarInner>
+        <S.AvatarInner>
+          <S.Avatar></S.Avatar>
+          <S.AvatarName>아바타 7기</S.AvatarName>
+        </S.AvatarInner>
       </S.AvatarContainer>
     </S.Container>
   )

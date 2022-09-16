@@ -1,52 +1,50 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 97.6rem;
-  height: 25.7rem;
+  width: 79.2rem;
+  height: 18rem;
 
-  padding: 3.2rem 0 0 3.2rem;
+  padding: 1.6rem 0 0 2.4rem;
   border-radius: 1rem;
   background-color: #f5f5f5;
 `
 
 export const Title = styled.div`
-  width: 19.2rem;
-  height: 2.5rem;
+  width: 13.7rem;
+  height: 1.8rem;
 
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.5rem;
+  font-weight: 600;
 `
 
 export const AvatarContainer = styled.div`
   display: flex;
 
-  width: 91.2rem;
-  height: 16rem;
-  margin: 1.6rem 0 0;
+  width: 74.4rem;
+  margin-top: 0.8rem;
 
   overflow-x: scroll;
   overflow-y: hidden;
 `
 
 export const AvatarInner = styled.div`
-  width: 21rem;
-  height: 16rem;
-  margin-right: 2.4rem;
+  height: 12.2rem;
+  margin-right: 0.8rem;
 `
 
 export const Avatar = styled.div`
-  width: 21rem;
-  height: 13.3rem;
+  width: 18rem;
+  height: 10rem;
 
   border-radius: 1rem;
   background-color: #e7e7e7;
 `
 
 export const AvatarName = styled.div`
-  height: 1.9rem;
+  height: 1.4rem;
   margin-top: 0.8rem;
 
-  font-size: 1.6rem;
+  font-size: 1.2rem;
   font-weight: 600;
   text-align: center;
 `
