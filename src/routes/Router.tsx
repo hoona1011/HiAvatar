@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom'
-import { TheHeader, TheFooter } from '../components'
 import {
   SignIn,
   SignUp,
@@ -7,8 +6,7 @@ import {
   LandingPage,
   ProjectHistory,
   ProjectAvatar,
-  ProjectTextEdit,
-  ProjectTextEnter
+  ProjectTextEdit
 } from '../pages'
 
 const Router = () => {
@@ -20,7 +18,6 @@ const Router = () => {
         <Route path='project-avatar' element={<ProjectAvatar />} />
         <Route path='project-history' element={<ProjectHistory />} />
         <Route path='project-text-edit' element={<ProjectTextEdit />} />
-        <Route path='project-text-enter' element={<ProjectTextEnter />} />
         <Route path='sign-in' element={<SignIn />} />
         <Route path='sign-up' element={<SignUp />} />
       </Routes>
