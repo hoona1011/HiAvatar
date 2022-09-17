@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './style'
-import { InitialOption } from '../../../pages/ProjectTextEnter'
+import { InitialOption } from '../../layout/VoiceControlMenu'
 
 interface VoiceProps {
   label: string

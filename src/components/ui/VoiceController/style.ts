@@ -6,6 +6,7 @@ export const Container = styled.div`
   border-radius: 1rem;
   padding: 1.6rem 0.8rem;
   background-color: #ffffff;
+  border: 1px solid green;
 
   label {
     font-weight: 600;
@@ -17,7 +18,6 @@ export const Container = styled.div`
 
 export const RangeContainer = styled.div`
   width: 25rem;
-  /* width: 100%; */
   right: 0;
   left: 0;
   margin: 0.8rem auto;

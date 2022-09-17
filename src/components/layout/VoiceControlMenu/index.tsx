@@ -24,8 +24,9 @@ export const VoiceControlMenu = () => {
 
   return (
     <S.Container>
-      <S.Label>음성 옵션을 선택해주세요</S.Label>
-      <div>
+      <S.Title>음성 옵션을 선택해주세요</S.Title>
+
+      <S.VoiceControllerContainer>
         <VoiceController
           label={'속도 조절'}
           min={-0.5}
@@ -55,7 +56,7 @@ export const VoiceControlMenu = () => {
           optionValue={optionValue}
           setOptionValue={setOptionValue}
         />
-      </div>
+      </S.VoiceControllerContainer>
     </S.Container>
   )
 }
