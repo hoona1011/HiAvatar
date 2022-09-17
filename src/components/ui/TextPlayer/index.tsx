@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './style'
-import { PlayIcon, StopIcon } from '../../Icons'
+import { PlayIcon, StopIcon, CloseIcon } from '../../Icons'
 
 export const TextPlayer = () => {
   return (
@@ -8,16 +8,17 @@ export const TextPlayer = () => {
       <S.PlayerBar>
         <li>
           <S.ItemNum>01</S.ItemNum>
-        </li>
-        <li>
           <S.TextEdit placeholder='영상기술과 인공지능기술의 융합을 추구하며,' />
         </li>
         <li>
           <div>
-            <PlayIcon width='41' height='40' />
+            <PlayIcon width='32' height='32' />
           </div>
           <div>
-            <StopIcon width='41' height='40' />
+            <StopIcon width='32' height='32' />
+            <S.CloseButton>
+              <CloseIcon width='24' height='24' />
+            </S.CloseButton>
           </div>
         </li>
       </S.PlayerBar>

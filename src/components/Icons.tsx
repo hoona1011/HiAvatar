@@ -81,10 +81,14 @@ export const EditIcon = ({
   </svg>
 )
 
-export const CloseIcon = ({ fillColor = '#707070' }: iconProps) => (
+export const CloseIcon = ({
+  fillColor = '#707070',
+  width,
+  height
+}: iconProps) => (
   <svg
-    width='24'
-    height='25'
+    width={width}
+    height={height}
     viewBox='0 0 24 25'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
