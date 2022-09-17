@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react'
 import {
-  NextButton,
   TextEnterButton,
   TheHeader,
   ProjectText,
-  PrevButton,
   ProjectRightNav
 } from '../../components'
 import { VoiceUploadButton, TextEditList } from '../../components'
-import axios from 'axios'
 import * as S from './style'
 
 export const ProjectTextEdit = () => {
@@ -18,17 +15,22 @@ export const ProjectTextEdit = () => {
   return (
     <>
       <div>
-        {/* 현재 */}
         <TheHeader />
-        <TextEditList />
-        <ProjectText />
-        {/* 지훈 */}
-        <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
-        <ProjectRightNav renderType='VoiceControllerMenu' />
-        <VoiceUploadButton />
-        <TextEnterButton />
-        <PrevButton />
-        <NextButton />
+        <S.Wrapper>
+          <S.Inner>
+            <S.Left>
+              <S.StepNavigator></S.StepNavigator>
+              <TextEditList />
+              <S.VoicePlayer>test</S.VoicePlayer>
+            </S.Left>
+            <S.Right>
+              <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
+              <ProjectRightNav renderType='VoiceControllerMenu' />
+              <VoiceUploadButton />
+              <TextEnterButton />
+            </S.Right>
+          </S.Inner>
+        </S.Wrapper>
       </div>
     </>
   )
