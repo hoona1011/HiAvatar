@@ -1,5 +1,12 @@
 import React from 'react'
-import { SelectedAvatar, SelectedVoiceOptions } from '../../../components'
+import {
+  SelectedAvatar,
+  SelectedVoiceOptions,
+  AvatarVoiceMenu,
+  VoiceControlMenu,
+  PrevButton,
+  NextButton
+} from '../../../components'
 import * as S from './style'
 
 interface ProjectRightNavProps {
@@ -21,7 +28,7 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
       return (
         <>
           <S.Container>
-            보이스 컨트롤 메뉴
+            <VoiceControlMenu />
             <S.BtnContainer />
           </S.Container>
         </>
@@ -30,8 +37,11 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
       return (
         <>
           <S.Container>
-            보이스 플레이어즈 메뉴
-            <S.BtnContainer />
+            <AvatarVoiceMenu />
+            <S.BtnContainer>
+              <PrevButton />
+              <NextButton />
+            </S.BtnContainer>
           </S.Container>
         </>
       )

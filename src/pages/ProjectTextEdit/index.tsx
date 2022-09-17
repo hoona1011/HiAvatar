@@ -1,16 +1,20 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import {
-  AvatarVoiceMenu,
   NextButton,
   TextEnterButton,
   TheHeader,
-  VoiceControlMenu,
-  ProjectText
+  ProjectText,
+  PrevButton,
+  ProjectRightNav
 } from '../../components'
 import { VoiceUploadButton, TextEditList } from '../../components'
+import axios from 'axios'
 import * as S from './style'
 
 export const ProjectTextEdit = () => {
+  //현재
+
+  // 지훈
   return (
     <>
       <div>
@@ -18,12 +22,12 @@ export const ProjectTextEdit = () => {
         <TheHeader />
         <TextEditList />
         <ProjectText />
-
         {/* 지훈 */}
-        <AvatarVoiceMenu />
-        <VoiceControlMenu />
+        <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
+        <ProjectRightNav renderType='VoiceControllerMenu' />
         <VoiceUploadButton />
         <TextEnterButton />
+        <PrevButton />
         <NextButton />
       </div>
     </>
