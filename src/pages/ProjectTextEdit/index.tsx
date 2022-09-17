@@ -5,7 +5,8 @@ import {
   TextEnterButton,
   TheHeader,
   VoiceControlMenu,
-  ProjectText
+  ProjectText,
+  PrevButton
 } from '../../components'
 import { VoiceUploadButton, TextEditList } from '../../components'
 import * as S from './style'
@@ -24,6 +25,7 @@ export const ProjectTextEdit = () => {
         <VoiceControlMenu />
         <VoiceUploadButton />
         <TextEnterButton />
+        <PrevButton />
         <NextButton />
       </div>
     </>
