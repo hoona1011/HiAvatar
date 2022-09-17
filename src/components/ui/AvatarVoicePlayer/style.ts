@@ -1,13 +1,13 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 36rem;
+  width: 100%;
   height: 12rem;
   background-color: #ffffff;
   border-radius: 1rem;
-
   display: flex;
   flex-direction: row;
+  margin-bottom: 1.6rem;
 `
 export const TextContainer = styled.div`
   margin: auto;
