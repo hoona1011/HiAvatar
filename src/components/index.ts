@@ -1,7 +1,6 @@
 // layout
 export { TheHeader } from './layout/TheHeader'
 export { TheFooter } from './layout/TheFooter'
-export { ProjectHeader } from './layout/ProjectHeader'
 export { VoiceControlMenu } from './layout/VoiceControlMenu'
 export { TextEditList } from './layout/TextEditList'
 export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
