@@ -1,12 +1,22 @@
-import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import * as S from './style'
-export const NextButton = () => {
+
+interface Props {
+  content: string
+  requestFunc: any // 추후 수정
+  to: string
+}
+
+export const NextButton = ({ content, requestFunc, to }: Props) => {
+  const navigate = useNavigate()
+
   const onClickHandler = () => {
-    console.log('클릭')
+    requestFunc() // from use~~Mutation
+    navigate(to)
   }
   return (
     <S.Button onClick={onClickHandler}>
-      <span>다음</span>
+      <span>{content}</span>
     </S.Button>
   )
 }
