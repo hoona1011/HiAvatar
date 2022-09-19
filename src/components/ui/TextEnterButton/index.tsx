@@ -1,6 +1,6 @@
 import * as S from './style'
-import { SetModal } from 'index'
-export const TextEnterButton = ({ setModal }: SetModal) => {
+import { Modalprops } from 'index'
+export const TextEnterButton = ({ setModal }: Modalprops) => {
   return (
     <S.Button onClick={() => setModal(true)}>
       {/* <S.Button onClick={() => setModal(prev => !prev)}> */}

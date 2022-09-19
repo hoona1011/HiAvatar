@@ -7,8 +7,10 @@ export interface RadioButtonProps {
   content: string
 }
 
-export interface SetModal {
+export interface Modalprops {
   setModal: React.Dispatch<React.SetStateAction<boolean>>
+  modalText?: string
+  setModalText?: React.Dispatch<React.SetStateAction<string>>
 }
 // 희영
 export interface ProjectRightNavProps {
