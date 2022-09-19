@@ -1,26 +1,13 @@
-import React, { useState } from 'react'
+import { useSelector } from 'react-redux'
 import { VoiceController } from '../../ui/VoiceController'
+
 import * as S from './style'
 
-export interface InitialOption {
-  [key: string]: number | string
-}
 export const VoiceControlMenu = () => {
-  const initialOption: InitialOption = {
-    projectId: 1,
-    projectName: '프로젝트',
-    language: '한국어',
-    sex: '남자',
-    characterName: '가온',
-    speed: 0.5,
-    pitch: 0,
-    sentenceSpacing: 0,
-    texts: '안녕하세요?',
-    audioFile: ''
-  }
-  const [optionValue, setOptionValue] = useState(initialOption)
-
-  console.log(optionValue)
+  const voiceOption = useSelector((state: any) => {
+    const { speed, pitch, sentenceSpacing } = state.option
+    return { speed, pitch, sentenceSpacing }
+  })
 
   return (
     <S.Container>
@@ -34,8 +21,7 @@ export const VoiceControlMenu = () => {
           max={0.5}
           step={0.5}
           controlType={'speed'}
-          optionValue={optionValue}
-          setOptionValue={setOptionValue}
+          optionValue={voiceOption.speed}
         />
         <VoiceController
           label={'톤 조절'}
@@ -44,8 +30,7 @@ export const VoiceControlMenu = () => {
           max={0.5}
           step={0.5}
           controlType={'pitch'}
-          optionValue={optionValue}
-          setOptionValue={setOptionValue}
+          optionValue={voiceOption.pitch}
         />
         <VoiceController
           label={'호흡 조절'}
@@ -53,8 +38,7 @@ export const VoiceControlMenu = () => {
           max={5.0}
           step={0.1}
           controlType={'sentenceSpacing'}
-          optionValue={optionValue}
-          setOptionValue={setOptionValue}
+          optionValue={voiceOption.sentenceSpacing}
         />
       </S.VoiceControllerContainer>
     </S.Container>
