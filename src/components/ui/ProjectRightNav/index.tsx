@@ -41,7 +41,11 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
             <AvatarVoiceMenu />
             <S.BtnContainer>
               <PrevButton />
-              <NextButton />
+              <NextButton
+                requestFunc={() => console.log('요청 완료')}
+                content='다음'
+                to='/'
+              />
             </S.BtnContainer>
           </S.Container>
         </>
