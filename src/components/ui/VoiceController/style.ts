@@ -1,11 +1,12 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  width: 28.8rem;
+  width: 100%;
   height: 9.6rem;
   border-radius: 1rem;
   padding: 1.6rem 0.8rem;
   background-color: #ffffff;
+  border: 1px solid green;
 
   label {
     font-weight: 600;

@@ -1,16 +1,21 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  width: calc(50% - 0.8rem);
-  height: 4.8rem;
-  background-color: #4e4e4e;
+  width: 9.8rem;
+  height: 3.4rem;
+  background-color: #666666;
   border-radius: 1rem;
   border: none;
   cursor: pointer;
 
   span {
     color: #ffffff;
-    font-size: 1.5rem;
-    font-weight: 600;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 2rem;
+  }
+
+  input {
+    display: none;
   }
 `

@@ -17,21 +17,19 @@ export const Title = styled.div`
   font-weight: 600;
 `
 
-export const AvatarContainer = styled.div`
+export const BgContainer = styled.div`
   display: flex;
 
   width: 74.4rem;
   margin-top: 0.8rem;
-
-  overflow-y: hidden;
 `
 
-export const AvatarInner = styled.div`
+export const BgInner = styled.div`
   height: 12.2rem;
   margin-right: 0.8rem;
 `
 
-export const Avatar = styled.div`
+export const Bg = styled.div`
   width: 18rem;
   height: 10rem;
 
@@ -39,7 +37,7 @@ export const Avatar = styled.div`
   background-color: #e7e7e7;
 `
 
-export const AvatarName = styled.div`
+export const BgName = styled.div`
   height: 1.4rem;
   margin-top: 0.8rem;
 
