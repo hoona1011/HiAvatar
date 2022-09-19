@@ -4,16 +4,14 @@ export const ProjectNavContainer = styled.div`
   background-color: #fafafa;
   border-radius: 1rem;
   padding: 1rem;
-  display: flex;
-  flex-direction: row;
   width: 78rem;
+  display: flex;
 `
 export const ProjectNavStepContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+  flex: auto;
 `
 export const ProjectNavStepIcon = styled.div`
-  margin: auto;
+  text-align: center;
 `
 export const ProjectNavText = styled.div`
   margin-top: 0.3rem;
