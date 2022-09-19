@@ -1,11 +1,4 @@
-interface iconProps {
-  bgColor?: string
-  fontColor?: string
-  borderColor?: string
-  fillColor?: string
-  width: string
-  height: string
-}
+import { iconProps } from 'index'
 
 export const PlayIcon = ({
   bgColor = '#858585',
