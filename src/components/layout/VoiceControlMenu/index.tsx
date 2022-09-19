@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { VoiceController } from '../../ui/VoiceController'
+import { VoiceController } from '../../index'
 
 import * as S from './style'
 
