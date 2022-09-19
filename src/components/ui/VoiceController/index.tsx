@@ -1,6 +1,8 @@
 import React from 'react'
 import * as S from './style'
-import { InitialOption } from '../../layout/VoiceControlMenu'
+// import { InitialOption } from '../../layout/VoiceControlMenu'
+import { useDispatch } from 'react-redux'
+import { changeOption } from '../../../store/slices/optionSlice'
 
 interface VoiceProps {
   label: string
@@ -9,8 +11,7 @@ interface VoiceProps {
   max: number
   step: number
   controlType: string
-  optionValue: InitialOption
-  setOptionValue: React.Dispatch<React.SetStateAction<InitialOption>>
+  optionValue: number
 }
 
 export const VoiceController = ({
@@ -20,14 +21,20 @@ export const VoiceController = ({
   max,
   step,
   controlType,
-  optionValue,
-  setOptionValue
+  optionValue
 }: VoiceProps) => {
+  const dispatch = useDispatch()
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
-    setOptionValue({ ...optionValue, [name]: Number(value) })
+    dispatch(
+      changeOption({
+        name,
+        value: Number(value)
+      })
+    )
   }
+
   return (
     <S.Container>
       <label>{label}</label>
@@ -35,7 +42,7 @@ export const VoiceController = ({
         <input
           type='range'
           name={controlType} // ex) speed, pitch, sentenceSpacing
-          value={optionValue[controlType]}
+          value={optionValue}
           min={min}
           max={max}
           step={step}
