@@ -1,4 +1,4 @@
-interface iconProps {
+interface IconProps {
   bgColor?: string
   fontColor?: string
   borderColor?: string
@@ -13,7 +13,7 @@ export const PlayIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -39,7 +39,7 @@ export const StopIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -66,7 +66,7 @@ export const EditIcon = ({
   fillColor = '#8B8B8B',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -85,7 +85,7 @@ export const CloseIcon = ({
   fillColor = '#707070',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -107,7 +107,7 @@ export const NavIcon02 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -130,7 +130,7 @@ export const NavIcon03 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -151,7 +151,7 @@ export const NavIcon04 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -171,7 +171,7 @@ export const SignUpIcon = ({
   bgColor = '#D9D9D9',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
