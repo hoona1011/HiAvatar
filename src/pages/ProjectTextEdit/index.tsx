@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react'
-import { TextEnterButton, TheHeader, ProjectRightNav } from '../../components'
+import {
+  TextEnterButton,
+  TheHeader,
+  ProjectRightNav,
+  VoicePreviewPlayer,
+  ProjectNav
+} from '../../components'
 import { VoiceUploadButton, TextEditList } from '../../components'
 import * as S from './style'
 
@@ -14,9 +20,13 @@ export const ProjectTextEdit = () => {
         <S.Wrapper>
           <S.Inner>
             <S.Left>
-              <S.StepNavigator></S.StepNavigator>
+              <S.StepNavigator>
+                <ProjectNav />
+              </S.StepNavigator>
               <TextEditList />
-              <S.VoicePlayer>test</S.VoicePlayer>
+              <S.VoicePlayer>
+                <VoicePreviewPlayer />
+              </S.VoicePlayer>
             </S.Left>
             <S.Right>
               <ProjectRightNav renderType='ProjectText' />
