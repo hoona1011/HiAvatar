@@ -1,18 +1,28 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import {
   TextEnterButton,
   TheHeader,
+  ProjectText,
   ProjectRightNav,
-  VoicePreviewPlayer,
+  ProjectTextModal,
+  VoiceUploadButton,
+  TextEditList,
   ProjectNav
-} from '../../components'
-import { VoiceUploadButton, TextEditList } from '../../components'
+} from 'components'
+
 import * as S from './style'
 
 export const ProjectTextEdit = () => {
   //현재
 
   // 지훈
+  const ProjectTextEditOption = useSelector((state) => state.option)
+
+  console.log(ProjectTextEditOption)
+
+  const [modalText, setModalText] = useState('')
+  const [modal, setModal] = useState(false)
   return (
     <>
       <div>
@@ -33,7 +43,14 @@ export const ProjectTextEdit = () => {
               <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
               <ProjectRightNav renderType='VoiceControllerMenu' />
               <VoiceUploadButton />
-              <TextEnterButton />
+              <TextEnterButton setModal={setModal} />
+              {modal && (
+                <ProjectTextModal
+                  setModal={setModal}
+                  modalText={modalText}
+                  setModalText={setModalText}
+                />
+              )}
             </S.Right>
           </S.Inner>
         </S.Wrapper>
