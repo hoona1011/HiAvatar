@@ -17,6 +17,10 @@ export interface ProjectRightNavProps {
   renderType: string
 }
 
+export interface MainSliderProps {
+  data: { name: string }[]
+}
+
 // 현재
 export interface iconProps {
   bgColor?: string

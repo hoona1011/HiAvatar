@@ -5,7 +5,7 @@ import {
   AvatarSort,
   ProjectRightNav,
   AvatarBg
-} from '../../components'
+} from 'components'
 import * as S from './style'
 
 export const ProjectAvatar = () => {

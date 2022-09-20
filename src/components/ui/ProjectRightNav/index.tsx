@@ -7,12 +7,9 @@ import {
   ProjectText,
   PrevButton,
   NextButton
-} from '../../../components'
+} from 'components'
 import * as S from './style'
-
-interface ProjectRightNavProps {
-  renderType: string
-}
+import { ProjectRightNavProps } from 'index'
 
 export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
   switch (renderType) {

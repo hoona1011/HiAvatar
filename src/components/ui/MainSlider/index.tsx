@@ -3,11 +3,8 @@ import * as S from './style'
 import SwiperCore, { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import 'swiper/components/navigation/navigation.min.css'
-import { SwiperNextIcon, SwiperPrevIcon } from '../../Icons'
-
-interface MainSliderProps {
-  data: { name: string }[]
-}
+import { SwiperNextIcon, SwiperPrevIcon } from 'components/Icons'
+import { MainSliderProps } from 'index'
 
 export const MainSlider = ({ data }: MainSliderProps) => {
   SwiperCore.use([Navigation])
