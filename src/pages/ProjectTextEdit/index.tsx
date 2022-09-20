@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import {
   TextEnterButton,
@@ -32,6 +32,7 @@ export const ProjectTextEdit = () => {
               <S.VoicePlayer>test</S.VoicePlayer>
             </S.Left>
             <S.Right>
+              <ProjectRightNav renderType='ProjectText' />
               <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
               <ProjectRightNav renderType='VoiceControllerMenu' />
               <VoiceUploadButton />
