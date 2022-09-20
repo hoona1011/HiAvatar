@@ -5,9 +5,11 @@ import {
   TheHeader,
   ProjectText,
   ProjectRightNav,
-  ProjectTextModal
-} from '../../components'
-import { VoiceUploadButton, TextEditList } from '../../components'
+  ProjectTextModal,
+  VoiceUploadButton,
+  TextEditList
+} from 'components'
+
 import * as S from './style'
 
 export const ProjectTextEdit = () => {
