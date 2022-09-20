@@ -8,7 +8,8 @@ import {
   ProjectTextModal,
   VoiceUploadButton,
   TextEditList,
-  ProjectNav
+  ProjectNav,
+  VoicePreviewPlayer
 } from 'components'
 
 import * as S from './style'

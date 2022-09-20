@@ -112,8 +112,8 @@ export const NavIcon02 = ({
     <path
       d='M12.8332 12.3334H18.1665M12.8332 15.0001H16.1665M12.1665 17.6667V21.0001L15.4998 17.6667H20.8332V9.66675H10.1665V17.6667H12.1665Z'
       stroke='white'
-      stroke-linecap='round'
-      stroke-linejoin='round'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
   </svg>
 )
