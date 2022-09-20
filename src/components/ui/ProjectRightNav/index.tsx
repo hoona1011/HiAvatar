@@ -4,6 +4,7 @@ import {
   SelectedVoiceOptions,
   AvatarVoiceMenu,
   VoiceControlMenu,
+  ProjectText,
   PrevButton,
   NextButton
 } from '../../../components'
@@ -19,7 +20,7 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
       return (
         <>
           <S.Container>
-            프로젝트 텍스트 관련 내용
+            <ProjectText />
             <S.BtnContainer />
           </S.Container>
         </>
@@ -40,7 +41,11 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
             <AvatarVoiceMenu />
             <S.BtnContainer>
               <PrevButton />
-              <NextButton />
+              <NextButton
+                requestFunc={() => console.log('요청 완료')}
+                content='다음'
+                to='/'
+              />
             </S.BtnContainer>
           </S.Container>
         </>
