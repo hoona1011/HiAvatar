@@ -1,4 +1,4 @@
-import { iconProps } from 'index'
+import { IconProps } from 'index'
 
 export const PlayIcon = ({
   bgColor = '#858585',
@@ -6,7 +6,7 @@ export const PlayIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -32,7 +32,7 @@ export const StopIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -59,7 +59,7 @@ export const EditIcon = ({
   fillColor = '#8B8B8B',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -78,7 +78,7 @@ export const CloseIcon = ({
   fillColor = '#707070',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -100,7 +100,7 @@ export const NavIcon02 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -123,7 +123,7 @@ export const NavIcon03 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -144,7 +144,7 @@ export const NavIcon04 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -163,7 +163,7 @@ export const VoicePrePlayIcon = ({
   fillColor = '#555555',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -182,7 +182,7 @@ export const VoicePreRewindIcon = ({
   fillColor = '#BCBCBC',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -201,7 +201,7 @@ export const VoicePreForwardIcon = ({
   fillColor = '#BCBCBC',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
