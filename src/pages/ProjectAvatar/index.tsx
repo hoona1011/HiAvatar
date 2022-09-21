@@ -4,7 +4,8 @@ import {
   AvatarSelector,
   AvatarSort,
   ProjectRightNav,
-  AvatarBg
+  AvatarBg,
+  ProjectNav
 } from 'components'
 import * as S from './style'
 
@@ -14,6 +15,7 @@ export const ProjectAvatar = () => {
       <TheHeader />
       <S.Container>
         <S.LeftContainer>
+          <ProjectNav />
           <AvatarSelector />
           <AvatarSort />
           <AvatarBg />
