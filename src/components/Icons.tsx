@@ -1,4 +1,4 @@
-import { iconProps } from 'index'
+import { IconProps } from 'index'
 
 export const PlayIcon = ({
   bgColor = '#858585',
@@ -6,7 +6,7 @@ export const PlayIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -32,7 +32,7 @@ export const StopIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -59,7 +59,7 @@ export const EditIcon = ({
   fillColor = '#8B8B8B',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -78,7 +78,7 @@ export const CloseIcon = ({
   fillColor = '#707070',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -100,7 +100,7 @@ export const NavIcon02 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -112,8 +112,8 @@ export const NavIcon02 = ({
     <path
       d='M12.8332 12.3334H18.1665M12.8332 15.0001H16.1665M12.1665 17.6667V21.0001L15.4998 17.6667H20.8332V9.66675H10.1665V17.6667H12.1665Z'
       stroke='white'
-      stroke-linecap='round'
-      stroke-linejoin='round'
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
   </svg>
 )
@@ -123,7 +123,7 @@ export const NavIcon03 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -144,7 +144,7 @@ export const NavIcon04 = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -160,17 +160,11 @@ export const NavIcon04 = ({
   </svg>
 )
 
-export const ModalCloseIcon = ({
-  bgColor,
-  borderColor,
-  fillColor,
-  width,
-  height
-}: iconProps) => {
+export const ModalCloseIcon = ({ width, height }: IconProps) => {
   return (
     <svg
-      width='32'
-      height='32'
+      width={width}
+      height={height}
       viewBox='0 0 32 32'
       fill='none'
       xmlns='http://www.w3.org/2000/svg'
@@ -182,3 +176,102 @@ export const ModalCloseIcon = ({
     </svg>
   )
 }
+
+export const VoicePrePlayIcon = ({
+  fillColor = '#555555',
+  width,
+  height
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 25 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path d='M8.5 6V18L18.5 12L8.5 6Z' fill={fillColor} />
+    <path
+      d='M8.5 6L8.88587 5.35688C8.65417 5.21786 8.36561 5.21422 8.13048 5.34735C7.89534 5.48048 7.75 5.7298 7.75 6H8.5ZM8.5 18H7.75C7.75 18.2702 7.89534 18.5195 8.13048 18.6526C8.36561 18.7858 8.65417 18.7821 8.88587 18.6431L8.5 18ZM18.5 12L18.8859 12.6431C19.1118 12.5076 19.25 12.2634 19.25 12C19.25 11.7366 19.1118 11.4924 18.8859 11.3569L18.5 12ZM9.25 18V6H7.75V18H9.25ZM18.1141 11.3569L8.11413 17.3569L8.88587 18.6431L18.8859 12.6431L18.1141 11.3569ZM8.11413 6.64312L18.1141 12.6431L18.8859 11.3569L8.88587 5.35688L8.11413 6.64312Z'
+      fill={fillColor}
+    />
+  </svg>
+)
+export const VoicePreRewindIcon = ({
+  fillColor = '#BCBCBC',
+  width,
+  height
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 25 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M19.5 6L20.25 6C20.25 5.7298 20.1047 5.48048 19.8695 5.34735C19.6344 5.21422 19.3458 5.21786 19.1141 5.35688L19.5 6ZM19.5 18L19.1141 18.6431C19.3458 18.7821 19.6344 18.7858 19.8695 18.6526C20.1047 18.5195 20.25 18.2702 20.25 18L19.5 18ZM9.5 12L9.11413 11.3569C8.88822 11.4924 8.75 11.7366 8.75 12C8.75 12.2634 8.88823 12.5076 9.11413 12.6431L9.5 12ZM4.75 18C4.75 18.4142 5.08579 18.75 5.5 18.75C5.91421 18.75 6.25 18.4142 6.25 18L4.75 18ZM6.25 6C6.25 5.58579 5.91421 5.25 5.5 5.25C5.08579 5.25 4.75 5.58579 4.75 6L6.25 6ZM20.25 18L20.25 6L18.75 6L18.75 18L20.25 18ZM9.11413 12.6431L19.1141 18.6431L19.8859 17.3569L9.88587 11.3569L9.11413 12.6431ZM19.1141 5.35688L9.11413 11.3569L9.88587 12.6431L19.8859 6.64312L19.1141 5.35688ZM6.25 18L6.25 6L4.75 6L4.75 18L6.25 18Z'
+      fill={fillColor}
+    />
+    <path d='M19.5 18L10 12.5L19.5 6L19.5 18Z' fill={fillColor} />
+  </svg>
+)
+export const VoicePreForwardIcon = ({
+  fillColor = '#BCBCBC',
+  width,
+  height
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 25 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M5.5 18H4.75C4.75 18.2702 4.89535 18.5195 5.13048 18.6526C5.36561 18.7858 5.65417 18.7821 5.88587 18.6431L5.5 18ZM5.5 6L5.88587 5.35688C5.65417 5.21786 5.36561 5.21422 5.13048 5.34735C4.89534 5.48048 4.75 5.7298 4.75 6L5.5 6ZM15.5 12L15.8859 12.6431C16.1118 12.5076 16.25 12.2634 16.25 12C16.25 11.7366 16.1118 11.4924 15.8859 11.3569L15.5 12ZM20.25 6C20.25 5.58579 19.9142 5.25 19.5 5.25C19.0858 5.25 18.75 5.58579 18.75 6H20.25ZM18.75 18C18.75 18.4142 19.0858 18.75 19.5 18.75C19.9142 18.75 20.25 18.4142 20.25 18H18.75ZM4.75 6L4.75 18H6.25L6.25 6L4.75 6ZM15.8859 11.3569L5.88587 5.35688L5.11413 6.64312L15.1141 12.6431L15.8859 11.3569ZM5.88587 18.6431L15.8859 12.6431L15.1141 11.3569L5.11413 17.3569L5.88587 18.6431ZM18.75 6V18H20.25V6H18.75Z'
+      fill='#BCBCBC'
+    />
+    <path d='M5.5 6L15 11.5L5.5 18V6Z' fill={fillColor} />
+  </svg>
+)
+
+export const VoicePauseIcon = ({
+  fillColor = '#555555',
+  width,
+  height
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 25 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <g clip-path='url(#clip0_665_4573)'>
+      <path
+        d='M9.5 6H7.5C6.94772 6 6.5 6.38376 6.5 6.85714V17.1429C6.5 17.6162 6.94772 18 7.5 18H9.5C10.0523 18 10.5 17.6162 10.5 17.1429V6.85714C10.5 6.38376 10.0523 6 9.5 6Z'
+        fill={fillColor}
+      />
+      <path
+        d='M17.5 6H15.5C14.9477 6 14.5 6.38376 14.5 6.85714V17.1429C14.5 17.6162 14.9477 18 15.5 18H17.5C18.0523 18 18.5 17.6162 18.5 17.1429V6.85714C18.5 6.38376 18.0523 6 17.5 6Z'
+        fill={fillColor}
+      />
+    </g>
+  </svg>
+)
+
+export const VoiceStopIcon = ({
+  fillColor = '#555555',
+  width,
+  height
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 25 24'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <rect x='6.5' y='6' width='12' height='12' rx='1' fill={fillColor} />
+  </svg>
+)
