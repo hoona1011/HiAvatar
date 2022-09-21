@@ -1,8 +1,10 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Modalprops } from 'index'
 import { changeOption } from 'store/slices/optionSlice'
 import * as S from './style'
+import { ModalCloseIcon } from 'components/Icons'
+
 export const ProjectTextModal = ({
   setModal,
   modalText,
@@ -12,12 +14,12 @@ export const ProjectTextModal = ({
   const textRef = useRef(null)
   const dispatch = useDispatch()
 
-  const onChangeHandler = (e) => {
+  const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target
     setModalText!(value)
   }
   const onCompleteHandler = () => {
-    const { name, value } = textRef.current
+    const { name, value } = textRef.current!
 
     dispatch(changeOption({ name, value }))
     setModal(false)
@@ -25,17 +27,29 @@ export const ProjectTextModal = ({
   const onCloseHandler = () => {
     setModal(false)
   }
+
   return (
-    <S.Container>
-      <S.TextArea
-        placeholder='텍스트를 입력해주세요'
-        name='texts'
-        ref={textRef}
-        value={modalText}
-        onChange={onChangeHandler}
-      />
-      <button onClick={onCompleteHandler}>완료|</button>
-      <button onClick={onCloseHandler}>닫기</button>
-    </S.Container>
+    <S.Background>
+      <S.Modal>
+        <S.Top>
+          <label>텍스트를 입력해주세요</label>
+          <S.CloseBtn onClick={onCloseHandler}>
+            <ModalCloseIcon width='32' height='32' />
+          </S.CloseBtn>
+        </S.Top>
+
+        <S.TextArea
+          placeholder='텍스트를 입력해주세요'
+          name='texts'
+          ref={textRef}
+          value={modalText}
+          onChange={onChangeHandler}
+        />
+        <S.Bottom>
+          <S.CancelBtn onClick={onCloseHandler}>취소</S.CancelBtn>
+          <S.EnterBtn onClick={onCompleteHandler}>텍스트 입력</S.EnterBtn>
+        </S.Bottom>
+      </S.Modal>
+    </S.Background>
   )
 }
