@@ -18,7 +18,7 @@ export interface ProjectRightNavProps {
 }
 
 export interface MainSliderProps {
-  data: { name: string }[]
+  renderType: string
 }
 
 // 현재
