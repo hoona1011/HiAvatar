@@ -55,6 +55,38 @@ export const StopIcon = ({
   </svg>
 )
 
+export const PauseIcon = ({
+  bgColor = '#858585',
+  borderColor = 'white',
+  fillColor = 'white',
+  width,
+  height
+}: iconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 52 52'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <circle
+      cx='25.6273'
+      cy='25.6273'
+      r='25.6273'
+      fill={bgColor}
+      fillOpacity='0.5'
+    />
+    <path
+      d='M23.25 19H21.0833C20.485 19 20 19.4157 20 19.9286V31.0714C20 31.5843 20.485 32 21.0833 32H23.25C23.8483 32 24.3333 31.5843 24.3333 31.0714V19.9286C24.3333 19.4157 23.8483 19 23.25 19Z'
+      fill='white'
+    />
+    <path
+      d='M31.25 19H29.0833C28.485 19 28 19.4157 28 19.9286V31.0714C28 31.5843 28.485 32 29.0833 32H31.25C31.8483 32 32.3333 31.5843 32.3333 31.0714V19.9286C32.3333 19.4157 31.8483 19 31.25 19Z'
+      fill='white'
+    />
+  </svg>
+)
+
 export const EditIcon = ({
   fillColor = '#8B8B8B',
   width,
