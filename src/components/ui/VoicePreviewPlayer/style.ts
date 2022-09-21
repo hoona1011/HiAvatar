@@ -15,6 +15,7 @@ export const CustomStyle = styled.div`
   }
   & .rhap_controls-section {
     flex: none;
+    flex-direction: row-reverse;
   }
   & .rhap_container {
     padding: 0;
@@ -43,4 +44,8 @@ export const CustomStyle = styled.div`
   height: 5.6rem;
   background-color: #fff;
   border-radius: 1rem;
+`
+
+export const StopBtn = styled.button`
+  line-height: 0;
 `

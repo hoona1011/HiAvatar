@@ -1,10 +1,12 @@
 import {
   VoicePreForwardIcon,
   VoicePrePlayIcon,
-  VoicePreRewindIcon
+  VoicePreRewindIcon,
+  VoicePauseIcon,
+  VoiceStopIcon
 } from 'components/Icons'
 import React, { useEffect, useRef, useState } from 'react'
-import AudioPlayer from 'react-h5-audio-player'
+import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
 import 'react-h5-audio-player/lib/styles.css'
 import * as S from './style'
 
@@ -28,19 +30,23 @@ export const VoicePreviewPlayer = () => {
           customIcons={{
             play: <VoicePrePlayIcon width='25' height='24' />,
             previous: <VoicePreRewindIcon width='25' height='24' />,
-            next: <VoicePreForwardIcon width='25' height='24' />
+            next: <VoicePreForwardIcon width='25' height='24' />,
+            pause: <VoicePauseIcon width='25' height='24' />
           }}
-          customAdditionalControls={[<button onClick={stop}>stop</button>]}
+          customAdditionalControls={[
+            <S.StopBtn onClick={stop}>
+              <VoiceStopIcon width='25' height='24' />
+            </S.StopBtn>
+          ]}
           customVolumeControls={[]}
           showJumpControls={false}
           showSkipControls={false}
           layout='horizontal-reverse'
           src={voiceData}
           ref={player}
-          onPlay={(e) => {
-            console.log(e)
-          }}
-          // other props here
+          // onPlay={(e) => {
+          //   console.log(e)
+          // }}
         />
       </S.CustomStyle>
     </>
