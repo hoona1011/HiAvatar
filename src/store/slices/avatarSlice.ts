@@ -11,7 +11,6 @@ export const avatarSlice = createSlice({
   initialState,
   reducers: {
     changeAvatarList(state, action) {
-      console.log(action.payload.diff)
       state.avatarList = action.payload.diff
     },
     changeAvatarDetailList(state, action) {
