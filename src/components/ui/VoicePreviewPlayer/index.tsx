@@ -11,7 +11,7 @@ import * as S from './style'
 // 타입스크립트 추가 예정
 
 export const VoicePreviewPlayer = () => {
-  const VoiceData = '/src/assets/test.mp3'
+  const voiceData = '/src/assets/test.mp3'
   const player = useRef()
 
   const stop = () => {
@@ -35,7 +35,7 @@ export const VoicePreviewPlayer = () => {
           showJumpControls={false}
           showSkipControls={false}
           layout='horizontal-reverse'
-          src={VoiceData}
+          src={voiceData}
           ref={player}
           onPlay={(e) => {
             console.log(e)
