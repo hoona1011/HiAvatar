@@ -9,7 +9,7 @@ export const Background = styled.div`
   height: 100%;
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.5);
-  z-index: 99;
+  z-index: 3;
 `
 export const Modal = styled.div`
   width: 86rem;
