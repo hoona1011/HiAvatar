@@ -7,6 +7,12 @@ export interface RadioButtonProps {
   content: string
 }
 
+interface AvatarVoicePlayerProps {
+  characterName: string
+  hashtag1?: string
+  hashtag2?: string
+  hashtag3?: string
+}
 export interface Modalprops {
   setModal: React.Dispatch<React.SetStateAction<boolean>>
   modalText?: string
