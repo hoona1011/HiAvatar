@@ -7,7 +7,9 @@ import {
   ProjectRightNav,
   ProjectTextModal,
   VoiceUploadButton,
-  TextEditList
+  TextEditList,
+  ProjectNav,
+  VoicePreviewPlayer
 } from 'components'
 
 import * as S from './style'
@@ -29,9 +31,13 @@ export const ProjectTextEdit = () => {
         <S.Wrapper>
           <S.Inner>
             <S.Left>
-              <S.StepNavigator></S.StepNavigator>
+              <S.StepNavigator>
+                <ProjectNav />
+              </S.StepNavigator>
               <TextEditList />
-              <S.VoicePlayer>test</S.VoicePlayer>
+              <S.VoicePlayer>
+                <VoicePreviewPlayer />
+              </S.VoicePlayer>
             </S.Left>
             <S.Right>
               <ProjectRightNav renderType='ProjectText' />

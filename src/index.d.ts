@@ -24,7 +24,7 @@ export interface ProjectRightNavProps {
 }
 
 // 현재
-export interface iconProps {
+export interface IconProps {
   bgColor?: string
   fontColor?: string
   borderColor?: string
