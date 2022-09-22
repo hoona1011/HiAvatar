@@ -14,6 +14,14 @@ export const AvatarBg = () => {
           <S.Bg />
           <S.BgName>배경 2</S.BgName>
         </S.BgInner>
+        <S.BgInner>
+          <S.Bg />
+          <S.BgName>배경 3</S.BgName>
+        </S.BgInner>
+        <S.BgInner>
+          <S.Bg />
+          <S.BgName>배경 4</S.BgName>
+        </S.BgInner>
       </S.BgContainer>
     </S.Container>
   )

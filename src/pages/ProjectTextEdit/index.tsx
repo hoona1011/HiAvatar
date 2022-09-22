@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useAppSelector } from 'store'
 import {
   TextEnterButton,
   TheHeader,
@@ -9,21 +9,24 @@ import {
   VoiceUploadButton,
   TextEditList,
   ProjectNav,
-  VoicePreviewPlayer
+  VoicePreviewPlayer,
+  ProjectRightMenu
 } from 'components'
 
 import * as S from './style'
+import { RootState } from 'store'
 
 export const ProjectTextEdit = () => {
   //현재
 
   // 지훈
-  const ProjectTextEditOption = useSelector((state) => state.option)
+  const ProjectTextEditOption = useAppSelector((state) => state.option)
 
   console.log(ProjectTextEditOption)
 
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)
+  const [renderType, setRenderType] = useState('ProjectText') //selected
   return (
     <>
       <div>
@@ -40,9 +43,9 @@ export const ProjectTextEdit = () => {
               </S.VoicePlayer>
             </S.Left>
             <S.Right>
-              <ProjectRightNav renderType='ProjectText' />
-              <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
-              <ProjectRightNav renderType='VoiceControllerMenu' />
+              <div>렌더타입:{renderType}</div>
+              <ProjectRightMenu setRenderType={setRenderType} />
+              <ProjectRightNav renderType={renderType} />
               <VoiceUploadButton />
               <TextEnterButton setModal={setModal} />
               {modal && (

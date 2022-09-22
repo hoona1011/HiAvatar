@@ -55,6 +55,38 @@ export const StopIcon = ({
   </svg>
 )
 
+export const PauseIcon = ({
+  bgColor = '#858585',
+  borderColor = 'white',
+  fillColor = 'white',
+  width,
+  height
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 52 52'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <circle
+      cx='25.6273'
+      cy='25.6273'
+      r='25.6273'
+      fill={bgColor}
+      fillOpacity='0.5'
+    />
+    <path
+      d='M23.25 19H21.0833C20.485 19 20 19.4157 20 19.9286V31.0714C20 31.5843 20.485 32 21.0833 32H23.25C23.8483 32 24.3333 31.5843 24.3333 31.0714V19.9286C24.3333 19.4157 23.8483 19 23.25 19Z'
+      fill='white'
+    />
+    <path
+      d='M31.25 19H29.0833C28.485 19 28 19.4157 28 19.9286V31.0714C28 31.5843 28.485 32 29.0833 32H31.25C31.8483 32 32.3333 31.5843 32.3333 31.0714V19.9286C32.3333 19.4157 31.8483 19 31.25 19Z'
+      fill='white'
+    />
+  </svg>
+)
+
 export const EditIcon = ({
   fillColor = '#8B8B8B',
   width,
@@ -273,5 +305,53 @@ export const VoiceStopIcon = ({
     xmlns='http://www.w3.org/2000/svg'
   >
     <rect x='6.5' y='6' width='12' height='12' rx='1' fill={fillColor} />
+  </svg>
+)
+
+export const SwiperPrevIcon = ({
+  fillColor = '#A6A6A6',
+  width,
+  height
+}: iconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 32 32'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <rect width='32' height='32' rx='10' fill={fillColor} />
+    <path
+      d='M18.5303 11.5303C18.8232 11.2374 18.8232 10.7626 18.5303 10.4697C18.2374 10.1768 17.7626 10.1768 17.4697 10.4697L18.5303 11.5303ZM13 16L12.4697 15.4697C12.1768 15.7626 12.1768 16.2374 12.4697 16.5303L13 16ZM17.4697 21.5303C17.7626 21.8232 18.2374 21.8232 18.5303 21.5303C18.8232 21.2374 18.8232 20.7626 18.5303 20.4697L17.4697 21.5303ZM17.4697 10.4697L12.4697 15.4697L13.5303 16.5303L18.5303 11.5303L17.4697 10.4697ZM12.4697 16.5303L17.4697 21.5303L18.5303 20.4697L13.5303 15.4697L12.4697 16.5303Z'
+      fill='white'
+    />
+  </svg>
+)
+
+export const SwiperNextIcon = ({
+  fillColor = '#A6A6A6',
+  width,
+  height
+}: iconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 32 32'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <rect
+      x='32'
+      y='32'
+      width='32'
+      height='32'
+      rx='10'
+      transform='rotate(-180 32 32)'
+      fill={fillColor}
+    />
+    <path
+      d='M13.4697 20.4697C13.1768 20.7626 13.1768 21.2374 13.4697 21.5303C13.7626 21.8232 14.2374 21.8232 14.5303 21.5303L13.4697 20.4697ZM19 16L19.5303 16.5303C19.8232 16.2374 19.8232 15.7626 19.5303 15.4697L19 16ZM14.5303 10.4697C14.2374 10.1768 13.7626 10.1768 13.4697 10.4697C13.1768 10.7626 13.1768 11.2374 13.4697 11.5303L14.5303 10.4697ZM14.5303 21.5303L19.5303 16.5303L18.4697 15.4697L13.4697 20.4697L14.5303 21.5303ZM19.5303 15.4697L14.5303 10.4697L13.4697 11.5303L18.4697 16.5303L19.5303 15.4697Z'
+      fill='white'
+    />
   </svg>
 )

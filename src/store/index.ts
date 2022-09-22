@@ -4,12 +4,17 @@ import { optionApi } from '../api/optionApi'
 import { optionSlice } from './slices/optionSlice'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
+import avatarReducer from './slices/avatarSlice'
+
 const store = configureStore({
   reducer: {
     option: optionSlice.reducer,
-    [optionApi.reducerPath]: optionApi.reducer
+    [optionApi.reducerPath]: optionApi.reducer,
     // searchProducts: searchProducts.reducer,
     // [customApi.reducerPath]: customApi.reducer,
+
+    // 희영
+    avatar: avatarReducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([

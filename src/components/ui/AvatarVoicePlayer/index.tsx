@@ -1,40 +1,53 @@
-import React from 'react'
 import * as S from './style'
-import { PlayIcon, StopIcon } from '../../Icons'
+import { useState, useRef } from 'react'
+import { PlayIcon, PauseIcon, StopIcon } from '../../Icons'
+import { AvatarVoicePlayerProps } from 'index'
 
-interface AvatarVoicePlayerProps {
-  characterName: string
-  hashtag1?: string
-  hashtag2?: string
-  hashtag3?: string
-}
 export const AvatarVoicePlayer = ({
   characterName,
   hashtag1,
   hashtag2,
   hashtag3
 }: AvatarVoicePlayerProps) => {
-  const audio = new Audio('/src/assets/test.mp3')
-
-  const playAudio = () => {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioRef = useRef(new Audio('/src/assets/test.mp3'))
+  const audio = audioRef.current
+  const onPlayHandler = () => {
+    setIsPlaying(true)
     audio.play()
   }
-  const stopAudio = () => {
+  const onStopHandler = () => {
+    setIsPlaying(false)
+    audio.pause()
+    audio.currentTime = 0
+  }
+  const onPauseHandler = () => {
+    setIsPlaying(false)
     audio.pause()
   }
   return (
     <S.Container>
       <S.TextContainer>
         <S.AvatarName>{characterName}</S.AvatarName>
-        {hashtag1 && <S.Language>#{hashtag1}</S.Language>}
-        {hashtag2 && <S.Language>#{hashtag2}</S.Language>}
-        {hashtag3 && <S.Language>#{hashtag3}</S.Language>}
+        {hashtag1 && <S.Hashtag>#{hashtag1}</S.Hashtag>}
+        {hashtag2 && <S.Hashtag>#{hashtag2}</S.Hashtag>}
+        {hashtag3 && <S.Hashtag>#{hashtag3}</S.Hashtag>}
       </S.TextContainer>
       <S.BtnContainer>
-        <S.PlayBtn onClick={playAudio}>
-          <PlayIcon width='51.25' height='51.25' />
-        </S.PlayBtn>
-        <S.StopBtn onClick={stopAudio}>
+        <div>
+          {!isPlaying && (
+            <S.PlayPauseBtn onClick={onPlayHandler}>
+              <PlayIcon width='51.25' height='51.25' />
+            </S.PlayPauseBtn>
+          )}
+          {isPlaying && (
+            <S.PlayPauseBtn onClick={onPauseHandler}>
+              <PauseIcon width='51.25' height='51.25' />
+            </S.PlayPauseBtn>
+          )}
+        </div>
+
+        <S.StopBtn onClick={onStopHandler}>
           <StopIcon width='51.25' height='51.25' />
         </S.StopBtn>
       </S.BtnContainer>
