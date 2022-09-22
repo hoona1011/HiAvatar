@@ -1,21 +1,13 @@
-import React from 'react'
 import * as S from './style'
-
-interface RadioButtonProps {
-  buttonType: string
-  value: string
-  content: string
-}
+import { RadioButtonProps } from 'index'
 
 export const RadioButton = ({
   buttonType,
   value,
-  content
+  content,
+  onChange,
+  defaultChecked
 }: RadioButtonProps) => {
-  const onClickHandler = () => {
-    console.log('라디오 테스트')
-  }
-
   return (
     <S.Container key={value}>
       <input
@@ -23,7 +15,8 @@ export const RadioButton = ({
         name={buttonType}
         value={value}
         id={value}
-        onClick={onClickHandler}
+        onChange={onChange}
+        defaultChecked={defaultChecked}
       />
       <label htmlFor={value}>{content}</label>
     </S.Container>

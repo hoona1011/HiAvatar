@@ -18,6 +18,17 @@ export interface Modalprops {
   modalText?: string
   setModalText?: React.Dispatch<React.SetStateAction<string>>
 }
+interface ProjectRightMenuProps {
+  setRenderType: React.Dispatch<React.SetStateAction<string>>
+}
+
+interface RadioButtonProps {
+  buttonType: string
+  value: string
+  content: string
+  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  defaultChecked?: boolean
+}
 // 희영
 export interface ProjectRightNavProps {
   renderType: string
