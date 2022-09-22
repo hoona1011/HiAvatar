@@ -1,5 +1,5 @@
-import React, { useRef, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useRef } from 'react'
+import { useAppDispatch } from 'store'
 import { Modalprops } from 'index'
 import { changeOption } from 'store/slices/optionSlice'
 import * as S from './style'
@@ -12,7 +12,7 @@ export const ProjectTextModal = ({
 }: Modalprops) => {
   // 전역상태의 texts를 수정하면 모달 뒤편으로 텍스트가 보일 수 있으므로 useState로 임시저장소 구성
   const textRef = useRef(null)
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const { value } = e.target
