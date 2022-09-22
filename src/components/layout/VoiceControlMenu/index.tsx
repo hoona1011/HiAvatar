@@ -1,13 +1,12 @@
-import { useSelector } from 'react-redux'
+import { useAppSelector } from 'store'
 import { VoiceController } from '../../index'
 
 import * as S from './style'
 
 export const VoiceControlMenu = () => {
-  const voiceOption = useSelector((state: any) => {
-    const { speed, pitch, sentenceSpacing } = state.option
-    return { speed, pitch, sentenceSpacing }
-  })
+  const { speed, pitch, sentenceSpacing } = useAppSelector(
+    (state) => state.option
+  )
 
   return (
     <S.Container>
@@ -21,7 +20,7 @@ export const VoiceControlMenu = () => {
           max={0.5}
           step={0.5}
           controlType={'speed'}
-          optionValue={voiceOption.speed}
+          optionValue={speed}
         />
         <VoiceController
           label={'톤 조절'}
@@ -30,7 +29,7 @@ export const VoiceControlMenu = () => {
           max={0.5}
           step={0.5}
           controlType={'pitch'}
-          optionValue={voiceOption.pitch}
+          optionValue={pitch}
         />
         <VoiceController
           label={'호흡 조절'}
@@ -38,7 +37,7 @@ export const VoiceControlMenu = () => {
           max={5.0}
           step={0.1}
           controlType={'sentenceSpacing'}
-          optionValue={voiceOption.sentenceSpacing}
+          optionValue={sentenceSpacing}
         />
       </S.VoiceControllerContainer>
     </S.Container>

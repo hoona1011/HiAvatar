@@ -1,17 +1,32 @@
-import React, { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { useAppSelector } from 'store'
 import {
   TextEnterButton,
   TheHeader,
   ProjectText,
-  ProjectRightNav
-} from '../../components'
-import { VoiceUploadButton, TextEditList } from '../../components'
+  ProjectRightNav,
+  ProjectTextModal,
+  VoiceUploadButton,
+  TextEditList,
+  ProjectNav,
+  VoicePreviewPlayer,
+  ProjectRightMenu
+} from 'components'
+
 import * as S from './style'
+import { RootState } from 'store'
 
 export const ProjectTextEdit = () => {
   //현재
 
   // 지훈
+  const ProjectTextEditOption = useAppSelector((state) => state.option)
+
+  console.log(ProjectTextEditOption)
+
+  const [modalText, setModalText] = useState('')
+  const [modal, setModal] = useState(false)
+  const [renderType, setRenderType] = useState('ProjectText') //selected
   return (
     <>
       <div>
@@ -19,15 +34,27 @@ export const ProjectTextEdit = () => {
         <S.Wrapper>
           <S.Inner>
             <S.Left>
-              <S.StepNavigator></S.StepNavigator>
+              <S.StepNavigator>
+                <ProjectNav />
+              </S.StepNavigator>
               <TextEditList />
-              <S.VoicePlayer>test</S.VoicePlayer>
+              <S.VoicePlayer>
+                <VoicePreviewPlayer />
+              </S.VoicePlayer>
             </S.Left>
             <S.Right>
-              <ProjectRightNav renderType='AvatarVoicePlayersMenu' />
-              <ProjectRightNav renderType='VoiceControllerMenu' />
+              <div>렌더타입:{renderType}</div>
+              <ProjectRightMenu setRenderType={setRenderType} />
+              <ProjectRightNav renderType={renderType} />
               <VoiceUploadButton />
-              <TextEnterButton />
+              <TextEnterButton setModal={setModal} />
+              {modal && (
+                <ProjectTextModal
+                  setModal={setModal}
+                  modalText={modalText}
+                  setModalText={setModalText}
+                />
+              )}
             </S.Right>
           </S.Inner>
         </S.Wrapper>

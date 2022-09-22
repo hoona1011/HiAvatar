@@ -1,9 +1,5 @@
 import styled from 'styled-components'
 
-interface AvatarSortProps {
-  selected?: boolean
-}
-
 export const Container = styled.div`
   height: 53.8rem;
   margin-bottom: 2.4rem;
@@ -27,8 +23,6 @@ export const SortContainer = styled.div`
   padding: 0.8rem 1.6rem;
 
   border-radius: 1rem;
-  background-color: ${({ selected }: AvatarSortProps) =>
-    selected ? '#fff' : '#F3F3F3'};
 `
 
 export const SortTitle = styled.div`

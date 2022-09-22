@@ -15,10 +15,10 @@ export const Inner = styled.div`
   display: flex;
 `
 export const Left = styled.div`
-  background-color: red;
   padding-right: 2.4rem;
+  display: flex;
+  flex-direction: column;
   width: calc(100% - 38.4rem);
-  background-color: #ccc;
 `
 
 export const Right = styled.div`
@@ -28,15 +28,13 @@ export const Right = styled.div`
 `
 
 export const VoicePlayer = styled.div`
-  position: fixed;
-  bottom: 0;
+  background-color: #f3f3f3;
+  border-radius: 1rem;
   width: 79.2rem;
-  height: 13rem;
-  border: 2px solid red;
+  padding: 0 1.6rem 2.4rem;
 `
 
 export const StepNavigator = styled.div`
   width: 100%;
-  height: 6.4rem;
-  border: 2px solid green;
+  padding: 2.4rem 0;
 `

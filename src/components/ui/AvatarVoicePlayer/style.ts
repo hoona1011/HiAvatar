@@ -18,7 +18,7 @@ export const AvatarName = styled.div`
   line-height: 2.5rem;
   margin-bottom: 1rem;
 `
-export const Language = styled.button`
+export const Hashtag = styled.button`
   background-color: #efefef;
   border-radius: 3rem;
   border: none;
@@ -33,7 +33,7 @@ export const BtnContainer = styled.div`
   flex-direction: row;
   margin: auto;
 `
-export const PlayBtn = styled.div`
+export const PlayPauseBtn = styled.div`
   margin-right: 0.5rem;
   cursor: pointer;
 `

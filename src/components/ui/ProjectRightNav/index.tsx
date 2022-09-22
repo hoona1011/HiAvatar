@@ -4,14 +4,12 @@ import {
   SelectedVoiceOptions,
   AvatarVoiceMenu,
   VoiceControlMenu,
+  ProjectText,
   PrevButton,
   NextButton
-} from '../../../components'
+} from 'components'
 import * as S from './style'
-
-interface ProjectRightNavProps {
-  renderType: string
-}
+import { ProjectRightNavProps } from 'index'
 
 export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
   switch (renderType) {
@@ -19,7 +17,7 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
       return (
         <>
           <S.Container>
-            프로젝트 텍스트 관련 내용
+            <ProjectText />
             <S.BtnContainer />
           </S.Container>
         </>
