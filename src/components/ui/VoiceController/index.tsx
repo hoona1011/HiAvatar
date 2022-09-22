@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './style'
 // import { InitialOption } from '../../layout/VoiceControlMenu'
-import { useDispatch } from 'react-redux'
+import { useAppDispatch } from 'store'
 import { changeOption } from '../../../store/slices/optionSlice'
 
 interface VoiceProps {
@@ -23,7 +23,7 @@ export const VoiceController = ({
   controlType,
   optionValue
 }: VoiceProps) => {
-  const dispatch = useDispatch()
+  const dispatch = useAppDispatch()
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
 
