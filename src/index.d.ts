@@ -34,6 +34,10 @@ export interface ProjectRightNavProps {
   renderType: string
 }
 
+export interface MainSliderProps {
+  renderType: string
+}
+
 // 현재
 export interface IconProps {
   bgColor?: string
