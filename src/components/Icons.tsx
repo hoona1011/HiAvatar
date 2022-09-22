@@ -61,7 +61,7 @@ export const PauseIcon = ({
   fillColor = 'white',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
