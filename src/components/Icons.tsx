@@ -312,7 +312,7 @@ export const SwiperPrevIcon = ({
   fillColor = '#A6A6A6',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -332,7 +332,7 @@ export const SwiperNextIcon = ({
   fillColor = '#A6A6A6',
   width,
   height
-}: iconProps) => (
+}: IconProps) => (
   <svg
     width={width}
     height={height}
