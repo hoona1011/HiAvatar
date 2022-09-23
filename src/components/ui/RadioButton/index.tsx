@@ -13,8 +13,8 @@ export const RadioButton = ({
       <input
         type='radio'
         name={buttonType}
-        value={value}
         id={value}
+        value={value}
         onChange={onChange}
         defaultChecked={defaultChecked}
       />
