@@ -1,11 +1,6 @@
 //
 
 // 지훈
-export interface RadioButtonProps {
-  buttonType: string
-  value: string
-  content: string
-}
 
 interface AvatarVoicePlayerProps {
   characterName: string
@@ -24,10 +19,10 @@ interface ProjectRightMenuProps {
 }
 
 interface RadioButtonProps {
-  buttonType: string
+  name: string
   value: string
   content: string
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
   defaultChecked?: boolean
 }
 // 희영
