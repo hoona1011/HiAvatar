@@ -52,22 +52,25 @@ export const AvatarVoiceMenu = () => {
       </S.OptionContainer>
       <S.VoicePlayerContainer>
         <AvatarVoicePlayer
-          characterName={'가영'}
+          characterName={'철수'}
           hashtag1={'밝은'}
           hashtag2={'높은'}
           hashtag3={'명랑한'}
+          buttonType={'characterName'}
         />
         <AvatarVoicePlayer
-          characterName={'가영'}
+          characterName={'영희'}
           hashtag1={'밝은'}
           hashtag2={'높은'}
           hashtag3={'명랑한'}
+          buttonType={'characterName'}
         />
         <AvatarVoicePlayer
-          characterName={'가영'}
+          characterName={'민수'}
           hashtag1={'밝은'}
           hashtag2={'높은'}
           hashtag3={'명랑한'}
+          buttonType={'characterName'}
         />
       </S.VoicePlayerContainer>
     </S.Container>

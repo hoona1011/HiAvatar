@@ -16,8 +16,8 @@ export const RadioButton = ({
       <input
         type='radio'
         name={name}
-        value={value}
         id={value}
+        value={value}
         onChange={onChange}
         defaultChecked={value === 'ProjectText' ? true : optionValue === value}
       />

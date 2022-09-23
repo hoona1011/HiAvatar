@@ -1,14 +1,24 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
+  input {
+    display: none;
+  }
+  /* input:checked + label {
+    border: 0.2rem solid #808eff;
+  } */
+`
+
+export const VoicePlayer = styled.label`
   width: 100%;
   height: 12rem;
   background-color: #ffffff;
   border-radius: 1rem;
   display: flex;
-  flex-direction: row;
   margin-bottom: 1.6rem;
+  border: 0.08rem solid ${({ isSelected }) => (isSelected ? 'red' : '#d2d2d2')};
 `
+
 export const TextContainer = styled.div`
   margin: auto;
 `
