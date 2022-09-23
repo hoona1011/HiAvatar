@@ -1,18 +1,17 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as S from './style'
-import { MainSliderProps } from 'index'
 import SwiperCore, { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperNextIcon, SwiperPrevIcon } from 'components/Icons'
 import 'swiper/components/navigation/navigation.min.css'
 import {
   changeTotalAvatarData,
-  changeAvatarList,
   changeAvatarDetailList,
-  changeBackgroundList,
   useAvatar
 } from 'store/slices/avatarSlice'
 import { useGetAvatarQuery } from 'api/avatarApi'
+
+import type { MainSliderProps } from 'index'
 
 export const MainSlider = ({ renderType }: MainSliderProps) => {
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)
@@ -23,18 +22,11 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
   SwiperCore.use([Navigation])
 
   const avatarListHandler = () => {
-    if (avatarData) {
-      const data = Object.entries(avatarData.dummyData) // 2차원 배열로 만들어주기
-      const backgroundList = data.pop() // 마지막 요소는 `backgroundList` 이므로 따로 보관
-      dispatch(changeTotalAvatarData({ diff: avatarData }))
-      dispatch(changeAvatarList({ diff: data }))
-      dispatch(changeBackgroundList({ diff: backgroundList[1] }))
-    }
+    avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
   }
 
   const avatarDetailListHandler = (selectedAvatar: string) => {
-    const data = avatarList.filter((avatar) => avatar[0] === selectedAvatar)
-    dispatch(changeAvatarDetailList({ diff: data[0][1] }))
+    dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
   }
 
   useEffect(() => {
@@ -76,7 +68,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
       case 'AvatarSelector':
         return (
           <Swiper {...swiperSetting}>
-            {avatarList &&
+            {avatarList[0] &&
               avatarList.map((avatar, index: string) => {
                 return (
                   <SwiperSlide

@@ -1,11 +1,13 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
-const initialState = {
-  totalAvatarData: '',
-  avatarList: '',
-  avatarDetailList: '',
-  backgroundList: ''
+import type { avatarState } from 'index'
+
+const initialState: avatarState = {
+  totalAvatarData: [],
+  avatarList: [],
+  avatarDetailList: [],
+  backgroundList: []
 }
 
 export const avatarSlice = createSlice({
@@ -13,26 +15,25 @@ export const avatarSlice = createSlice({
   initialState,
   reducers: {
     changeTotalAvatarData(state, action) {
-      state.totalAvatarData = action.payload.diff
-    },
-    changeAvatarList(state, action) {
-      state.avatarList = action.payload.diff
+      const avatarData = action.payload.diff
+      const avatarList = Object.entries(avatarData.dummyData) // 2차원 배열로 만들어주기
+      const backgroundList = avatarList.pop() // 마지막 요소는 `backgroundList` 이므로 따로 보관
+
+      state.totalAvatarData = avatarData
+      state.avatarList = avatarList
+      state.backgroundList = (backgroundList as any[])[1]
     },
     changeAvatarDetailList(state, action) {
-      state.avatarDetailList = action.payload.diff
-    },
-    changeBackgroundList(state, action) {
-      state.backgroundList = action.payload.diff
+      const avatarDetailList = state.avatarList.filter(
+        (avatar) => avatar[0] === action.payload.diff
+      )
+      state.avatarDetailList = avatarDetailList[0][1]
     }
   }
 })
 
-export const {
-  changeTotalAvatarData,
-  changeAvatarList,
-  changeAvatarDetailList,
-  changeBackgroundList
-} = avatarSlice.actions
+export const { changeTotalAvatarData, changeAvatarDetailList } =
+  avatarSlice.actions
 
 export const useAvatar = () => {
   // 타입 추가 예정
