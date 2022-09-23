@@ -23,7 +23,7 @@ export const MyPage = () => {
             * 영문 대소문자, 숫자, 특수문자 중 2가지 이상 조합(8~50자)
           </S.TempSpan>
         </S.ChangePwWrapper>
-        <S.ChangePwWrapper>
+        <S.NewPwWrapper>
           <S.MidText>새로운 비밀번호 확인</S.MidText>
           <S.PositionWrap>
             <S.PwInput type='password' />
@@ -32,7 +32,7 @@ export const MyPage = () => {
             </S.PwCheckBtn>
           </S.PositionWrap>
           <S.NewPwSpan>(비밀번호 중복 확인 멘트)</S.NewPwSpan>
-        </S.ChangePwWrapper>
+        </S.NewPwWrapper>
         <S.SubmitBtn>비밀번호 변경하기</S.SubmitBtn>
       </S.Wrapper>
     </S.Container>

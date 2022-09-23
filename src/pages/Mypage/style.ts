@@ -34,6 +34,9 @@ export const TempSpan = styled.div`
 export const ChangePwWrapper = styled.div`
   margin-bottom: 2rem;
 `
+export const NewPwWrapper = styled.div`
+  margin-bottom: 2rem;
+`
 export const PositionWrap = styled.div`
   position: relative;
 `
