@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import * as S from './style'
 import { RadioButton } from '../RadioButton'
 import { ProjectRightMenuProps } from 'index'
@@ -10,20 +9,20 @@ export const ProjectRightMenu = ({ setRenderType }: ProjectRightMenuProps) => {
   return (
     <S.Container>
       <RadioButton
-        buttonType='path'
+        name='path'
         value={'ProjectText'}
         content={'전체 텍스트'}
         onChange={onChangeHandler}
         defaultChecked={true}
       />
       <RadioButton
-        buttonType='path'
+        name='path'
         value={'AvatarVoicePlayersMenu'}
         content={'음성 모델'}
         onChange={onChangeHandler}
       />
       <RadioButton
-        buttonType='path'
+        name='path'
         value={'VoiceControllerMenu'}
         content={'음성 옵션'}
         onChange={onChangeHandler}
