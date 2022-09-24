@@ -1,13 +1,11 @@
 import * as S from './style'
 import { RadioButtonProps } from 'index'
-import { useAppSelector } from 'store'
 import { AllTexts, VoiceModels, VoiceOptions } from 'components/Icons'
 export const ProjectRightMenuButton = ({
   name,
   value,
   content,
   onChange,
-  defaultChecked,
   renderType,
   IconRenderType
 }: RadioButtonProps) => {
