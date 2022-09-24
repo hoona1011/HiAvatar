@@ -1,5 +1,45 @@
 // 색상 관련
-const palette = {}
+const palette = {
+  //ETC
+  white: '#FFFFFF',
+  txt: '#0E1937',
+  txt50: '',
+  clickBackground: '',
+  progressBarGradient: '',
+  GNABG: '',
+
+  //BLUE
+  blue3: '#F4F7FF',
+  blue5: '#E6EDFF',
+  blue10: '#CCDAFF',
+  blue20: '#B2C7FF',
+  blue30: '#99B6FF',
+  blue40: '#7FA3FF',
+  blue50: '#6691FF',
+  blue60: '#4C7EFF',
+  blue70: '#336CFF',
+  blue80: '#1A5AFF',
+  blue90: '#0047FF',
+  //PURPLE
+  purple5: '#F0E6FF',
+  purple10: '#DFCCFF',
+  purple20: '#CFB2FF',
+  purple30: '#C099FF',
+  purple40: '#AF7FFF',
+  purple50: '#A066FF',
+  purple60: '#904CFF',
+  purple70: '#8133FF',
+  purple80: '#711AFF',
+  purple90: '#711AFF', //figma 상에서 80,90이 동일한 색상으로 적혀있긴 한데 일단 작성했습니다.
+  //ORANGE
+  orange1: '#FFF2E2',
+  orange2: '#E47B00',
+  orange15: '#FFEACF',
+  //GRAY
+  gray30: '',
+  gray50: '',
+  gray100: ''
+}
 
 // 레이아웃 관련
 const common = {
