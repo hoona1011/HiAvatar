@@ -38,6 +38,15 @@ export const avatarSlice = createSlice({
       const selectedValue = action.payload.diff
       const key = Object.keys(selectedValue)[0]
       const value = Object.values(selectedValue)[0]
+
+      // key가 'avatarName'인 경우는 사용자가 선택한 아바타가 바뀌는 것이므로 아바타 타입을 초기화 시켜준다
+      if (key === 'avatarName') {
+        state.selectedValue = {
+          ...state.selectedValue,
+          [key as string]: value,
+          ['avatarType']: ''
+        }
+      }
       state.selectedValue = {
         ...state.selectedValue,
         [key]: value
