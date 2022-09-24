@@ -9,7 +9,7 @@ export const RadioButton = ({
   onChange,
   defaultChecked
 }: RadioButtonProps) => {
-  const optionValue = useAppSelector((state) => state.option[name])
+  const optionStateValue = useAppSelector((state) => state.option[name])
 
   return (
     <S.Container key={value}>
@@ -19,7 +19,7 @@ export const RadioButton = ({
         id={value}
         value={value}
         onChange={onChange}
-        defaultChecked={value === 'ProjectText' ? true : optionValue === value}
+        defaultChecked={optionStateValue === value}
       />
       <label htmlFor={value}>{content}</label>
     </S.Container>
