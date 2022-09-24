@@ -7,11 +7,12 @@ import 'swiper/components/navigation/navigation.min.css'
 import {
   changeTotalAvatarData,
   changeAvatarDetailList,
-  useAvatar
+  useAvatar,
+  changeSelectedValue
 } from 'store/slices/avatarSlice'
 import { useGetAvatarQuery } from 'api/avatarApi'
 
-import type { MainSliderProps } from 'index'
+import type { MainSliderProps, SelectedValue } from 'index'
 
 export const MainSlider = ({ renderType }: MainSliderProps) => {
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)
@@ -24,9 +25,11 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
   const avatarListHandler = () => {
     avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
   }
-
   const avatarDetailListHandler = (selectedAvatar: string) => {
     dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
+  }
+  const selectedValueHandler = (selectedValue: SelectedValue) => {
+    dispatch(changeSelectedValue({ diff: selectedValue }))
   }
 
   useEffect(() => {
@@ -75,6 +78,9 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     key={avatar[0]}
                     onClick={() => {
                       avatarDetailListHandler(avatar[0])
+                      selectedValueHandler({
+                        avatarName: avatar[0]
+                      })
                     }}
                   >
                     <S.Content />
@@ -90,7 +96,14 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
             {avatarDetailList.detailList1 &&
               avatarDetailList?.detailList1.map(({ position }) => {
                 return (
-                  <SwiperSlide key={position}>
+                  <SwiperSlide
+                    key={position}
+                    onClick={() => {
+                      selectedValueHandler({
+                        avatarType: position
+                      })
+                    }}
+                  >
                     <S.Content />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
@@ -104,7 +117,14 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
             {avatarDetailList.detailList2 &&
               avatarDetailList?.detailList2.map(({ position }) => {
                 return (
-                  <SwiperSlide key={position}>
+                  <SwiperSlide
+                    key={position}
+                    onClick={() => {
+                      selectedValueHandler({
+                        avatarType: position
+                      })
+                    }}
+                  >
                     <S.Content />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
@@ -118,7 +138,14 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
             {avatarDetailList.detailList3 &&
               avatarDetailList?.detailList3.map(({ position }) => {
                 return (
-                  <SwiperSlide key={position}>
+                  <SwiperSlide
+                    key={position}
+                    onClick={() => {
+                      selectedValueHandler({
+                        avatarType: position
+                      })
+                    }}
+                  >
                     <S.Content />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>

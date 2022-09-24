@@ -7,7 +7,12 @@ const initialState: avatarState = {
   totalAvatarData: [],
   avatarList: [],
   avatarDetailList: [],
-  backgroundList: []
+  backgroundList: [],
+  selectedValue: {
+    avatarName: '',
+    avatarType: '',
+    bgName: ''
+  }
 }
 
 export const avatarSlice = createSlice({
@@ -28,12 +33,25 @@ export const avatarSlice = createSlice({
         (avatar) => avatar[0] === action.payload.diff
       )
       state.avatarDetailList = avatarDetailList[0][1]
+    },
+    changeSelectedValue(state, action) {
+      const selectedValue = action.payload.diff
+      const key = Object.keys(selectedValue)[0]
+      const value = Object.values(selectedValue)[0]
+      state.selectedValue = {
+        ...state.selectedValue,
+        [key]: value
+      }
+      console.log('바뀌고 난 후', state.selectedValue)
     }
   }
 })
 
-export const { changeTotalAvatarData, changeAvatarDetailList } =
-  avatarSlice.actions
+export const {
+  changeTotalAvatarData,
+  changeAvatarDetailList,
+  changeSelectedValue
+} = avatarSlice.actions
 
 export const useAvatar = () => {
   // 타입 추가 예정
@@ -41,6 +59,7 @@ export const useAvatar = () => {
   const avatarList = useSelector((state) => state.avatar.avatarList)
   const avatarDetailList = useSelector((state) => state.avatar.avatarDetailList)
   const backgroundList = useSelector((state) => state.avatar.backgroundList)
+  const selectedValue = useSelector((state) => state.avatar.selectedValue)
   const dispatch = useDispatch()
 
   return {
@@ -48,6 +67,7 @@ export const useAvatar = () => {
     avatarList,
     avatarDetailList,
     backgroundList,
+    selectedValue,
     dispatch
   }
 }

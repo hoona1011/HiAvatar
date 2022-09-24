@@ -16,6 +16,9 @@ export const Container = styled.div`
       border: 1px solid;
       height: 12.2rem;
       margin-right: 0.8rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `

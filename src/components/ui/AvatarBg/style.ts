@@ -27,6 +27,9 @@ export const BgContainer = styled.div`
 export const BgInner = styled.div`
   height: 12.2rem;
   margin-right: 0.8rem;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const Bg = styled.div`
