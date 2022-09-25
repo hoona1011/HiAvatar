@@ -1,7 +1,11 @@
 //
 
 // 지훈
-
+interface NextButtonProps {
+  requestFunc: any // 추후 수정
+  to: string
+  isComplete: boolean
+}
 interface AvatarVoicePlayerProps {
   characterName: string
   hashtag1?: string
