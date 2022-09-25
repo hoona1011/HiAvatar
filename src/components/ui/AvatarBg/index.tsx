@@ -3,7 +3,7 @@ import * as S from './style'
 import { changeSelectedValue, useAvatar } from 'store/slices/avatarSlice'
 
 export const AvatarBg = () => {
-  const { backgroundList, dispatch } = useAvatar()
+  const { backgroundList, selectedValue, dispatch } = useAvatar()
 
   const selectedValueHandler = (selectedValue: SelectedValue) => {
     dispatch(changeSelectedValue({ diff: selectedValue }))
@@ -22,7 +22,10 @@ export const AvatarBg = () => {
                   selectedValueHandler({ bgName: background.position })
                 }}
               >
-                <S.Bg />
+                <S.Bg
+                  selected={selectedValue.bgName}
+                  value={background.position}
+                />
                 <S.BgName>배경 {index + 1}</S.BgName>
               </S.BgInner>
             )

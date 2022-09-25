@@ -19,7 +19,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
   const { data: avatarData, isLoading, isError } = useGetAvatarQuery()
-  const { avatarList, avatarDetailList, dispatch } = useAvatar()
+  const { avatarList, avatarDetailList, selectedValue, dispatch } = useAvatar()
   SwiperCore.use([Navigation])
 
   const avatarListHandler = () => {
@@ -83,7 +83,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                       })
                     }}
                   >
-                    <S.Content />
+                    <S.Content
+                      selected={selectedValue?.avatarName}
+                      value={avatar[0]}
+                    />
                     <S.Name>아바타 {index + 1}</S.Name>
                   </SwiperSlide>
                 )
@@ -104,7 +107,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                       })
                     }}
                   >
-                    <S.Content />
+                    <S.Content
+                      selected={selectedValue?.avatarType}
+                      value={position}
+                    />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
                 )
@@ -125,7 +131,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                       })
                     }}
                   >
-                    <S.Content />
+                    <S.Content
+                      selected={selectedValue?.avatarType}
+                      value={position}
+                    />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
                 )
@@ -146,7 +155,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                       })
                     }}
                   >
-                    <S.Content />
+                    <S.Content
+                      selected={selectedValue?.avatarType}
+                      value={position}
+                    />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
                 )
