@@ -1,9 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
-import type { avatarState } from 'index'
+import type { AvatarState } from 'index'
 
-const initialState: avatarState = {
+const initialState: AvatarState = {
   totalAvatarData: [],
   avatarList: [],
   avatarDetailList: [],

@@ -42,7 +42,7 @@ export interface SelectedValue {
   }
 }
 
-export interface avatarState extends SelectedValue {
+export interface AvatarState extends SelectedValue {
   totalAvatarData: any[]
   avatarList: any[]
   avatarDetailList: any[]
