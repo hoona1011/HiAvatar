@@ -6,8 +6,7 @@ export const RadioButton = ({
   name,
   value,
   content,
-  onChange,
-  defaultChecked
+  onChange
 }: RadioButtonProps) => {
   const optionStateValue = useAppSelector((state) => state.option[name])
 

@@ -393,3 +393,54 @@ export const TooltipIcon = ({ width, height }: IconProps) => (
     />
   </svg>
 )
+
+export const AllTexts = ({ width, height, isSelected }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M12 7.5H2.25M15 4.5H2.25M15 10.5H2.25M12 13.5H2.25'
+      stroke={isSelected ? '#6691FF' : '#B2B2B4'}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const VoiceModels = ({ width, height, isSelected }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M14.25 7.5V9C14.25 11.8995 11.8995 14.25 9 14.25M3.75 7.5V9C3.75 11.8995 6.10051 14.25 9 14.25M9 14.25V16.5M6 16.5H12M9 11.25C7.75736 11.25 6.75 10.2426 6.75 9V3.75C6.75 2.50736 7.75736 1.5 9 1.5C10.2426 1.5 11.25 2.50736 11.25 3.75V9C11.25 10.2426 10.2426 11.25 9 11.25Z'
+      stroke={isSelected ? '#6691FF' : '#B2B2B4'}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const VoiceOptions = ({ width, height, isSelected }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M12.0003 6.75C12.471 7.37675 12.75 8.1558 12.75 9C12.75 9.84421 12.471 10.6233 12.0003 11.25M13.5 3.96876C14.8809 5.20473 15.75 7.00088 15.75 9C15.75 10.9991 14.8809 12.7953 13.5 14.0312M3.45 6.75H4.1259C4.5391 6.75 4.74569 6.75 4.93714 6.6985C5.10677 6.65286 5.26706 6.57778 5.41072 6.47668C5.57285 6.36258 5.70511 6.20387 5.96963 5.88645L7.93907 3.52312C8.26583 3.13101 8.42921 2.93495 8.57193 2.91455C8.69552 2.89688 8.81979 2.94187 8.90342 3.03456C9 3.1416 9 3.39681 9 3.90723V14.0928C9 14.6032 9 14.8584 8.90342 14.9654C8.81979 15.0581 8.69552 15.1031 8.57193 15.0855C8.42921 15.0651 8.26582 14.869 7.93907 14.4769L5.96963 12.1136C5.70511 11.7961 5.57285 11.6374 5.41072 11.5233C5.26706 11.4222 5.10677 11.3471 4.93714 11.3015C4.74569 11.25 4.5391 11.25 4.1259 11.25H3.45C3.02996 11.25 2.81994 11.25 2.65951 11.1683C2.51839 11.0964 2.40365 10.9816 2.33175 10.8405C2.25 10.6801 2.25 10.47 2.25 10.05V7.95C2.25 7.52996 2.25 7.31994 2.33175 7.15951C2.40365 7.01839 2.51839 6.90365 2.65951 6.83175C2.81994 6.75 3.02996 6.75 3.45 6.75Z'
+      stroke={isSelected ? '#6691FF' : '#B2B2B4'}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
