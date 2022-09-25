@@ -1,9 +1,13 @@
 import React from 'react'
 import * as S from './style'
-import { useAvatar } from 'store/slices/avatarSlice'
-
+import { changeSelectedValue, useAvatar } from 'store/slices/avatarSlice'
+import type { SelectedValue } from 'index'
 export const AvatarBg = () => {
-  const { backgroundList } = useAvatar()
+  const { backgroundList, selectedValue, dispatch } = useAvatar()
+
+  const selectedValueHandler = (selectedValue: SelectedValue) => {
+    dispatch(changeSelectedValue({ diff: selectedValue }))
+  }
 
   return (
     <S.Container>
@@ -12,8 +16,15 @@ export const AvatarBg = () => {
         {backgroundList &&
           backgroundList.map((background, index: string) => {
             return (
-              <S.BgInner key={background.position}>
-                <S.Bg />
+              <S.BgInner
+                key={background.position}
+                onClick={() => {
+                  selectedValueHandler({ bgName: background.position })
+                }}
+              >
+                <S.Bg
+                  isSelected={selectedValue.bgName === background.position}
+                />
                 <S.BgName>배경 {index + 1}</S.BgName>
               </S.BgInner>
             )

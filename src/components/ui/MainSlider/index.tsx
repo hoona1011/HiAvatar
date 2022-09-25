@@ -1,40 +1,36 @@
 import React, { useState, useEffect, useRef } from 'react'
 import * as S from './style'
-import { MainSliderProps } from 'index'
 import SwiperCore, { Navigation } from 'swiper'
 import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperNextIcon, SwiperPrevIcon } from 'components/Icons'
 import 'swiper/components/navigation/navigation.min.css'
 import {
   changeTotalAvatarData,
-  changeAvatarList,
   changeAvatarDetailList,
-  changeBackgroundList,
-  useAvatar
+  useAvatar,
+  changeSelectedValue
 } from 'store/slices/avatarSlice'
 import { useGetAvatarQuery } from 'api/avatarApi'
+
+import type { MainSliderProps, SelectedValue } from 'index'
 
 export const MainSlider = ({ renderType }: MainSliderProps) => {
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
   const { data: avatarData, isLoading, isError } = useGetAvatarQuery()
-  const { avatarList, avatarDetailList, dispatch } = useAvatar()
+  const { avatarList, avatarDetailList, selectedValue, dispatch } = useAvatar()
   SwiperCore.use([Navigation])
 
   const avatarListHandler = () => {
-    if (avatarData) {
-      const data = Object.entries(avatarData.dummyData) // 2차원 배열로 만들어주기
-      const backgroundList = data.pop() // 마지막 요소는 `backgroundList` 이므로 따로 보관
-      dispatch(changeTotalAvatarData({ diff: avatarData }))
-      dispatch(changeAvatarList({ diff: data }))
-      dispatch(changeBackgroundList({ diff: backgroundList[1] }))
-    }
+    avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
+    avatarDetailListHandler('avatar1') // 기본값 지정
   }
-
   const avatarDetailListHandler = (selectedAvatar: string) => {
-    const data = avatarList.filter((avatar) => avatar[0] === selectedAvatar)
-    dispatch(changeAvatarDetailList({ diff: data[0][1] }))
+    dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
+  }
+  const selectedValueHandler = (selectedValue: SelectedValue) => {
+    dispatch(changeSelectedValue({ diff: selectedValue }))
   }
 
   useEffect(() => {
@@ -76,16 +72,21 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
       case 'AvatarSelector':
         return (
           <Swiper {...swiperSetting}>
-            {avatarList &&
+            {avatarList[0] &&
               avatarList.map((avatar, index: string) => {
                 return (
                   <SwiperSlide
                     key={avatar[0]}
                     onClick={() => {
                       avatarDetailListHandler(avatar[0])
+                      selectedValueHandler({
+                        avatarName: avatar[0]
+                      })
                     }}
                   >
-                    <S.Content />
+                    <S.Content
+                      isSelected={selectedValue?.avatarName === avatar[0]}
+                    />
                     <S.Name>아바타 {index + 1}</S.Name>
                   </SwiperSlide>
                 )
@@ -98,8 +99,17 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
             {avatarDetailList.detailList1 &&
               avatarDetailList?.detailList1.map(({ position }) => {
                 return (
-                  <SwiperSlide key={position}>
-                    <S.Content />
+                  <SwiperSlide
+                    key={position}
+                    onClick={() => {
+                      selectedValueHandler({
+                        avatarType: position
+                      })
+                    }}
+                  >
+                    <S.Content
+                      isSelected={selectedValue?.avatarType === position}
+                    />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
                 )
@@ -112,8 +122,17 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
             {avatarDetailList.detailList2 &&
               avatarDetailList?.detailList2.map(({ position }) => {
                 return (
-                  <SwiperSlide key={position}>
-                    <S.Content />
+                  <SwiperSlide
+                    key={position}
+                    onClick={() => {
+                      selectedValueHandler({
+                        avatarType: position
+                      })
+                    }}
+                  >
+                    <S.Content
+                      isSelected={selectedValue?.avatarType === position}
+                    />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
                 )
@@ -126,8 +145,17 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
             {avatarDetailList.detailList3 &&
               avatarDetailList?.detailList3.map(({ position }) => {
                 return (
-                  <SwiperSlide key={position}>
-                    <S.Content />
+                  <SwiperSlide
+                    key={position}
+                    onClick={() => {
+                      selectedValueHandler({
+                        avatarType: position
+                      })
+                    }}
+                  >
+                    <S.Content
+                      isSelected={selectedValue?.avatarType === position}
+                    />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
                 )

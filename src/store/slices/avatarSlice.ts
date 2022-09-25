@@ -1,11 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { useDispatch, useSelector } from 'react-redux'
 
-const initialState = {
-  totalAvatarData: '',
-  avatarList: '',
-  avatarDetailList: '',
-  backgroundList: ''
+import type { AvatarState } from 'index'
+
+const initialState: AvatarState = {
+  totalAvatarData: [],
+  avatarList: [],
+  avatarDetailList: [],
+  backgroundList: [],
+  selectedValue: {
+    avatarName: 'avatar1',
+    avatarType: '',
+    bgName: ''
+  }
 }
 
 export const avatarSlice = createSlice({
@@ -13,25 +20,45 @@ export const avatarSlice = createSlice({
   initialState,
   reducers: {
     changeTotalAvatarData(state, action) {
-      state.totalAvatarData = action.payload.diff
-    },
-    changeAvatarList(state, action) {
-      state.avatarList = action.payload.diff
+      const avatarData = action.payload.diff
+      const avatarList = Object.entries(avatarData.dummyData) // 2차원 배열로 만들어주기
+      const backgroundList = avatarList.pop() // 마지막 요소는 `backgroundList` 이므로 따로 보관
+
+      state.totalAvatarData = avatarData
+      state.avatarList = avatarList
+      state.backgroundList = (backgroundList as any[])[1]
     },
     changeAvatarDetailList(state, action) {
-      state.avatarDetailList = action.payload.diff
+      const avatarDetailList = state.avatarList.filter(
+        (avatar) => avatar[0] === action.payload.diff
+      )
+      state.avatarDetailList = avatarDetailList[0][1]
     },
-    changeBackgroundList(state, action) {
-      state.backgroundList = action.payload.diff
+    changeSelectedValue(state, action) {
+      const selectedValue = action.payload.diff
+      const key = Object.keys(selectedValue)[0]
+      const value = Object.values(selectedValue)[0]
+
+      // key가 'avatarName'인 경우는 사용자가 선택한 아바타가 바뀌는 것이므로 아바타 타입을 초기화 시켜준다
+      if (key === 'avatarName') {
+        state.selectedValue = {
+          ...state.selectedValue,
+          [key as string]: value,
+          ['avatarType']: ''
+        }
+      }
+      state.selectedValue = {
+        ...state.selectedValue,
+        [key]: value
+      }
     }
   }
 })
 
 export const {
   changeTotalAvatarData,
-  changeAvatarList,
   changeAvatarDetailList,
-  changeBackgroundList
+  changeSelectedValue
 } = avatarSlice.actions
 
 export const useAvatar = () => {
@@ -40,6 +67,7 @@ export const useAvatar = () => {
   const avatarList = useSelector((state) => state.avatar.avatarList)
   const avatarDetailList = useSelector((state) => state.avatar.avatarDetailList)
   const backgroundList = useSelector((state) => state.avatar.backgroundList)
+  const selectedValue = useSelector((state) => state.avatar.selectedValue)
   const dispatch = useDispatch()
 
   return {
@@ -47,6 +75,7 @@ export const useAvatar = () => {
     avatarList,
     avatarDetailList,
     backgroundList,
+    selectedValue,
     dispatch
   }
 }
