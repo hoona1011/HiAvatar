@@ -57,24 +57,24 @@ export const AvatarVoiceMenu = () => {
       </S.OptionContainer>
       <S.VoicePlayerContainer>
         <AvatarVoicePlayer
-          characterName={'철수'}
-          hashtag1={'밝은'}
-          hashtag2={'높은'}
-          hashtag3={'명랑한'}
+          characterName={'김차분'}
+          hashtag1={'차분한'}
+          hashtag2={'중저음'}
+          hashtag3={'30대'}
           buttonType={'characterName'}
         />
         <AvatarVoicePlayer
-          characterName={'영희'}
-          hashtag1={'밝은'}
-          hashtag2={'높은'}
-          hashtag3={'명랑한'}
+          characterName={'나성우'}
+          hashtag1={'나긋한'}
+          hashtag2={'중저음'}
+          hashtag3={'20대'}
           buttonType={'characterName'}
         />
         <AvatarVoicePlayer
-          characterName={'민수'}
-          hashtag1={'밝은'}
-          hashtag2={'높은'}
-          hashtag3={'명랑한'}
+          characterName={'나성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
           buttonType={'characterName'}
         />
       </S.VoicePlayerContainer>

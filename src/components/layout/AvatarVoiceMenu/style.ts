@@ -32,4 +32,5 @@ export const Language = styled.div`
 `
 export const VoicePlayerContainer = styled.div`
   border: 1px solid blue;
+  overflow: auto;
 `
