@@ -1,3 +1,4 @@
+import { VoiceIcon } from 'components/Icons'
 import React, { useRef } from 'react'
 import * as S from './style'
 
@@ -12,7 +13,8 @@ export const VoiceUploadButton = () => {
   }
   return (
     <S.Button onClick={onClickHandler}>
-      <span>+ 음성 업로드</span>
+      <VoiceIcon width='2.4rem' height='2.4rem' />
+      <div>음성파일로 업로드하기</div>
       <input
         type='file'
         accept='audio/*'
