@@ -41,8 +41,10 @@ export const ProjectTextEdit = () => {
               </S.VoicePlayer>
             </S.Left>
             <S.Right>
-              <div>렌더타입:{renderType}</div>
-              <ProjectRightMenu setRenderType={setRenderType} />
+              <ProjectRightMenu
+                renderType={renderType}
+                setRenderType={setRenderType}
+              />
               <ProjectRightNav renderType={renderType} />
               <VoiceUploadButton />
               <TextEnterButton setModal={setModal} />

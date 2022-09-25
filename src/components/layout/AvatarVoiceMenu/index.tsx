@@ -1,3 +1,4 @@
+import { TooltipIcon } from 'components/Icons'
 import React from 'react'
 import { useAppDispatch } from 'store'
 import { changeOption } from 'store/slices/optionSlice'
@@ -12,10 +13,14 @@ export const AvatarVoiceMenu = () => {
   }
   return (
     <S.Container>
-      <S.Title>음성 모델을 선택해 주세요</S.Title>
+      <S.Title>
+        <div>
+          <TooltipIcon width='1.6rem' height='1.6rem' />
+        </div>
+        <span>음성 모델을 선택해 주세요</span>
+      </S.Title>
       <S.OptionContainer>
         <S.Sex>
-          {/* 백엔드 분들께 request,response 남,여로 통일 요청..? */}
           <RadioButton
             name={'sex'}
             value={'남자'}
@@ -38,8 +43,8 @@ export const AvatarVoiceMenu = () => {
           />
           <RadioButton
             name={'language'}
-            value={'영어'}
-            content={'영어'}
+            value={'일본어'}
+            content={'일본어'}
             onChange={onChangeHandler}
           />
           <RadioButton
@@ -52,24 +57,24 @@ export const AvatarVoiceMenu = () => {
       </S.OptionContainer>
       <S.VoicePlayerContainer>
         <AvatarVoicePlayer
-          characterName={'철수'}
-          hashtag1={'밝은'}
-          hashtag2={'높은'}
-          hashtag3={'명랑한'}
+          characterName={'김차분'}
+          hashtag1={'차분한'}
+          hashtag2={'중저음'}
+          hashtag3={'30대'}
           buttonType={'characterName'}
         />
         <AvatarVoicePlayer
-          characterName={'영희'}
-          hashtag1={'밝은'}
-          hashtag2={'높은'}
-          hashtag3={'명랑한'}
+          characterName={'나성우'}
+          hashtag1={'나긋한'}
+          hashtag2={'중저음'}
+          hashtag3={'20대'}
           buttonType={'characterName'}
         />
         <AvatarVoicePlayer
-          characterName={'민수'}
-          hashtag1={'밝은'}
-          hashtag2={'높은'}
-          hashtag3={'명랑한'}
+          characterName={'나성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
           buttonType={'characterName'}
         />
       </S.VoicePlayerContainer>
