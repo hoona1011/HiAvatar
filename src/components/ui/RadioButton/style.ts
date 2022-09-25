@@ -2,19 +2,19 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   label {
-    display: block;
-    width: 100%;
-    height: 100%;
+    width: 6.1rem;
+    height: 3.2rem;
     border-radius: 1rem;
-    color: white;
-    background-color: #d2d2d2;
+    color: gray; //opacity 처리가 되어있음
+    background-color: #ffffff;
     font-size: 1.4rem;
-    font-weight: 600;
+    font-weight: 500;
     text-align: center;
-    padding: 1.1rem 1.6rem;
+    white-space: nowrap;
+    padding: 0.75rem 1.2rem;
 
     &:hover {
-      background-color: red;
+      background-color: ${({ theme }) => theme.palette.blue5};
     }
   }
 
@@ -22,7 +22,7 @@ export const Container = styled.div`
     display: none;
   }
   input:checked + label {
-    color: white;
-    background-color: green;
+    color: ${({ theme }) => theme.palette.txt};
+    background-color: ${({ theme }) => theme.palette.blue5};
   }
 `
