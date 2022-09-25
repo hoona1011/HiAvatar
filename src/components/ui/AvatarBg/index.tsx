@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './style'
 import { changeSelectedValue, useAvatar } from 'store/slices/avatarSlice'
-
+import type { SelectedValue } from 'index'
 export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
 
@@ -23,8 +23,7 @@ export const AvatarBg = () => {
                 }}
               >
                 <S.Bg
-                  selected={selectedValue.bgName}
-                  value={background.position}
+                  isSelected={selectedValue.bgName === background.position}
                 />
                 <S.BgName>배경 {index + 1}</S.BgName>
               </S.BgInner>

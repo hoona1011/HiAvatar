@@ -24,6 +24,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
 
   const avatarListHandler = () => {
     avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
+    avatarDetailListHandler('avatar1') // 기본값 지정
   }
   const avatarDetailListHandler = (selectedAvatar: string) => {
     dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
@@ -84,8 +85,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     }}
                   >
                     <S.Content
-                      selected={selectedValue?.avatarName}
-                      value={avatar[0]}
+                      isSelected={selectedValue?.avatarName === avatar[0]}
                     />
                     <S.Name>아바타 {index + 1}</S.Name>
                   </SwiperSlide>
@@ -108,8 +108,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     }}
                   >
                     <S.Content
-                      selected={selectedValue?.avatarType}
-                      value={position}
+                      isSelected={selectedValue?.avatarType === position}
                     />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
@@ -132,8 +131,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     }}
                   >
                     <S.Content
-                      selected={selectedValue?.avatarType}
-                      value={position}
+                      isSelected={selectedValue?.avatarType === position}
                     />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>
@@ -156,8 +154,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     }}
                   >
                     <S.Content
-                      selected={selectedValue?.avatarType}
-                      value={position}
+                      isSelected={selectedValue?.avatarType === position}
                     />
                     <S.Name>{position}</S.Name>
                   </SwiperSlide>

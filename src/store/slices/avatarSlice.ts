@@ -9,7 +9,7 @@ const initialState: avatarState = {
   avatarDetailList: [],
   backgroundList: [],
   selectedValue: {
-    avatarName: '',
+    avatarName: 'avatar1',
     avatarType: '',
     bgName: ''
   }
@@ -51,7 +51,6 @@ export const avatarSlice = createSlice({
         ...state.selectedValue,
         [key]: value
       }
-      console.log('바뀌고 난 후', state.selectedValue)
     }
   }
 })

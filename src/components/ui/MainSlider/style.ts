@@ -42,9 +42,8 @@ export const Content = styled.div`
   height: 10rem;
 
   border-radius: 1rem;
-  /* background-color: #e7e7e7; */
-  background-color: ${({ selected, value }) =>
-    selected === value ? 'royalblue' : '#e7e7e7'};
+  background-color: ${({ isSelected }) =>
+    isSelected ? 'royalblue' : '#e7e7e7'};
 `
 
 export const Name = styled.div`

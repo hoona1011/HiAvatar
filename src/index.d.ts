@@ -38,6 +38,21 @@ export interface MainSliderProps {
   renderType: string
 }
 
+export interface SelectedValue {
+  selectedValue: {
+    avatarName: string
+    avatarType: string
+    bgName: string
+  }
+}
+
+export interface avatarState extends SelectedValue {
+  totalAvatarData: any[]
+  avatarList: any[]
+  avatarDetailList: any[]
+  backgroundList: any | unknown[]
+}
+
 // 현재
 export interface IconProps {
   bgColor?: string
