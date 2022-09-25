@@ -28,7 +28,7 @@ export const VoiceController = ({
     <S.Container>
       <label>{label}</label>
       <S.RangeContainer controlType={controlType}>
-        <span>{min}</span>
+        <span>{min.toFixed(1)}</span>
         <input
           type='range'
           name={controlType} // ex) speed, pitch, sentenceSpacing
@@ -38,7 +38,7 @@ export const VoiceController = ({
           step={step}
           onChange={onChangeHandler}
         />
-        <span>{max}</span>
+        <span>{max.toFixed(1)}</span>
       </S.RangeContainer>
     </S.Container>
   )
