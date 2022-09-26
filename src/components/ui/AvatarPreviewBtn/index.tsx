@@ -7,7 +7,7 @@ export const AvatarPreviewBtn = () => {
     <S.Container>
       <S.Inner>
         <S.Button>미리보기 재설정</S.Button>
-        <PreviewReload width='13' height='12' />
+        <PreviewReload width='1.3rem' height='1.2rem' />
       </S.Inner>
     </S.Container>
   )

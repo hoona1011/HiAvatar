@@ -7,7 +7,7 @@ export const AvatarSort = () => {
   return (
     <S.Container>
       <S.Top>
-        <TooltipIcon width='16' height='16' />
+        <TooltipIcon width='1.6rem' height='1.6rem' />
         <S.Title>스타일을 선택해주세요</S.Title>
       </S.Top>
       <S.Sort>
