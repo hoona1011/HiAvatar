@@ -1,10 +1,11 @@
 import * as S from './style'
 import { Modalprops } from 'index'
+import { TextIcon } from 'components/Icons'
 export const TextEnterButton = ({ setModal }: Modalprops) => {
   return (
     <S.Button onClick={() => setModal(true)}>
-      {/* <S.Button onClick={() => setModal(prev => !prev)}> */}
-      <span>+ 텍스트 입력</span>
+      <TextIcon width='1.6rem' height='1.6rem' />
+      <div>텍스트로 입력하기</div>
     </S.Button>
   )
 }
