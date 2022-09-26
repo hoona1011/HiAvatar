@@ -1,12 +1,6 @@
 import { IconProps } from 'index'
 
-export const PlayIcon = ({
-  bgColor = '#858585',
-  borderColor = 'white',
-  fillColor = 'white',
-  width,
-  height
-}: IconProps) => (
+export const PlayIcon = ({ width, height, isSelected }: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -14,25 +8,25 @@ export const PlayIcon = ({
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <circle cx='20.5' cy='20' r='20' fill={bgColor} fillOpacity='0.5' />
+    <circle
+      cx='20.5'
+      cy='20'
+      r='20'
+      fill={isSelected ? '#7FA3FF' : '#E6EDFF'}
+      fillOpacity='1.0'
+    />
     <path
       d='M17.5215 15.3193V25.5321L26.0321 20.4257L17.5215 15.3193Z'
-      fill={borderColor}
+      fill={isSelected ? '#E6EDFF' : '#7FA3FF'}
     />
     <path
       d='M17.5215 15.3193L17.9074 14.6762C17.6757 14.5372 17.3871 14.5336 17.152 14.6667C16.9168 14.7998 16.7715 15.0491 16.7715 15.3193H17.5215ZM17.5215 25.5321H16.7715C16.7715 25.8023 16.9168 26.0516 17.152 26.1848C17.3871 26.3179 17.6757 26.3142 17.9074 26.1752L17.5215 25.5321ZM26.0321 20.4257L26.418 21.0688C26.6439 20.9333 26.7821 20.6892 26.7821 20.4257C26.7821 20.1623 26.6439 19.9181 26.418 19.7826L26.0321 20.4257ZM18.2715 25.5321V15.3193H16.7715V25.5321H18.2715ZM25.6463 19.7826L17.1356 24.889L17.9074 26.1752L26.418 21.0688L25.6463 19.7826ZM17.1356 15.9625L25.6463 21.0688L26.418 19.7826L17.9074 14.6762L17.1356 15.9625Z'
-      fill={fillColor}
+      fill={isSelected ? '#E6EDFF' : '#7FA3FF'}
     />
   </svg>
 )
 
-export const StopIcon = ({
-  bgColor = '#858585',
-  borderColor = 'white',
-  fillColor = 'white',
-  width,
-  height
-}: IconProps) => (
+export const StopIcon = ({ width, height, isSelected }: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -40,28 +34,28 @@ export const StopIcon = ({
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <circle cx='20.5' cy='20' r='20' fill={bgColor} fillOpacity='0.5' />
+    <circle
+      cx='20.5'
+      cy='20'
+      r='20'
+      fill={isSelected ? '#7FA3FF' : '#E6EDFF'}
+      fillOpacity='1.0'
+    />
     <path
       d='M15.8193 15.3193V14.5693C15.4051 14.5693 15.0693 14.9051 15.0693 15.3193H15.8193ZM26.0321 15.3193H26.7821C26.7821 14.9051 26.4463 14.5693 26.0321 14.5693V15.3193ZM26.0321 25.5321V26.2821C26.4463 26.2821 26.7821 25.9463 26.7821 25.5321H26.0321ZM15.8193 25.5321H15.0693C15.0693 25.9463 15.4051 26.2821 15.8193 26.2821V25.5321ZM15.8193 16.0693H26.0321V14.5693H15.8193V16.0693ZM25.2821 15.3193V25.5321H26.7821V15.3193H25.2821ZM26.0321 24.7821H15.8193V26.2821H26.0321V24.7821ZM16.5693 25.5321V15.3193H15.0693V25.5321H16.5693Z'
-      fill={borderColor}
+      fill={isSelected ? '#E6EDFF' : '#7FA3FF'}
     />
     <rect
       x='15.9097'
       y='15.6084'
       width='10.1454'
       height='9.36502'
-      fill={fillColor}
+      fill={isSelected ? '#E6EDFF' : '#7FA3FF'}
     />
   </svg>
 )
 
-export const PauseIcon = ({
-  bgColor = '#858585',
-  borderColor = 'white',
-  fillColor = 'white',
-  width,
-  height
-}: IconProps) => (
+export const PauseIcon = ({ width, height, isSelected }: IconProps) => (
   <svg
     width={width}
     height={height}
@@ -73,16 +67,16 @@ export const PauseIcon = ({
       cx='25.6273'
       cy='25.6273'
       r='25.6273'
-      fill={bgColor}
-      fillOpacity='0.5'
+      fill={isSelected ? '#7FA3FF' : '#E6EDFF'}
+      fillOpacity='1.0'
     />
     <path
       d='M23.25 19H21.0833C20.485 19 20 19.4157 20 19.9286V31.0714C20 31.5843 20.485 32 21.0833 32H23.25C23.8483 32 24.3333 31.5843 24.3333 31.0714V19.9286C24.3333 19.4157 23.8483 19 23.25 19Z'
-      fill='white'
+      fill={isSelected ? '#E6EDFF' : '#7FA3FF'}
     />
     <path
       d='M31.25 19H29.0833C28.485 19 28 19.4157 28 19.9286V31.0714C28 31.5843 28.485 32 29.0833 32H31.25C31.8483 32 32.3333 31.5843 32.3333 31.0714V19.9286C32.3333 19.4157 31.8483 19 31.25 19Z'
-      fill='white'
+      fill={isSelected ? '#E6EDFF' : '#7FA3FF'}
     />
   </svg>
 )
@@ -370,6 +364,83 @@ export const SignUpIcon = ({
     <path
       d='M18 9C18 11.3869 17.0518 13.6761 15.364 15.364C13.6761 17.0518 11.3869 18 9 18C6.61305 18 4.32387 17.0518 2.63604 15.364C0.948212 13.6761 0 11.3869 0 9C0 6.61305 0.948212 4.32387 2.63604 2.63604C4.32387 0.948212 6.61305 0 9 0C11.3869 0 13.6761 0.948212 15.364 2.63604C17.0518 4.32387 18 6.61305 18 9ZM13.5337 5.59125C13.4534 5.51117 13.3577 5.44812 13.2524 5.40587C13.1471 5.36361 13.0344 5.34303 12.921 5.34534C12.8076 5.34765 12.6958 5.37281 12.5923 5.41931C12.4888 5.46582 12.3958 5.53272 12.3187 5.616L8.41162 10.5941L6.057 8.23837C5.89705 8.08933 5.6855 8.0082 5.46691 8.01205C5.24832 8.01591 5.03976 8.10446 4.88518 8.25905C4.73059 8.41364 4.64204 8.6222 4.63818 8.84079C4.63432 9.05938 4.71546 9.27093 4.8645 9.43088L7.84125 12.4087C7.92144 12.4888 8.01694 12.5519 8.12203 12.5942C8.22713 12.6366 8.33968 12.6573 8.45296 12.6552C8.56625 12.6531 8.67795 12.6282 8.78141 12.582C8.88486 12.5358 8.97795 12.4692 9.05512 12.3863L13.5461 6.7725C13.6992 6.61331 13.7838 6.40043 13.7817 6.17958C13.7796 5.95872 13.691 5.74749 13.5349 5.59125H13.5337Z'
       fill={bgColor}
+    />
+  </svg>
+)
+
+export const TooltipIcon = ({ width, height }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 16 16'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <circle opacity='0.5' cx='8' cy='8' r='8' fill='#CCDAFF' />
+    <path
+      d='M8 7V12'
+      stroke='#6691FF'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M8 4V4.04'
+      stroke='#6691FF'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const AllTexts = ({ width, height, isSelected }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M12 7.5H2.25M15 4.5H2.25M15 10.5H2.25M12 13.5H2.25'
+      stroke={isSelected ? '#6691FF' : '#B2B2B4'}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const VoiceModels = ({ width, height, isSelected }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M14.25 7.5V9C14.25 11.8995 11.8995 14.25 9 14.25M3.75 7.5V9C3.75 11.8995 6.10051 14.25 9 14.25M9 14.25V16.5M6 16.5H12M9 11.25C7.75736 11.25 6.75 10.2426 6.75 9V3.75C6.75 2.50736 7.75736 1.5 9 1.5C10.2426 1.5 11.25 2.50736 11.25 3.75V9C11.25 10.2426 10.2426 11.25 9 11.25Z'
+      stroke={isSelected ? '#6691FF' : '#B2B2B4'}
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const VoiceOptions = ({ width, height, isSelected }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M12.0003 6.75C12.471 7.37675 12.75 8.1558 12.75 9C12.75 9.84421 12.471 10.6233 12.0003 11.25M13.5 3.96876C14.8809 5.20473 15.75 7.00088 15.75 9C15.75 10.9991 14.8809 12.7953 13.5 14.0312M3.45 6.75H4.1259C4.5391 6.75 4.74569 6.75 4.93714 6.6985C5.10677 6.65286 5.26706 6.57778 5.41072 6.47668C5.57285 6.36258 5.70511 6.20387 5.96963 5.88645L7.93907 3.52312C8.26583 3.13101 8.42921 2.93495 8.57193 2.91455C8.69552 2.89688 8.81979 2.94187 8.90342 3.03456C9 3.1416 9 3.39681 9 3.90723V14.0928C9 14.6032 9 14.8584 8.90342 14.9654C8.81979 15.0581 8.69552 15.1031 8.57193 15.0855C8.42921 15.0651 8.26582 14.869 7.93907 14.4769L5.96963 12.1136C5.70511 11.7961 5.57285 11.6374 5.41072 11.5233C5.26706 11.4222 5.10677 11.3471 4.93714 11.3015C4.74569 11.25 4.5391 11.25 4.1259 11.25H3.45C3.02996 11.25 2.81994 11.25 2.65951 11.1683C2.51839 11.0964 2.40365 10.9816 2.33175 10.8405C2.25 10.6801 2.25 10.47 2.25 10.05V7.95C2.25 7.52996 2.25 7.31994 2.33175 7.15951C2.40365 7.01839 2.51839 6.90365 2.65951 6.83175C2.81994 6.75 3.02996 6.75 3.45 6.75Z'
+      stroke={isSelected ? '#6691FF' : '#B2B2B4'}
+      strokeLinecap='round'
+      strokeLinejoin='round'
     />
   </svg>
 )

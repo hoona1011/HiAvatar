@@ -1,22 +1,24 @@
 import * as S from './style'
 import { RadioButtonProps } from 'index'
+import { useAppSelector } from 'store'
 
 export const RadioButton = ({
-  buttonType,
+  name,
   value,
   content,
-  onChange,
-  defaultChecked
+  onChange
 }: RadioButtonProps) => {
+  const optionStateValue = useAppSelector((state) => state.option[name])
+
   return (
     <S.Container key={value}>
       <input
         type='radio'
-        name={buttonType}
-        value={value}
+        name={name}
         id={value}
+        value={value}
         onChange={onChange}
-        defaultChecked={defaultChecked}
+        defaultChecked={optionStateValue === value}
       />
       <label htmlFor={value}>{content}</label>
     </S.Container>
