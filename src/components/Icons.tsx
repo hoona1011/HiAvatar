@@ -607,6 +607,42 @@ export const VoiceOptions = ({ width, height, isSelected }: IconProps) => (
   </svg>
 )
 
+export const TextIcon = ({ width, height }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M0.770508 4C0.770508 3.06812 0.770508 2.60218 0.922163 2.23463C1.12437 1.74458 1.51222 1.35523 2.00039 1.15224C2.36652 1 2.83067 1 3.75897 1H13.7205C14.6488 1 15.113 1 15.4791 1.15224C15.9673 1.35523 16.3551 1.74458 16.5573 2.23463C16.709 2.60218 16.709 3.06812 16.709 4M5.75128 17H11.7282M8.73974 1V17'
+      stroke='#6691FF'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const VoiceIcon = ({ width, height }: IconProps) => (
+  <svg
+    width={width}
+    height='22'
+    viewBox='0 0 17 22'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M15.2782 9V11C15.2782 14.866 12.1562 18 8.30511 18M1.33203 9V11C1.33203 14.866 4.45398 18 8.30511 18M8.30511 18V21M4.32049 21H12.2897M8.30511 14C6.65463 14 5.31665 12.6569 5.31665 11V4C5.31665 2.34315 6.65463 1 8.30511 1C9.95559 1 11.2936 2.34315 11.2936 4V11C11.2936 12.6569 9.95559 14 8.30511 14Z'
+      stroke='#6691FF'
+      strokeWidth='1.5'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
 export const PreviewReload = ({ width, height }: IconProps) => (
   <svg
     width={width}

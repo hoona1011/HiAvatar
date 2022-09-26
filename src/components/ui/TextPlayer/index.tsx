@@ -1,14 +1,46 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './style'
 import { PlayIcon, StopIcon, CloseIcon } from '../../Icons'
+import { editText, removeText, changeText } from 'store/slices/optionSlice'
 
-export const TextPlayer = () => {
+export const TextPlayer = ({ itemData, dispatch }) => {
+  const [inputData, setInputData] = useState(itemData)
+
+  // const userInputHandler = (e) => {
+  //   const { name, value } = e.target
+  //   setInputData({ ...inputData, [name]: value })
+  //   dispatch(changeText(inputData))
+  // }
+
+  const userInputHandler = (e) => {
+    const { name, value } = e.target
+    setInputData({ ...inputData, [name]: value })
+    dispatch(changeText({ ...itemData, [name]: value }))
+  }
+
+  const userRemoveHandler = () => {
+    dispatch(removeText(itemData))
+  }
+
+  const userEditHandler = () => {
+    dispatch(editText(itemData))
+  }
+
   return (
     <S.Wrapper>
       <S.PlayerBar>
         <li>
-          <S.ItemNum>01</S.ItemNum>
-          <S.TextEdit placeholder='영상기술과 인공지능기술의 융합을 추구하며,' />
+          <S.ItemNum>{itemData.sentenceId + 1}</S.ItemNum>
+          <S.TextEdit
+            name='text'
+            onChange={userInputHandler}
+            value={itemData.text}
+          />
+          {/* <S.TextEdit
+            name='text'
+            onChange={userInputHandler}
+            defaultValue={itemData.text}
+          /> */}
         </li>
         <li>
           <div>
@@ -16,7 +48,7 @@ export const TextPlayer = () => {
           </div>
           <div>
             <StopIcon width='32' height='32' />
-            <S.CloseButton>
+            <S.CloseButton onClick={userRemoveHandler}>
               <CloseIcon width='24' height='24' />
             </S.CloseButton>
           </div>
@@ -24,7 +56,7 @@ export const TextPlayer = () => {
       </S.PlayerBar>
       <S.SetUpBtnList>
         <li>
-          <button>+ 문장 추가</button>
+          <button onClick={userEditHandler}>+ 문장 추가</button>
         </li>
         <li>
           <button>간격설정</button>

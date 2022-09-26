@@ -2,6 +2,20 @@
 
 // 지훈
 
+interface NextButtonProps {
+  requestFunc: any // 추후 수정
+  to: string
+  isComplete: boolean
+}
+
+interface VoiceControllerProps {
+  label: string
+  min: number
+  max: number
+  step: number
+  controlType: string
+  optionValue: number
+}
 interface AvatarVoicePlayerProps {
   characterName: string
   hashtag1?: string

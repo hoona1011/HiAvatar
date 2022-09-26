@@ -4,36 +4,60 @@ export const Container = styled.div`
   width: 100%;
   height: 9.6rem;
   border-radius: 1rem;
-  padding: 1.6rem 0.8rem;
+  padding: 1.8rem 1.95rem;
   background-color: #ffffff;
-  border: 1px solid green;
+  box-shadow: 0 0 2rem 0 rgba(231, 234, 244, 1);
 
   label {
-    font-weight: 600;
+    font-weight: 500;
     font-size: 1.6rem;
-    line-height: 1.9rem;
-    color: #060606;
+    color: ${({ theme }) => theme.palette.txt};
   }
 `
-
 export const RangeContainer = styled.div`
+  display: flex;
+  align-items: center;
   width: 25rem;
   right: 0;
   left: 0;
-  margin: 0.8rem auto;
-
+  margin: 2.4rem auto 0;
+  span {
+    color: #b5b5b5;
+    font-size: 1.2rem;
+    font-weight: 500;
+  }
   input[type='range'] {
     -webkit-appearance: none;
     height: 0.2rem;
     width: 100%;
-    background: #bdbdbd;
+    margin: 0 0.8rem;
+    background: ${({ theme, controlType }) => {
+      switch (controlType) {
+        case 'speed':
+          return theme.palette.blue5
+        case 'pitch':
+          return theme.palette.orange1
+        case 'sentenceSpacing':
+          return theme.palette.purple5
+      }
+    }};
 
     &::-webkit-slider-thumb {
       -webkit-appearance: none;
       height: 1.2rem;
       width: 1.2rem;
       border-radius: 50%;
-      background: #595959;
+      background: ${({ theme, controlType }) => {
+        switch (controlType) {
+          case 'speed':
+            return theme.palette.blue50
+
+          case 'pitch':
+            return theme.palette.orange2
+          case 'sentenceSpacing':
+            return theme.palette.purple50
+        }
+      }};
       cursor: pointer;
     }
   }
