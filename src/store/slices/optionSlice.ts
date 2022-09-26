@@ -79,12 +79,12 @@ export const optionSlice = createSlice({
 
       console.log('find', findTextItem.sentenceId)
       console.log('------')
-      let index = findTextItem.sentenceId
+      let i = findTextItem.sentenceId
 
-      for (index; index < state.splitTextList.length; index += 1) {
+      for (i; i < state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
-          if (item.sentenceId === index) {
-            item.sentenceId = ++index
+          if (item.sentenceId === i) {
+            item.sentenceId = i += 1
           }
         })
       }
