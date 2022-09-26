@@ -5,7 +5,7 @@
 interface NextButtonProps {
   requestFunc: any // 추후 수정
   to: string
-  isComplete: boolean
+  isComplete?: boolean
 }
 
 interface VoiceControllerProps {
