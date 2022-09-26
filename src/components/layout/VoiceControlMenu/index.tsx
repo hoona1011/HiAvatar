@@ -1,3 +1,4 @@
+import { TooltipIcon } from 'components/Icons'
 import { useAppSelector } from 'store'
 import { VoiceController } from '../../index'
 
@@ -10,35 +11,44 @@ export const VoiceControlMenu = () => {
 
   return (
     <S.Container>
-      <S.Title>음성 옵션을 선택해주세요</S.Title>
+      <S.Title>
+        <div>
+          <TooltipIcon width='1.6rem' height='1.6rem' />
+        </div>
+        <span>음성 옵션을 선택해 주세요</span>
+      </S.Title>
 
       <S.VoiceControllerContainer>
-        <VoiceController
-          label={'속도 조절'}
-          min={-0.5}
-          median={0}
-          max={0.5}
-          step={0.5}
-          controlType={'speed'}
-          optionValue={speed}
-        />
-        <VoiceController
-          label={'톤 조절'}
-          min={-0.5}
-          median={0}
-          max={0.5}
-          step={0.5}
-          controlType={'pitch'}
-          optionValue={pitch}
-        />
-        <VoiceController
-          label={'호흡 조절'}
-          min={0.0}
-          max={5.0}
-          step={0.1}
-          controlType={'sentenceSpacing'}
-          optionValue={sentenceSpacing}
-        />
+        <div>
+          <VoiceController
+            label={'속도 조절'}
+            min={-0.5}
+            max={0.5}
+            step={0.1}
+            controlType={'speed'}
+            optionValue={speed}
+          />
+        </div>
+        <div>
+          <VoiceController
+            label={'톤 조절'}
+            min={-0.5}
+            max={0.5}
+            step={0.1}
+            controlType={'pitch'}
+            optionValue={pitch}
+          />
+        </div>
+        <div>
+          <VoiceController
+            label={'간격 조절'}
+            min={0.0}
+            max={5.0}
+            step={0.1}
+            controlType={'sentenceSpacing'}
+            optionValue={sentenceSpacing}
+          />
+        </div>
       </S.VoiceControllerContainer>
     </S.Container>
   )

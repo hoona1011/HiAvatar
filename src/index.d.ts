@@ -2,6 +2,14 @@
 
 // 지훈
 
+interface VoiceControllerProps {
+  label: string
+  min: number
+  max: number
+  step: number
+  controlType: string
+  optionValue: number
+}
 interface AvatarVoicePlayerProps {
   characterName: string
   hashtag1?: string

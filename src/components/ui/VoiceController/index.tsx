@@ -1,28 +1,17 @@
 import React from 'react'
 import * as S from './style'
-// import { InitialOption } from '../../layout/VoiceControlMenu'
 import { useAppDispatch } from 'store'
-import { changeOption } from '../../../store/slices/optionSlice'
-
-interface VoiceProps {
-  label: string
-  min: number
-  median?: number
-  max: number
-  step: number
-  controlType: string
-  optionValue: number
-}
+import { changeOption } from 'store/slices/optionSlice'
+import { VoiceControllerProps } from 'index'
 
 export const VoiceController = ({
   label,
   min,
-  median,
   max,
   step,
   controlType,
   optionValue
-}: VoiceProps) => {
+}: VoiceControllerProps) => {
   const dispatch = useAppDispatch()
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -38,7 +27,8 @@ export const VoiceController = ({
   return (
     <S.Container>
       <label>{label}</label>
-      <S.RangeContainer>
+      <S.RangeContainer controlType={controlType}>
+        <span>{min.toFixed(1)}</span>
         <input
           type='range'
           name={controlType} // ex) speed, pitch, sentenceSpacing
@@ -48,11 +38,7 @@ export const VoiceController = ({
           step={step}
           onChange={onChangeHandler}
         />
-        <S.RangeLabel>
-          <span>{min}</span>
-          <span>{median}</span>
-          <span>{max}</span>
-        </S.RangeLabel>
+        <span>{max.toFixed(1)}</span>
       </S.RangeContainer>
     </S.Container>
   )
