@@ -29,13 +29,16 @@ interface RadioButtonProps {
   IconRenderType: string
 }
 // 희영
-export interface ProjectRightNavProps {
+export interface RenderTypeProps {
   renderType: string
 }
 
-export interface MainSliderProps {
-  renderType: string
-}
+// 아래 세 개는 renderType 말고는 다른 prop가 없지만 추후 확장성을 고려하여 제작하였습니다
+export interface ProjectRightNavProps extends RenderTypeProps {}
+
+export interface MainSliderProps extends RenderTypeProps {}
+
+export interface ProjectNavProps extends RenderTypeProps {}
 
 export interface SelectedValue {
   selectedValue: {
