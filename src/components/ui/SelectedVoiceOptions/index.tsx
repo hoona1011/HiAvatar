@@ -1,15 +1,19 @@
 import React, { useEffect } from 'react'
 import * as S from './style'
 import { useAvatar } from 'store/slices/avatarSlice'
+import { TooltipIcon } from 'components/Icons'
 
 export const SelectedVoiceOptions = () => {
   const { totalAvatarData } = useAvatar()
 
   return (
     <S.Container>
-      <S.Title>내가 선택한 음성 옵션이에요</S.Title>
-      <S.SelectedOptions>
-        <S.OptionsInner>
+      <S.Top>
+        <TooltipIcon width='1.6rem' height='1.6rem' />
+        <S.Title>내가 선택한 음성 옵션이에요</S.Title>
+      </S.Top>
+      <S.Options>
+        <S.Inner>
           <S.Option>
             <S.OptionKey>음성 모델</S.OptionKey>
             <S.OptionValue>{totalAvatarData?.characterName}</S.OptionValue>
@@ -34,8 +38,8 @@ export const SelectedVoiceOptions = () => {
             <S.OptionKey>호흡</S.OptionKey>
             <S.OptionValue>{totalAvatarData?.sentenceSpacing}s</S.OptionValue>
           </S.Option>
-        </S.OptionsInner>
-      </S.SelectedOptions>
+        </S.Inner>
+      </S.Options>
     </S.Container>
   )
 }
