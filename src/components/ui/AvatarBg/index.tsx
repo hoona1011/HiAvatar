@@ -1,6 +1,7 @@
 import React from 'react'
 import * as S from './style'
 import { changeSelectedValue, useAvatar } from 'store/slices/avatarSlice'
+import { TooltipIcon } from 'components/Icons'
 import type { SelectedValue } from 'index'
 export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
@@ -11,7 +12,10 @@ export const AvatarBg = () => {
 
   return (
     <S.Container>
-      <S.Title>배경을 선택해 주세요</S.Title>
+      <S.Top>
+        <TooltipIcon width='16' height='16' />
+        <S.Title>배경을 선택해주세요</S.Title>
+      </S.Top>
       <S.BgContainer>
         {backgroundList &&
           backgroundList.map((background, index: string) => {
