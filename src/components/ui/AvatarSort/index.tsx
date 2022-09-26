@@ -1,25 +1,29 @@
 import React from 'react'
 import * as S from './style'
 import { MainSlider } from 'components'
+import { TooltipIcon } from 'components/Icons'
 
 export const AvatarSort = () => {
   return (
     <S.Container>
-      <S.Title>분류를 선택해 주세요.</S.Title>
-      <S.SortContainer>
-        <S.SortTitle>분류 1</S.SortTitle>
+      <S.Top>
+        <TooltipIcon width='1.6rem' height='1.6rem' />
+        <S.Title>스타일을 선택해주세요</S.Title>
+      </S.Top>
+      <S.Sort>
+        <S.SortTitle>스타일 1</S.SortTitle>
         <MainSlider renderType='AvatarSort-1' />
-      </S.SortContainer>
+      </S.Sort>
 
-      <S.SortContainer>
-        <S.SortTitle>분류 2</S.SortTitle>
+      <S.Sort>
+        <S.SortTitle>스타일 2</S.SortTitle>
         <MainSlider renderType='AvatarSort-2' />
-      </S.SortContainer>
+      </S.Sort>
 
-      <S.SortContainer>
-        <S.SortTitle>분류 3</S.SortTitle>
+      <S.Sort>
+        <S.SortTitle>스타일 3</S.SortTitle>
         <MainSlider renderType='AvatarSort-3' />
-      </S.SortContainer>
+      </S.Sort>
     </S.Container>
   )
 }

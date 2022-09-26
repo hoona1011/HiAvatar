@@ -1,64 +1,35 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 53.8rem;
+  height: 52.6rem;
   margin-bottom: 2.4rem;
+  padding: 1.6rem 0 0 2.4rem;
 
-  border-radius: 1rem;
-  background-color: #f3f3f3;
+  border-radius: 0.4rem;
+  background-color: ${({ theme }) => theme.palette.white};
+`
+
+export const Top = styled.div`
+  display: flex;
+  align-items: center;
+
+  height: 1.9rem;
+  margin-bottom: 0.85rem;
 `
 
 export const Title = styled.div`
-  height: 1.8rem;
-  padding: 1.6rem 0 1.6rem 2.4rem;
-
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-left: 0.8rem;
 `
-
-export const SortContainer = styled.div`
-  width: 77.6rem;
-  height: 16rem;
-  margin: 0.8rem;
-  padding: 0.8rem 1.6rem;
-
-  border-radius: 1rem;
+export const Sort = styled.div`
+  margin-bottom: 1.4rem;
 `
 
 export const SortTitle = styled.div`
-  font-size: 1.2rem;
-  font-weight: 600;
   margin-bottom: 0.8rem;
-`
-
-export const SortInner = styled.div`
-  display: flex;
-
-  height: 12.2rem;
-
-  overflow-y: hidden;
-`
-
-export const Sort = styled.div`
-  flex-shrink: 0;
-
-  width: 18rem;
-  height: 12.2rem;
-  margin-right: 0.8rem;
-`
-
-export const SortItem = styled.div`
-  height: 10rem;
-
-  border-radius: 1rem;
-  background-color: #e7e7e7;
-`
-
-export const ItemName = styled.div`
-  margin-top: 0.8rem;
 
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.432rem;
-  text-align: center;
 `
