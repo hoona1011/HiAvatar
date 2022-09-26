@@ -16,6 +16,9 @@ export const Container = styled.div`
       border: 1px solid;
       height: 12.2rem;
       margin-right: 0.8rem;
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 `
@@ -39,7 +42,8 @@ export const Content = styled.div`
   height: 10rem;
 
   border-radius: 1rem;
-  background-color: #e7e7e7;
+  background-color: ${({ isSelected }) =>
+    isSelected ? 'royalblue' : '#e7e7e7'};
 `
 
 export const Name = styled.div`

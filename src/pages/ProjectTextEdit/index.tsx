@@ -12,9 +12,7 @@ import {
   VoicePreviewPlayer,
   ProjectRightMenu
 } from 'components'
-
 import * as S from './style'
-import { RootState } from 'store'
 
 export const ProjectTextEdit = () => {
   //현재
@@ -22,11 +20,11 @@ export const ProjectTextEdit = () => {
   // 지훈
   const ProjectTextEditOption = useAppSelector((state) => state.option)
 
-  console.log(ProjectTextEditOption)
+  console.log('전역상태값: ', ProjectTextEditOption)
 
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)
-  const [renderType, setRenderType] = useState('ProjectText') //selected
+  const [renderType, setRenderType] = useState('ProjectText')
   return (
     <>
       <div>
@@ -43,8 +41,10 @@ export const ProjectTextEdit = () => {
               </S.VoicePlayer>
             </S.Left>
             <S.Right>
-              <div>렌더타입:{renderType}</div>
-              <ProjectRightMenu setRenderType={setRenderType} />
+              <ProjectRightMenu
+                renderType={renderType}
+                setRenderType={setRenderType}
+              />
               <ProjectRightNav renderType={renderType} />
               <VoiceUploadButton />
               <TextEnterButton setModal={setModal} />

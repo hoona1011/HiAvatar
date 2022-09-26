@@ -27,6 +27,9 @@ export const BgContainer = styled.div`
 export const BgInner = styled.div`
   height: 12.2rem;
   margin-right: 0.8rem;
+  &:hover {
+    cursor: pointer;
+  }
 `
 
 export const Bg = styled.div`
@@ -34,7 +37,8 @@ export const Bg = styled.div`
   height: 10rem;
 
   border-radius: 1rem;
-  background-color: #e7e7e7;
+  background-color: ${({ isSelected }) =>
+    isSelected ? 'royalblue' : '#e7e7e7'};
 `
 
 export const BgName = styled.div`

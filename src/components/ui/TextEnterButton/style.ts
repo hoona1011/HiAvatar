@@ -1,21 +1,18 @@
 import styled from 'styled-components'
 
 export const Button = styled.button`
-  width: 9.8rem;
-  height: 3.4rem;
-  background-color: #666666;
+  width: 23.852rem;
+  height: 11.9rem;
+  padding: 3.5rem 5.7rem;
   border-radius: 1rem;
-  border: none;
+  border: 1px dashed ${({ theme }) => theme.palette.blue20};
   cursor: pointer;
 
-  span {
-    color: #ffffff;
+  div {
+    color: ${({ theme }) => theme.palette.blue50};
+    margin-top: 0.8rem;
     font-size: 1.2rem;
     font-weight: 500;
     line-height: 2rem;
-  }
-
-  input {
-    display: none;
   }
 `
