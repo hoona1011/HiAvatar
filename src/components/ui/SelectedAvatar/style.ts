@@ -23,5 +23,5 @@ export const PreviewAvatar = styled.div`
   margin: 0 auto 0.8rem;
 
   border-radius: 1rem;
-  background-color: ${({ theme }) => theme.palette.blue10};
+  background-color: ${({ theme }) => theme.palette.blue3};
 `

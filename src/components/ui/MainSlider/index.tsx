@@ -24,7 +24,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
 
   const avatarListHandler = () => {
     avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
-    avatarDetailListHandler('avatar1') // 기본값 지정
+
+    if (!selectedValue.avatarType) {
+      avatarDetailListHandler('avatar1') // 기본값 지정
+    }
   }
   const avatarDetailListHandler = (selectedAvatar: string) => {
     dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
