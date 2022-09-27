@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import type { StyledComponentsProps } from 'index'
 
 export const Container = styled.div`
   position: relative;
@@ -37,7 +38,7 @@ export const Content = styled.div`
 
   border-radius: 1rem;
   border: 0.1rem solid
-    ${({ isSelected, theme }) =>
+    ${({ isSelected, theme }: StyledComponentsProps) =>
       isSelected ? theme.palette.blue50 : theme.palette.blue10};
   background-color: ${({ theme }) => theme.palette.blue10};
 `

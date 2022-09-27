@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import type { Avatar } from 'index'
 
 const url = import.meta.env.VITE_SERVICE_URL
 
@@ -13,7 +14,7 @@ export const avatarApi = createApi({
         url: 'avatar',
         method: 'GET'
       }),
-      transformResponse: (responseData) => {
+      transformResponse: (responseData: Avatar) => {
         return responseData[0]['data']
       }
     })

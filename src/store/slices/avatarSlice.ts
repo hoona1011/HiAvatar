@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { useDispatch, useSelector } from 'react-redux'
+import { useAppSelector, useAppDispatch } from 'store'
 
 import type { AvatarState } from 'index'
 
@@ -30,9 +30,9 @@ export const avatarSlice = createSlice({
     },
     changeAvatarDetailList(state, action) {
       const avatarDetailList = state.avatarList.filter(
-        (avatar) => avatar[0] === action.payload.diff
+        (avatar) => (avatar as unknown[])[0] === action.payload.diff
       )
-      state.avatarDetailList = avatarDetailList[0][1]
+      state.avatarDetailList = (avatarDetailList as any[])[0][1]
     },
     changeSelectedValue(state, action) {
       const selectedValue = action.payload.diff
@@ -62,13 +62,16 @@ export const {
 } = avatarSlice.actions
 
 export const useAvatar = () => {
-  // 타입 추가 예정
-  const totalAvatarData = useSelector((state) => state.avatar.totalAvatarData)
-  const avatarList = useSelector((state) => state.avatar.avatarList)
-  const avatarDetailList = useSelector((state) => state.avatar.avatarDetailList)
-  const backgroundList = useSelector((state) => state.avatar.backgroundList)
-  const selectedValue = useSelector((state) => state.avatar.selectedValue)
-  const dispatch = useDispatch()
+  const totalAvatarData = useAppSelector(
+    (state) => state.avatar.totalAvatarData
+  )
+  const avatarList = useAppSelector((state) => state.avatar.avatarList)
+  const avatarDetailList = useAppSelector(
+    (state) => state.avatar.avatarDetailList
+  )
+  const backgroundList = useAppSelector((state) => state.avatar.backgroundList)
+  const selectedValue = useAppSelector((state) => state.avatar.selectedValue)
+  const dispatch = useAppDispatch()
 
   return {
     totalAvatarData,
