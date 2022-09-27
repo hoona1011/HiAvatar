@@ -45,7 +45,11 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
             <SelectedVoiceOptions />
           </S.Inner>
           <PrevButton />
-          <NextButton isComplete={true} />
+          <NextButton
+            isComplete={true}
+            requestFunc={() => console.log('요청 완료')}
+            to='/project-history'
+          />
         </S.Container>
       )
     default:
