@@ -12,7 +12,7 @@ import {
 } from 'store/slices/avatarSlice'
 import { useGetAvatarQuery } from 'api/avatarApi'
 
-import type { MainSliderProps, SelectedValue } from 'index'
+import type { MainSliderProps, SelectedValue, DetailList } from 'index'
 
 export const MainSlider = ({ renderType }: MainSliderProps) => {
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)
@@ -72,32 +72,31 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
       case 'AvatarSelector':
         return (
           <Swiper {...swiperSetting}>
-            {avatarList[0] &&
-              avatarList.map((avatar, index: string) => {
-                return (
-                  <SwiperSlide
-                    key={avatar[0]}
-                    onClick={() => {
-                      avatarDetailListHandler(avatar[0])
-                      selectedValueHandler({
-                        avatarName: avatar[0]
-                      })
-                    }}
-                  >
-                    <S.Content
-                      isSelected={selectedValue?.avatarName === avatar[0]}
-                    />
-                    <S.Name>아바타 {index + 1}</S.Name>
-                  </SwiperSlide>
-                )
-              })}
+            {avatarList.map((avatar, index: number) => {
+              return (
+                <SwiperSlide
+                  key={avatar[0]}
+                  onClick={() => {
+                    avatarDetailListHandler(avatar[0])
+                    selectedValueHandler({
+                      avatarName: avatar[0]
+                    })
+                  }}
+                >
+                  <S.Content
+                    isSelected={selectedValue?.avatarName === avatar[0]}
+                  />
+                  <S.Name>아바타 {index + 1}</S.Name>
+                </SwiperSlide>
+              )
+            })}
           </Swiper>
         )
       case 'AvatarSort-1':
         return (
           <Swiper {...swiperSetting}>
             {avatarDetailList.detailList1 &&
-              avatarDetailList?.detailList1.map(({ position }) => {
+              avatarDetailList?.detailList1.map(({ position }: DetailList) => {
                 return (
                   <SwiperSlide
                     key={position}
@@ -120,7 +119,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
         return (
           <Swiper {...swiperSetting}>
             {avatarDetailList.detailList2 &&
-              avatarDetailList?.detailList2.map(({ position }) => {
+              avatarDetailList?.detailList2.map(({ position }: DetailList) => {
                 return (
                   <SwiperSlide
                     key={position}
@@ -143,7 +142,7 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
         return (
           <Swiper {...swiperSetting}>
             {avatarDetailList.detailList3 &&
-              avatarDetailList?.detailList3.map(({ position }) => {
+              avatarDetailList?.detailList3.map(({ position }: DetailList) => {
                 return (
                   <SwiperSlide
                     key={position}
@@ -168,10 +167,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
   return (
     <S.Container>
       <S.PrevBtnContainer ref={prevRef}>
-        <SwiperPrevIcon width='32' height='32' />
+        <SwiperPrevIcon width='3.2rem' height='3.2rem' />
       </S.PrevBtnContainer>
       <S.NextBtnContainer ref={nextRef}>
-        <SwiperNextIcon width='32' height='32' />
+        <SwiperNextIcon width='3.2rem' height='3.2rem' />
       </S.NextBtnContainer>
       {swiperSetting && RenderValue()}
     </S.Container>

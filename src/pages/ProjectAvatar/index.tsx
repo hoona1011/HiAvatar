@@ -15,7 +15,7 @@ export const ProjectAvatar = () => {
       <TheHeader />
       <S.Container>
         <S.LeftContainer>
-          <ProjectNav />
+          <ProjectNav renderType='ProjectAvatar' />
           <AvatarSelector />
           <AvatarSort />
           <AvatarBg />

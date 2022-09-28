@@ -4,9 +4,10 @@ const palette = {
   white: '#FFFFFF',
   txt: '#0E1937',
   txt50: '',
+  boxShadow: '#e7eaf4',
   clickBackground: '',
   progressBarGradient: '',
-  GNABG: '',
+  GNABG: '#FBFCFF',
 
   //BLUE
   blue3: '#F4F7FF',

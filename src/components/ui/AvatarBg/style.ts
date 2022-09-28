@@ -1,20 +1,26 @@
 import styled from 'styled-components'
+import type { StyledComponentsProps } from 'index'
 
 export const Container = styled.div`
   height: 18rem;
+  padding: 1.6rem 2.4rem 0;
+  margin: 2.4rem 0 2.4rem;
 
-  padding: 1.6rem 0 0 2.4rem;
-  border-radius: 1rem;
-  background-color: #f5f5f5;
-  margin-bottom: 2.4rem;
+  border-radius: 0.4rem;
+  background-color: ${({ theme }) => theme.palette.white};
+
+  box-shadow: 0 0 20rem 0 ${({ theme }) => theme.palette.boxShadow};
+`
+export const Top = styled.div`
+  display: flex;
+  align-items: center;
+  height: 1.9rem;
 `
 
 export const Title = styled.div`
-  width: 13.7rem;
-  height: 1.8rem;
-
-  font-size: 1.5rem;
-  font-weight: 600;
+  font-size: 1.6rem;
+  font-weight: 500;
+  margin-left: 0.8rem;
 `
 
 export const BgContainer = styled.div`
@@ -37,8 +43,10 @@ export const Bg = styled.div`
   height: 10rem;
 
   border-radius: 1rem;
-  background-color: ${({ isSelected }) =>
-    isSelected ? 'royalblue' : '#e7e7e7'};
+  border: 0.1rem solid
+    ${({ isSelected, theme }: StyledComponentsProps) =>
+      isSelected ? theme.palette.blue50 : theme.palette.blue10};
+  background-color: ${({ theme }) => theme.palette.blue10};
 `
 
 export const BgName = styled.div`
@@ -46,6 +54,7 @@ export const BgName = styled.div`
   margin-top: 0.8rem;
 
   font-size: 1.2rem;
-  font-weight: 600;
+  font-weight: 500;
+  line-height: 1.432rem;
   text-align: center;
 `
