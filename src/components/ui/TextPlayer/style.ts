@@ -31,7 +31,7 @@ export const PlayerBar = styled.ul`
   height: 5.5rem;
   display: flex;
   padding: 0.8rem;
-  background-color: #e1e1e1;
+  background-color: ${({ focus }) => (!focus ? '#e1e1e1' : 'red')};
   border-radius: 1rem;
   position: relative;
 `
@@ -88,7 +88,7 @@ export const SetUpBtnList = styled.ul`
     border: none;
   }
 
-  display: flex;
+  display: ${({ focus }) => (!focus ? 'none' : 'flex')};
   justify-content: center;
   padding: 0.8rem 0;
 `
