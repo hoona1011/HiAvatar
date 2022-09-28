@@ -18,7 +18,7 @@ export const TextEditList = () => {
   useEffect(() => {
     dispatch(renderText(textDatas))
   }, [texts])
-  useEffect(() => {}, [userSelectedList.length])
+  // useEffect(() => {}, [userSelectedList.length])
 
   // console.log(splitTextList)
   // console.log(texts)
