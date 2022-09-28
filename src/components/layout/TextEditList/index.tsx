@@ -2,16 +2,23 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { TextPlayer } from '../../ui/TextPlayer'
 import { useAppDispatch, useAppSelector } from 'store'
-import { renderText, changeOption } from 'store/slices/optionSlice'
+import {
+  renderText,
+  changeOption,
+  selectedText,
+  focusOutText
+} from 'store/slices/optionSlice'
 
 export const TextEditList = () => {
   const dispatch = useAppDispatch()
-  const { texts, splitTextList } = useAppSelector((state) => state.option)
-  const [changTextData, setChangTextData] = useState('')
+  const { texts, splitTextList, userSelectedList } = useAppSelector(
+    (state) => state.option
+  )
 
   useEffect(() => {
     dispatch(renderText(textDatas))
-  }, [changTextData, texts])
+  }, [texts])
+  // useEffect(() => {}, [userSelectedList.length])
 
   // console.log(splitTextList)
   // console.log(texts)
@@ -26,18 +33,27 @@ export const TextEditList = () => {
     return { ...textData, sentenceId: index, text: item }
   })
 
-  // splitTextList.forEach((item) => {
-  //   // return item
-  //   setChangTextData(item.text)
-  // })
-  // console.log('test', changTextData)
+  const render = splitTextList.map((item) => {
+    let orginData = item
+
+    const findData = userSelectedList.find((item) => {
+      return orginData.sentenceId === item.sentenceId
+    })
+    return (
+      <TextPlayer
+        key={item.sentenceId}
+        itemData={item}
+        splitTextList={splitTextList}
+        findData={findData}
+        dispatch={dispatch}
+      />
+    )
+  })
 
   return (
     <S.Wrapper>
       <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
-      {splitTextList.map((item) => (
-        <TextPlayer key={item.sentenceId} itemData={item} dispatch={dispatch} />
-      ))}
+      {render}
     </S.Wrapper>
   )
 }
