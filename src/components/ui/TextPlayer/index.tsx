@@ -1,20 +1,27 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { PlayIcon, StopIcon, CloseIcon } from '../../Icons'
-import { editText, removeText, changeText } from 'store/slices/optionSlice'
+import {
+  editText,
+  removeText,
+  changeText,
+  selectedText
+} from 'store/slices/optionSlice'
+import { useAppSelector } from 'store'
 
-export const TextPlayer = ({ itemData, dispatch }) => {
-  const [inputData, setInputData] = useState(itemData)
-
+export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
   // const userInputHandler = (e) => {
   //   const { name, value } = e.target
   //   setInputData({ ...inputData, [name]: value })
   //   dispatch(changeText(inputData))
   // }
 
+  // console.log(itemData)
+  // console.log(userSelectedData)
+
   const userInputHandler = (e) => {
     const { name, value } = e.target
-    setInputData({ ...inputData, [name]: value })
+    // setInputData({ ...inputData, [name]: value })
     dispatch(changeText({ ...itemData, [name]: value }))
   }
 
@@ -26,9 +33,13 @@ export const TextPlayer = ({ itemData, dispatch }) => {
     dispatch(editText(itemData))
   }
 
+  const userSelectedHandler = () => {
+    dispatch(selectedText({ itemData, splitTextList }))
+  }
+
   return (
-    <S.Wrapper>
-      <S.PlayerBar>
+    <S.Wrapper onClick={userSelectedHandler}>
+      <S.PlayerBar focus={findData?.focus}>
         <li>
           <S.ItemNum>{itemData.sentenceId + 1}</S.ItemNum>
           <S.TextEdit
@@ -54,7 +65,7 @@ export const TextPlayer = ({ itemData, dispatch }) => {
           </div>
         </li>
       </S.PlayerBar>
-      <S.SetUpBtnList>
+      <S.SetUpBtnList focus={findData?.focus}>
         <li>
           <button onClick={userEditHandler}>+ 문장 추가</button>
         </li>

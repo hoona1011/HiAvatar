@@ -15,7 +15,8 @@ const initialState = {
     //   text: '',
     //   sentenceSpacing: 0.1
     // }
-  ]
+  ],
+  userSelectedList: []
 }
 export interface X {
   [key: string]: string | number | any[] // 추후 수정
@@ -69,6 +70,22 @@ export const optionSlice = createSlice({
       const filterdSplitData = state.splitTextList.filter((item) => {
         return item.sentenceId !== itemData.sentenceId
       })
+      const findTextItem = state.splitTextList.find((item) => {
+        return item.sentenceId === itemData.sentenceId
+      })
+
+      let i = findTextItem.sentenceId
+
+      for (i; i < state.splitTextList.length; i += 1) {
+        state.splitTextList.forEach((item) => {
+          if (item.sentenceId === i) {
+            item.sentenceId = i -= 1
+          }
+        })
+      }
+
+      console.log(current(findTextItem))
+
       state.splitTextList = filterdSplitData
     },
     editText(state, action) {
@@ -77,8 +94,6 @@ export const optionSlice = createSlice({
         return item.sentenceId === itemData.sentenceId
       })
 
-      console.log('find', findTextItem.sentenceId)
-      console.log('------')
       let i = findTextItem.sentenceId
 
       for (i; i < state.splitTextList.length; i += 1) {
@@ -88,7 +103,6 @@ export const optionSlice = createSlice({
           }
         })
       }
-
       state.splitTextList = [
         ...state.splitTextList,
         {
@@ -97,12 +111,33 @@ export const optionSlice = createSlice({
           sentenceSpacing: ''
         }
       ]
+
       state.splitTextList.sort(function (a, b) {
         return a.sentenceId - b.sentenceId
       })
+    },
+    selectedText(state, action) {
+      const { splitTextList, itemData } = action.payload
+      const selectedTextList = splitTextList.map((item) => {
+        let focuseItem
+        if (item.sentenceId === itemData?.sentenceId) {
+          focuseItem = { sentenceId: item.sentenceId, focus: true }
+        } else {
+          focuseItem = { sentenceId: item.sentenceId, focus: false }
+        }
+        return focuseItem
+      })
+
+      state.userSelectedList = [...selectedTextList]
     }
   }
 })
 
-export const { changeOption, renderText, changeText, removeText, editText } =
-  optionSlice.actions
+export const {
+  changeOption,
+  renderText,
+  changeText,
+  removeText,
+  editText,
+  selectedText
+} = optionSlice.actions
