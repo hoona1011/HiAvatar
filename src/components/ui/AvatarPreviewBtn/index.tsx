@@ -1,12 +1,26 @@
-import { PreviewReload } from 'components/Icons'
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import * as S from './style'
+import { PreviewReload } from 'components/Icons'
+import { useAvatar, changeIsAllSelected } from 'store/slices/avatarSlice'
 
 export const AvatarPreviewBtn = () => {
+  const { selectedValue, isAllSelected, dispatch } = useAvatar()
+
+  //**selectedValue의 값이 모두 있는 경우에만 버튼을 활성화 시키기 위한 함수*/
+  const disabledHandler = (diff?: string) => {
+    dispatch(changeIsAllSelected({ diff }))
+  }
+  useEffect(() => {
+    selectedValue && disabledHandler()
+  }, [selectedValue])
+
   return (
-    <S.Container>
+    <S.Container
+      onClick={() => disabledHandler('reset')} // 미리보기 재설정은 한번 누르면 disabled 처리
+      disabled={!isAllSelected}
+    >
       <S.Inner>
-        <S.Button>미리보기 재설정</S.Button>
+        <S.Content>미리보기 재설정</S.Content>
         <PreviewReload width='1.3rem' height='1.2rem' />
       </S.Inner>
     </S.Container>

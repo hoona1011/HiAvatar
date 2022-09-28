@@ -12,7 +12,8 @@ const initialState: AvatarState = {
     avatarName: 'avatar1',
     avatarType: '',
     bgName: ''
-  }
+  },
+  isAllSelected: false
 }
 
 export const avatarSlice = createSlice({
@@ -51,6 +52,14 @@ export const avatarSlice = createSlice({
         ...state.selectedValue,
         [key]: value
       }
+    },
+    changeIsAllSelected(state, action) {
+      const values = Object.values(state.selectedValue)
+      const res = values.every((value) => value.length > 0)
+      state.isAllSelected = res
+      if (action.payload.diff === 'reset') {
+        state.isAllSelected = false
+      }
     }
   }
 })
@@ -58,7 +67,8 @@ export const avatarSlice = createSlice({
 export const {
   changeTotalAvatarData,
   changeAvatarDetailList,
-  changeSelectedValue
+  changeSelectedValue,
+  changeIsAllSelected
 } = avatarSlice.actions
 
 export const useAvatar = () => {
@@ -71,6 +81,7 @@ export const useAvatar = () => {
   )
   const backgroundList = useAppSelector((state) => state.avatar.backgroundList)
   const selectedValue = useAppSelector((state) => state.avatar.selectedValue)
+  const isAllSelected = useAppSelector((state) => state.avatar.isAllSelected)
   const dispatch = useAppDispatch()
 
   return {
@@ -79,6 +90,7 @@ export const useAvatar = () => {
     avatarDetailList,
     backgroundList,
     selectedValue,
+    isAllSelected,
     dispatch
   }
 }

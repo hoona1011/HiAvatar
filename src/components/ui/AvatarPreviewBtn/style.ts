@@ -1,13 +1,14 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+export const Container = styled.button`
   ${({ theme }) => theme.common.flexCenter}
   width: 15.6rem;
   height: 3.2rem;
   margin: 0 auto;
 
   border-radius: 1rem;
-  background-color: ${({ theme }) => theme.palette.blue50};
+  background-color: ${({ disabled, theme }) =>
+    disabled ? '#D9D9D9' : theme.palette.blue50}; // '#D9D9D9'해당 색상은 임시
   &:hover {
     cursor: pointer;
   }
@@ -18,7 +19,7 @@ export const Inner = styled.div`
   align-items: center;
 `
 
-export const Button = styled.button`
+export const Content = styled.div`
   margin-right: 0.917rem;
 
   color: ${({ theme }) => theme.palette.white};
