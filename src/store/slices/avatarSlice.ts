@@ -57,9 +57,6 @@ export const avatarSlice = createSlice({
       const values = Object.values(state.selectedValue)
       const res = values.every((value) => value.length > 0)
       state.isAllSelected = res
-      if (action.payload.diff === 'reset') {
-        state.isAllSelected = false
-      }
     }
   }
 })

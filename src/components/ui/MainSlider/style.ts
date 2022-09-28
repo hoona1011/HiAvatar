@@ -42,6 +42,9 @@ export const Content = styled.div`
       isSelected ? theme.palette.blue50 : theme.palette.blue10};
   background-color: ${({ theme }) => theme.palette.blue10};
   opacity: ${({ isSelected }: StyledComponentsProps) => (isSelected ? 1 : 0.3)};
+  &:hover {
+    opacity: 1;
+  }
 `
 
 export const Name = styled.div`
