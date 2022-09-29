@@ -1,12 +1,14 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import * as S from './style'
-import { useAvatar } from 'store/slices/avatarSlice'
+import { useAvatar, changeIsShowModal } from 'store/slices/avatarSlice'
 
 export const CompleteButton = () => {
-  const { isAllSelected } = useAvatar()
-
+  const { isAllSelected, dispatch } = useAvatar()
+  const modalHandler = () => {
+    dispatch(changeIsShowModal({ diff: true }))
+  }
   return (
-    <S.Button disabled={!isAllSelected}>
+    <S.Button disabled={!isAllSelected} onClick={modalHandler}>
       <span>완료</span>
     </S.Button>
   )
