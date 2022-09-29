@@ -1,16 +1,16 @@
 import { useNavigate } from 'react-router-dom'
 import * as S from './style'
 import { NextButtonProps } from 'index'
-export const NextButton = ({ requestFunc, isComplete }: NextButtonProps) => {
+export const NextButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
 
   const onClickHandler = () => {
     requestFunc() // from use~~Mutation
-    navigate(isComplete ? '/project-history' : '/project-avatar')
+    navigate('/project-avatar')
   }
   return (
-    <S.Button onClick={onClickHandler} isComplete={isComplete}>
-      <span>{isComplete ? '완료' : '다음'}</span>
+    <S.Button onClick={onClickHandler}>
+      <span>다음</span>
     </S.Button>
   )
 }
