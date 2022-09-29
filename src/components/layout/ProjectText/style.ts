@@ -10,10 +10,15 @@ export const Title = styled.p`
   margin-bottom: 1.5rem;
 `
 
-export const TextBox = styled.p`
+export const TextGroup = styled.div`
   border-radius: 1rem;
   width: 100%;
   background-color: #fff;
   padding: 1.6rem;
   font-size: 1.6rem;
+`
+
+export const TextBox = styled.div`
+  background-color: ${({ findData }) => (!findData ? 'none' : 'red')};
+  padding: 1rem;
 `
