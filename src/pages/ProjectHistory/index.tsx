@@ -1,13 +1,22 @@
-import { ProjectHistoryPlayer } from 'components'
+import React from 'react'
+import * as S from './style'
+import {
+  TheHeader,
+  ProjectList,
+  ProjectHistoryPlayer,
+  ProjectVideoList
+} from 'components'
+import { CreateProjectButton } from 'components/ui/CreateProjectButton'
 
 export const ProjectHistory = () => {
   return (
     <div>
-      <ProjectHistoryPlayer
-        videoUrl='/src/assets/testVerticalVideo.mp4'
-        thumbnail='/src/assets/thumbnail.png'
-        videoName='연습용 이름'
-      />
+      <TheHeader />
+      <S.Container>
+        <CreateProjectButton />
+        <ProjectList />
+        <ProjectVideoList />
+      </S.Container>
     </div>
   )
 }
