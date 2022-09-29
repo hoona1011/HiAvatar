@@ -6,7 +6,8 @@ import {
   VoiceControlMenu,
   ProjectText,
   PrevButton,
-  NextButton
+  NextButton,
+  CompleteButton
 } from 'components'
 import * as S from './style'
 import { ProjectRightNavProps } from 'index'
@@ -45,11 +46,7 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
             <SelectedVoiceOptions />
           </S.Inner>
           <PrevButton />
-          <NextButton
-            isComplete={true}
-            requestFunc={() => console.log('요청 완료')}
-            to='/project-history'
-          />
+          <CompleteButton />
         </S.Container>
       )
     default:
