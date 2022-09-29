@@ -47,6 +47,10 @@ export const Bg = styled.div`
     ${({ isSelected, theme }: StyledComponentsProps) =>
       isSelected ? theme.palette.blue50 : theme.palette.blue10};
   background-color: ${({ theme }) => theme.palette.blue10};
+  opacity: ${({ isSelected }: StyledComponentsProps) => (isSelected ? 1 : 0.3)};
+  &:hover {
+    opacity: 1;
+  }
 `
 
 export const BgName = styled.div`
@@ -57,4 +61,6 @@ export const BgName = styled.div`
   font-weight: 500;
   line-height: 1.432rem;
   text-align: center;
+
+  opacity: ${({ isSelected }: StyledComponentsProps) => (isSelected ? 1 : 0.3)};
 `

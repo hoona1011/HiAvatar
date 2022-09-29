@@ -29,7 +29,11 @@ export const AvatarBg = () => {
                 <S.Bg
                   isSelected={selectedValue.bgName === background.position}
                 />
-                <S.BgName>배경 {index + 1}</S.BgName>
+                <S.BgName
+                  isSelected={selectedValue.bgName === background.position}
+                >
+                  배경 {index + 1}
+                </S.BgName>
               </S.BgInner>
             )
           })}

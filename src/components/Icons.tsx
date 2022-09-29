@@ -699,72 +699,21 @@ export const DownloadIcon = ({ width, height }: IconProps) => (
   </svg>
 )
 
-export const FullscreenIcon = ({ width, height }: IconProps) => (
+export const AvatarModalCloseIcon = ({
+  width,
+  height,
+  fillColor = '#262626'
+}: IconProps) => (
   <svg
     width={width}
     height={height}
-    viewBox='0 0 24 24'
+    viewBox='0 0 14 14'
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clipPath='url(#clip0_224_311)'>
-      <path
-        d='M20 0H4C1.79086 0 0 1.79086 0 4V20C0 22.2091 1.79086 24 4 24H20C22.2091 24 24 22.2091 24 20V4C24 1.79086 22.2091 0 20 0Z'
-        fill='white'
-      />
-      <path
-        d='M15 6H18V9'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M13.5 10.5L18 6'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M9 18H6V15'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M6 18L10.5 13.5'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M15 18H18V15'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M13.5 13.5L18 18'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M9 6H6V9'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-      <path
-        d='M6 6L10.5 10.5'
-        stroke='#6691FF'
-        strokeLinecap='round'
-        strokeLinejoin='round'
-      />
-    </g>
-    <defs>
-      <clipPath id='clip0_224_311'>
-        <rect width='24' height='24' fill='white' />
-      </clipPath>
-    </defs>
+    <path
+      d='M12.864 2.197C13.1569 1.90411 13.1569 1.42923 12.864 1.13634C12.5711 0.843448 12.0962 0.843449 11.8033 1.13634L12.864 2.197ZM1.13666 11.803C0.843769 12.0959 0.843769 12.5708 1.13666 12.8637C1.42956 13.1566 1.90443 13.1566 2.19732 12.8637L1.13666 11.803ZM2.19733 1.13634C1.90444 0.843449 1.42957 0.843448 1.13667 1.13634C0.84378 1.42923 0.843779 1.90411 1.13667 2.197L2.19733 1.13634ZM11.8033 12.8637C12.0962 13.1566 12.5711 13.1566 12.864 12.8637C13.1569 12.5708 13.1569 12.0959 12.864 11.803L11.8033 12.8637ZM11.8033 1.13634L1.13666 11.803L2.19732 12.8637L12.864 2.197L11.8033 1.13634ZM1.13667 2.197L11.8033 12.8637L12.864 11.803L2.19733 1.13634L1.13667 2.197Z'
+      fill={fillColor}
+    />
   </svg>
 )
