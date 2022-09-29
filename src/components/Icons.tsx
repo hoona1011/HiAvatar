@@ -435,7 +435,7 @@ export const VoicePauseIcon = ({
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clip-path='url(#clip0_665_4573)'>
+    <g clipPath='url(#clip0_665_4573)'>
       <path
         d='M9.5 6H7.5C6.94772 6 6.5 6.38376 6.5 6.85714V17.1429C6.5 17.6162 6.94772 18 7.5 18H9.5C10.0523 18 10.5 17.6162 10.5 17.1429V6.85714C10.5 6.38376 10.0523 6 9.5 6Z'
         fill={fillColor}
@@ -657,6 +657,45 @@ export const PreviewReload = ({ width, height }: IconProps) => (
       strokeLinecap='round'
       strokeLinejoin='round'
     />
+  </svg>
+)
+
+export const DownloadIcon = ({ width, height }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 16 16'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <g clipPath='url(#clip0_220_528)'>
+      <path
+        d='M2.66699 11.3333V12.6667C2.66699 13.0203 2.80747 13.3594 3.05752 13.6095C3.30756 13.8595 3.6467 14 4.00033 14H12.0003C12.3539 14 12.6931 13.8595 12.9431 13.6095C13.1932 13.3594 13.3337 13.0203 13.3337 12.6667V11.3333'
+        stroke='white'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path
+        d='M4.66699 7.33334L8.00033 10.6667L11.3337 7.33334'
+        stroke='white'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path
+        d='M8 2.66666V10.6667'
+        stroke='white'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </g>
+    <defs>
+      <clipPath id='clip0_220_528'>
+        <rect width='16' height='16' fill='white' />
+      </clipPath>
+    </defs>
   </svg>
 )
 
