@@ -38,9 +38,6 @@ export interface RadioButtonProps {
   value: string
   content: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  defaultChecked?: boolean
-  renderType: string
-  IconRenderType: string
 }
 
 export interface HistoryPlayerProps {

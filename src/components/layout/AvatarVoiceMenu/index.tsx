@@ -77,6 +77,41 @@ export const AvatarVoiceMenu = () => {
           hashtag3={'20대'}
           buttonType={'characterName'}
         />
+        <AvatarVoicePlayer
+          characterName={'다성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
+          buttonType={'characterName'}
+        />
+        <AvatarVoicePlayer
+          characterName={'라성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
+          buttonType={'characterName'}
+        />
+        <AvatarVoicePlayer
+          characterName={'마성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
+          buttonType={'characterName'}
+        />
+        <AvatarVoicePlayer
+          characterName={'바성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
+          buttonType={'characterName'}
+        />
+        <AvatarVoicePlayer
+          characterName={'사성은'}
+          hashtag1={'명랑한'}
+          hashtag2={'대학생'}
+          hashtag3={'20대'}
+          buttonType={'characterName'}
+        />
       </S.VoicePlayerContainer>
     </S.Container>
   )

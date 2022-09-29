@@ -24,7 +24,7 @@ export const Left = styled.div`
 export const Right = styled.div`
   width: 38.4rem;
   background-color: #eee;
-  overflow: scroll;
+  /* overflow: scroll; */
 `
 
 export const VoicePlayer = styled.div`

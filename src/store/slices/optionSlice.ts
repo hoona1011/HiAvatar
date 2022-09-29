@@ -2,8 +2,8 @@ import { createSlice, current } from '@reduxjs/toolkit'
 
 const initialState = {
   texts: '',
-  language: '',
-  sex: '',
+  language: '한국어',
+  sex: '남자',
   characterName: '',
   speed: 0,
   pitch: 0,

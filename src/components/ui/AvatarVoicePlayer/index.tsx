@@ -60,22 +60,22 @@ export const AvatarVoicePlayer = ({
         <S.BtnContainer>
           <div>
             {!isPlaying && (
-              <S.PlayPauseBtn onClick={onPlayHandler}>
+              <S.PlayBtn onClick={onPlayHandler}>
                 <PlayIcon
                   width='4.8rem'
                   height='4.8rem'
                   isSelected={isSelected}
                 />
-              </S.PlayPauseBtn>
+              </S.PlayBtn>
             )}
             {isPlaying && (
-              <S.PlayPauseBtn onClick={onPauseHandler}>
+              <S.PauseBtn onClick={onPauseHandler}>
                 <PauseIcon
                   width='4.8rem'
                   height='4.8rem'
                   isSelected={isSelected}
                 />
-              </S.PlayPauseBtn>
+              </S.PauseBtn>
             )}
           </div>
 

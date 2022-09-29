@@ -46,8 +46,8 @@ export const ProjectTextEdit = () => {
                 setRenderType={setRenderType}
               />
               <ProjectRightNav renderType={renderType} />
-              <VoiceUploadButton />
-              <TextEnterButton setModal={setModal} />
+              {/* <VoiceUploadButton />
+              <TextEnterButton setModal={setModal} /> */}
               {modal && (
                 <ProjectTextModal
                   setModal={setModal}
