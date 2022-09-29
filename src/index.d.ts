@@ -2,13 +2,13 @@
 
 // 지훈
 
-interface NextButtonProps {
+export interface NextButtonProps {
   requestFunc: any // 추후 수정
   to: string
   isComplete?: boolean
 }
 
-interface VoiceControllerProps {
+export interface VoiceControllerProps {
   label: string
   min: number
   max: number
@@ -16,7 +16,7 @@ interface VoiceControllerProps {
   controlType: string
   optionValue: number
 }
-interface AvatarVoicePlayerProps {
+export interface AvatarVoicePlayerProps {
   characterName: string
   hashtag1?: string
   hashtag2?: string
@@ -33,7 +33,7 @@ interface ProjectRightMenuProps {
   setRenderType: React.Dispatch<React.SetStateAction<string>>
 }
 
-interface RadioButtonProps {
+export interface RadioButtonProps {
   name: string
   value: string
   content: string
@@ -41,6 +41,12 @@ interface RadioButtonProps {
   defaultChecked?: boolean
   renderType: string
   IconRenderType: string
+}
+
+export interface HistoryPlayerProps {
+  videoUrl: string
+  thumbnail: string
+  videoName: string
 }
 
 // 희영
