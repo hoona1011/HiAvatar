@@ -51,7 +51,8 @@ export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
     dispatch(editText(itemData))
   }
 
-  const userSelectedHandler = () => {
+  const userSelectedHandler = (e) => {
+    e.stopPropagation()
     dispatch(selectedText({ itemData, splitTextList }))
   }
 

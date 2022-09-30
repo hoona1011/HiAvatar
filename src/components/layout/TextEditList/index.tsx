@@ -2,12 +2,7 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { TextPlayer } from '../../ui/TextPlayer'
 import { useAppDispatch, useAppSelector } from 'store'
-import {
-  renderText,
-  changeOption,
-  selectedText,
-  focusOutText
-} from 'store/slices/optionSlice'
+import { renderText, outFocus } from 'store/slices/optionSlice'
 
 export const TextEditList = () => {
   const dispatch = useAppDispatch()
@@ -32,6 +27,10 @@ export const TextEditList = () => {
     return { ...splitTextList[0], sentenceId: index + 1, text: item }
   })
 
+  const userOutFocusHandler = () => {
+    dispatch(outFocus())
+  }
+
   const render = splitTextList.map((item) => {
     let orginData = item
 
@@ -50,7 +49,7 @@ export const TextEditList = () => {
   })
 
   return (
-    <S.Wrapper>
+    <S.Wrapper onClick={userOutFocusHandler}>
       <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
       {render}
     </S.Wrapper>

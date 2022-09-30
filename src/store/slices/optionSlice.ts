@@ -165,6 +165,11 @@ export const optionSlice = createSlice({
 
       // console.log('spacingValue', spacingValue)
       // console.log('itemData', itemData)
+    },
+    outFocus(state) {
+      state.userSelectedList.map((item) => {
+        item.focus = false
+      })
     }
   }
 })
@@ -176,5 +181,6 @@ export const {
   removeText,
   editText,
   selectedText,
+  outFocus,
   changeChnsnSpcng
 } = optionSlice.actions
