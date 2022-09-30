@@ -10,11 +10,11 @@ const initialState = {
   sentenceSpacing: 0,
   audioFile: '',
   splitTextList: [
-    // {
-    //   sentenceId: 1,
-    //   text: '',
-    //   sentenceSpacing: 0.1
-    // }
+    {
+      sentenceId: 1,
+      text: '',
+      sentenceSpacing: 0
+    }
   ],
   userSelectedList: []
 }
@@ -50,20 +50,20 @@ export const optionSlice = createSlice({
 
       // let updateTexts = ''
 
-      const splitTextList = state.splitTextList.map((item) => {
-        // updateTexts += item.text + '.'
-        return item
-      })
+      // const splitTextList = state.splitTextList.map((item) => {
+      //   // updateTexts += item.text + '.'
+      //   return item
+      // })
 
       // state.texts = ''
       // state.texts = updateTexts.slice(0, -1)
 
-      const findTextItem = splitTextList.find((item) => {
+      const findTextItem = state.splitTextList.find((item) => {
         return item.sentenceId === inputData.sentenceId
       })
 
       Object.assign(findTextItem, inputData)
-      state.splitTextList = splitTextList
+      // state.splitTextList = splitTextList
     },
     removeText(state, action) {
       const itemData = action.payload
@@ -76,7 +76,7 @@ export const optionSlice = createSlice({
 
       let i = findTextItem.sentenceId
 
-      for (i; i < state.splitTextList.length; i += 1) {
+      for (i + 1; i < state.splitTextList.length + 1; i += 1) {
         state.splitTextList.forEach((item) => {
           if (item.sentenceId === i) {
             item.sentenceId = i -= 1
@@ -94,10 +94,15 @@ export const optionSlice = createSlice({
         return item.sentenceId === itemData.sentenceId
       })
 
+      console.log('itemData', itemData)
+      console.log('findTextItem', current(findTextItem))
+
       let i = findTextItem.sentenceId
 
-      for (i; i < state.splitTextList.length; i += 1) {
+      for (i + 1; i < state.splitTextList.length + 1; i += 1) {
         state.splitTextList.forEach((item) => {
+          // console.log('item', item.sentenceId)
+          // console.log('i', i)
           if (item.sentenceId === i) {
             item.sentenceId = i += 1
           }
@@ -108,7 +113,7 @@ export const optionSlice = createSlice({
         {
           sentenceId: findTextItem.sentenceId - 1,
           text: '',
-          sentenceSpacing: ''
+          sentenceSpacing: 0
         }
       ]
 
@@ -129,6 +134,20 @@ export const optionSlice = createSlice({
       })
 
       state.userSelectedList = [...selectedTextList]
+    },
+    changeChnsnSpcng(state, action) {
+      const itemData = action.payload
+      console.log(itemData)
+      console.log('splitTextList', current(state.splitTextList))
+
+      const findItemData = state.splitTextList.find((item) => {
+        return item.sentenceId === itemData.sentenceId
+      })
+
+      Object.assign(findItemData, itemData)
+
+      // console.log('spacingValue', spacingValue)
+      // console.log('itemData', itemData)
     }
   }
 })
@@ -139,5 +158,6 @@ export const {
   changeText,
   removeText,
   editText,
-  selectedText
+  selectedText,
+  changeChnsnSpcng
 } = optionSlice.actions

@@ -18,19 +18,18 @@ export const TextEditList = () => {
   useEffect(() => {
     dispatch(renderText(textDatas))
   }, [texts])
-  // useEffect(() => {}, [userSelectedList.length])
 
   // console.log(splitTextList)
   // console.log(texts)
 
-  const textData = {
-    sentenceId: '',
-    text: '',
-    sentenceSpacing: ''
-  }
+  // const textData = {
+  //   sentenceId: '',
+  //   text: '',
+  //   sentenceSpacing: ''
+  // }
 
   const textDatas = texts.split('.').map((item, index) => {
-    return { ...textData, sentenceId: index, text: item }
+    return { ...splitTextList[0], sentenceId: index + 1, text: item }
   })
 
   const render = splitTextList.map((item) => {
