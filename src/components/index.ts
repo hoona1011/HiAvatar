@@ -5,6 +5,7 @@ export { VoiceControlMenu } from './layout/VoiceControlMenu'
 export { TextEditList } from './layout/TextEditList'
 export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
 export { ProjectText } from './layout/ProjectText'
+export { ProjectAvatarModal } from 'components/layout/ProjectAvatarModal'
 
 // ui
 export { VoiceController } from './ui/VoiceController'
@@ -31,4 +32,4 @@ export { ProjectRightMenu } from 'components/ui/ProjectRightMenu'
 export { AvatarPreviewBtn } from './ui/AvatarPreviewBtn'
 export { ProjectHistoryPlayer } from './ui/ProjectHistoryPlayer'
 export { CompleteButton } from 'components/ui/CompleteButton'
-export { ProjectAvatarModal } from 'components/layout/ProjectAvatarModal'
+export { ProjectVideoList } from 'components/ui/ProjectVideoList'
