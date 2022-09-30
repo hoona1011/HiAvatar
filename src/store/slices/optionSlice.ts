@@ -48,22 +48,21 @@ export const optionSlice = createSlice({
     changeText(state, action) {
       const inputData = action.payload
 
-      // let updateTexts = ''
-
-      // const splitTextList = state.splitTextList.map((item) => {
-      //   // updateTexts += item.text + '.'
-      //   return item
-      // })
-
-      // state.texts = ''
-      // state.texts = updateTexts.slice(0, -1)
-
       const findTextItem = state.splitTextList.find((item) => {
         return item.sentenceId === inputData.sentenceId
       })
 
       Object.assign(findTextItem, inputData)
-      // state.splitTextList = splitTextList
+
+      // state.texts를 갱신하는 로직
+      let updateTexts = ''
+
+      state.splitTextList.map((item) => {
+        updateTexts += item.text + '.'
+      })
+
+      state.texts = ''
+      state.texts = updateTexts.slice(0, -1)
     },
     removeText(state, action) {
       const itemData = action.payload
@@ -84,9 +83,17 @@ export const optionSlice = createSlice({
         })
       }
 
-      console.log(current(findTextItem))
-
       state.splitTextList = filterdSplitData
+
+      // state.texts를 갱신하는 로직
+      let updateTexts = ''
+
+      state.splitTextList.map((item) => {
+        updateTexts += item.text + '.'
+      })
+
+      state.texts = ''
+      state.texts = updateTexts.slice(0, -1)
     },
     editText(state, action) {
       const itemData = action.payload
@@ -120,6 +127,16 @@ export const optionSlice = createSlice({
       state.splitTextList.sort(function (a, b) {
         return a.sentenceId - b.sentenceId
       })
+
+      // state.texts를 갱신하는 로직
+      let updateTexts = ''
+
+      state.splitTextList.map((item) => {
+        updateTexts += item.text + '.'
+      })
+
+      state.texts = ''
+      state.texts = updateTexts.slice(0, -1)
     },
     selectedText(state, action) {
       const { splitTextList, itemData } = action.payload
