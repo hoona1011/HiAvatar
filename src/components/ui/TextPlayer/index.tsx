@@ -76,7 +76,7 @@ export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
     <S.Wrapper onClick={userSelectedHandler}>
       <S.PlayerBar focus={findData?.focus}>
         <li>
-          <S.ItemNum>{itemData.sentenceId + 1}</S.ItemNum>
+          <S.ItemNum>{itemData.sentenceId}</S.ItemNum>
           <S.TextEdit
             name='text'
             onChange={userInputHandler}
