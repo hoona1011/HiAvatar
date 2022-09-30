@@ -1,9 +1,9 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 26rem;
+  height: 28.2rem;
   padding: 1.65rem 0 0 2.4rem;
-  margin-bottom: 2.4rem;
+  margin-bottom: 3.4rem;
 
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.palette.white};
@@ -24,11 +24,11 @@ export const Title = styled.div`
   font-weight: 500;
 `
 
-export const ProjectContainer = styled.div`
+export const VideoContainer = styled.div`
   display: flex;
 
   width: 115.2rem;
-  height: 19.4rem;
+  height: 21.4rem;
 `
 
 export const NoProject = styled.div`
@@ -41,34 +41,5 @@ export const NoProject = styled.div`
 
 export const Inner = styled.div`
   flex-shrink: 0;
-
-  width: 21.6rem;
-  height: 19.4rem;
   margin-right: 1.8rem;
-`
-
-export const Project = styled.div`
-  height: 16rem;
-  margin-bottom: 0.8rem;
-
-  border-radius: 1rem;
-  background-color: ${({ theme }) => theme.palette.blue5};
-`
-
-export const Name = styled.div`
-  color: ${({ theme }) => theme.palette.txt};
-  font-size: 1.2rem;
-  font-weight: 600;
-
-  line-height: 1.432rem;
-  text-align: center;
-`
-
-export const Date = styled.div`
-  color: '#7A7575';
-  font-size: 1rem;
-  font-weight: 500;
-
-  line-height: 1.2rem;
-  text-align: center;
 `

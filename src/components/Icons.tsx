@@ -435,7 +435,7 @@ export const VoicePauseIcon = ({
     fill='none'
     xmlns='http://www.w3.org/2000/svg'
   >
-    <g clip-path='url(#clip0_665_4573)'>
+    <g clipPath='url(#clip0_665_4573)'>
       <path
         d='M9.5 6H7.5C6.94772 6 6.5 6.38376 6.5 6.85714V17.1429C6.5 17.6162 6.94772 18 7.5 18H9.5C10.0523 18 10.5 17.6162 10.5 17.1429V6.85714C10.5 6.38376 10.0523 6 9.5 6Z'
         fill={fillColor}
@@ -653,6 +653,93 @@ export const PreviewReload = ({ width, height }: IconProps) => (
   >
     <path
       d='M12.2501 4.83333C12.2501 4.83333 11.0805 3.23979 10.1303 2.28898C9.18018 1.33816 7.86715 0.75 6.41675 0.75C3.51725 0.75 1.16675 3.1005 1.16675 6C1.16675 8.89949 3.51725 11.25 6.41675 11.25C8.81022 11.25 10.8296 9.64833 11.4616 7.45833M12.2501 4.83333V1.33333M12.2501 4.83333H8.75008'
+      stroke='white'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+  </svg>
+)
+
+export const DownloadIcon = ({ width, height }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 16 16'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <g clipPath='url(#clip0_220_528)'>
+      <path
+        d='M2.66699 11.3333V12.6667C2.66699 13.0203 2.80747 13.3594 3.05752 13.6095C3.30756 13.8595 3.6467 14 4.00033 14H12.0003C12.3539 14 12.6931 13.8595 12.9431 13.6095C13.1932 13.3594 13.3337 13.0203 13.3337 12.6667V11.3333'
+        stroke='white'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path
+        d='M4.66699 7.33334L8.00033 10.6667L11.3337 7.33334'
+        stroke='white'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+      <path
+        d='M8 2.66666V10.6667'
+        stroke='white'
+        strokeWidth='1.5'
+        strokeLinecap='round'
+        strokeLinejoin='round'
+      />
+    </g>
+    <defs>
+      <clipPath id='clip0_220_528'>
+        <rect width='16' height='16' fill='white' />
+      </clipPath>
+    </defs>
+  </svg>
+)
+
+export const AvatarModalCloseIcon = ({
+  width,
+  height,
+  fillColor = '#262626'
+}: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 14 14'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M12.864 2.197C13.1569 1.90411 13.1569 1.42923 12.864 1.13634C12.5711 0.843448 12.0962 0.843449 11.8033 1.13634L12.864 2.197ZM1.13666 11.803C0.843769 12.0959 0.843769 12.5708 1.13666 12.8637C1.42956 13.1566 1.90443 13.1566 2.19732 12.8637L1.13666 11.803ZM2.19733 1.13634C1.90444 0.843449 1.42957 0.843448 1.13667 1.13634C0.84378 1.42923 0.843779 1.90411 1.13667 2.197L2.19733 1.13634ZM11.8033 12.8637C12.0962 13.1566 12.5711 13.1566 12.864 12.8637C13.1569 12.5708 13.1569 12.0959 12.864 11.803L11.8033 12.8637ZM11.8033 1.13634L1.13666 11.803L2.19732 12.8637L12.864 2.197L11.8033 1.13634ZM1.13667 2.197L11.8033 12.8637L12.864 11.803L2.19733 1.13634L1.13667 2.197Z'
+      fill={fillColor}
+    />
+  </svg>
+)
+
+export const CreateProjectButtonIcon = ({ width, height }: IconProps) => (
+  <svg
+    width={width}
+    height={height}
+    viewBox='0 0 18 18'
+    fill='none'
+    xmlns='http://www.w3.org/2000/svg'
+  >
+    <path
+      d='M9 17C13.4183 17 17 13.4183 17 9C17 4.58172 13.4183 1 9 1C4.58172 1 1 4.58172 1 9C1 13.4183 4.58172 17 9 17Z'
+      stroke='white'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M7 9H11'
+      stroke='white'
+      strokeLinecap='round'
+      strokeLinejoin='round'
+    />
+    <path
+      d='M9 7V11'
       stroke='white'
       strokeLinecap='round'
       strokeLinejoin='round'
