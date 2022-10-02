@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   }
 
   width: 100%;
-  background-color: white;
+  background-color: '#F4F6F9';
 `
 
 export const Inner = styled.div`
