@@ -15,7 +15,7 @@ export const avatarApi = createApi({
         method: 'GET'
       }),
       transformResponse: (responseData: Avatar) => {
-        return responseData[0]['data']
+        return responseData['data']
       }
     })
   })
