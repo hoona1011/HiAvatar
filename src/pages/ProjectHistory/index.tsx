@@ -3,20 +3,21 @@ import * as S from './style'
 import {
   TheHeader,
   ProjectList,
-  ProjectHistoryPlayer,
-  ProjectVideoList
+  ProjectVideoList,
+  ProjectHistoryData
 } from 'components'
 import { CreateProjectButton } from 'components/ui/CreateProjectButton'
 
 export const ProjectHistory = () => {
   return (
-    <div>
+    <>
+      <ProjectHistoryData />
       <TheHeader />
       <S.Container>
         <CreateProjectButton />
         <ProjectList />
         <ProjectVideoList />
       </S.Container>
-    </div>
+    </>
   )
 }
