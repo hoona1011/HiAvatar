@@ -29,6 +29,4 @@ export const Sex = styled.div`
 export const Language = styled.div`
   display: flex;
 `
-export const VoicePlayerContainer = styled.div`
-  width: 100%;
-`
+export const VoicePlayerContainer = styled.div``
