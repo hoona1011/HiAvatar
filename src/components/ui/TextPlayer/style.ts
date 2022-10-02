@@ -77,18 +77,30 @@ export const SetUpBtnList = styled.ul`
   & > li:last-child {
     margin-right: 0;
   }
-  & > li > button {
-    padding: 0 1.2rem;
-    height: 2.8rem;
-    align-items: center;
-    background-color: #c2c2c2;
-    border-radius: 5rem;
-    font-size: 1rem;
-    color: #fff;
-    border: none;
-  }
 
   display: ${({ focus }) => (!focus ? 'none' : 'flex')};
   justify-content: center;
   padding: 0.8rem 0;
+`
+
+export const TextEditBtn = styled.button`
+  padding: 0 1.2rem;
+  height: 2.8rem;
+  align-items: center;
+  background-color: #c2c2c2;
+  border-radius: 5rem;
+  font-size: 1rem;
+  color: #fff;
+  border: none;
+`
+
+export const SntncSpcng = styled.input`
+  /* padding: 0 1.2rem; */
+  /* height: 2.8rem;
+  align-items: center;
+  background-color: #c2c2c2;
+  border-radius: 5rem;
+  font-size: 1rem;
+  color: #fff;
+  border: none; */
 `
