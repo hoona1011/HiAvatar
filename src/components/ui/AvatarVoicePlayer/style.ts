@@ -67,9 +67,8 @@ export const PlayBtn = styled.div`
   cursor: pointer;
   margin-right: 0.8rem;
 `
-export const PauseBtn = styled.div`
-  cursor: pointer;
-`
+export const PauseBtn = PlayBtn
+
 export const StopBtn = styled.div`
   cursor: pointer;
 `

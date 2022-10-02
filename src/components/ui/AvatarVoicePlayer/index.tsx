@@ -21,18 +21,22 @@ export const AvatarVoicePlayer = ({
   const audio = audioRef.current
   const isSelected = selectedCharacter === characterName
   // HANDLERS
-  const onPlayHandler = () => {
-    setIsPlaying(true)
-    audio.play()
-  }
-  const onStopHandler = () => {
-    setIsPlaying(false)
-    audio.pause()
-    audio.currentTime = 0
-  }
-  const onPauseHandler = () => {
-    setIsPlaying(false)
-    audio.pause()
+  const playerHandler = (action: string) => {
+    switch (action) {
+      case 'play':
+        setIsPlaying(true)
+        audio.play()
+        break
+      case 'stop':
+        setIsPlaying(false)
+        audio.pause()
+        audio.currentTime = 0
+        break
+
+      case 'pause':
+        setIsPlaying(false)
+        audio.pause()
+    }
   }
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -60,7 +64,7 @@ export const AvatarVoicePlayer = ({
         <S.BtnContainer>
           <div>
             {!isPlaying && (
-              <S.PlayBtn onClick={onPlayHandler}>
+              <S.PlayBtn onClick={() => playerHandler('play')}>
                 <PlayIcon
                   width='4.8rem'
                   height='4.8rem'
@@ -69,7 +73,7 @@ export const AvatarVoicePlayer = ({
               </S.PlayBtn>
             )}
             {isPlaying && (
-              <S.PauseBtn onClick={onPauseHandler}>
+              <S.PauseBtn onClick={() => playerHandler('pause')}>
                 <PauseIcon
                   width='4.8rem'
                   height='4.8rem'
@@ -79,7 +83,7 @@ export const AvatarVoicePlayer = ({
             )}
           </div>
 
-          <S.StopBtn onClick={onStopHandler}>
+          <S.StopBtn onClick={() => playerHandler('stop')}>
             <StopIcon width='4.8rem' height='4.8rem' isSelected={isSelected} />
           </S.StopBtn>
         </S.BtnContainer>
