@@ -120,6 +120,28 @@ export interface StyledComponentsProps {
   theme: any
 }
 
+export interface Projects {
+  data: HistoryData[]
+  code: number
+  status: string
+}
+export interface HistoryData {
+  projects: ProjectsHistory[]
+  videos: VideosHistory[]
+}
+export interface ProjectsHistory {
+  projectId: number
+  projectName: string
+  lastModifiedAt: string
+}
+export interface VideosHistory {
+  videoId: number
+  videoName: string
+  thumbnail: string
+  videoUrl: string
+  createdAt: string
+}
+
 // 현재
 export interface IconProps {
   bgColor?: string
