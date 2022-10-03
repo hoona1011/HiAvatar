@@ -1,24 +1,24 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Avatar } from 'index'
+import type { Projects } from 'index'
 
 const url = import.meta.env.VITE_SERVICE_URL
 
-export const avatarApi = createApi({
-  reducerPath: 'avatarApi',
+export const historyApi = createApi({
+  reducerPath: 'historyApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url
   }),
   endpoints: (builder) => ({
-    getAvatar: builder.query({
+    getHistory: builder.query({
       query: () => ({
-        url: 'avatar',
+        url: 'projects',
         method: 'GET'
       }),
-      transformResponse: (responseData: Avatar) => {
+      transformResponse: (responseData: Projects) => {
         return responseData['data']
       }
     })
   })
 })
 
-export const { useGetAvatarQuery } = avatarApi
+export const { useGetHistoryQuery } = historyApi

@@ -4,8 +4,13 @@ import { optionApi } from '../api/optionApi'
 import { optionSlice } from './slices/optionSlice'
 import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
 
+// avatar
 import avatarReducer from './slices/avatarSlice'
 import { avatarApi } from 'api/avatarApi'
+
+// history
+import historyReducer from './slices/historySlice'
+import { historyApi } from 'api/historyApi'
 
 const store = configureStore({
   reducer: {
@@ -14,10 +19,16 @@ const store = configureStore({
 
     // 희영
     avatar: avatarReducer,
-    [avatarApi.reducerPath]: avatarApi.reducer
+    history: historyReducer,
+    [avatarApi.reducerPath]: avatarApi.reducer,
+    [historyApi.reducerPath]: historyApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
-    getDefaultMiddleware().concat([optionApi.middleware, avatarApi.middleware])
+    getDefaultMiddleware().concat([
+      optionApi.middleware,
+      avatarApi.middleware,
+      historyApi.middleware
+    ])
 })
 
 setupListeners(store.dispatch)
