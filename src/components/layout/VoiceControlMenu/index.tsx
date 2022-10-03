@@ -22,9 +22,9 @@ export const VoiceControlMenu = () => {
         <div>
           <VoiceController
             label={'속도 조절'}
-            min={-0.5}
-            max={0.5}
-            step={0.1}
+            min={-5}
+            max={5}
+            step={1}
             controlType={'speed'}
             optionValue={speed}
           />
@@ -32,9 +32,9 @@ export const VoiceControlMenu = () => {
         <div>
           <VoiceController
             label={'톤 조절'}
-            min={-0.5}
-            max={0.5}
-            step={0.1}
+            min={-5}
+            max={5}
+            step={1}
             controlType={'pitch'}
             optionValue={pitch}
           />

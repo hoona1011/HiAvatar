@@ -4,8 +4,6 @@
 
 export interface NextButtonProps {
   requestFunc: any // 추후 수정
-  to: string
-  isComplete?: boolean
 }
 
 export interface VoiceControllerProps {
@@ -38,9 +36,9 @@ export interface RadioButtonProps {
   value: string
   content: string
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  renderType?: string
+  IconRenderType?: string
   defaultChecked?: boolean
-  renderType: string
-  IconRenderType: string
 }
 
 export interface HistoryPlayerProps {

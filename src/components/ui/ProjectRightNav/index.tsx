@@ -25,7 +25,9 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
       return (
         <S.Container>
           <VoiceControlMenu />
-          <S.BtnContainer />
+          <S.BtnContainer>
+            <NextButton requestFunc={() => console.log('요청 완료')} />
+          </S.BtnContainer>
         </S.Container>
       )
     case 'AvatarVoicePlayersMenu':
@@ -33,8 +35,7 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
         <S.Container>
           <AvatarVoiceMenu />
           <S.BtnContainer>
-            <PrevButton />
-            <NextButton requestFunc={() => console.log('요청 완료')} to='/' />
+            <NextButton requestFunc={() => console.log('요청 완료')} />
           </S.BtnContainer>
         </S.Container>
       )

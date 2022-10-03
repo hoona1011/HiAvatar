@@ -3,9 +3,8 @@ import styled from 'styled-components'
 export const Container = styled.div`
   width: 100%;
   height: 100%;
-  background-color: #f0f0f0;
+  background-color: ${({ theme }) => theme.palette.white};
   border-radius: 1rem;
-  border: 1px solid blue;
 `
 export const Title = styled.div`
   color: ${({ theme }) => theme.palette.txt};
@@ -24,7 +23,7 @@ export const VoiceControllerContainer = styled.div`
     margin-bottom: 1.6rem;
 
     &:nth-child(3) {
-      margin-bottom: 17.2rem;
+      margin-bottom: 14.8rem;
     }
   }
 `

@@ -1,7 +1,6 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  border: 1px solid red;
   margin-bottom: 3.4rem;
 `
 
@@ -19,18 +18,15 @@ export const Title = styled.div`
 
 export const OptionContainer = styled.div`
   display: flex;
-  margin-bottom: 1.6rem;
+  margin-bottom: 2.35rem;
 `
 export const OptionButton = styled.div``
 
 export const Sex = styled.div`
   display: flex;
-  padding-right: 7.9rem;
+  margin-right: 7.9rem;
 `
 export const Language = styled.div`
   display: flex;
 `
-export const VoicePlayerContainer = styled.div`
-  border: 1px solid blue;
-  overflow: auto;
-`
+export const VoicePlayerContainer = styled.div``
