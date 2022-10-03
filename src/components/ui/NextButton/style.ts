@@ -8,6 +8,10 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
 
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue90};
+  }
+
   span {
     color: #ffffff;
     font-size: 1.5rem;
