@@ -1,11 +1,11 @@
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import * as S from './style'
 
 export const PrevButton = () => {
   const navigate = useNavigate()
+  const { id } = useParams()
   const onClickHandler = () => {
-    navigate('/project-text-edit')
+    navigate(`/project-text-edit/${id}`)
   }
   return (
     <S.Button onClick={onClickHandler}>
