@@ -39,7 +39,7 @@ export const PlayerBar = styled.ul`
   border-radius: 1rem;
   position: relative;
   box-shadow: ${({ focus }) =>
-    !focus ? 'none' : '0px 5px 10px rgba(205, 219, 255, 0.5)'};
+    !focus ? 'none' : '0 0.5rem 1rem rgba(205, 219, 255, 0.5)'};
 `
 
 export const ItemNum = styled.div`
