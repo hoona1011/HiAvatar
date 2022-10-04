@@ -38,9 +38,7 @@ export const Label = styled.div`
     margin-left: 0.8rem;
   }
 `
-export const CloseBtn = styled.button`
-  cursor: pointer;
-`
+export const CloseBtn = styled.button``
 export const TextArea = styled.textarea`
   width: 100%;
   height: 36.2rem;
@@ -81,7 +79,6 @@ export const CancelBtn = styled.button`
   font-size: 1.2rem;
   background-color: ${({ theme }) => theme.palette.blue3};
   border-radius: 1rem;
-  cursor: pointer;
   margin-right: 1.6rem;
 `
 
@@ -94,5 +91,4 @@ export const EnterBtn = styled.button`
   font-size: 1.2rem;
   background-color: ${({ theme }) => theme.palette.blue70};
   border-radius: 1rem;
-  cursor: pointer;
 `
