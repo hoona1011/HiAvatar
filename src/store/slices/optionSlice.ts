@@ -82,8 +82,17 @@ export const optionSlice = createSlice({
           }
         })
       }
-
-      state.splitTextList = filterdSplitData
+      if (filterdSplitData.length) {
+        state.splitTextList = filterdSplitData
+      } else {
+        state.splitTextList = [
+          {
+            sentenceId: 1,
+            text: '',
+            sentenceSpacing: 0
+          }
+        ]
+      }
 
       // state.texts를 갱신하는 로직
       let updateTexts = ''

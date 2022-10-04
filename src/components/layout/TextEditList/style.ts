@@ -7,8 +7,8 @@ export const Wrapper = styled.div`
   margin-bottom: 2.4rem;
   overflow: auto;
   padding: 1.6rem;
-  border-radius: 1rem;
-  background-color: #f3f3f3;
+  border-radius: 0.4rem;
+  background-color: #ffffff;
   position: relative;
 `
 export const Title = styled.p`

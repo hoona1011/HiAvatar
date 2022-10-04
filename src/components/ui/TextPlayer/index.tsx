@@ -76,7 +76,30 @@ export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
     <S.Wrapper onClick={userSelectedHandler}>
       <S.PlayerBar focus={findData?.focus}>
         <li>
-          <S.ItemNum>{itemData.sentenceId}</S.ItemNum>
+          <div>
+            <audio src={currentSong} ref={audioElem} />
+            <div onClick={playPause}>
+              {isplaying ? (
+                <PauseIcon
+                  width='32'
+                  height='32'
+                  isSelected={findData?.focus}
+                />
+              ) : (
+                <PlayIcon width='32' height='32' />
+              )}
+            </div>
+            <div onClick={stop}>
+              <StopIcon width='32' height='32' />
+            </div>
+          </div>
+        </li>
+        <li>
+          <S.ItemNum>
+            {itemData.sentenceId < 10
+              ? '0' + itemData.sentenceId
+              : itemData.sentenceId}
+          </S.ItemNum>
           <S.TextEdit
             name='text'
             onChange={userInputHandler}
@@ -90,43 +113,30 @@ export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
         </li>
         <li>
           <div>
-            <audio src={currentSong} ref={audioElem} />
-            <div onClick={playPause}>
-              {isplaying ? (
-                <PauseIcon
-                  width='32'
-                  height='32'
-                  isSelected={findData?.focus}
-                />
-              ) : (
-                <PlayIcon width='32' height='32' isSelected={findData?.focus} />
-              )}
-            </div>
-            <div onClick={stop}>
-              <StopIcon width='32' height='32' isSelected={findData?.focus} />
-            </div>
-          </div>
-          <div>
             <S.CloseButton onClick={userRemoveHandler}>
-              <CloseIcon width='24' height='24' />
+              <CloseIcon width='24' height='24' isSelected={findData?.focus} />
             </S.CloseButton>
           </div>
         </li>
       </S.PlayerBar>
       <S.SetUpBtnList focus={findData?.focus}>
         <li>
-          <S.TextEditBtn onClick={userEditHandler}>+ 문장 추가</S.TextEditBtn>
+          <S.TextEditBtn onClick={userEditHandler}>문장 추가</S.TextEditBtn>
         </li>
         <li>
-          <span>{spacingValue / 10}초</span>
-          <S.SntncSpcng
-            type='range'
-            min='0'
-            max='30'
-            value={spacingValue}
-            step='1'
-            onChange={chnsnSpcng}
-          />
+          <S.SntncSpcngBtn>
+            <span>간격조절</span>
+            <span className='visibility'>{spacingValue / 10}초</span>
+            <S.SntncSpcng
+              className='visibility'
+              type='range'
+              min='0'
+              max='30'
+              value={spacingValue}
+              step='1'
+              onChange={chnsnSpcng}
+            />
+          </S.SntncSpcngBtn>
         </li>
       </S.SetUpBtnList>
     </S.Wrapper>
