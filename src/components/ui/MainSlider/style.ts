@@ -41,6 +41,7 @@ export const Content = styled.div`
     ${({ isSelected, theme }: StyledComponentsProps) =>
       isSelected ? theme.palette.blue50 : theme.palette.blue10};
   background-color: ${({ theme }) => theme.palette.blue10};
+  background-image: url(${({ thumbnail }: StyledComponentsProps) => thumbnail});
   opacity: ${({ isSelected }: StyledComponentsProps) => (isSelected ? 1 : 0.3)};
   &:hover {
     opacity: 1;

@@ -115,6 +115,7 @@ export interface ProjectNavProps extends RenderTypeProps {}
 export interface StyledComponentsProps {
   isSelected?: boolean
   isShowModal?: boolean
+  thumbnail?: string
   theme: any
 }
 
@@ -127,9 +128,8 @@ export interface HistoryData {
   projects: ProjectsHistory[]
   videos: VideosHistory[]
 }
-export interface ProjectsHistory {
-  projectId: number
-  projectName: string
+
+export interface ProjectsHistory extends ProjectInfo {
   lastModifiedAt: string
 }
 export interface VideosHistory {
@@ -138,6 +138,14 @@ export interface VideosHistory {
   thumbnail: string
   videoUrl: string
   createdAt: string
+}
+
+export interface Project {
+  data: ProjectInfo
+}
+export interface ProjectInfo {
+  projectId: number
+  projectName: string
 }
 
 // 현재
