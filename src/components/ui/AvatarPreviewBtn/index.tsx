@@ -15,11 +15,11 @@ export const AvatarPreviewBtn = () => {
   }, [selectedValue])
 
   return (
-    <S.Container disabled={!isAllSelected}>
+    <S.Button disabled={!isAllSelected}>
       <S.Inner>
         <S.Content>미리보기 재설정</S.Content>
         <PreviewReload width='1.3rem' height='1.2rem' />
       </S.Inner>
-    </S.Container>
+    </S.Button>
   )
 }
