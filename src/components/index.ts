@@ -33,7 +33,4 @@ export { AvatarPreviewBtn } from './ui/AvatarPreviewBtn'
 export { ProjectHistoryPlayer } from './ui/ProjectHistoryPlayer'
 export { CompleteButton } from 'components/ui/CompleteButton'
 export { ProjectVideoList } from 'components/ui/ProjectVideoList'
-
-// data
-export { ProjectHistoryData } from 'components/data/ProjectHistoryData'
-export { ProjectAvatarData } from 'components/data/ProjectAvatarData'
+export { CreateProjectButton } from 'components/ui/CreateProjectButton'
