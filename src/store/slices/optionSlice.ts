@@ -8,7 +8,6 @@ const initialState = {
   speed: 0,
   pitch: 0,
   sentenceSpacing: 0,
-  audioFile: '',
   splitTextList: [
     {
       sentenceId: 1,
