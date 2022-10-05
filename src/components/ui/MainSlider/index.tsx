@@ -20,10 +20,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
   SwiperCore.use([Navigation])
 
   const avatarDetailListHandler = (selectedAvatar: string) => {
-    dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
+    dispatch(changeAvatarDetailList(selectedAvatar))
   }
   const selectedValueHandler = (selectedValue: SelectedValue) => {
-    dispatch(changeSelectedValue({ diff: selectedValue }))
+    dispatch(changeSelectedValue(selectedValue))
   }
 
   // swiper 관련
@@ -67,9 +67,9 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                 >
                   <S.Content
                     thumbnail={avatar[1].thumbnail}
-                    isSelected={selectedValue?.avatarName === avatar[0]}
+                    isSelected={selectedValue.avatarName === avatar[0]}
                   />
-                  <S.Name isSelected={selectedValue?.avatarName === avatar[0]}>
+                  <S.Name isSelected={selectedValue.avatarName === avatar[0]}>
                     아바타 {index + 1}
                   </S.Name>
                 </SwiperSlide>
@@ -94,10 +94,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     >
                       <S.Content
                         thumbnail={thumbnail}
-                        isSelected={selectedValue?.avatarType === position}
+                        isSelected={selectedValue.avatarType === position}
                       />
                       <S.Name
-                        isSelected={selectedValue?.avatarType === position}
+                        isSelected={selectedValue.avatarType === position}
                       >
                         {position}
                       </S.Name>
@@ -124,10 +124,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     >
                       <S.Content
                         thumbnail={thumbnail}
-                        isSelected={selectedValue?.avatarType === position}
+                        isSelected={selectedValue.avatarType === position}
                       />
                       <S.Name
-                        isSelected={selectedValue?.avatarType === position}
+                        isSelected={selectedValue.avatarType === position}
                       >
                         {position}
                       </S.Name>
@@ -154,10 +154,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                     >
                       <S.Content
                         thumbnail={thumbnail}
-                        isSelected={selectedValue?.avatarType === position}
+                        isSelected={selectedValue.avatarType === position}
                       />
                       <S.Name
-                        isSelected={selectedValue?.avatarType === position}
+                        isSelected={selectedValue.avatarType === position}
                       >
                         {position}
                       </S.Name>

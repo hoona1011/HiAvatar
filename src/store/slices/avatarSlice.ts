@@ -1,7 +1,7 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useAppSelector, useAppDispatch } from 'store'
 
-import type { AvatarState } from 'index'
+import type { AvatarState, AvatarData, SelectedValue } from 'index'
 
 const initialState: AvatarState = {
   totalAvatarData: [],
@@ -14,15 +14,19 @@ const initialState: AvatarState = {
     bgName: ''
   },
   isAllSelected: false,
-  isShowModal: false
+  isShowModal: false,
+  avatarPreview: ''
 }
 
 export const avatarSlice = createSlice({
   name: 'avatar',
   initialState,
   reducers: {
-    changeTotalAvatarData(state, action) {
-      const avatarData = action.payload.diff
+    changeTotalAvatarData(
+      state: AvatarState,
+      action: PayloadAction<AvatarData>
+    ) {
+      const avatarData = action.payload
       const avatarList = Object.entries(avatarData.dummyData) // 2차원 배열로 만들어주기
       const backgroundList = avatarList.pop() // 마지막 요소는 `backgroundList` 이므로 따로 보관
 
@@ -30,14 +34,17 @@ export const avatarSlice = createSlice({
       state.avatarList = avatarList
       state.backgroundList = (backgroundList as any[])[1]
     },
-    changeAvatarDetailList(state, action) {
+    changeAvatarDetailList(state: AvatarState, action: PayloadAction<string>) {
       const avatarDetailList = state.avatarList.filter(
-        (avatar) => (avatar as unknown[])[0] === action.payload.diff
+        (avatar) => avatar[0] === action.payload
       )
       state.avatarDetailList = (avatarDetailList as any[])[0][1]
     },
-    changeSelectedValue(state, action) {
-      const selectedValue = action.payload.diff
+    changeSelectedValue(
+      state: AvatarState,
+      action: PayloadAction<SelectedValue>
+    ) {
+      const selectedValue = action.payload
       const key = Object.keys(selectedValue)[0]
       const value = Object.values(selectedValue)[0]
 
@@ -54,13 +61,16 @@ export const avatarSlice = createSlice({
         [key]: value
       }
     },
-    changeIsAllSelected(state, action) {
+    changeIsAllSelected(state: AvatarState) {
       const values = Object.values(state.selectedValue)
       const res = values.every((value) => value.length > 0)
       state.isAllSelected = res
     },
-    changeIsShowModal(state, action) {
-      state.isShowModal = action.payload.diff
+    changeIsShowModal(state: AvatarState, action: PayloadAction<boolean>) {
+      state.isShowModal = action.payload
+    },
+    changeAvatarPreview(state: AvatarState, action: PayloadAction<string>) {
+      state.avatarPreview = action.payload
     }
   }
 })
@@ -70,7 +80,8 @@ export const {
   changeAvatarDetailList,
   changeSelectedValue,
   changeIsAllSelected,
-  changeIsShowModal
+  changeIsShowModal,
+  changeAvatarPreview
 } = avatarSlice.actions
 
 export const useAvatar = () => {
@@ -85,6 +96,7 @@ export const useAvatar = () => {
   const selectedValue = useAppSelector((state) => state.avatar.selectedValue)
   const isAllSelected = useAppSelector((state) => state.avatar.isAllSelected)
   const isShowModal = useAppSelector((state) => state.avatar.isShowModal)
+  const avatarPreview = useAppSelector((state) => state.avatar.avatarPreview)
   const dispatch = useAppDispatch()
 
   return {
@@ -95,6 +107,7 @@ export const useAvatar = () => {
     selectedValue,
     isAllSelected,
     isShowModal,
+    avatarPreview,
     dispatch
   }
 }

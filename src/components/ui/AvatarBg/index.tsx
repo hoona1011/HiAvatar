@@ -7,7 +7,7 @@ export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
 
   const selectedValueHandler = (selectedValue: SelectedValue) => {
-    dispatch(changeSelectedValue({ diff: selectedValue }))
+    dispatch(changeSelectedValue(selectedValue))
   }
 
   return (

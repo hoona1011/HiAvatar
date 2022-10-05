@@ -14,14 +14,14 @@ export const ProjectAvatarData = () => {
   const { selectedValue, dispatch } = useAvatar()
 
   const avatarListHandler = () => {
-    data && dispatch(changeTotalAvatarData({ diff: data }))
+    data && dispatch(changeTotalAvatarData(data))
     if (!selectedValue.avatarType) {
       // 사용자가 지정한 아바타 타입이 없을 경우
       avatarDetailListHandler('avatar1') // 기본값 지정
     }
   }
   const avatarDetailListHandler = (selectedAvatar: string) => {
-    dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
+    dispatch(changeAvatarDetailList(selectedAvatar))
   }
 
   useEffect(() => {

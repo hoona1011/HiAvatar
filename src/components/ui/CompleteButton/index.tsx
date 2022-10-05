@@ -5,7 +5,7 @@ import { useAvatar, changeIsShowModal } from 'store/slices/avatarSlice'
 export const CompleteButton = () => {
   const { isAllSelected, dispatch } = useAvatar()
   const modalHandler = () => {
-    dispatch(changeIsShowModal({ diff: true }))
+    dispatch(changeIsShowModal(true))
   }
   return (
     <S.Button disabled={!isAllSelected} onClick={modalHandler}>

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Projects, Project } from 'index'
+import type { Projects, Project, ProjectInfo, HistoryData } from 'index'
 
 const url = import.meta.env.VITE_SERVICE_URL
 const accessToken = import.meta.env.VITE_TOKEN
@@ -17,7 +17,7 @@ export const historyApi = createApi({
     }
   }),
   endpoints: (builder) => ({
-    getHistory: builder.query({
+    getHistory: builder.query<HistoryData[], void>({
       query: () => ({
         url: 'projects',
         method: 'GET'
@@ -26,7 +26,7 @@ export const historyApi = createApi({
         return responseData['data']
       }
     }),
-    createProject: builder.mutation({
+    createProject: builder.mutation<ProjectInfo, void>({
       query: () => ({
         url: 'projects',
         method: 'POST'
