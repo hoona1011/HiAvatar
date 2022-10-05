@@ -5,43 +5,26 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperNextIcon, SwiperPrevIcon } from 'components/Icons'
 import 'swiper/components/navigation/navigation.min.css'
 import {
-  changeTotalAvatarData,
   changeAvatarDetailList,
   useAvatar,
   changeSelectedValue
 } from 'store/slices/avatarSlice'
-import { useGetAvatarQuery } from 'api/avatarApi'
 
 import type { MainSliderProps, SelectedValue, DetailList } from 'index'
-import { useLocation } from 'react-router-dom'
 
 export const MainSlider = ({ renderType }: MainSliderProps) => {
-  const location = useLocation()
-  const projectId = location.pathname.replace(/[^0-9]/g, '')
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
-  const { data: avatarData, isLoading, isError } = useGetAvatarQuery(projectId)
   const { avatarList, avatarDetailList, selectedValue, dispatch } = useAvatar()
   SwiperCore.use([Navigation])
 
-  const avatarListHandler = () => {
-    avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
-
-    if (!selectedValue.avatarType) {
-      avatarDetailListHandler('avatar1') // 기본값 지정
-    }
-  }
   const avatarDetailListHandler = (selectedAvatar: string) => {
     dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
   }
   const selectedValueHandler = (selectedValue: SelectedValue) => {
     dispatch(changeSelectedValue({ diff: selectedValue }))
   }
-
-  useEffect(() => {
-    avatarData && avatarListHandler()
-  }, [avatarData])
 
   // swiper 관련
   useEffect(() => {
@@ -66,13 +49,6 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
     }
   }, [swiperSetting])
 
-  if (isLoading || !avatarData) {
-    return <div>로딩중</div>
-  }
-
-  if (isError) {
-    return <div>에러</div>
-  }
   const RenderValue = () => {
     switch (renderType) {
       case 'AvatarSelector':

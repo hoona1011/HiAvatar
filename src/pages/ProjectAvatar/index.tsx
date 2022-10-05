@@ -6,13 +6,15 @@ import {
   ProjectRightNav,
   AvatarBg,
   ProjectNav,
-  ProjectAvatarModal
+  ProjectAvatarModal,
+  ProjectAvatarData
 } from 'components'
 import * as S from './style'
 
 export const ProjectAvatar = () => {
   return (
     <>
+      <ProjectAvatarData />
       <TheHeader />
       <S.Container>
         <S.LeftContainer>
