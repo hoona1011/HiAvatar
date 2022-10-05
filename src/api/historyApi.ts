@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Projects } from 'index'
+import type { Projects, Project } from 'index'
 
 const url = import.meta.env.VITE_SERVICE_URL
 const accessToken = import.meta.env.VITE_TOKEN
@@ -8,8 +8,7 @@ export const historyApi = createApi({
   reducerPath: 'historyApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
-    credentials: 'omit',
-    prepareHeaders: (headers, { getState }) => {
+    prepareHeaders: (headers) => {
       const accessTokenCookies = accessToken
       if (accessTokenCookies) {
         headers.set('Authorization', `Bearer ${accessTokenCookies}`)
@@ -26,8 +25,17 @@ export const historyApi = createApi({
       transformResponse: (responseData: Projects) => {
         return responseData['data']
       }
+    }),
+    createProject: builder.mutation({
+      query: () => ({
+        url: 'projects',
+        method: 'POST'
+      }),
+      transformResponse: (responseData: Project) => {
+        return responseData['data']
+      }
     })
   })
 })
 
-export const { useGetHistoryQuery } = historyApi
+export const { useGetHistoryQuery, useCreateProjectMutation } = historyApi
