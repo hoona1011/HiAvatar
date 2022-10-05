@@ -9,10 +9,11 @@ export const ProjectAvatarModal = () => {
   const navigate = useNavigate()
 
   const modalHandler = () => {
-    dispatch(changeIsShowModal({ diff: false }))
+    dispatch(changeIsShowModal(false))
   }
   const completeHandler = () => {
     navigate('/project-history')
+    modalHandler()
   }
 
   return (

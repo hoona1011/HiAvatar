@@ -97,12 +97,13 @@ export interface SelectedValue {
 }
 export interface AvatarState {
   totalAvatarData: AvatarData[] | AvatarData
-  avatarList: AvatarDummyData[] | unknown[]
+  avatarList: AvatarDummyData[]
   avatarDetailList: DummyDataContent[]
   backgroundList: BackgroundList[]
   selectedValue: SelectedValue
   isAllSelected: boolean
   isShowModal: boolean
+  avatarPreview: string
 }
 // 아래 세 개는 renderType 말고는 다른 prop가 없지만 추후 확장성을 고려하여 제작하였습니다
 interface RenderTypeProps {
@@ -115,6 +116,7 @@ export interface ProjectNavProps extends RenderTypeProps {}
 export interface StyledComponentsProps {
   isSelected?: boolean
   isShowModal?: boolean
+  thumbnail?: string
   theme: any
 }
 
@@ -127,9 +129,8 @@ export interface HistoryData {
   projects: ProjectsHistory[]
   videos: VideosHistory[]
 }
-export interface ProjectsHistory {
-  projectId: number
-  projectName: string
+
+export interface ProjectsHistory extends ProjectInfo {
   lastModifiedAt: string
 }
 export interface VideosHistory {
@@ -138,6 +139,20 @@ export interface VideosHistory {
   thumbnail: string
   videoUrl: string
   createdAt: string
+}
+
+export interface Project {
+  data: ProjectInfo
+}
+export interface ProjectInfo {
+  projectId: number
+  projectName: string
+}
+export interface AvatarPreview {
+  data: PreviewData
+}
+export interface PreviewData {
+  thumbnail: string
 }
 
 // 현재
