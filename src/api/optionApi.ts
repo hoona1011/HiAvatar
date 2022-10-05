@@ -21,11 +21,22 @@ export const optionApi = createApi({
         body: projectData
       }),
       transformResponse: (response) => {
-        console.log('응답값', response)
+        console.log('postOptions 응답값', response)
+        return response
+      }
+    }),
+    postVoice: builder.mutation({
+      query: ({ voiceData, projectId }) => ({
+        url: `/projects/${projectId}/audio-file`,
+        method: 'POST',
+        body: voiceData
+      }),
+      transformResponse: (response) => {
+        console.log('postVoice 응답값', response)
         return response
       }
     })
   })
 })
 
-export const { usePostOptionsMutation } = optionApi
+export const { usePostOptionsMutation, usePostVoiceMutation } = optionApi
