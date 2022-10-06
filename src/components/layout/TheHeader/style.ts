@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   width: 100%;
   height: 5.6rem;
-  background-color: #e7e7e7;
+  background-color: #fbfcff;
 `
 
 export const Inner = styled.div`
@@ -13,7 +13,7 @@ export const Inner = styled.div`
   }
   & > div:nth-child(2) {
     flex-grow: 1;
-    padding-left: 3.7rem;
+    padding-left: 2.9rem;
     font-size: 2.1rem;
   }
 
@@ -37,7 +37,7 @@ export const BtnForm = styled.button`
 
   border-radius: 0.8rem;
   border: none;
-  background-color: #757575;
+  background-color: #6691ff;
 `
 
 export const EditBtn = styled.button`

@@ -1,15 +1,23 @@
 import React from 'react'
 import * as S from './style'
-import { EditIcon } from '../../Icons'
-import { useLocation } from 'react-router-dom'
+import { EditIcon, LogoIcon } from '../../Icons'
+import { Outlet, useLocation, useParams } from 'react-router-dom'
 
 export const TheHeader = (propFunction: any) => {
   const location = useLocation()
+  const { projectId } = useParams()
+
   console.log(location.pathname)
+  // console.log(projectId)
 
   const rightRenderBtnList = () => {
     switch (location.pathname) {
       case '/':
+        return (
+          <>
+            <S.BtnForm>회원가입</S.BtnForm>
+          </>
+        )
       case '/sign-up':
       case '/my-page':
       case '/project-history':
@@ -19,8 +27,8 @@ export const TheHeader = (propFunction: any) => {
             <S.BtnForm onClick={propFunction.myInfo}>내정보</S.BtnForm>
           </>
         )
-      case '/project-text-edit':
-      case '/project-avatar':
+      case `/project-text-edit/${projectId}`:
+      case `/project-avatar/${projectId}`:
         return (
           <S.BtnForm onClick={propFunction.saveProject}>
             프로젝트 저장
@@ -31,8 +39,8 @@ export const TheHeader = (propFunction: any) => {
 
   const leftRenderBtnList = () => {
     switch (location.pathname) {
-      case '/project-text-edit':
-      case '/project-avatar':
+      case `/project-text-edit/${projectId}`:
+      case `/project-avatar/${projectId}`:
         return (
           <>
             <S.ProjectName>프로젝트명</S.ProjectName>
@@ -47,10 +55,15 @@ export const TheHeader = (propFunction: any) => {
   return (
     <S.Wrapper>
       <S.Inner>
-        <div>로고</div>
+        <div>
+          <a href='/'>
+            <LogoIcon width='6rem' height='1.5rem' />
+          </a>
+        </div>
         <div>{leftRenderBtnList()}</div>
         <div>{rightRenderBtnList()}</div>
       </S.Inner>
+      <Outlet />
     </S.Wrapper>
   )
 }
