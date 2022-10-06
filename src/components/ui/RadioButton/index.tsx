@@ -8,7 +8,7 @@ export const RadioButton = ({
   content,
   onChange
 }: RadioButtonProps) => {
-  const optionStateValue = useAppSelector((state) => state.option[name])
+  const optionStateValue = useAppSelector((state: any) => state.option[name])
 
   return (
     <S.Container key={value}>
