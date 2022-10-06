@@ -11,13 +11,13 @@ export const NextButton = ({ requestFunc }: NextButtonProps) => {
   const [postOptions, { isLoading }] = usePostOptionsMutation()
 
   const onClickHandler = async () => {
-    const projectData = { ...optionData }
+    const projectData: any = { ...optionData }
     delete projectData.userSelectedList
     const res = await postOptions({
       projectData,
       projectId
     })
-    if (res.data.data.result === 'Success') {
+    if ((res as any).data.data.result === 'Success') {
       navigate(`/project-avatar/${projectId}`)
     } else {
       alert('에러가 발생했습니다. 다시 시도해주세요')

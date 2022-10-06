@@ -40,7 +40,7 @@ export const ProjectTextEdit = () => {
           <S.Inner>
             <S.Left>
               <S.StepNavigator>
-                <ProjectNav />
+                <ProjectNav renderType='ProjectTextEdit' />
               </S.StepNavigator>
               <TextEditList />
               <S.VoicePlayer>

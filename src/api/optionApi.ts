@@ -42,7 +42,7 @@ export const optionApi = createApi({
         method: 'GET'
       }),
       transformResponse: (response) => {
-        return response.data
+        return (response as any).data
       }
     }),
     postText: builder.mutation({
