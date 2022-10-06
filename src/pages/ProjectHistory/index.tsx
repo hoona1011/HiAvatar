@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react'
 import * as S from './style'
 import {
-  TheHeader,
   ProjectList,
   ProjectVideoList,
   CreateProjectButton,
@@ -31,7 +30,6 @@ export const ProjectHistory = () => {
   }
   return (
     <>
-      <TheHeader />
       <S.Container>
         <CreateProjectButton />
         <ProjectList />
