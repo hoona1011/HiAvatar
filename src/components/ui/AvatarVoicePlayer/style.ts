@@ -29,8 +29,7 @@ export const AvatarName = styled.div`
 `
 export const Hashtag = styled.div`
   display: flex;
-  div {
-    background-color: #efefef;
+  .hashtag {
     border-radius: 3rem;
     border: none;
     font-size: 1.2rem;

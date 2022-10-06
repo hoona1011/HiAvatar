@@ -21,11 +21,13 @@ export const NextButton = ({ requestFunc }: NextButtonProps) => {
 
     if (res.data.data.result === 'Success') {
       navigate(`/project-avatar/${projectId}`)
+    } else {
+      alert('에러가 발생했습니다. 다시 시도해주세요')
     }
   }
 
   return (
-    <S.Button onClick={onClickHandler}>
+    <S.Button disabled={optionData.texts.length === 0} onClick={onClickHandler}>
       {!isLoading ? <span>다음</span> : <span>로딩 스피너...</span>}
     </S.Button>
   )

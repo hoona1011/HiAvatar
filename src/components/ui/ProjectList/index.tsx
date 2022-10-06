@@ -2,9 +2,15 @@ import React from 'react'
 import * as S from './style'
 import { TooltipIcon } from 'components/Icons'
 import { useHistory } from 'store/slices/historySlice'
+import { useNavigate } from 'react-router-dom'
 
 export const ProjectList = () => {
   const { projects } = useHistory()
+  const navigate = useNavigate()
+
+  const onClickHandler = (projectId: number) => {
+    navigate(`/project-text-edit/${projectId}`)
+  }
 
   const renderValue = () => {
     if (projects.length) {
@@ -13,7 +19,11 @@ export const ProjectList = () => {
 
         return (
           <S.Inner key={projectId}>
-            <S.Project></S.Project>
+            <S.Project
+              onClick={() => {
+                onClickHandler(projectId)
+              }}
+            />
             <S.Name>{projectName}</S.Name>
             <S.Date>{lastModifiedAt}</S.Date>
           </S.Inner>

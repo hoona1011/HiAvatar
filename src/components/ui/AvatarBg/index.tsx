@@ -7,7 +7,7 @@ export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
 
   const selectedValueHandler = (selectedValue: SelectedValue) => {
-    dispatch(changeSelectedValue({ diff: selectedValue }))
+    dispatch(changeSelectedValue(selectedValue))
   }
 
   return (
@@ -18,20 +18,19 @@ export const AvatarBg = () => {
       </S.Top>
       <S.BgContainer>
         {backgroundList &&
-          backgroundList.map((background, index: number) => {
+          backgroundList.map(({ position, thumbnail }, index: number) => {
             return (
               <S.BgInner
-                key={background.position}
+                key={position}
                 onClick={() => {
-                  selectedValueHandler({ bgName: background.position })
+                  selectedValueHandler({ bgName: position })
                 }}
               >
                 <S.Bg
-                  isSelected={selectedValue.bgName === background.position}
+                  thumbnail={thumbnail}
+                  isSelected={selectedValue.bgName === position}
                 />
-                <S.BgName
-                  isSelected={selectedValue.bgName === background.position}
-                >
+                <S.BgName isSelected={selectedValue.bgName === position}>
                   배경 {index + 1}
                 </S.BgName>
               </S.BgInner>

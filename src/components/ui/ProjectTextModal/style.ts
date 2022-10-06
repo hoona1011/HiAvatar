@@ -38,7 +38,15 @@ export const Label = styled.div`
     margin-left: 0.8rem;
   }
 `
-export const CloseBtn = styled.button``
+export const CloseBtn = styled.button`
+  path {
+    fill: ${({ theme }) => theme.palette.blue50};
+
+    &:hover {
+      fill: ${({ theme }) => theme.palette.blue60};
+    }
+  }
+`
 export const TextArea = styled.textarea`
   width: 100%;
   height: 36.2rem;
@@ -80,6 +88,9 @@ export const CancelBtn = styled.button`
   background-color: ${({ theme }) => theme.palette.blue3};
   border-radius: 1rem;
   margin-right: 1.6rem;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue10};
+  }
 `
 
 export const EnterBtn = styled.button`
@@ -89,6 +100,13 @@ export const EnterBtn = styled.button`
   color: ${({ theme }) => theme.palette.white};
   font-weight: 500;
   font-size: 1.2rem;
-  background-color: ${({ theme }) => theme.palette.blue70};
+  background-color: ${({ theme }) => theme.palette.blue50};
   border-radius: 1rem;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue70};
+  }
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.gray20};
+  }
 `

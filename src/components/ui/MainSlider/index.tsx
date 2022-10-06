@@ -5,12 +5,10 @@ import { Swiper, SwiperSlide } from 'swiper/react'
 import { SwiperNextIcon, SwiperPrevIcon } from 'components/Icons'
 import 'swiper/components/navigation/navigation.min.css'
 import {
-  changeTotalAvatarData,
   changeAvatarDetailList,
   useAvatar,
   changeSelectedValue
 } from 'store/slices/avatarSlice'
-import { useGetAvatarQuery } from 'api/avatarApi'
 
 import type { MainSliderProps, SelectedValue, DetailList } from 'index'
 
@@ -18,27 +16,15 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)
   const prevRef = useRef<HTMLButtonElement>(null)
   const nextRef = useRef<HTMLButtonElement>(null)
-  const { data: avatarData, isLoading, isError } = useGetAvatarQuery()
   const { avatarList, avatarDetailList, selectedValue, dispatch } = useAvatar()
   SwiperCore.use([Navigation])
 
-  const avatarListHandler = () => {
-    avatarData && dispatch(changeTotalAvatarData({ diff: avatarData }))
-
-    if (!selectedValue.avatarType) {
-      avatarDetailListHandler('avatar1') // 기본값 지정
-    }
-  }
   const avatarDetailListHandler = (selectedAvatar: string) => {
-    dispatch(changeAvatarDetailList({ diff: selectedAvatar }))
+    dispatch(changeAvatarDetailList(selectedAvatar))
   }
   const selectedValueHandler = (selectedValue: SelectedValue) => {
-    dispatch(changeSelectedValue({ diff: selectedValue }))
+    dispatch(changeSelectedValue(selectedValue))
   }
-
-  useEffect(() => {
-    avatarData && avatarListHandler()
-  }, [avatarData])
 
   // swiper 관련
   useEffect(() => {
@@ -63,13 +49,6 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
     }
   }, [swiperSetting])
 
-  if (isLoading || !avatarData) {
-    return <div>로딩중</div>
-  }
-
-  if (isError) {
-    return <div>에러</div>
-  }
   const RenderValue = () => {
     switch (renderType) {
       case 'AvatarSelector':
@@ -87,9 +66,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
                   }}
                 >
                   <S.Content
-                    isSelected={selectedValue?.avatarName === avatar[0]}
+                    thumbnail={avatar[1].thumbnail}
+                    isSelected={selectedValue.avatarName === avatar[0]}
                   />
-                  <S.Name isSelected={selectedValue?.avatarName === avatar[0]}>
+                  <S.Name isSelected={selectedValue.avatarName === avatar[0]}>
                     아바타 {index + 1}
                   </S.Name>
                 </SwiperSlide>
@@ -101,75 +81,90 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
         return (
           <Swiper {...swiperSetting}>
             {avatarDetailList.detailList1 &&
-              avatarDetailList?.detailList1.map(({ position }: DetailList) => {
-                return (
-                  <SwiperSlide
-                    key={position}
-                    onClick={() => {
-                      selectedValueHandler({
-                        avatarType: position
-                      })
-                    }}
-                  >
-                    <S.Content
-                      isSelected={selectedValue?.avatarType === position}
-                    />
-                    <S.Name isSelected={selectedValue?.avatarType === position}>
-                      {position}
-                    </S.Name>
-                  </SwiperSlide>
-                )
-              })}
+              avatarDetailList?.detailList1.map(
+                ({ position, thumbnail }: DetailList) => {
+                  return (
+                    <SwiperSlide
+                      key={position}
+                      onClick={() => {
+                        selectedValueHandler({
+                          avatarType: position
+                        })
+                      }}
+                    >
+                      <S.Content
+                        thumbnail={thumbnail}
+                        isSelected={selectedValue.avatarType === position}
+                      />
+                      <S.Name
+                        isSelected={selectedValue.avatarType === position}
+                      >
+                        {position}
+                      </S.Name>
+                    </SwiperSlide>
+                  )
+                }
+              )}
           </Swiper>
         )
       case 'AvatarSort-2':
         return (
           <Swiper {...swiperSetting}>
             {avatarDetailList.detailList2 &&
-              avatarDetailList?.detailList2.map(({ position }: DetailList) => {
-                return (
-                  <SwiperSlide
-                    key={position}
-                    onClick={() => {
-                      selectedValueHandler({
-                        avatarType: position
-                      })
-                    }}
-                  >
-                    <S.Content
-                      isSelected={selectedValue?.avatarType === position}
-                    />
-                    <S.Name isSelected={selectedValue?.avatarType === position}>
-                      {position}
-                    </S.Name>
-                  </SwiperSlide>
-                )
-              })}
+              avatarDetailList?.detailList2.map(
+                ({ position, thumbnail }: DetailList) => {
+                  return (
+                    <SwiperSlide
+                      key={position}
+                      onClick={() => {
+                        selectedValueHandler({
+                          avatarType: position
+                        })
+                      }}
+                    >
+                      <S.Content
+                        thumbnail={thumbnail}
+                        isSelected={selectedValue.avatarType === position}
+                      />
+                      <S.Name
+                        isSelected={selectedValue.avatarType === position}
+                      >
+                        {position}
+                      </S.Name>
+                    </SwiperSlide>
+                  )
+                }
+              )}
           </Swiper>
         )
       case 'AvatarSort-3':
         return (
           <Swiper {...swiperSetting}>
             {avatarDetailList.detailList3 &&
-              avatarDetailList?.detailList3.map(({ position }: DetailList) => {
-                return (
-                  <SwiperSlide
-                    key={position}
-                    onClick={() => {
-                      selectedValueHandler({
-                        avatarType: position
-                      })
-                    }}
-                  >
-                    <S.Content
-                      isSelected={selectedValue?.avatarType === position}
-                    />
-                    <S.Name isSelected={selectedValue?.avatarType === position}>
-                      {position}
-                    </S.Name>
-                  </SwiperSlide>
-                )
-              })}
+              avatarDetailList?.detailList3.map(
+                ({ position, thumbnail }: DetailList) => {
+                  return (
+                    <SwiperSlide
+                      key={position}
+                      onClick={() => {
+                        selectedValueHandler({
+                          avatarType: position
+                        })
+                      }}
+                    >
+                      <S.Content
+                        thumbnail={thumbnail}
+                        isSelected={selectedValue.avatarType === position}
+                      />
+                      <S.Name
+                        isSelected={selectedValue.avatarType === position}
+                      >
+                        {position}
+                      </S.Name>
+                    </SwiperSlide>
+                  )
+                }
+              )}
           </Swiper>
         )
     }

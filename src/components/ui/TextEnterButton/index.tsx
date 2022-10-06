@@ -5,7 +5,7 @@ export const TextEnterButton = ({ setModal }: Modalprops) => {
   return (
     <S.Button onClick={() => setModal(true)}>
       <TextIcon width='1.6rem' height='1.6rem' />
-      <div>텍스트로 입력하기</div>
+      <div className='button-label'>텍스트로 입력하기</div>
     </S.Button>
   )
 }
