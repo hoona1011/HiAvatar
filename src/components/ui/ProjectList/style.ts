@@ -53,6 +53,7 @@ export const Project = styled.div`
 
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.palette.blue5};
+  cursor: pointer;
 `
 
 export const Name = styled.div`

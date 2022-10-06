@@ -27,6 +27,7 @@ export const ProjectTextModal = ({
   const onCloseHandler = () => {
     setModal(false)
   }
+  const isEmpty = textRef.current?.value.length === 0
 
   return (
     <S.Background>
@@ -50,7 +51,9 @@ export const ProjectTextModal = ({
         />
         <S.Bottom>
           <S.CancelBtn onClick={onCloseHandler}>취소</S.CancelBtn>
-          <S.EnterBtn onClick={onCompleteHandler}>확인</S.EnterBtn>
+          <S.EnterBtn disabled={isEmpty} onClick={onCompleteHandler}>
+            확인
+          </S.EnterBtn>
         </S.Bottom>
       </S.Modal>
     </S.Background>

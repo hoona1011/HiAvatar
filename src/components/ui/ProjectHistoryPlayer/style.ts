@@ -36,7 +36,7 @@ export const Btn = styled.button`
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.palette.blue50};
   ${({ theme }) => theme.common.flexCenter};
-  div {
+  .button-label {
     color: ${({ theme }) => theme.palette.white};
     font-size: 1.4rem;
     font-weight: 500;

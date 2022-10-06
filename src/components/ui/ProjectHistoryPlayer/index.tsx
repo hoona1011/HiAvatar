@@ -33,7 +33,7 @@ export const ProjectHistoryPlayer = ({
 
       <S.Btn onClick={downloadHandler}>
         <DownloadIcon width='1.6rem' height='1.6rem' />
-        <div>Download</div>
+        <div className='button-label'>Download</div>
       </S.Btn>
     </S.Container>
   )

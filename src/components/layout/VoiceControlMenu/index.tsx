@@ -19,7 +19,7 @@ export const VoiceControlMenu = () => {
       </S.Title>
 
       <S.VoiceControllerContainer>
-        <div>
+        <div className='voice-controller'>
           <VoiceController
             label={'속도 조절'}
             min={-5}
@@ -29,7 +29,7 @@ export const VoiceControlMenu = () => {
             optionValue={speed}
           />
         </div>
-        <div>
+        <div className='voice-controller'>
           <VoiceController
             label={'톤 조절'}
             min={-5}
@@ -39,7 +39,7 @@ export const VoiceControlMenu = () => {
             optionValue={pitch}
           />
         </div>
-        <div>
+        <div className='voice-controller'>
           <VoiceController
             label={'간격 조절'}
             min={0.0}

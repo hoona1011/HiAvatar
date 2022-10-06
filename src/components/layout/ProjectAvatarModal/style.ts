@@ -44,6 +44,32 @@ export const Content = styled.div`
   line-height: 1.9rem;
 `
 
+export const LoadingContent = styled.div`
+  margin: 2rem 0 2rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  text-align: center;
+  line-height: 1.9rem;
+`
+
+export const Spinner = styled.div`
+  border: 0.6rem solid #f3f3f3;
+  border-top: 0.6rem solid ${({ theme }) => theme.palette.blue70};
+  border-radius: 50%;
+  width: 4rem;
+  height: 4rem;
+  margin: 0 auto;
+  animation: spin 1s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`
+
 export const BtnContainer = styled.div`
   text-align: center;
 `

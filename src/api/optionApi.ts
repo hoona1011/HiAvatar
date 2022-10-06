@@ -8,7 +8,7 @@ export const optionApi = createApi({
     baseUrl: url,
     prepareHeaders: (headers) => {
       const token =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiI5IiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NTA2NzQyMn0.89xXrTPIAvaV-JxEPb74jOnh1y7uN1PdIF8Xjeac3QAbxe-RUVl0KtFS10Rzkeusm-sfD2hKnMT5cVFFaZqv4w'
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NjUxMTYyMzV9.DQYNFIr1dSOOsN7JFiGuEmrnDPQfU7tABDsx80FaDjbX5hj3Tr71CGnMIJxhyy3M-6awN9GrGBmVJ4Kx_8lfew'
       headers.set('Authorization', `Bearer ${token}`)
       return headers
     }
