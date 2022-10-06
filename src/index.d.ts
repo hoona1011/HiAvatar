@@ -48,64 +48,6 @@ export interface HistoryPlayerProps {
 }
 
 // 희영
-export interface Avatar {
-  [avatar: string]: AvatarContent
-}
-export interface AvatarContent {
-  data: AvatarData
-}
-export interface AvatarData {
-  avatarName: string
-  avatarType: string
-  bgName: string
-  language: string
-  sex: string
-  characterName: string
-  speed: number
-  pitch: number
-  sentenceSpacing: number
-  dummyData: AvatarDummyData
-}
-export interface AvatarDummyData {
-  avatar1: DummyDataContent
-  avatar2: DummyDataContent
-  avatar3: DummyDataContent
-  avatar4: DummyDataContent
-  avatar5: DummyDataContent
-  avatar6: DummyDataContent
-  avatar7: DummyDataContent
-  backgroundList: BackgroundList[]
-}
-export interface DummyDataContent {
-  thumbnail?: string
-  detailList1: DetailList[]
-  detailList2: DetailList[]
-  detailList3: DetailList[]
-}
-export interface BackgroundList {
-  position: string
-  thumbnail: string
-}
-export interface DetailList {
-  position: string
-  thumbnail: string
-}
-export interface SelectedValue {
-  avatarName?: string
-  avatarType?: string
-  bgName?: string
-}
-export interface AvatarState {
-  totalAvatarData: AvatarData[] | AvatarData
-  avatarList: AvatarDummyData[]
-  avatarDetailList: DummyDataContent[]
-  backgroundList: BackgroundList[]
-  selectedValue: SelectedValue
-  isAllSelected: boolean
-  isShowModal: boolean
-  avatarPreview: string
-  isAvatarPreviewLoading: boolean
-}
 // 아래 세 개는 renderType 말고는 다른 prop가 없지만 추후 확장성을 고려하여 제작하였습니다
 interface RenderTypeProps {
   renderType: string
@@ -119,53 +61,6 @@ export interface StyledComponentsProps {
   isShowModal?: boolean
   thumbnail?: string
   theme: any
-}
-
-export interface Projects {
-  data: HistoryData[]
-  code: number
-  status: string
-}
-export interface HistoryData {
-  projects: ProjectsHistory[]
-  videos: VideosHistory[]
-}
-
-export interface ProjectsHistory extends ProjectInfo {
-  lastModifiedAt: string
-}
-export interface VideosHistory {
-  videoId: number
-  videoName: string
-  thumbnail: string
-  videoUrl: string
-  createdAt: string
-}
-
-export interface Project {
-  data: ProjectInfo
-}
-export interface ProjectInfo {
-  projectId: number
-  projectName: string
-}
-export interface AvatarPreview {
-  data: PreviewData
-}
-export interface PreviewData {
-  thumbnail: string
-}
-
-export interface Video {
-  data: VideoData
-  code: number
-  status: string
-}
-export interface VideoData {
-  result: string
-  videoId: number
-  videoName: string
-  createdAt: string
 }
 
 // 현재

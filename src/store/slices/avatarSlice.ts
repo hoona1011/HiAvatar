@@ -1,13 +1,65 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 import { useAppSelector, useAppDispatch } from 'store'
 
-import type { AvatarState, AvatarData, SelectedValue } from 'index'
+import type { AvatarState, AvatarData, AvatarList, SelectedValue } from 'avatar'
 
 const initialState: AvatarState = {
-  totalAvatarData: [],
-  avatarList: [],
+  totalAvatarData: {
+    avatarName: '',
+    avatarType: '',
+    bgName: '',
+    language: '',
+    sex: '',
+    characterName: '',
+    speed: 0,
+    pitch: 0,
+    sentenceSpacing: 0,
+    dummyData: {
+      avatar1: {
+        thumbnail: '',
+        detailList1: [
+          {
+            position: '',
+            thumbnail: ''
+          }
+        ]
+      },
+      backgroundList: [
+        {
+          position: '',
+          thumbnail: ''
+        }
+      ]
+    }
+  },
+  avatarList: [
+    [
+      '',
+      {
+        thumbnail: '',
+        detailList1: [
+          {
+            position: '',
+            thumbnail: ''
+          }
+        ],
+        detailList2: [
+          {
+            position: '',
+            thumbnail: ''
+          }
+        ],
+        detailList3: [
+          {
+            position: '',
+            thumbnail: ''
+          }
+        ]
+      }
+    ]
+  ],
   avatarDetailList: [],
-  backgroundList: [],
+  backgroundList: [['', { position: '', thumbnail: '' }]],
   selectedValue: {
     avatarName: 'avatar1',
     avatarType: '',
@@ -28,18 +80,19 @@ export const avatarSlice = createSlice({
       action: PayloadAction<AvatarData>
     ) {
       const avatarData = action.payload
-      const avatarList = Object.entries(avatarData.dummyData) // 2차원 배열로 만들어주기
-      const backgroundList = avatarList.pop() // 마지막 요소는 `backgroundList` 이므로 따로 보관
-
+      const avatarList: [string, any][] = Object.entries(avatarData.dummyData)
+      console.log('List', Object.entries(avatarData.dummyData))
+      const backgroundList = avatarList[avatarList.length - 1]
+      avatarList.pop()
       state.totalAvatarData = avatarData
       state.avatarList = avatarList
-      state.backgroundList = (backgroundList as any[])[1]
+      state.backgroundList = backgroundList[1]
     },
     changeAvatarDetailList(state: AvatarState, action: PayloadAction<string>) {
       const avatarDetailList = state.avatarList.filter(
         (avatar) => avatar[0] === action.payload
       )
-      state.avatarDetailList = (avatarDetailList as any[])[0][1]
+      state.avatarDetailList = avatarDetailList[0][1] as any
     },
     changeSelectedValue(
       state: AvatarState,

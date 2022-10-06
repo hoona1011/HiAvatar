@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { changeSelectedValue, useAvatar } from 'store/slices/avatarSlice'
 import { TooltipIcon } from 'components/Icons'
-import type { SelectedValue } from 'index'
+import type { SelectedValue } from 'avatar'
 export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
 
@@ -18,7 +18,7 @@ export const AvatarBg = () => {
       </S.Top>
       <S.BgContainer>
         {backgroundList &&
-          backgroundList.map(({ position, thumbnail }, index: number) => {
+          backgroundList.map(({ position, thumbnail }: any, index: number) => {
             return (
               <S.BgInner
                 key={position}
