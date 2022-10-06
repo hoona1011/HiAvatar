@@ -6,7 +6,8 @@ import {
   ProjectRightNav,
   AvatarBg,
   ProjectNav,
-  ProjectAvatarModal
+  ProjectAvatarModal,
+  Loading
 } from 'components'
 import { useGetAvatarQuery } from 'api/avatarApi'
 import { useLocation } from 'react-router-dom'
@@ -38,12 +39,8 @@ export const ProjectAvatar = () => {
     data && avatarListHandler()
   }, [data])
 
-  useEffect(() => {
-    // console.log('생성')
-  }, [])
-
   if (isLoading || !data) {
-    return <>{/* 로딩 관련 추가 예정 */}</>
+    return <Loading />
   }
 
   if (isError) {
@@ -63,6 +60,7 @@ export const ProjectAvatar = () => {
         <ProjectRightNav renderType='ProjectAvatar' />
       </S.Container>
       <ProjectAvatarModal />
+      {/* <Loading /> */}
     </>
   )
 }

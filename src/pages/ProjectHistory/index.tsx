@@ -4,7 +4,8 @@ import {
   TheHeader,
   ProjectList,
   ProjectVideoList,
-  CreateProjectButton
+  CreateProjectButton,
+  Loading
 } from 'components'
 import { useGetHistoryQuery } from 'api/historyApi'
 import { changeHistory, useHistory } from 'store/slices/historySlice'
@@ -22,7 +23,7 @@ export const ProjectHistory = () => {
   }, [data])
 
   if (isLoading || !data) {
-    return <>{/* 로딩 관련 추가 예정 */}</>
+    return <Loading />
   }
 
   if (isError) {
