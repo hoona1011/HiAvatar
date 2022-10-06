@@ -1,12 +1,16 @@
 import styled from 'styled-components'
 
+interface Props {
+  theme: any
+  isSelected: boolean
+}
 export const Container = styled.div`
   input {
     display: none;
   }
 `
 
-export const VoicePlayer = styled.label`
+export const VoicePlayer = styled.label<Props>`
   width: 100%;
   padding: 2.4rem 1.6rem;
   height: 10.4rem;
@@ -27,10 +31,9 @@ export const AvatarName = styled.div`
   font-weight: 600;
   margin-bottom: 0.8rem;
 `
-export const Hashtag = styled.div`
+export const Hashtag = styled.div<Props>`
   display: flex;
-  div {
-    background-color: #efefef;
+  .hashtag {
     border-radius: 3rem;
     border: none;
     font-size: 1.2rem;

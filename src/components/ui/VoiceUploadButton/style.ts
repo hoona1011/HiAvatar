@@ -8,7 +8,10 @@ export const Button = styled.button`
   border: 1px dashed ${({ theme }) => theme.palette.blue20};
   cursor: pointer;
 
-  div {
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue3};
+  }
+  .button-label {
     color: ${({ theme }) => theme.palette.blue50};
     margin-top: 0.8rem;
     font-size: 1.2rem;

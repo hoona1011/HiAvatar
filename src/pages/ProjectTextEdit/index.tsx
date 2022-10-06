@@ -1,8 +1,7 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAppSelector } from 'store'
 import {
   TextEnterButton,
-  TheHeader,
   ProjectText,
   ProjectRightNav,
   ProjectTextModal,
@@ -13,14 +12,23 @@ import {
   ProjectRightMenu
 } from 'components'
 import * as S from './style'
+import { useGetOptionQuery } from 'api/optionApi'
+import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getOption } from 'store/slices/optionSlice'
 
 export const ProjectTextEdit = () => {
   //현재
 
   // 지훈
-  const ProjectTextEditOption = useAppSelector((state) => state.option)
+  const dispatch = useDispatch()
+  const { projectId } = useParams()
+  const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
+  const { dummyData } = useAppSelector((state) => state.option)
 
-  console.log('전역상태값: ', ProjectTextEditOption)
+  useEffect(() => {
+    optionData && dispatch(getOption(optionData))
+  }, [optionData])
 
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)
@@ -28,12 +36,11 @@ export const ProjectTextEdit = () => {
   return (
     <>
       <div>
-        <TheHeader />
         <S.Wrapper>
           <S.Inner>
             <S.Left>
               <S.StepNavigator>
-                <ProjectNav />
+                <ProjectNav renderType='ProjectTextEdit' />
               </S.StepNavigator>
               <TextEditList />
               <S.VoicePlayer>
@@ -46,8 +53,8 @@ export const ProjectTextEdit = () => {
                 setRenderType={setRenderType}
               />
               <ProjectRightNav renderType={renderType} />
-              {/* <VoiceUploadButton />
-              <TextEnterButton setModal={setModal} /> */}
+              <VoiceUploadButton />
+              <TextEnterButton setModal={setModal} />
               {modal && (
                 <ProjectTextModal
                   setModal={setModal}

@@ -19,7 +19,7 @@ export const Title = styled.div`
 `
 
 export const VoiceControllerContainer = styled.div`
-  div {
+  .voice-controller {
     margin-bottom: 1.6rem;
 
     &:nth-child(3) {

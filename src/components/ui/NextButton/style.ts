@@ -7,6 +7,12 @@ export const Button = styled.button`
   border-radius: 1rem;
   border: none;
   cursor: pointer;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue90};
+  }
+  &:disabled {
+    background-color: ${({ theme }) => theme.palette.gray20};
+  }
 
   span {
     color: #ffffff;

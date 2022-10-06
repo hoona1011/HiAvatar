@@ -56,9 +56,9 @@ export const AvatarVoicePlayer = ({
         <S.TextContainer>
           <S.AvatarName>{characterName}</S.AvatarName>
           <S.Hashtag isSelected={isSelected}>
-            {hashtag1 && <div>#{hashtag1}</div>}
-            {hashtag2 && <div>#{hashtag2}</div>}
-            {hashtag3 && <div>#{hashtag3}</div>}
+            {hashtag1 && <div className='hashtag'>#{hashtag1}</div>}
+            {hashtag2 && <div className='hashtag'>#{hashtag2}</div>}
+            {hashtag3 && <div className='hashtag'>#{hashtag3}</div>}
           </S.Hashtag>
         </S.TextContainer>
         <S.BtnContainer>

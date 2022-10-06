@@ -38,6 +38,7 @@ const palette = {
   orange2: '#E47B00',
   orange15: '#FFEACF',
   //GRAY
+  gray20: '#D0D0D1',
   gray30: '#0000004D',
   gray50: '',
   gray100: ''
