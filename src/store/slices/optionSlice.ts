@@ -16,14 +16,13 @@ const initialState = {
     }
   ],
   userSelectedList: [],
-  //페이지 get 요청 때문에 추가된 두 항목입니다
   dummyData: {},
   totalAudioUrl: '',
   textPreviewData: {},
   textsPreviewData: {}
 }
 export interface X {
-  [key: string]: string | number | any[] // 추후 수정
+  [key: string]: string | number | any[] | any // 추후 수정
 }
 interface OptionState extends X {
   texts: string
@@ -35,6 +34,11 @@ interface OptionState extends X {
   sentenceSpacing: number
   audioFile: string
   splitTextList: any[]
+  userSelectedList: any[]
+  dummyData: any
+  totalAudioUrl: string
+  textPreviewData: any
+  textsPreviewData: any
 }
 export const optionSlice = createSlice({
   name: 'option',
@@ -43,7 +47,7 @@ export const optionSlice = createSlice({
     changeOption(state, action) {
       const { name, value } = action.payload
 
-      ;(state as OptionState)[name] = value
+      ;(state as any)[name] = value
     },
     renderText(state, action) {
       const textDatas = action.payload
