@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react'
 import { useAppSelector } from 'store'
 import {
   TextEnterButton,
-  TheHeader,
   ProjectText,
   ProjectRightNav,
   ProjectTextModal,
@@ -37,7 +36,6 @@ export const ProjectTextEdit = () => {
   return (
     <>
       <div>
-        <TheHeader />
         <S.Wrapper>
           <S.Inner>
             <S.Left>
