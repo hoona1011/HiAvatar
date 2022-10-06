@@ -4,7 +4,8 @@ import { PreviewReload } from 'components/Icons'
 import {
   useAvatar,
   changeIsAllSelected,
-  changeAvatarPreview
+  changeAvatarPreview,
+  changeIsAvatarPreviewLoading
 } from 'store/slices/avatarSlice'
 import { useCreateAvatarPreviewMutation } from 'api/avatarApi'
 
@@ -17,13 +18,16 @@ export const AvatarPreviewBtn = () => {
     dispatch(changeIsAllSelected())
   }
   const onClickHandler = () => {
+    dispatch(changeIsAvatarPreviewLoading(true))
     createPreview(selectedValue)
       .unwrap()
       .then(({ thumbnail }) => {
         dispatch(changeAvatarPreview(thumbnail))
+        dispatch(changeIsAvatarPreviewLoading(false))
       })
       .catch((error) => {
-        console.log(error)
+        alert(error)
+        dispatch(changeIsAvatarPreviewLoading(false))
       })
   }
   useEffect(() => {

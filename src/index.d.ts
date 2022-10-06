@@ -104,6 +104,7 @@ export interface AvatarState {
   isAllSelected: boolean
   isShowModal: boolean
   avatarPreview: string
+  isAvatarPreviewLoading: boolean
 }
 // 아래 세 개는 renderType 말고는 다른 prop가 없지만 추후 확장성을 고려하여 제작하였습니다
 interface RenderTypeProps {
@@ -153,6 +154,18 @@ export interface AvatarPreview {
 }
 export interface PreviewData {
   thumbnail: string
+}
+
+export interface Video {
+  data: VideoData
+  code: number
+  status: string
+}
+export interface VideoData {
+  result: string
+  videoId: number
+  videoName: string
+  createdAt: string
 }
 
 // 현재
