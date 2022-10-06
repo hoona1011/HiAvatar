@@ -16,7 +16,9 @@ const initialState = {
       sentenceSpacing: 0
     }
   ],
-  userSelectedList: []
+  userSelectedList: [],
+  textPreviewData: {},
+  textsPreviewData: {}
 }
 export interface X {
   [key: string]: string | number | any[] // 추후 수정
@@ -179,6 +181,17 @@ export const optionSlice = createSlice({
       state.userSelectedList.map((item) => {
         item.focus = false
       })
+    },
+    textCreatePreview(state, action) {
+      const textData = action.payload
+      state.textPreviewData = { ...textData }
+      // console.log('textData', textData)
+    },
+    textsCreatePreview(state, action) {
+      const textData = action.payload
+      state.textsPreviewData = { ...textData }
+      // console.log(textData)
+      // console.log(current(state))
     }
   }
 })
@@ -191,5 +204,7 @@ export const {
   editText,
   selectedText,
   outFocus,
-  changeChnsnSpcng
+  changeChnsnSpcng,
+  textCreatePreview,
+  textsCreatePreview
 } = optionSlice.actions

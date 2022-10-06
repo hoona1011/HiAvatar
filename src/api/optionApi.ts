@@ -14,17 +14,24 @@ export const optionApi = createApi({
     }
   }),
   endpoints: (builder) => ({
-    postOptions: builder.mutation({
-      query: ({ data }) => ({
-        url: '/test-api', // 명세서: `/projects/${data에서 뽑아서 사용할 projectId}/save`
+    postTexts: builder.mutation({
+      query: (data) => ({
+        url: '/projects/3/save', // 명세서: `/projects/${data에서 뽑아서 사용할 projectId}/save`
         method: 'POST',
         body: data
       }),
       transformResponse: (response) => {
         return response
       }
+    }),
+    postText: builder.mutation({
+      query: (data) => ({
+        url: '/projects/save/text',
+        method: 'POST',
+        body: data
+      })
     })
   })
 })
 
-export const { usePostOptionsMutation } = optionApi
+export const { usePostTextsMutation, usePostTextMutation } = optionApi
