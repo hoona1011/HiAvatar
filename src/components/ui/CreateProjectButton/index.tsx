@@ -1,19 +1,21 @@
-import { useCreateProjectMutation } from 'api/historyApi'
-import { CreateProjectButtonIcon } from 'components/Icons'
 import React from 'react'
 import * as S from './style'
+import { useCreateProjectMutation } from 'api/historyApi'
+import { CreateProjectButtonIcon } from 'components/Icons'
+import { useNavigate } from 'react-router-dom'
 
 export const CreateProjectButton = () => {
   const [createProject] = useCreateProjectMutation()
+  const navigate = useNavigate()
 
   const onClickHandler = () => {
     createProject()
       .unwrap()
-      .then((payload) => {
-        console.log(payload)
+      .then(({ projectId }) => {
+        navigate(`/project-text-edit/${projectId}`)
       })
       .catch((error) => {
-        console.log(error)
+        alert(error)
       })
   }
 
