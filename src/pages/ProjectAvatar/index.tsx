@@ -10,7 +10,7 @@ import {
   Loading
 } from 'components'
 import { useGetAvatarQuery } from 'api/avatarApi'
-import { useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import {
   changeAvatarDetailList,
   changeTotalAvatarData,
@@ -19,8 +19,7 @@ import {
 import * as S from './style'
 
 export const ProjectAvatar = () => {
-  const location = useLocation()
-  const projectId = location.pathname.replace(/[^0-9]/g, '')
+  const { projectId } = useParams()
   const { data, isLoading, isError } = useGetAvatarQuery(projectId)
   const { selectedValue, dispatch } = useAvatar()
 
@@ -36,6 +35,7 @@ export const ProjectAvatar = () => {
   }
 
   useEffect(() => {
+    console.log(projectId)
     data && avatarListHandler()
   }, [data])
 
