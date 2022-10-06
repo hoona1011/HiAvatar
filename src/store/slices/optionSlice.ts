@@ -18,7 +18,9 @@ const initialState = {
   userSelectedList: [],
   //페이지 get 요청 때문에 추가된 두 항목입니다
   dummyData: {},
-  totalAudioUrl: ''
+  totalAudioUrl: '',
+  textPreviewData: {},
+  textsPreviewData: {}
 }
 export interface X {
   [key: string]: string | number | any[] // 추후 수정
@@ -207,6 +209,17 @@ export const optionSlice = createSlice({
       state.splitTextList = splitTextList
       state.dummyData = dummyData
       state.totalAudioUrl = totalAudioUrl
+    },
+    textCreatePreview(state, action) {
+      const textData = action.payload
+      state.textPreviewData = { ...textData }
+      // console.log('textData', textData)
+    },
+    textsCreatePreview(state, action) {
+      const textData = action.payload
+      state.textsPreviewData = { ...textData }
+      // console.log(textData)
+      // console.log(current(state))
     }
   }
 })
@@ -220,5 +233,7 @@ export const {
   selectedText,
   outFocus,
   changeChnsnSpcng,
-  getOption
+  getOption,
+  textCreatePreview,
+  textsCreatePreview
 } = optionSlice.actions

@@ -44,6 +44,13 @@ export const optionApi = createApi({
       transformResponse: (response) => {
         return response.data
       }
+    }),
+    postText: builder.mutation({
+      query: (data) => ({
+        url: '/projects/save/text',
+        method: 'POST',
+        body: data
+      })
     })
   })
 })
@@ -51,5 +58,6 @@ export const optionApi = createApi({
 export const {
   usePostOptionsMutation,
   usePostVoiceMutation,
-  useGetOptionQuery
+  useGetOptionQuery,
+  usePostTextMutation
 } = optionApi

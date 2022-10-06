@@ -6,27 +6,48 @@ import {
   removeText,
   changeText,
   selectedText,
-  changeChnsnSpcng
+  changeChnsnSpcng,
+  textCreatePreview
 } from 'store/slices/optionSlice'
-import { useAppSelector } from 'store'
+import { usePostTextMutation } from 'api/optionApi'
 
-export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
-  const [songs, setSongs] = useState('/src/assets/test.mp3')
-  const [isplaying, setisplaying] = useState(false)
-  const [currentSong, setCurrentSong] = useState('/src/assets/test.mp3')
+export const TextPlayer = ({
+  itemData,
+  splitTextList,
+  findData,
+  textPreviewData,
+  dispatch
+}) => {
+  const [isPlaying, setIsPlaying] = useState(false)
 
   const audioElem = useRef()
+  const [audioFile, setAudioFile] = useState()
   const [spacingValue, setSpacingValue] = useState(0)
+  const [postText] = usePostTextMutation()
 
   // console.log(audioElem)
 
   useEffect(() => {
-    if (isplaying) {
-      audioElem.current.play()
-    } else {
-      audioElem.current.pause()
+    // console.log(Boolean(audioFile))
+    if (Boolean(audioFile)) {
+      if (isPlaying) {
+        audioElem.current.play()
+      } else {
+        audioElem.current.pause()
+      }
     }
-  }, [isplaying])
+  }, [isPlaying, audioFile])
+
+  useEffect(() => {
+    postText(textPreviewData)
+      .unwrap()
+      .then((data) => {
+        setAudioFile(data.data.audioFile)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }, [textPreviewData.text, audioFile])
 
   // const userInputHandler = (e) => {
   //   const { name, value } = e.target
@@ -55,13 +76,21 @@ export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
     e.stopPropagation()
     dispatch(selectedText({ itemData, splitTextList }))
   }
+  // console.log(audioFile)
+  const playPause = () => {
+    const textData = { text: itemData.text }
+    dispatch(textCreatePreview(textData))
+    // console.log(audioFile)
 
-  const playPause = () => setisplaying(!isplaying)
+    setIsPlaying(!isPlaying)
+  }
+
+  const audioFileUrl = `data:audio/wav;base64,${audioFile}`
 
   const stop = () => {
     audioElem.current.pause()
     audioElem.current.currentTime = 0
-    setisplaying(false)
+    setIsPlaying(false)
   }
 
   const chnsnSpcng = (e) => {
@@ -77,9 +106,9 @@ export const TextPlayer = ({ itemData, splitTextList, findData, dispatch }) => {
       <S.PlayerBar focus={findData?.focus}>
         <li>
           <div>
-            <audio src={currentSong} ref={audioElem} />
+            <audio src={audioFileUrl} ref={audioElem} />
             <div onClick={playPause}>
-              {isplaying ? (
+              {isPlaying ? (
                 <PauseIcon
                   width='32'
                   height='32'
