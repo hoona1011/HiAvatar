@@ -155,6 +155,18 @@ export interface PreviewData {
   thumbnail: string
 }
 
+export interface Video {
+  data: VideoData
+  code: number
+  status: string
+}
+export interface VideoData {
+  result: string
+  videoId: number
+  videoName: string
+  createdAt: string
+}
+
 // 현재
 export interface IconProps {
   bgColor?: string
