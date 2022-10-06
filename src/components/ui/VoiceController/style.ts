@@ -1,5 +1,10 @@
 import styled, { css } from 'styled-components'
 
+interface Props {
+  theme?: any
+  progress?: number
+  controlType: string
+}
 export const Container = styled.div`
   /* height: 9.6rem; */
   border-radius: 1rem;
@@ -13,7 +18,7 @@ export const Container = styled.div`
     color: ${({ theme }) => theme.palette.txt};
   }
 `
-export const RangeContainer = styled.div`
+export const RangeContainer = styled.div<Props>`
   display: flex;
   justify-content: center;
   align-items: center;
@@ -68,7 +73,7 @@ export const RangeContainer = styled.div`
 
       background: ${({ theme, progress, controlType }) => {
         // Range slider color finder depending on control type, progress or container color
-        const colorFinder = (type, isProgress) => {
+        const colorFinder = (type: string, isProgress?: boolean) => {
           switch (type) {
             case 'speed':
               return isProgress ? theme.palette.blue50 : theme.palette.blue5
