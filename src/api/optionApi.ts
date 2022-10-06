@@ -8,20 +8,41 @@ export const optionApi = createApi({
     baseUrl: url,
     prepareHeaders: (headers) => {
       const token =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NjUxMTYyMzV9.DQYNFIr1dSOOsN7JFiGuEmrnDPQfU7tABDsx80FaDjbX5hj3Tr71CGnMIJxhyy3M-6awN9GrGBmVJ4Kx_8lfew'
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NjUxMjg4ODl9.fjIYcCMaESAAAkXk3J-BEYc9CP4BLvP_-ikpzrDwHvflt1RFqXLTMMFOvgc-J5VdpGLe6UcbqypaFCv-_IFyPQ'
       headers.set('Authorization', `Bearer ${token}`)
       return headers
     }
   }),
   endpoints: (builder) => ({
-    postTexts: builder.mutation({
-      query: (data) => ({
-        url: '/projects/3/save', // 명세서: `/projects/${data에서 뽑아서 사용할 projectId}/save`
+    postOptions: builder.mutation({
+      query: ({ projectData, projectId }) => ({
+        url: `/projects/${projectId}/save`,
         method: 'POST',
-        body: data
+        body: projectData
       }),
       transformResponse: (response) => {
+        console.log('postOptions 응답값', response)
         return response
+      }
+    }),
+    postVoice: builder.mutation({
+      query: ({ voiceData, projectId }) => ({
+        url: `/projects/${projectId}/audio-file`,
+        method: 'POST',
+        body: voiceData
+      }),
+      transformResponse: (response) => {
+        console.log('postVoice 응답값', response)
+        return response
+      }
+    }),
+    getOption: builder.query({
+      query: (projectId) => ({
+        url: `/projects/${projectId}/save`,
+        method: 'GET'
+      }),
+      transformResponse: (response) => {
+        return response.data
       }
     }),
     postText: builder.mutation({
@@ -34,4 +55,9 @@ export const optionApi = createApi({
   })
 })
 
-export const { usePostTextsMutation, usePostTextMutation } = optionApi
+export const {
+  usePostOptionsMutation,
+  usePostVoiceMutation,
+  useGetOptionQuery,
+  usePostTextMutation
+} = optionApi

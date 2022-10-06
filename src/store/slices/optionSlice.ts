@@ -4,11 +4,10 @@ const initialState = {
   texts: '',
   language: '한국어',
   sex: '남자',
-  characterName: '',
+  characterName: '', //요청 보낼 때만 필요한 값이 되었음
   speed: 0,
   pitch: 0,
   sentenceSpacing: 0,
-  audioFile: '',
   splitTextList: [
     {
       sentenceId: 1,
@@ -17,6 +16,9 @@ const initialState = {
     }
   ],
   userSelectedList: [],
+  //페이지 get 요청 때문에 추가된 두 항목입니다
+  dummyData: {},
+  totalAudioUrl: '',
   textPreviewData: {},
   textsPreviewData: {}
 }
@@ -182,6 +184,32 @@ export const optionSlice = createSlice({
         item.focus = false
       })
     },
+    getOption(state, action) {
+      //일단 노가다로 처리합니다...state를 통째로 바꾸려면 어떻게 해야하나요?? 안먹히네요
+      const {
+        texts,
+        language,
+        sex,
+        characterName,
+        speed,
+        pitch,
+        sentenceSpacing,
+        splitTextList,
+        dummyData,
+        totalAudioUrl
+      } = action.payload
+      console.log('슬라이스의 더미')
+      state.texts = texts
+      state.language = language
+      state.sex = sex
+      state.characterName = characterName
+      state.speed = speed
+      state.pitch = pitch
+      state.sentenceSpacing = sentenceSpacing
+      state.splitTextList = splitTextList
+      state.dummyData = dummyData
+      state.totalAudioUrl = totalAudioUrl
+    },
     textCreatePreview(state, action) {
       const textData = action.payload
       state.textPreviewData = { ...textData }
@@ -205,6 +233,7 @@ export const {
   selectedText,
   outFocus,
   changeChnsnSpcng,
+  getOption,
   textCreatePreview,
   textsCreatePreview
 } = optionSlice.actions
