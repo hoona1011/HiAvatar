@@ -35,7 +35,6 @@ export const ProjectAvatar = () => {
   }
 
   useEffect(() => {
-    console.log(projectId)
     data && avatarListHandler()
   }, [data])
 
