@@ -1,11 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Avatar, AvatarPreview } from 'index'
+import type { Projects, Project, ProjectInfo, HistoryData } from 'index'
 
 const url = import.meta.env.VITE_SERVICE_URL
 const accessToken = import.meta.env.VITE_TOKEN
 
-export const avatarApi = createApi({
-  reducerPath: 'avatarApi',
+export const historyApi = createApi({
+  reducerPath: 'historyApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
@@ -17,26 +17,25 @@ export const avatarApi = createApi({
     }
   }),
   endpoints: (builder) => ({
-    getAvatar: builder.query({
-      query: (id) => ({
-        url: `projects/${id}/avatar`,
+    getHistory: builder.query<HistoryData[], void>({
+      query: () => ({
+        url: 'projects',
         method: 'GET'
       }),
-      transformResponse: (responseData: Avatar) => {
+      transformResponse: (responseData: Projects) => {
         return responseData['data']
       }
     }),
-    createAvatarPreview: builder.mutation({
-      query: (selectedValue) => ({
-        url: 'projects/avatar-preview',
-        method: 'POST',
-        body: selectedValue
+    createProject: builder.mutation<ProjectInfo, void>({
+      query: () => ({
+        url: 'projects',
+        method: 'POST'
       }),
-      transformResponse: (responseData: AvatarPreview) => {
+      transformResponse: (responseData: Project) => {
         return responseData['data']
       }
     })
   })
 })
 
-export const { useGetAvatarQuery, useCreateAvatarPreviewMutation } = avatarApi
+export const { useGetHistoryQuery, useCreateProjectMutation } = historyApi

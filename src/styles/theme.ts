@@ -8,6 +8,7 @@ const palette = {
   clickBackground: '',
   progressBarGradient: '',
   GNABG: '#FBFCFF',
+  background: '#F3F5F9',
 
   //BLUE
   blue3: '#F4F7FF',

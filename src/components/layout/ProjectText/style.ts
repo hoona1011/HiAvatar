@@ -1,8 +1,6 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div`
-  width: 100%;
-`
+export const Wrapper = styled.div``
 
 export const Title = styled.p`
   font-size: 1.6rem;
@@ -13,12 +11,14 @@ export const Title = styled.p`
 export const TextGroup = styled.div`
   border-radius: 1rem;
   width: 100%;
-  background-color: #fff;
-  padding: 1.6rem;
+  background-color: #f6f9ff;
+
   font-size: 1.6rem;
 `
 
 export const TextBox = styled.div`
-  background-color: ${({ findData }) => (!findData ? 'none' : 'red')};
+  background-color: ${({ findData }) => (!findData ? 'none' : '#E6EDFF')};
+  border-radius: 1rem;
   padding: 1rem;
+  word-break: break-all;
 `

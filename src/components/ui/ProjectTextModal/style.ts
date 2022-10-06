@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import theme from 'styles/theme'
 
 export const Background = styled.div`
   /* display: none; */
@@ -8,71 +9,49 @@ export const Background = styled.div`
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.7);
   z-index: 3;
 `
 export const Modal = styled.div`
-  width: 86rem;
-  height: 51rem;
+  width: 79rem;
+  height: 48.2rem;
   background-color: #ffffff;
   margin: 10% auto;
-  padding: 1.6rem;
+  padding: 1.6rem 2.4rem;
   border-radius: 1rem;
   position: relative;
   text-align: center;
-
-  textarea {
-    /* width: 100%;
-    height: 39rem;
-    resize: none;
-    background: #f3f3f3;
-    display: block;
-    font-size: 1.4rem;
-    border-radius: 1rem;
-    border: transparent;
-    padding: 1.6rem;
-    margin: 1.6rem 0;
-    outline: none;
-    scrollbar-color: red;
-
-    &::-webkit-scrollbar {
-      width: 0.8rem;
-      cursor: pointer;
-    }
-    &::-webkit-scrollbar-thumb {
-      background-color: #808080;
-      border-radius: 1rem;
-    }
-    &::-webkit-scrollbar-track {
-      background-color: #d6d6d6;
-    } */
-  }
 `
 
 export const Top = styled.div`
   display: flex;
   justify-content: space-between;
+  align-items: center;
+  height: 3.2rem;
+  margin-bottom: 0.8rem;
+`
+export const Label = styled.div`
+  display: flex;
   label {
-    margin: auto 0;
     font-size: 1.6rem;
-    font-weight: 600;
+    font-weight: 500;
+    margin-left: 0.8rem;
   }
 `
-export const CloseBtn = styled.button`
-  cursor: pointer;
-`
+export const CloseBtn = styled.button``
 export const TextArea = styled.textarea`
   width: 100%;
-  height: 39rem;
+  height: 36.2rem;
   resize: none;
-  background: #f3f3f3;
+  background: ${({ theme }) => theme.palette.background};
   display: block;
   font-size: 1.4rem;
+  font-weight: 400;
   border-radius: 1rem;
   border: transparent;
   padding: 1.6rem;
-  margin: 1.6rem 0;
   outline: none;
+  margin-bottom: 1.6rem;
   scrollbar-color: red;
 
   &::-webkit-scrollbar {
@@ -90,27 +69,26 @@ export const TextArea = styled.textarea`
 
 export const Bottom = styled.div`
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
 `
 export const CancelBtn = styled.button`
-  width: 96px;
-  height: 32px;
-  color: #1c1c1c;
+  width: 16rem;
+  height: 3.2rem;
+  color: ${({ theme }) => theme.palette.blue70};
   font-weight: 500;
   font-size: 1.2rem;
-  background-color: #ececec;
+  background-color: ${({ theme }) => theme.palette.blue3};
   border-radius: 1rem;
-  cursor: pointer;
   margin-right: 1.6rem;
 `
 
 export const EnterBtn = styled.button`
-  width: 96px;
-  height: 32px;
-  color: #ffffff;
+  width: 16rem;
+  height: 3.2rem;
+
+  color: ${({ theme }) => theme.palette.white};
   font-weight: 500;
   font-size: 1.2rem;
-  background-color: #232323;
+  background-color: ${({ theme }) => theme.palette.blue70};
   border-radius: 1rem;
-  cursor: pointer;
 `
