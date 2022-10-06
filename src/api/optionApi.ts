@@ -8,7 +8,7 @@ export const optionApi = createApi({
     baseUrl: url,
     prepareHeaders: (headers) => {
       const token =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NDk3NzQ1NH0.HillBNuvF2GNpPdT-mTGYW9xEryK5rCwrz0tHqAdO7jl6dzYa_PAa3kpJTMe9FMnXSr82oXKzhqFef_idlAzXg'
+        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIxMCIsImF1dGgiOiJST0xFX1VTRVIiLCJleHAiOjE2NjUxMjg4ODl9.fjIYcCMaESAAAkXk3J-BEYc9CP4BLvP_-ikpzrDwHvflt1RFqXLTMMFOvgc-J5VdpGLe6UcbqypaFCv-_IFyPQ'
       headers.set('Authorization', `Bearer ${token}`)
       return headers
     }
@@ -35,8 +35,21 @@ export const optionApi = createApi({
         console.log('postVoice 응답값', response)
         return response
       }
+    }),
+    getOption: builder.query({
+      query: (projectId) => ({
+        url: `/projects/${projectId}/save`,
+        method: 'GET'
+      }),
+      transformResponse: (response) => {
+        return response.data
+      }
     })
   })
 })
 
-export const { usePostOptionsMutation, usePostVoiceMutation } = optionApi
+export const {
+  usePostOptionsMutation,
+  usePostVoiceMutation,
+  useGetOptionQuery
+} = optionApi

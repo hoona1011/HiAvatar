@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useAppSelector } from 'store'
 import {
   TextEnterButton,
@@ -13,14 +13,23 @@ import {
   ProjectRightMenu
 } from 'components'
 import * as S from './style'
+import { useGetOptionQuery } from 'api/optionApi'
+import { useParams } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { getOption } from 'store/slices/optionSlice'
 
 export const ProjectTextEdit = () => {
   //현재
 
   // 지훈
-  const ProjectTextEditOption = useAppSelector((state) => state.option)
+  const dispatch = useDispatch()
+  const { projectId } = useParams()
+  const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
+  const { dummyData } = useAppSelector((state) => state.option)
 
-  console.log('전역상태값: ', ProjectTextEditOption)
+  useEffect(() => {
+    optionData && dispatch(getOption(optionData))
+  }, [optionData])
 
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)

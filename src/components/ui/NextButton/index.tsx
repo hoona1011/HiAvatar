@@ -5,7 +5,7 @@ import { useAppSelector } from 'store'
 import { usePostOptionsMutation } from 'api/optionApi'
 export const NextButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
-  const { id: projectId } = useParams()
+  const { projectId } = useParams()
   const optionData = useAppSelector((state) => state.option)
 
   const [postOptions, { isLoading }] = usePostOptionsMutation()

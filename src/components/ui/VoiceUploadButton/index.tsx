@@ -7,7 +7,7 @@ import { usePostVoiceMutation } from 'api/optionApi'
 export const VoiceUploadButton = () => {
   const inputRef = useRef<HTMLInputElement | null>(null)
   const navigate = useNavigate()
-  const { id: projectId } = useParams()
+  const { projectId } = useParams()
   const [postVoice] = usePostVoiceMutation()
 
   const onClickHandler = () => {

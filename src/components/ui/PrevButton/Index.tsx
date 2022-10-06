@@ -3,9 +3,9 @@ import * as S from './style'
 
 export const PrevButton = () => {
   const navigate = useNavigate()
-  const { id } = useParams()
+  const { projectId } = useParams()
   const onClickHandler = () => {
-    navigate(`/project-text-edit/${id}`)
+    navigate(`/project-text-edit/${projectId}`)
   }
   return (
     <S.Button onClick={onClickHandler}>
