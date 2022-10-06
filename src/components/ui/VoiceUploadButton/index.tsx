@@ -34,7 +34,7 @@ export const VoiceUploadButton = () => {
   return (
     <S.Button onClick={onClickHandler}>
       <VoiceIcon width='2.4rem' height='2.4rem' />
-      <div>음성파일로 업로드하기</div>
+      <div className='button-label'>음성파일로 업로드하기</div>
       <input
         type='file'
         accept='audio/*'
