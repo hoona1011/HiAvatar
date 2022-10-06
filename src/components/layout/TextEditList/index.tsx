@@ -6,9 +6,8 @@ import { renderText, outFocus } from 'store/slices/optionSlice'
 
 export const TextEditList = () => {
   const dispatch = useAppDispatch()
-  const { texts, splitTextList, userSelectedList } = useAppSelector(
-    (state) => state.option
-  )
+  const { texts, splitTextList, userSelectedList, textPreviewData } =
+    useAppSelector((state) => state.option)
 
   useEffect(() => {
     dispatch(renderText(textDatas))
@@ -42,6 +41,7 @@ export const TextEditList = () => {
         key={item.sentenceId}
         itemData={item}
         splitTextList={splitTextList}
+        textPreviewData={textPreviewData}
         findData={findData}
         dispatch={dispatch}
       />
