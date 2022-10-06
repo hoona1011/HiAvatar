@@ -60,7 +60,6 @@ export const ProjectAvatar = () => {
         <ProjectRightNav renderType='ProjectAvatar' />
       </S.Container>
       <ProjectAvatarModal />
-      {/* <Loading /> */}
     </>
   )
 }

@@ -15,7 +15,8 @@ const initialState: AvatarState = {
   },
   isAllSelected: false,
   isShowModal: false,
-  avatarPreview: ''
+  avatarPreview: '',
+  isAvatarPreviewLoading: false
 }
 
 export const avatarSlice = createSlice({
@@ -71,6 +72,12 @@ export const avatarSlice = createSlice({
     },
     changeAvatarPreview(state: AvatarState, action: PayloadAction<string>) {
       state.avatarPreview = action.payload
+    },
+    changeIsAvatarPreviewLoading(
+      state: AvatarState,
+      action: PayloadAction<boolean>
+    ) {
+      state.isAvatarPreviewLoading = action.payload
     }
   }
 })
@@ -81,7 +88,8 @@ export const {
   changeSelectedValue,
   changeIsAllSelected,
   changeIsShowModal,
-  changeAvatarPreview
+  changeAvatarPreview,
+  changeIsAvatarPreviewLoading
 } = avatarSlice.actions
 
 export const useAvatar = () => {
@@ -97,6 +105,9 @@ export const useAvatar = () => {
   const isAllSelected = useAppSelector((state) => state.avatar.isAllSelected)
   const isShowModal = useAppSelector((state) => state.avatar.isShowModal)
   const avatarPreview = useAppSelector((state) => state.avatar.avatarPreview)
+  const isAvatarPreviewLoading = useAppSelector(
+    (state) => state.avatar.isAvatarPreviewLoading
+  )
   const dispatch = useAppDispatch()
 
   return {
@@ -108,6 +119,7 @@ export const useAvatar = () => {
     isAllSelected,
     isShowModal,
     avatarPreview,
+    isAvatarPreviewLoading,
     dispatch
   }
 }

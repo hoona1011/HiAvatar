@@ -53,11 +53,11 @@ export const LoadingContent = styled.div`
 `
 
 export const Spinner = styled.div`
-  border: 0.8rem solid #f3f3f3;
-  border-top: 0.8rem solid ${({ theme }) => theme.palette.blue70};
+  border: 0.6rem solid #f3f3f3;
+  border-top: 0.6rem solid ${({ theme }) => theme.palette.blue70};
   border-radius: 50%;
-  width: 5rem;
-  height: 5rem;
+  width: 4rem;
+  height: 4rem;
   margin: 0 auto;
   animation: spin 1s linear infinite;
   @keyframes spin {
