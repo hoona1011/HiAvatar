@@ -13,6 +13,7 @@ export const CreateProjectButton = () => {
       .unwrap()
       .then(({ projectId }) => {
         navigate(`/project-text-edit/${projectId}`)
+        navigate(0)
       })
       .catch((error) => {
         alert(error)

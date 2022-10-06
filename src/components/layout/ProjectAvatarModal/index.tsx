@@ -25,6 +25,7 @@ export const ProjectAvatarModal = () => {
         switch (result) {
           case 'Success': {
             navigate('/project-history')
+            navigate(0)
             modalHandler()
           }
           case 'Failed': {
