@@ -27,11 +27,13 @@ export const ProjectAvatarModal = () => {
             navigate('/project-history')
             navigate(0)
             modalHandler()
+            break
           }
           case 'Failed': {
             alert('영상 합성에 실패하였습니다')
             setIsCreateVideo(false)
             modalHandler()
+            break
           }
           default: {
             setIsCreateVideo(false)

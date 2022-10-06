@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import { useAppSelector, useAppDispatch } from 'store'
-import type { HistoryData } from 'index'
+import type { HistoryData } from 'history'
 
 const initialState: HistoryData = {
   projects: [],

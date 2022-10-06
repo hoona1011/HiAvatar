@@ -10,7 +10,8 @@ import {
   changeSelectedValue
 } from 'store/slices/avatarSlice'
 
-import type { MainSliderProps, SelectedValue, DetailList } from 'index'
+import type { MainSliderProps } from 'index'
+import type { SelectedValue, DetailList } from 'avatar'
 
 export const MainSlider = ({ renderType }: MainSliderProps) => {
   const [swiperSetting, setSwiperSetting] = useState<Swiper | null>(null)

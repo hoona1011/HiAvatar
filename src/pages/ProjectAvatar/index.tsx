@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react'
 import {
-  TheHeader,
   AvatarSelector,
   AvatarSort,
   ProjectRightNav,
@@ -48,7 +47,6 @@ export const ProjectAvatar = () => {
 
   return (
     <>
-      <TheHeader />
       <S.Container>
         <S.LeftContainer>
           <ProjectNav renderType='ProjectAvatar' />

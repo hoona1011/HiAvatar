@@ -1,5 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Avatar, AvatarPreview, Video } from 'index'
+import type { Avatar, AvatarPreview } from 'avatar'
+import type { Video } from 'history'
 
 const url = import.meta.env.VITE_SERVICE_URL
 const accessToken = import.meta.env.VITE_TOKEN
