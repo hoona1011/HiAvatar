@@ -1,14 +1,20 @@
+import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
 const url = import.meta.env.VITE_SERVICE_URL
+const cookies = new Cookies()
+//임시로 쿠키에 넣기 위해서 작성했습니다. 추후 삭제 예정
+const tempToken =
+  'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NTIwMjMxMX0.snE2B65owNTYREODn6UXt3KHF6sUlgpiNsQPdWJJyYgdSVfuJ7b4WqIo0iDtoV2Udwx7I1yJyrxj1d3t-iubpg'
+cookies.set('accessToken', tempToken, { path: '/' })
 
+const token = cookies.get('accessToken')
+console.log('token2', token)
 export const optionApi = createApi({
   reducerPath: 'optionApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      const token =
-        'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIyIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NTE1MjM5N30.XBYAANA5wILjYOqDkQDHF3eVJ8i-VIrvMQnQgQficyEKWpLlJZwFRxnNzP6F-DvKOxGG3G-3YnxvRjkEfToNlw'
       headers.set('Authorization', `Bearer ${token}`)
       return headers
     }
