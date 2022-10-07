@@ -22,26 +22,6 @@ const initialState: AvatarState = {
             position: '',
             thumbnail: ''
           }
-        ]
-      },
-      backgroundList: [
-        {
-          position: '',
-          thumbnail: ''
-        }
-      ]
-    }
-  },
-  avatarList: [
-    [
-      '',
-      {
-        thumbnail: '',
-        detailList1: [
-          {
-            position: '',
-            thumbnail: ''
-          }
         ],
         detailList2: [
           {
@@ -55,11 +35,38 @@ const initialState: AvatarState = {
             thumbnail: ''
           }
         ]
+      },
+      backgroundList: [
+        {
+          position: '',
+          thumbnail: ''
+        }
+      ]
+    }
+  },
+  avatarList: [],
+  avatarDetailList: {
+    thumbnail: '',
+    detailList1: [
+      {
+        position: '',
+        thumbnail: ''
+      }
+    ],
+    detailList2: [
+      {
+        position: '',
+        thumbnail: ''
+      }
+    ],
+    detailList3: [
+      {
+        position: '',
+        thumbnail: ''
       }
     ]
-  ],
-  avatarDetailList: [],
-  backgroundList: [['', { position: '', thumbnail: '' }]],
+  },
+  backgroundList: [],
   selectedValue: {
     avatarName: 'avatar1',
     avatarType: '',
@@ -80,19 +87,21 @@ export const avatarSlice = createSlice({
       action: PayloadAction<AvatarData>
     ) {
       const avatarData = action.payload
-      const avatarList: [string, any][] = Object.entries(avatarData.dummyData)
-      console.log('List', Object.entries(avatarData.dummyData))
-      const backgroundList = avatarList[avatarList.length - 1]
-      avatarList.pop()
+      const disposableAvatarData = Object.entries(avatarData.dummyData)
+      const disposableBackgroundData = disposableAvatarData.pop()
+      const avatarList = disposableAvatarData as [string, AvatarList][]
+      const backgroundList = disposableBackgroundData as [string, AvatarList[]]
+
       state.totalAvatarData = avatarData
       state.avatarList = avatarList
+      console.log(avatarList[0][1])
       state.backgroundList = backgroundList[1]
     },
     changeAvatarDetailList(state: AvatarState, action: PayloadAction<string>) {
       const avatarDetailList = state.avatarList.filter(
         (avatar) => avatar[0] === action.payload
       )
-      state.avatarDetailList = avatarDetailList[0][1] as any
+      state.avatarDetailList = avatarDetailList[0][1] as AvatarList
     },
     changeSelectedValue(
       state: AvatarState,
