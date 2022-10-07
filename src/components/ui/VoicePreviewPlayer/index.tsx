@@ -19,7 +19,7 @@ import * as S from './style'
 export const VoicePreviewPlayer = React.memo(() => {
   const ProjectTextEditOption = useAppSelector((state) => state.option)
   const dispatch = useAppDispatch()
-  const player = useRef()
+  const player: any = useRef()
   const [textsPreviewUrl, setTextsPreviewUrl] = useState()
   const [postOptions] = usePostOptionsMutation()
   const { projectId } = useParams()
@@ -30,7 +30,7 @@ export const VoicePreviewPlayer = React.memo(() => {
     if (Object.keys(ProjectTextEditOption.textsPreviewData).length) {
       postOptions({ projectData, projectId })
         .unwrap()
-        .then((data) => {
+        .then((data: any) => {
           setTextsPreviewUrl(data.data.totalAudioUrl)
         })
         .catch((error) => {
@@ -45,7 +45,7 @@ export const VoicePreviewPlayer = React.memo(() => {
       textsPreviewData,
       audioFile,
       ...textData
-    } = ProjectTextEditOption
+    }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
   }
   const stop = () => {

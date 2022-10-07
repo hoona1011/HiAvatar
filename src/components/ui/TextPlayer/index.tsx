@@ -17,10 +17,10 @@ export const TextPlayer = ({
   findData,
   textPreviewData,
   dispatch
-}) => {
+}: any) => {
   const [isPlaying, setIsPlaying] = useState(false)
 
-  const audioElem = useRef()
+  const audioElem: any = useRef()
   const [audioFile, setAudioFile] = useState()
   const [spacingValue, setSpacingValue] = useState(0)
   const [postText] = usePostTextMutation()
@@ -58,7 +58,7 @@ export const TextPlayer = ({
   // console.log(itemData)
   // console.log(userSelectedData)
 
-  const userInputHandler = (e) => {
+  const userInputHandler = (e: any) => {
     const { name, value } = e.target
     // setInputData({ ...inputData, [name]: value })
     dispatch(changeText({ ...itemData, [name]: value }))
@@ -72,7 +72,7 @@ export const TextPlayer = ({
     dispatch(editText(itemData))
   }
 
-  const userSelectedHandler = (e) => {
+  const userSelectedHandler = (e: any) => {
     e.stopPropagation()
     dispatch(selectedText({ itemData, splitTextList }))
   }
@@ -93,7 +93,7 @@ export const TextPlayer = ({
     setIsPlaying(false)
   }
 
-  const chnsnSpcng = (e) => {
+  const chnsnSpcng = (e: any) => {
     setSpacingValue(e.target.value)
     // console.log({ ...itemData, sentenceSpacing: e.target.value })
     dispatch(

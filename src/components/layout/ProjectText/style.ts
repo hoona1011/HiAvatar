@@ -16,7 +16,7 @@ export const TextGroup = styled.div`
   font-size: 1.6rem;
 `
 
-export const TextBox = styled.div`
+export const TextBox = styled.div<{ findData: any }>`
   background-color: ${({ findData }) => (!findData ? 'none' : '#E6EDFF')};
   border-radius: 1rem;
   padding: 1rem;
