@@ -18,7 +18,7 @@ export const AvatarBg = () => {
       </S.Top>
       <S.BgContainer>
         {backgroundList &&
-          backgroundList.map(({ position, thumbnail }: any, index: number) => {
+          backgroundList.map(({ position, thumbnail }, index: number) => {
             return (
               <S.BgInner
                 key={position}

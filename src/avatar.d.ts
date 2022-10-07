@@ -23,8 +23,8 @@ export interface AvatarDummyData {
 export interface DummyDataContent {
   thumbnail: string
   detailList1: DetailList[]
-  detailList2?: DetailList[]
-  detailList3?: DetailList[]
+  detailList2: DetailList[]
+  detailList3: DetailList[]
 }
 export interface DetailList {
   position: string
@@ -51,8 +51,8 @@ export interface SelectedValue {
 export interface AvatarState {
   totalAvatarData: AvatarData
   avatarList: [string, AvatarList][]
-  avatarDetailList: any
-  backgroundList: [string, AvatarList][]
+  avatarDetailList: AvatarList
+  backgroundList: AvatarList[]
   selectedValue: SelectedValue
   isAllSelected: boolean
   isShowModal: boolean
