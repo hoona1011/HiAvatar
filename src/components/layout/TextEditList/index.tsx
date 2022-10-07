@@ -33,7 +33,7 @@ export const TextEditList = () => {
   const render = splitTextList.map((item) => {
     let orginData = item
 
-    const findData = userSelectedList.find((item) => {
+    const findData = userSelectedList.find((item: any) => {
       return orginData.sentenceId === item.sentenceId
     })
     return (

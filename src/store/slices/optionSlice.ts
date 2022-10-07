@@ -77,7 +77,7 @@ export const optionSlice = createSlice({
       const filterdSplitData = state.splitTextList.filter((item) => {
         return item.sentenceId !== itemData.sentenceId
       })
-      const findTextItem = state.splitTextList.find((item) => {
+      const findTextItem: any = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
@@ -114,7 +114,7 @@ export const optionSlice = createSlice({
     },
     editText(state, action) {
       const itemData = action.payload
-      const findTextItem = state.splitTextList.find((item) => {
+      const findTextItem: any = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
@@ -155,9 +155,9 @@ export const optionSlice = createSlice({
       state.texts = ''
       state.texts = updateTexts.slice(0, -1)
     },
-    selectedText(state, action) {
+    selectedText(state: any, action) {
       const { splitTextList, itemData } = action.payload
-      const selectedTextList = splitTextList.map((item) => {
+      const selectedTextList = splitTextList.map((item: any) => {
         let focuseItem
         if (item.sentenceId === itemData?.sentenceId) {
           focuseItem = { sentenceId: item.sentenceId, focus: true }
@@ -184,7 +184,7 @@ export const optionSlice = createSlice({
       // console.log('itemData', itemData)
     },
     outFocus(state) {
-      state.userSelectedList.map((item) => {
+      state.userSelectedList.map((item: any) => {
         item.focus = false
       })
     },

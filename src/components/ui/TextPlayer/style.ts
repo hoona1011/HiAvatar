@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   margin-bottom: 0.8rem;
 `
-export const PlayerBar = styled.ul`
+export const PlayerBar = styled.ul<{ focus: any }>`
   & > li {
     display: flex;
     // 리셋
@@ -75,7 +75,7 @@ export const CloseButton = styled.button`
   top: calc(50% - 1.2rem); */
 `
 
-export const SetUpBtnList = styled.ul`
+export const SetUpBtnList = styled.ul<{ focus: any }>`
   & > li {
     width: 5.8rem;
     overflow: hidden;
@@ -128,25 +128,16 @@ export const SntncSpcngBtn = styled.div`
 
 export const SntncSpcng = styled.input`
   -webkit-appearance: none;
-    height: 0.2rem;
-    width: 10.2rem;
-    margin: 0 0.8rem;
-    background: #99B6FF;
+  height: 0.2rem;
+  width: 10.2rem;
+  margin: 0 0.8rem;
+  background: #99b6ff;
 
-    &::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      background:#ffffff;
-      height: 1.2rem;
-      width: 1.2rem;
-      border-radius: 50%;
-    }
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    background: #ffffff;
+    height: 1.2rem;
+    width: 1.2rem;
+    border-radius: 50%;
   }
-  /* padding: 0 1.2rem; */
-  /* height: 2.8rem;
-  align-items: center;
-  background-color: #c2c2c2;
-  border-radius: 5rem;
-  font-size: 1rem;
-  color: #fff;
-  border: none; */
 `
