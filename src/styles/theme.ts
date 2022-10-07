@@ -38,10 +38,17 @@ const palette = {
   orange2: '#E47B00',
   orange15: '#FFEACF',
   //GRAY
+  gray5: '#F3F3F4',
+  gray10: '#E7E7E8',
   gray20: '#D0D0D1',
-  gray30: '#0000004D',
-  gray50: '',
-  gray100: ''
+  gray30: '#B8B8BB',
+  gray40: '#A0A0A4',
+  gray50: '#88888D',
+  gray60: '#717176',
+  gray70: '#59595F',
+  gray80: '#414149',
+  gray90: '#2A2A32',
+  gray100: '#12121B'
 }
 
 // 레이아웃 관련

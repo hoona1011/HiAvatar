@@ -16,7 +16,7 @@ export const TopText = styled.div`
 export const EmailWrapper = styled.div`
   /* background-color: salmon; */
 `
-export const MidText = styled.div`
+export const MidText = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
   margin-top: 1.5rem;

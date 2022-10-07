@@ -1,18 +1,19 @@
+import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Avatar, AvatarPreview } from 'avatar'
 import type { Video } from 'history'
 
 const url = import.meta.env.VITE_SERVICE_URL
-const accessToken = import.meta.env.VITE_TOKEN
+const cookies = new Cookies()
 
 export const avatarApi = createApi({
   reducerPath: 'avatarApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      const accessTokenCookies = accessToken
-      if (accessTokenCookies) {
-        headers.set('Authorization', `Bearer ${accessTokenCookies}`)
+      const token = cookies.get('accessToken')
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
       }
       return headers
     }

@@ -1,15 +1,10 @@
-import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-
+import { Cookies } from 'react-cookie'
 const url = import.meta.env.VITE_SERVICE_URL
 const cookies = new Cookies()
-//임시로 쿠키에 넣기 위해서 작성했습니다. 추후 삭제 예정
-const tempToken =
-  'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiIzIiwiYXV0aCI6IlJPTEVfVVNFUiIsImV4cCI6MTY2NTIwMjMxMX0.snE2B65owNTYREODn6UXt3KHF6sUlgpiNsQPdWJJyYgdSVfuJ7b4WqIo0iDtoV2Udwx7I1yJyrxj1d3t-iubpg'
-cookies.set('accessToken', tempToken, { path: '/' })
 
 const token = cookies.get('accessToken')
-console.log('token2', token)
+console.log('token', token)
 export const optionApi = createApi({
   reducerPath: 'optionApi',
   baseQuery: fetchBaseQuery({

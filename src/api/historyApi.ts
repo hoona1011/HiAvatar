@@ -1,17 +1,18 @@
+import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import type { Projects, Project, ProjectInfo, HistoryData } from 'index'
+import type { Projects, Project, ProjectInfo, HistoryData } from 'history'
 
 const url = import.meta.env.VITE_SERVICE_URL
-const accessToken = import.meta.env.VITE_TOKEN
+const cookies = new Cookies()
 
 export const historyApi = createApi({
   reducerPath: 'historyApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      const accessTokenCookies = accessToken
-      if (accessTokenCookies) {
-        headers.set('Authorization', `Bearer ${accessTokenCookies}`)
+      const token = cookies.get('accessToken')
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
       }
       return headers
     }
