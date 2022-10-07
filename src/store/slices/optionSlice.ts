@@ -56,7 +56,7 @@ export const optionSlice = createSlice({
     changeText(state, action) {
       const inputData = action.payload
 
-      const findTextItem = state.splitTextList.find((item) => {
+      const findTextItem: any = state.splitTextList.find((item) => {
         return item.sentenceId === inputData.sentenceId
       })
 
@@ -174,7 +174,7 @@ export const optionSlice = createSlice({
       console.log(itemData)
       console.log('splitTextList', current(state.splitTextList))
 
-      const findItemData = state.splitTextList.find((item) => {
+      const findItemData: any = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
@@ -202,7 +202,7 @@ export const optionSlice = createSlice({
         dummyData,
         totalAudioUrl
       } = action.payload
-      console.log('슬라이스의 더미')
+      // console.log('슬라이스의 더미')
       state.texts = texts
       state.language = language
       state.sex = sex

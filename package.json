@@ -16,6 +16,8 @@
     "@types/node": "^18.7.18",
     "@types/react-redux": "^7.1.24",
     "@types/styled-components": "^5.1.26",
+    "axios": "^1.1.0",
+    "formik": "^2.2.9",
     "json-server": "^0.17.0",
     "react": "^18.2.0",
     "react-cookie": "^4.1.1",
@@ -26,7 +28,8 @@
     "styled-components": "^5.3.5",
     "styled-reset": "^4.4.2",
     "swiper": "6.8.4",
-    "vite-tsconfig-paths": "^3.5.0"
+    "vite-tsconfig-paths": "^3.5.0",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@types/react": "^18.0.17",

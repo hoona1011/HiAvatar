@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './style'
-import { SignUpIcon } from 'components/Icons'
+import { PwCheckIcon } from 'components/Icons'
 
 export const MyPage = () => {
   return (
@@ -16,7 +16,7 @@ export const MyPage = () => {
           <S.PositionWrap>
             <S.PwInput type='paswword' />
             <S.PwCheckBtn>
-              <SignUpIcon width='18' height='18' />
+              <PwCheckIcon width='18' height='18' />
             </S.PwCheckBtn>
           </S.PositionWrap>
           <S.TempSpan>
@@ -28,7 +28,7 @@ export const MyPage = () => {
           <S.PositionWrap>
             <S.PwInput type='password' />
             <S.PwCheckBtn>
-              <SignUpIcon width='18' height='18' />
+              <PwCheckIcon width='18' height='18' />
             </S.PwCheckBtn>
           </S.PositionWrap>
           <S.NewPwSpan>(비밀번호 중복 확인 멘트)</S.NewPwSpan>
