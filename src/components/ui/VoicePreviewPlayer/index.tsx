@@ -26,17 +26,6 @@ export const VoicePreviewPlayer = () => {
   const { projectId } = useParams()
 
   useEffect(() => {
-    const {
-      userSelectedList,
-      textPreviewData,
-      textsPreviewData,
-      audioFile,
-      ...textData
-    }: any = ProjectTextEditOption
-    dispatch(textsCreatePreview(textData))
-  }, [Object.keys(textsPreviewData).length])
-
-  const play = () => {
     const projectData = ProjectTextEditOption.textsPreviewData
 
     postOptions({ projectData, projectId })
@@ -47,22 +36,41 @@ export const VoicePreviewPlayer = () => {
       .catch((error) => {
         console.log(error)
       })
-  }
+
+    const {
+      userSelectedList,
+      textPreviewData,
+      textsPreviewData,
+      audioFile,
+      ...textData
+    }: any = ProjectTextEditOption
+    dispatch(textsCreatePreview(textData))
+  }, [Object.keys(textsPreviewData).length])
+
+  useEffect(() => {
+    const audio = player.current.audio.current
+    audio.pause()
+    audio.currentTime = 0
+  })
+
   const stop = () => {
     const audio = player.current.audio.current
     audio.pause()
     audio.currentTime = 0
   }
 
-  // console.log('textsPreviewUrl', textsPreviewUrl)
+  console.log('textsPreviewUrl', textsPreviewUrl)
   return (
     <>
       <S.Title>합친 음성을 미리 들을 수 있어요</S.Title>
+      <a href='#' download={textsPreviewUrl}>
+        다운로드
+      </a>
       <S.CustomStyle>
         <AudioPlayer
           customIcons={{
             play: (
-              <div onClick={play}>
+              <div>
                 <VoicePrePlayIcon width='25' height='24' />
               </div>
             ),
