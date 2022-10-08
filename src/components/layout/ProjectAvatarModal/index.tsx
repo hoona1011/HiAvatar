@@ -4,6 +4,7 @@ import { AvatarModalCloseIcon } from 'components/Icons'
 import { useAvatar, changeIsShowModal } from 'store/slices/avatarSlice'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useCreateVideoMutation } from 'api/avatarApi'
+import { Spinner } from 'components'
 
 export const ProjectAvatarModal = () => {
   const { isShowModal, selectedValue, dispatch } = useAvatar()
@@ -53,7 +54,7 @@ export const ProjectAvatarModal = () => {
       {isCreateVideo ? (
         <S.Inner>
           <S.LoadingContent>영상을 생성중입니다...</S.LoadingContent>
-          <S.Spinner />
+          <Spinner />
         </S.Inner>
       ) : (
         <S.Inner>

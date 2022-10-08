@@ -1,6 +1,6 @@
 import React from 'react'
 import * as S from './style'
-import { AvatarPreviewBtn } from 'components'
+import { AvatarPreviewBtn, Spinner } from 'components'
 import { TooltipIcon } from 'components/Icons'
 import { useAvatar } from 'store/slices/avatarSlice'
 
@@ -15,7 +15,7 @@ export const SelectedAvatar = () => {
       </S.Top>
       {isAvatarPreviewLoading ? (
         <S.PreviewAvatarLoading>
-          <S.Spinner />
+          <Spinner />
         </S.PreviewAvatarLoading>
       ) : (
         <S.PreviewAvatar
