@@ -14,7 +14,7 @@ export const ProjectHistory = () => {
   const { dispatch } = useHistory()
 
   const changeHistoryHandler = () => {
-    data && dispatch(changeHistory({ diff: data }))
+    data && dispatch(changeHistory(data))
   }
 
   useEffect(() => {

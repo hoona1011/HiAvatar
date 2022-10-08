@@ -12,8 +12,8 @@ export const historySlice = createSlice({
   initialState,
   reducers: {
     changeHistory(state, action) {
-      state.projects = action.payload.diff.projects
-      state.videos = action.payload.diff.videos
+      state.projects = action.payload.projects
+      state.videos = action.payload.videos
     }
   }
 })
