@@ -83,10 +83,10 @@ export const optionSlice = createSlice({
 
       let i = findTextItem.sentenceId
 
-      for (i + 1; i < state.splitTextList.length + 1; i += 1) {
+      for (i; i < state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
           if (item.sentenceId === i) {
-            item.sentenceId = i -= 1
+            item.sentenceId = i += 1
           }
         })
       }
@@ -123,15 +123,14 @@ export const optionSlice = createSlice({
 
       let i = findTextItem.sentenceId
 
-      for (i + 1; i < state.splitTextList.length + 1; i += 1) {
+      for (i; i <= state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
-          // console.log('item', item.sentenceId)
-          // console.log('i', i)
           if (item.sentenceId === i) {
             item.sentenceId = i += 1
           }
         })
       }
+
       state.splitTextList = [
         ...state.splitTextList,
         {
