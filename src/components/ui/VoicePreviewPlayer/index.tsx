@@ -16,7 +16,7 @@ import * as S from './style'
 
 // 타입스크립트 추가 예정
 
-export const VoicePreviewPlayer = React.memo(() => {
+export const VoicePreviewPlayer = () => {
   const ProjectTextEditOption = useAppSelector((state) => state.option)
   const dispatch = useAppDispatch()
   const player: any = useRef()
@@ -83,4 +83,4 @@ export const VoicePreviewPlayer = React.memo(() => {
       </S.CustomStyle>
     </>
   )
-})
+}
