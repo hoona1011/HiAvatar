@@ -18,6 +18,7 @@ import * as S from './style'
 
 export const VoicePreviewPlayer = () => {
   const ProjectTextEditOption = useAppSelector((state) => state.option)
+  const { textsPreviewData } = ProjectTextEditOption
   const dispatch = useAppDispatch()
   const player: any = useRef()
   const [textsPreviewUrl, setTextsPreviewUrl] = useState()
@@ -25,20 +26,6 @@ export const VoicePreviewPlayer = () => {
   const { projectId } = useParams()
 
   useEffect(() => {
-    const projectData = ProjectTextEditOption.textsPreviewData
-
-    if (Object.keys(ProjectTextEditOption.textsPreviewData).length) {
-      postOptions({ projectData, projectId })
-        .unwrap()
-        .then((data: any) => {
-          setTextsPreviewUrl(data.data.totalAudioUrl)
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    }
-  }, [ProjectTextEditOption.textsPreviewData])
-  const play = () => {
     const {
       userSelectedList,
       textPreviewData,
@@ -47,12 +34,27 @@ export const VoicePreviewPlayer = () => {
       ...textData
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
+  }, [Object.keys(textsPreviewData).length])
+
+  const play = () => {
+    const projectData = ProjectTextEditOption.textsPreviewData
+
+    postOptions({ projectData, projectId })
+      .unwrap()
+      .then((data: any) => {
+        setTextsPreviewUrl(data.data.totalAudioUrl)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
   }
   const stop = () => {
     const audio = player.current.audio.current
     audio.pause()
     audio.currentTime = 0
   }
+
+  // console.log('textsPreviewUrl', textsPreviewUrl)
   return (
     <>
       <S.Title>합친 음성을 미리 들을 수 있어요</S.Title>
