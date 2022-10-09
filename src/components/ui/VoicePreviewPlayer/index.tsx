@@ -18,25 +18,31 @@ import * as S from './style'
 
 export const VoicePreviewPlayer = () => {
   const ProjectTextEditOption = useAppSelector((state) => state.option)
-  const { textsPreviewData } = ProjectTextEditOption
+  const { textsPreviewData: previewData }: any = ProjectTextEditOption
   const dispatch = useAppDispatch()
+  const [projectData, setProjectData] = useState()
   const player: any = useRef()
   const [textsPreviewUrl, setTextsPreviewUrl] = useState()
+  // const textsPreviewUrl = useRef()
   const [postOptions] = usePostOptionsMutation()
   const { projectId } = useParams()
 
   useEffect(() => {
     const projectData = ProjectTextEditOption.textsPreviewData
 
-    postOptions({ projectData, projectId })
-      .unwrap()
-      .then((data: any) => {
-        setTextsPreviewUrl(data.data.totalAudioUrl)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
+    if (Object.keys(ProjectTextEditOption.textsPreviewData).length) {
+      postOptions({ projectData, projectId })
+        .unwrap()
+        .then((data: any) => {
+          setTextsPreviewUrl(data.data.totalAudioUrl)
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+    }
+  }, [ProjectTextEditOption.textsPreviewData])
 
+  const play = () => {
     const {
       userSelectedList,
       textPreviewData,
@@ -45,13 +51,7 @@ export const VoicePreviewPlayer = () => {
       ...textData
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
-  }, [Object.keys(textsPreviewData).length])
-
-  useEffect(() => {
-    const audio = player.current.audio.current
-    audio.pause()
-    audio.currentTime = 0
-  })
+  }
 
   const stop = () => {
     const audio = player.current.audio.current
@@ -59,28 +59,33 @@ export const VoicePreviewPlayer = () => {
     audio.currentTime = 0
   }
 
-  console.log('textsPreviewUrl', textsPreviewUrl)
   return (
     <>
-      <S.Title>합친 음성을 미리 들을 수 있어요</S.Title>
-      <a href='#' download={textsPreviewUrl}>
-        다운로드
-      </a>
+      <S.TitleGroup>
+        <div className='title'>합친 음성을 미리 들을 수 있어요</div>
+        <a className='download' href='#' download={textsPreviewUrl}>
+          전체 음성 다운로드
+        </a>
+      </S.TitleGroup>
       <S.CustomStyle>
         <AudioPlayer
           customIcons={{
             play: (
-              <div>
-                <VoicePrePlayIcon width='25' height='24' />
+              <div onClick={play}>
+                <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
               </div>
             ),
-            previous: <VoicePreRewindIcon width='25' height='24' />,
-            next: <VoicePreForwardIcon width='25' height='24' />,
-            pause: <VoicePauseIcon width='25' height='24' />
+            previous: (
+              <VoicePreRewindIcon width='25' height='24' fillColor='#336CFF' />
+            ),
+            next: (
+              <VoicePreForwardIcon width='25' height='24' fillColor='#336CFF' />
+            ),
+            pause: <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
           }}
           customAdditionalControls={[
             <S.StopBtn onClick={stop}>
-              <VoiceStopIcon width='25' height='24' />
+              <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
             </S.StopBtn>
           ]}
           customVolumeControls={[]}
