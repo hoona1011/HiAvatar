@@ -18,6 +18,7 @@ export const ProjectHistory = () => {
   }
 
   useEffect(() => {
+    console.log(data)
     data && changeHistoryHandler()
   }, [data])
 
