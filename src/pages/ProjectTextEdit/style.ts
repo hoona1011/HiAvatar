@@ -28,7 +28,7 @@ export const Right = styled.div`
 `
 
 export const VoicePlayer = styled.div`
-  background-color: #f3f3f3;
+  background-color: #ffffff;
   border-radius: 1rem;
   width: 79.2rem;
   padding: 0 1.6rem 2.4rem;

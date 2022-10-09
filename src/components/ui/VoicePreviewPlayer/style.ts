@@ -1,14 +1,34 @@
 import styled from 'styled-components'
 
-export const Title = styled.div`
-  font-size: 1.6rem;
-  padding: 1.6rem 0;
+export const TitleGroup = styled.div`
+  & .title {
+    font-size: 1.6rem;
+    font-weight: 500;
+    color: #0e1937;
+  }
+  & .download {
+    font-size: 1.2rem;
+    height: 3.2rem;
+    display: flex;
+    align-items: center;
+    padding: 0 1.6rem;
+    background-color: #6691ff;
+    border-radius: 1rem;
+    color: #fff;
+    font-weight: 500;
+  }
+  height: 5.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 `
 
 export const CustomStyle = styled.div`
   & .rhap_container {
     width: 64.1rem;
     box-shadow: none;
+    padding: 0;
+    background: none;
   }
   & rhap_main-controls {
     margin-right: 1.6rem;
@@ -16,9 +36,6 @@ export const CustomStyle = styled.div`
   & .rhap_controls-section {
     flex: none;
     flex-direction: row-reverse;
-  }
-  & .rhap_container {
-    padding: 0;
   }
   & .rhap_main-controls-button {
     width: auto;
@@ -37,12 +54,22 @@ export const CustomStyle = styled.div`
     top: -0.3rem;
     margin-left: -0.3rem;
   }
+  & .rhap_download-progress {
+    background-color: #ccdaff;
+  }
+  & .rhap_progress-filled {
+    background: linear-gradient(to right, #7fa3ff, #4c7eff);
+  }
+
+  & .rhap_progress-indicator {
+    background: #336cff;
+  }
 
   display: flex;
   justify-content: center;
   width: 100%;
   height: 5.6rem;
-  background-color: #fff;
+  background-color: #f4f5f9;
   border-radius: 1rem;
 `
 

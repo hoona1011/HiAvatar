@@ -16,11 +16,14 @@ import * as S from './style'
 
 // 타입스크립트 추가 예정
 
-export const VoicePreviewPlayer = React.memo(() => {
+export const VoicePreviewPlayer = () => {
   const ProjectTextEditOption = useAppSelector((state) => state.option)
+  const { textsPreviewData: previewData }: any = ProjectTextEditOption
   const dispatch = useAppDispatch()
+  const [projectData, setProjectData] = useState()
   const player: any = useRef()
   const [textsPreviewUrl, setTextsPreviewUrl] = useState()
+  // const textsPreviewUrl = useRef()
   const [postOptions] = usePostOptionsMutation()
   const { projectId } = useParams()
 
@@ -38,6 +41,7 @@ export const VoicePreviewPlayer = React.memo(() => {
         })
     }
   }, [ProjectTextEditOption.textsPreviewData])
+
   const play = () => {
     const {
       userSelectedList,
@@ -48,29 +52,40 @@ export const VoicePreviewPlayer = React.memo(() => {
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
   }
+
   const stop = () => {
     const audio = player.current.audio.current
     audio.pause()
     audio.currentTime = 0
   }
+
   return (
     <>
-      <S.Title>합친 음성을 미리 들을 수 있어요</S.Title>
+      <S.TitleGroup>
+        <div className='title'>합친 음성을 미리 들을 수 있어요</div>
+        <a className='download' href='#' download={textsPreviewUrl}>
+          전체 음성 다운로드
+        </a>
+      </S.TitleGroup>
       <S.CustomStyle>
         <AudioPlayer
           customIcons={{
             play: (
               <div onClick={play}>
-                <VoicePrePlayIcon width='25' height='24' />
+                <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
               </div>
             ),
-            previous: <VoicePreRewindIcon width='25' height='24' />,
-            next: <VoicePreForwardIcon width='25' height='24' />,
-            pause: <VoicePauseIcon width='25' height='24' />
+            previous: (
+              <VoicePreRewindIcon width='25' height='24' fillColor='#336CFF' />
+            ),
+            next: (
+              <VoicePreForwardIcon width='25' height='24' fillColor='#336CFF' />
+            ),
+            pause: <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
           }}
           customAdditionalControls={[
             <S.StopBtn onClick={stop}>
-              <VoiceStopIcon width='25' height='24' />
+              <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
             </S.StopBtn>
           ]}
           customVolumeControls={[]}
@@ -83,4 +98,4 @@ export const VoicePreviewPlayer = React.memo(() => {
       </S.CustomStyle>
     </>
   )
-})
+}

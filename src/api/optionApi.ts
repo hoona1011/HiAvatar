@@ -42,7 +42,9 @@ export const optionApi = createApi({
         url: `/projects/${projectId}/save`,
         method: 'GET'
       }),
-      transformResponse: (response) => {
+      transformResponse: (response: any) => {
+        // 콘솔로그 삭제시 타입도 같이 삭제
+        console.log('get옵션', response.data)
         return (response as any).data
       }
     }),
