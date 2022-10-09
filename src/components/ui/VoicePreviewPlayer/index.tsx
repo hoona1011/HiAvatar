@@ -22,27 +22,58 @@ export const VoicePreviewPlayer = () => {
   const dispatch = useAppDispatch()
   const [projectData, setProjectData] = useState()
   const player: any = useRef()
-  const [textsPreviewUrl, setTextsPreviewUrl] = useState()
+  const [textsPreviewUrl, setTextsPreviewUrl] = useState('/src/assets/test.mp3')
   // const textsPreviewUrl = useRef()
   const [postOptions] = usePostOptionsMutation()
+  // const { projectId } = useParams()
+
+  // console.log('ProjectTextEditOption', ProjectTextEditOption)
+
+  ////// 테스트용
   const { projectId } = useParams()
+  const optionData = useAppSelector((state) => state.option)
+
+  console.log('리렌더링')
+  // const testUrl = useRef(null)
+  //////
+  const [test, setTest] = useState('')
 
   useEffect(() => {
     const projectData = ProjectTextEditOption.textsPreviewData
-
+    const audio = player.current.audio.current
     if (Object.keys(ProjectTextEditOption.textsPreviewData).length) {
       postOptions({ projectData, projectId })
         .unwrap()
         .then((data: any) => {
-          setTextsPreviewUrl(data.data.totalAudioUrl)
+          const url = data.data.totalAudioUrl
+          setTextsPreviewUrl(() => url)
+
+          setTimeout(function () {
+            if (url) {
+              console.log('url', url)
+              audio.play()
+            }
+          }, 10)
         })
         .catch((error) => {
           console.log(error)
         })
     }
+    // return console.log('언마운트')
   }, [ProjectTextEditOption.textsPreviewData])
 
+  // useEffect(() => {
+  //   return () => {
+  //     const audio = player.current.audio.current
+  //     audio.pause()
+  //     audio.currentTime = 0
+  //   }
+  // }, [])
+
+  // useEffect(() => {}, [ProjectTextEditOption.textsPreviewData])
+
   const play = () => {
+    const audio = player.current.audio.current
     const {
       userSelectedList,
       textPreviewData,
@@ -51,7 +82,32 @@ export const VoicePreviewPlayer = () => {
       ...textData
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
+    audio.play()
   }
+
+  // const play2 = async () => {
+  //   const audio = player.current.audio.current
+  //   const {
+  //     userSelectedList,
+  //     textPreviewData,
+  //     textsPreviewData,
+  //     audioFile,
+  //     ...textData
+  //   }: any = ProjectTextEditOption
+
+  //   const projectData: any = { ...optionData }
+  //   delete projectData.userSelectedList
+  //   const res = await postOptions({
+  //     projectData,
+  //     projectId
+  //   })
+
+  //   testUrl.current = res.data.data.totalAudioUrl
+
+  //   console.log('testUrl.current', testUrl.current)
+  //   setTest('please')
+  //   audio.play()
+  // }
 
   const stop = () => {
     const audio = player.current.audio.current
@@ -91,8 +147,12 @@ export const VoicePreviewPlayer = () => {
           customVolumeControls={[]}
           showJumpControls={false}
           showSkipControls={false}
+          autoPlayAfterSrcChange={false}
           layout='horizontal-reverse'
           src={textsPreviewUrl}
+          // src='/src/assets/test.mp3'
+          // src={testUrl.current}
+          autoPlay={false}
           ref={player}
         />
       </S.CustomStyle>
