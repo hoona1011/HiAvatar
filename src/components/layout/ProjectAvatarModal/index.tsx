@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { AvatarModalCloseIcon } from 'components/Icons'
 import { useNavigate, useParams } from 'react-router-dom'
-import { useCreateVideoMutation } from 'api/avatarApi'
+import { useCreateVideoMutation } from 'api/historyApi'
 import { useAvatar, changeIsShowModal } from 'store/slices/avatarSlice'
 import { useHistory, changeIsCreating } from 'store/slices/historySlice'
 

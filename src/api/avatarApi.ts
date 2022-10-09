@@ -37,22 +37,8 @@ export const avatarApi = createApi({
       transformResponse: (responseData: AvatarPreview) => {
         return responseData['data']
       }
-    }),
-    createVideo: builder.mutation({
-      query: ({ projectId, selectedValue }) => ({
-        url: `projects/${projectId}/avatar`,
-        method: 'POST',
-        body: selectedValue
-      }),
-      transformResponse: (responseData: Video) => {
-        return responseData['data']
-      }
     })
   })
 })
 
-export const {
-  useGetAvatarQuery,
-  useCreateAvatarPreviewMutation,
-  useCreateVideoMutation
-} = avatarApi
+export const { useGetAvatarQuery, useCreateAvatarPreviewMutation } = avatarApi
