@@ -20,6 +20,7 @@ export interface AvatarVoicePlayerProps {
   hashtag2?: string
   hashtag3?: string
   buttonType: string
+  audioUrl: string
 }
 export interface Modalprops {
   setModal: React.Dispatch<React.SetStateAction<boolean>>

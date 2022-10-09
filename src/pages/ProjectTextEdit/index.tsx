@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useAppSelector } from 'store'
 import {
   TextEnterButton,
   ProjectText,
@@ -24,13 +23,9 @@ export const ProjectTextEdit = () => {
   const dispatch = useDispatch()
   const { projectId } = useParams()
   const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
-  const { dummyData, splitTextList } = useAppSelector((state) => state.option)
-
-  console.log('splitTextList', splitTextList)
 
   useEffect(() => {
     optionData && dispatch(getOption(optionData))
-    console.log('유즈이펙트 렌더링', optionData)
   }, [optionData])
 
   const [modalText, setModalText] = useState('')
