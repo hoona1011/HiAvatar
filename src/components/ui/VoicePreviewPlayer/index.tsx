@@ -33,7 +33,7 @@ export const VoicePreviewPlayer = () => {
   const { projectId } = useParams()
   const optionData = useAppSelector((state) => state.option)
 
-  console.log('리렌더링')
+  // console.log('리렌더링')
   // const testUrl = useRef(null)
   //////
   const [test, setTest] = useState('')
