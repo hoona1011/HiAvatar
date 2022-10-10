@@ -3,21 +3,26 @@ import * as S from './style'
 import { useCreateProjectMutation } from 'api/historyApi'
 import { CreateProjectButtonIcon } from 'components/Icons'
 import { useNavigate } from 'react-router-dom'
+import { changeIsShowHistoryModal, useHistory } from 'store/slices/historySlice'
 
 export const CreateProjectButton = () => {
   const [createProject] = useCreateProjectMutation()
   const navigate = useNavigate()
+  const { projects, dispatch } = useHistory()
 
   const onClickHandler = () => {
-    createProject()
-      .unwrap()
-      .then(({ projectId }) => {
-        navigate(`/project-text-edit/${projectId}`)
-        navigate(0)
-      })
-      .catch((error) => {
-        alert(error)
-      })
+    if (projects.length === 5) {
+      dispatch(changeIsShowHistoryModal(true))
+    } else {
+      createProject()
+        .unwrap()
+        .then(({ projectId }) => {
+          navigate(`/project-text-edit/${projectId}`)
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
   }
 
   return (

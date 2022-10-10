@@ -4,8 +4,8 @@ import type { StyledComponentsProps } from 'index'
 export const Container = styled.div`
   z-index: 2;
 
-  display: ${({ isShowModal }: StyledComponentsProps) =>
-    isShowModal ? 'flex' : 'none'};
+  display: ${({ isShowHistoryModal }: StyledComponentsProps) =>
+    isShowHistoryModal ? 'flex' : 'none'};
   justify-content: center;
   align-items: center;
 
@@ -15,7 +15,6 @@ export const Container = styled.div`
   width: 100%;
   height: 100%;
 
-  // opacity는 상속되므로 rgba로 투명도 설정
   background-color: rgba(0, 0, 0, 0.6);
 `
 
@@ -30,14 +29,14 @@ export const Inner = styled.div`
 export const Icon = styled.div`
   width: min-content;
   margin-left: auto;
-  margin-bottom: 3.9rem;
+  margin-bottom: 1.9rem;
 
   text-align: end;
   cursor: pointer;
 `
 
 export const Content = styled.div`
-  margin-bottom: 4.5rem;
+  margin-bottom: 2.5rem;
   font-size: 1.6rem;
   font-weight: 500;
   text-align: center;

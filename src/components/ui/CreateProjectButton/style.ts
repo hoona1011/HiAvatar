@@ -7,6 +7,9 @@ export const Button = styled.button`
 
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.palette.blue70};
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue90};
+  }
 `
 
 export const Top = styled.div`

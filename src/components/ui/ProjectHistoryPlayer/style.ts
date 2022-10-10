@@ -35,6 +35,9 @@ export const Btn = styled.button`
   height: 4rem;
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.palette.blue50};
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue60};
+  }
   ${({ theme }) => theme.common.flexCenter};
   .button-label {
     color: ${({ theme }) => theme.palette.white};
