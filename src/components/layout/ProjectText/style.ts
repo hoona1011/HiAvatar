@@ -1,6 +1,9 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div``
+export const Wrapper = styled.div`
+  height: calc(100% - 4.8rem - 2.4rem);
+  overflow: auto;
+`
 
 export const Title = styled.p`
   font-size: 1.6rem;
