@@ -9,6 +9,9 @@ export const Button = styled.button`
   border: none;
   cursor: pointer;
   margin-right: 1.6rem;
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.blue10};
+  }
 
   span {
     color: ${({ theme }) => theme.palette.blue70};

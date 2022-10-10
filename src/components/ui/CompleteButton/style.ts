@@ -6,8 +6,12 @@ export const Button = styled.button`
 
   border-radius: 1rem;
   background-color: ${({ disabled, theme }) =>
-    disabled ? '#D9D9D9' : theme.palette.blue70}; // '#D9D9D9'해당 색상은 임시
+    disabled ? theme.palette.gray20 : theme.palette.blue70};
   cursor: ${({ disabled }) => (disabled ? 'default !important' : 'pointer')};
+  &:hover {
+    background-color: ${({ disabled, theme }) =>
+      disabled ? theme.palette.gray20 : theme.palette.blue90};
+  }
   span {
     color: ${({ theme }) => theme.palette.white};
     font-size: 1.5rem;
