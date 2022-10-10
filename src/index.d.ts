@@ -60,6 +60,7 @@ export interface ProjectNavProps extends RenderTypeProps {}
 export interface StyledComponentsProps {
   isSelected?: boolean
   isShowModal?: boolean
+  isShowHistoryModal?: boolean
   thumbnail?: string
   theme: any
 }

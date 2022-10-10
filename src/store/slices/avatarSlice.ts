@@ -94,7 +94,6 @@ export const avatarSlice = createSlice({
 
       state.totalAvatarData = avatarData
       state.avatarList = avatarList
-      console.log(avatarList[0][1])
       state.backgroundList = backgroundList[1]
     },
     changeAvatarDetailList(state: AvatarState, action: PayloadAction<string>) {

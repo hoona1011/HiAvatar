@@ -37,10 +37,9 @@ export const Content = styled.div<StyledComponentsProps>`
   height: 10rem;
 
   border-radius: 1rem;
-  border: 0.1rem solid
+  border: 0.2rem solid
     ${({ isSelected, theme }) =>
-      isSelected ? theme.palette.blue50 : theme.palette.blue10};
-  background-color: ${({ theme }) => theme.palette.blue10};
+      isSelected ? theme.palette.blue50 : theme.palette.white};
   background-image: url(${({ thumbnail }) => thumbnail});
   opacity: ${({ isSelected }) => (isSelected ? 1 : 0.3)};
   &:hover {

@@ -6,6 +6,7 @@ export { TextEditList } from './layout/TextEditList'
 export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
 export { ProjectText } from './layout/ProjectText'
 export { ProjectAvatarModal } from 'components/layout/ProjectAvatarModal'
+export { ProjectHistoryModal } from 'components/layout/ProjectHistoryModal'
 
 // ui
 export { VoiceController } from './ui/VoiceController'
@@ -37,3 +38,4 @@ export { CompleteButton } from 'components/ui/CompleteButton'
 export { ProjectVideoList } from 'components/ui/ProjectVideoList'
 export { CreateProjectButton } from 'components/ui/CreateProjectButton'
 export { Loading } from 'components/ui/Loading'
+export { Spinner } from 'components/ui/Spinner'
