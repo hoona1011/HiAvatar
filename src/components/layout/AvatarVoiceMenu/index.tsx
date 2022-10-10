@@ -1,16 +1,52 @@
-import { TooltipIcon } from 'components/Icons'
 import React from 'react'
+import { TooltipIcon } from 'components/Icons'
 import { useAppDispatch } from 'store'
 import { changeOption } from 'store/slices/optionSlice'
-import { AvatarVoicePlayer } from '../../ui/AvatarVoicePlayer'
-import { RadioButton } from '../../ui/RadioButton'
+import { AvatarVoicePlayer } from 'components/ui/AvatarVoicePlayer'
+import { RadioButton } from 'components/ui/RadioButton'
+import { useAppSelector } from 'store'
+
 import * as S from './style'
 export const AvatarVoiceMenu = () => {
+  const {
+    dummyData,
+    sex: selectedSex,
+    language: selectedLanguage
+  } = useAppSelector((state) => state.option)
   const dispatch = useAppDispatch()
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     dispatch(changeOption({ name, value }))
   }
+
+  const languageConverter = (language: any) => {
+    switch (language) {
+      case '한국어':
+        return 'korean'
+      case '영어':
+        return 'english'
+      case '중국어':
+        return 'chinese'
+    }
+  }
+
+  const avatarVoices = Object.entries(dummyData)
+  const filteredVoices = avatarVoices
+    .map((voice: any) => {
+      switch (selectedSex) {
+        case '남자':
+          return { language: voice[0], voices: voice[1].maleList }
+
+        case '여자':
+          return { language: voice[0], voices: voice[1].femaleList }
+      }
+    })
+    .find((data) => {
+      return data!.language === languageConverter(selectedLanguage)
+    })?.voices
+
+  console.log('filteredVoices', filteredVoices)
+
   return (
     <S.Container>
       <S.Title>
@@ -43,8 +79,8 @@ export const AvatarVoiceMenu = () => {
           />
           <RadioButton
             name={'language'}
-            value={'일본어'}
-            content={'일본어'}
+            value={'영어'}
+            content={'영어'}
             onChange={onChangeHandler}
           />
           <RadioButton
@@ -56,62 +92,20 @@ export const AvatarVoiceMenu = () => {
         </S.Language>
       </S.OptionContainer>
       <S.VoicePlayerContainer>
-        <AvatarVoicePlayer
-          characterName={'김차분'}
-          hashtag1={'차분한'}
-          hashtag2={'중저음'}
-          hashtag3={'30대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'나성우'}
-          hashtag1={'나긋한'}
-          hashtag2={'중저음'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'나성은'}
-          hashtag1={'명랑한'}
-          hashtag2={'대학생'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'다성은'}
-          hashtag1={'명랑한'}
-          hashtag2={'대학생'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'라성은'}
-          hashtag1={'명랑한'}
-          hashtag2={'대학생'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'마성은'}
-          hashtag1={'명랑한'}
-          hashtag2={'대학생'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'바성은'}
-          hashtag1={'명랑한'}
-          hashtag2={'대학생'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
-        <AvatarVoicePlayer
-          characterName={'사성은'}
-          hashtag1={'명랑한'}
-          hashtag2={'대학생'}
-          hashtag3={'20대'}
-          buttonType={'characterName'}
-        />
+        {filteredVoices?.map((voice: any) => {
+          const { characterName, audioUrl, characterTags } = voice
+          return (
+            <AvatarVoicePlayer
+              key={characterName}
+              characterName={characterName}
+              hashtag1={characterTags[0]}
+              hashtag2={characterTags[1]}
+              hashtag3={characterTags[2]}
+              buttonType={'characterName'}
+              audioUrl={audioUrl}
+            />
+          )
+        })}
       </S.VoicePlayerContainer>
     </S.Container>
   )

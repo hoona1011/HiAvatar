@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useAppSelector } from 'store'
 import {
   TextEnterButton,
   ProjectText,
@@ -24,7 +23,6 @@ export const ProjectTextEdit = () => {
   const dispatch = useDispatch()
   const { projectId } = useParams()
   const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
-  const { dummyData } = useAppSelector((state) => state.option)
 
   useEffect(() => {
     optionData && dispatch(getOption(optionData))
