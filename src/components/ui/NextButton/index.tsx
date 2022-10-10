@@ -3,6 +3,7 @@ import * as S from './style'
 import { NextButtonProps } from 'index'
 import { useAppSelector } from 'store'
 import { usePostOptionsMutation } from 'api/optionApi'
+import Spinner from '../Spinner'
 export const NextButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
   const { projectId } = useParams()
@@ -26,7 +27,7 @@ export const NextButton = ({ requestFunc }: NextButtonProps) => {
 
   return (
     <S.Button disabled={optionData.texts.length === 0} onClick={onClickHandler}>
-      {!isLoading ? <span>다음</span> : <span>로딩 스피너...</span>}
+      {!isLoading ? <span>다음</span> : <Spinner width='0.5rem' />}
     </S.Button>
   )
 }
