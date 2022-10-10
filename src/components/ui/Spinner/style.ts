@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 interface Props {
-  width: string
+  width?: string
 }
 export const Container = styled.div<Props>`
   margin: 0 auto;
