@@ -6,6 +6,7 @@ export { TextEditList } from './layout/TextEditList'
 export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
 export { ProjectText } from './layout/ProjectText'
 export { ProjectAvatarModal } from 'components/layout/ProjectAvatarModal'
+export { ProjectHistoryModal } from 'components/layout/ProjectHistoryModal'
 
 // ui
 export { VoiceController } from './ui/VoiceController'

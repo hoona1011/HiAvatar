@@ -40,6 +40,8 @@ export const historyApi = createApi({
         url: 'projects',
         method: 'POST'
       }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'History', id: 'LIST' }] : [],
       transformResponse: (responseData: Project) => {
         return responseData['data']
       }

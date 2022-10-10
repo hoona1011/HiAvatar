@@ -4,7 +4,8 @@ import {
   ProjectList,
   ProjectVideoList,
   CreateProjectButton,
-  Loading
+  Loading,
+  ProjectHistoryModal
 } from 'components'
 import { useGetHistoryQuery } from 'api/historyApi'
 import { changeHistory, useHistory } from 'store/slices/historySlice'
@@ -36,6 +37,7 @@ export const ProjectHistory = () => {
         <ProjectList />
         <ProjectVideoList />
       </S.Container>
+      <ProjectHistoryModal />
     </>
   )
 }

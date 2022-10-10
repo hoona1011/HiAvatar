@@ -7,6 +7,7 @@ export interface HistoryData {
   projects: ProjectsHistory[]
   videos: VideosHistory[]
   isCreateing: boolean
+  isShowHistoryModal: boolean
 }
 
 export interface ProjectsHistory extends ProjectInfo {
