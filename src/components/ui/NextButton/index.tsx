@@ -17,7 +17,7 @@ export const NextButton = ({ requestFunc }: NextButtonProps) => {
       projectData,
       projectId
     })
-    if ((res as any).data.data.result === 'Success') {
+    if ((res as any).data.data?.result === 'Success') {
       navigate(`/project-avatar/${projectId}`)
     } else {
       alert('에러가 발생했습니다. 다시 시도해주세요')

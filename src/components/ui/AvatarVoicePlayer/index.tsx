@@ -10,15 +10,17 @@ export const AvatarVoicePlayer = ({
   hashtag1,
   hashtag2,
   hashtag3,
-  buttonType
+  buttonType,
+  audioUrl
 }: AvatarVoicePlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const dispatch = useAppDispatch()
   const selectedCharacter = useAppSelector(
     (state) => state.option.characterName
   )
-  const audioRef = useRef(new Audio('/src/assets/test.mp3'))
+  const audioRef = useRef(new Audio(audioUrl))
   const audio = audioRef.current
+
   const isSelected = selectedCharacter === characterName
   // HANDLERS
   const playerHandler = (action: string) => {
@@ -38,6 +40,9 @@ export const AvatarVoicePlayer = ({
         audio.pause()
     }
   }
+  audio.addEventListener('ended', () => {
+    playerHandler('stop')
+  })
 
   const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
