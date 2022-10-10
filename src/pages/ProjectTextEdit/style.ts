@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Wrapper = styled.div`
   & > div {
-    height: calc(100vh - 5.6rem);
+    /* height: calc(100vh - 5.6rem); */
   }
 
   width: 100%;
@@ -23,7 +23,9 @@ export const Left = styled.div`
 
 export const Right = styled.div`
   width: 38.4rem;
-  background-color: #eee;
+  height: calc(100vh - 5.6rem);
+  background-color: #fff;
+  overflow: auto;
   /* overflow: scroll; */
 `
 
@@ -32,6 +34,7 @@ export const VoicePlayer = styled.div`
   border-radius: 1rem;
   width: 79.2rem;
   padding: 0 1.6rem 2.4rem;
+  margin-bottom: 2.4rem;
 `
 
 export const StepNavigator = styled.div`
