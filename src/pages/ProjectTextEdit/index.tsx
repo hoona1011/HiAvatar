@@ -23,9 +23,19 @@ export const ProjectTextEdit = () => {
   const dispatch = useDispatch()
   const { projectId } = useParams()
   const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
+  // <<<<<<< HEAD
+  //   const { dummyData, splitTextList } = useAppSelector((state) => state.option)
+
+  //   // console.log('splitTextList', splitTextList)
+
+  //   useEffect(() => {
+  //     optionData && dispatch(getOption(optionData))
+  //     // console.log('유즈이펙트 렌더링', optionData)
+  // =======
 
   useEffect(() => {
     optionData && dispatch(getOption(optionData))
+    // >>>>>>> 4c622e95a7d3331ef28fd92034ecf8506e59a45d
   }, [optionData])
 
   const [modalText, setModalText] = useState('')

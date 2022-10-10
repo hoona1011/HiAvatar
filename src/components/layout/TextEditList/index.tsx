@@ -21,7 +21,7 @@ export const TextEditList = () => {
   //   text: '',
   //   sentenceSpacing: ''
   // }
-  console.log('텍스트 리스트', splitTextList)
+  // console.log('텍스트 리스트', splitTextList)
 
   const textDatas = texts.split('.').map((item, index) => {
     return { ...splitTextList[0], sentenceId: index + 1, text: item }
