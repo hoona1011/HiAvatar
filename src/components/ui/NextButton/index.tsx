@@ -3,7 +3,7 @@ import * as S from './style'
 import { NextButtonProps } from 'index'
 import { useAppSelector } from 'store'
 import { usePostOptionsMutation } from 'api/optionApi'
-import Spinner from '../Spinner'
+import { Spinner } from 'components'
 export const NextButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
   const { projectId } = useParams()
