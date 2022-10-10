@@ -28,6 +28,13 @@ export const avatarApi = createApi({
         return responseData['data']
       }
     }),
+    saveAvatar: builder.mutation({
+      query: ({ projectId, selectedValue }) => ({
+        url: `projects/${projectId}/avatar`,
+        method: 'PATCH',
+        body: selectedValue
+      })
+    }),
     createAvatarPreview: builder.mutation({
       query: (selectedValue) => ({
         url: 'projects/avatar-preview',
@@ -37,22 +44,12 @@ export const avatarApi = createApi({
       transformResponse: (responseData: AvatarPreview) => {
         return responseData['data']
       }
-    }),
-    createVideo: builder.mutation({
-      query: ({ projectId, selectedValue }) => ({
-        url: `projects/${projectId}/avatar`,
-        method: 'POST',
-        body: selectedValue
-      }),
-      transformResponse: (responseData: Video) => {
-        return responseData['data']
-      }
     })
   })
 })
 
 export const {
   useGetAvatarQuery,
-  useCreateAvatarPreviewMutation,
-  useCreateVideoMutation
+  useSaveAvatarMutation,
+  useCreateAvatarPreviewMutation
 } = avatarApi

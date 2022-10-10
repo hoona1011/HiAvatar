@@ -4,7 +4,8 @@ import {
   ProjectList,
   ProjectVideoList,
   CreateProjectButton,
-  Loading
+  Loading,
+  ProjectHistoryModal
 } from 'components'
 import { useGetHistoryQuery } from 'api/historyApi'
 import { changeHistory, useHistory } from 'store/slices/historySlice'
@@ -14,10 +15,11 @@ export const ProjectHistory = () => {
   const { dispatch } = useHistory()
 
   const changeHistoryHandler = () => {
-    data && dispatch(changeHistory({ diff: data }))
+    data && dispatch(changeHistory(data))
   }
 
   useEffect(() => {
+    console.log(data)
     data && changeHistoryHandler()
   }, [data])
 
@@ -35,6 +37,7 @@ export const ProjectHistory = () => {
         <ProjectList />
         <ProjectVideoList />
       </S.Container>
+      <ProjectHistoryModal />
     </>
   )
 }
