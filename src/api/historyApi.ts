@@ -35,8 +35,23 @@ export const historyApi = createApi({
       transformResponse: (responseData: Project) => {
         return responseData['data']
       }
+    }),
+    editProject: builder.mutation({
+      query: ({ userTitleInput, projectId }) => ({
+        url: `/projects/${projectId}`,
+        method: 'PATCH',
+        body: userTitleInput
+      }),
+      transformResponse: (responseData: Project) => {
+        console.log('응답값', responseData)
+        return responseData['data']
+      }
     })
   })
 })
 
-export const { useGetHistoryQuery, useCreateProjectMutation } = historyApi
+export const {
+  useGetHistoryQuery,
+  useCreateProjectMutation,
+  useEditProjectMutation
+} = historyApi

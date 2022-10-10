@@ -1,14 +1,31 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './style'
 import { EditIcon, LogoIcon } from '../../Icons'
 import { Outlet, useLocation, useParams } from 'react-router-dom'
+import {
+  useCreateProjectMutation,
+  useEditProjectMutation,
+  useGetHistoryQuery
+} from 'api/historyApi'
 
 export const TheHeader = (propFunction: any) => {
+  // const [createProject] = useCreateProjectMutation()
+  const { data, isLoading, isError }: any = useGetHistoryQuery()
+  const [editProject] = useEditProjectMutation()
   const location = useLocation()
   const { projectId } = useParams()
+  const [projectName, setProjectName] = useState()
+  const [userTitleInput, setUserTitleInput]: any = useState()
+  const [isVisible, setIsVisible] = useState(true)
 
-  console.log(location.pathname)
-  // console.log(projectId)
+  useEffect(() => {
+    const findProject = data?.projects.find((item: any) => {
+      return item.projectId === Number(projectId)
+    })
+    if (findProject) {
+      setProjectName(findProject.projectName)
+    }
+  }, [data])
 
   const rightRenderBtnList = () => {
     switch (location.pathname) {
@@ -37,14 +54,56 @@ export const TheHeader = (propFunction: any) => {
     }
   }
 
+  const userEditHandeler = () => {
+    setIsVisible(!isVisible)
+  }
+
+  const userTitleEditHandeler: any = (e: any) => {
+    // console.log(e.key)
+    const { name, value } = e.target
+    setUserTitleInput({ ...userTitleInput, [name]: value })
+    if (e.key === 'Enter') {
+      requestModifyTitle()
+      setIsVisible(!isVisible)
+    }
+  }
+
+  const userOnBlurHandeler = () => {
+    requestModifyTitle()
+    setIsVisible(!isVisible)
+  }
+
+  const requestModifyTitle = () => {
+    let test
+    editProject({ userTitleInput, projectId })
+      .unwrap()
+      .then((data: any) => {
+        setProjectName(data.projectName)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+  }
+
   const leftRenderBtnList = () => {
     switch (location.pathname) {
       case `/project-text-edit/${projectId}`:
       case `/project-avatar/${projectId}`:
         return (
           <>
-            <S.ProjectName>프로젝트명</S.ProjectName>
-            <S.EditBtn>
+            {isVisible ? (
+              <S.ProjectName>{projectName}</S.ProjectName>
+            ) : (
+              <input
+                name='projectName'
+                defaultValue={projectName}
+                onChange={userTitleEditHandeler}
+                onKeyPress={userTitleEditHandeler}
+                onBlur={userOnBlurHandeler}
+              />
+            )}
+
+            <S.EditBtn onClick={userEditHandeler}>
               <EditIcon width='17' height='17' />
             </S.EditBtn>
           </>
