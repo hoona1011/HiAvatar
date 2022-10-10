@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  height: 71.2rem;
+  height: calc(100vh - 8.8rem - 5.6rem);
   padding: 2.6rem 2.4rem 2.4rem;
   background-color: ${({ theme }) => theme.palette.white};
   box-shadow: 0 0 2rem 0 ${({ theme }) => theme.palette.boxShadow};
@@ -20,7 +20,7 @@ export const Inner = styled.div`
 
 export const BtnContainer = styled.div`
   height: 4.8rem;
-  position: sticky;
+  position: absolute;
   width: 33.6rem;
-  bottom: 0;
+  bottom: 2.4rem;
 `

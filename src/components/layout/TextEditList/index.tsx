@@ -3,11 +3,17 @@ import * as S from './style'
 import { TextPlayer } from '../../ui/TextPlayer'
 import { useAppDispatch, useAppSelector } from 'store'
 import { renderText, outFocus } from 'store/slices/optionSlice'
+import { VoiceUploadButton } from 'components/ui/VoiceUploadButton'
+import { TextEnterButton } from 'components/ui/TextEnterButton'
+import { ProjectTextModal } from 'components/ui/ProjectTextModal'
+import { ProjectTextEnterButton, ProjectVoiceUploadButton } from 'components'
 
 export const TextEditList = () => {
   const dispatch = useAppDispatch()
   const { texts, splitTextList, userSelectedList, textPreviewData } =
     useAppSelector((state) => state.option)
+  const [modalText, setModalText] = useState('')
+  const [modal, setModal] = useState(false)
 
   useEffect(() => {
     dispatch(renderText(textDatas))
@@ -51,7 +57,22 @@ export const TextEditList = () => {
 
   return (
     <S.Wrapper onClick={userOutFocusHandler}>
-      <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
+      <S.TitleGroup>
+        <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
+        <div className='button-group'>
+          <ProjectVoiceUploadButton />
+          <ProjectTextEnterButton setModal={setModal} />
+        </div>
+      </S.TitleGroup>
+
+      {modal && (
+        <ProjectTextModal
+          setModal={setModal}
+          modalText={modalText}
+          setModalText={setModalText}
+        />
+      )}
+
       {render}
     </S.Wrapper>
   )

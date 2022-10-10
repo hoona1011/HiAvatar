@@ -18,7 +18,9 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
       return (
         <S.Container>
           <ProjectText />
-          <S.BtnContainer />
+          <S.BtnContainer>
+            <NextButton requestFunc={() => console.log('요청 완료')} />
+          </S.BtnContainer>
         </S.Container>
       )
     case 'VoiceControllerMenu':
