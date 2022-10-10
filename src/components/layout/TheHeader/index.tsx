@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { EditIcon, LogoIcon } from '../../Icons'
 import { Outlet, useLocation, useParams } from 'react-router-dom'
@@ -15,8 +15,11 @@ export const TheHeader = (propFunction: any) => {
   const location = useLocation()
   const { projectId } = useParams()
   const [projectName, setProjectName] = useState()
-  const [userTitleInput, setUserTitleInput]: any = useState()
+  const [userTitleInput, setUserTitleInput]: any = useState({ projectName: '' })
   const [isVisible, setIsVisible] = useState(true)
+  const span: any = useRef()
+  const [width, setWidth] = useState(0)
+  const TitleEdit: any = useRef()
 
   useEffect(() => {
     const findProject = data?.projects.find((item: any) => {
@@ -24,8 +27,20 @@ export const TheHeader = (propFunction: any) => {
     })
     if (findProject) {
       setProjectName(findProject.projectName)
+      setUserTitleInput({ projectName: findProject.projectName })
+      // setWidth(findProject.projectName)
+      // console.log(width)
     }
   }, [data])
+
+  useEffect(() => {
+    if (!isVisible) {
+      TitleEdit.current.focus()
+      setWidth(span.current?.offsetWidth)
+    }
+  }, [isVisible, userTitleInput.projectName])
+
+  // console.log('userTitleInput.projectName', userTitleInput.projectName)
 
   const rightRenderBtnList = () => {
     switch (location.pathname) {
@@ -86,27 +101,43 @@ export const TheHeader = (propFunction: any) => {
   }
 
   const leftRenderBtnList = () => {
+    // console.log('projectName', width)
+    let test
+    // if (userTitleInput.projectName.length) {
+    //   test = userTitleInput.projectName.length
+    // }
+
     switch (location.pathname) {
       case `/project-text-edit/${projectId}`:
       case `/project-avatar/${projectId}`:
         return (
-          <>
+          <S.TitleEdit>
             {isVisible ? (
               <S.ProjectName>{projectName}</S.ProjectName>
             ) : (
-              <input
-                name='projectName'
-                defaultValue={projectName}
-                onChange={userTitleEditHandeler}
-                onKeyPress={userTitleEditHandeler}
-                onBlur={userOnBlurHandeler}
-              />
+              <>
+                <span
+                  className='hide'
+                  ref={span}
+                  style={{ fontSize: '1.6rem' }}
+                >
+                  {userTitleInput.projectName}
+                </span>
+                <input
+                  name='projectName'
+                  defaultValue={projectName}
+                  onChange={userTitleEditHandeler}
+                  onKeyPress={userTitleEditHandeler}
+                  onBlur={userOnBlurHandeler}
+                  style={{ width }}
+                  ref={TitleEdit}
+                />
+              </>
             )}
-
             <S.EditBtn onClick={userEditHandeler}>
               <EditIcon width='17' height='17' />
             </S.EditBtn>
-          </>
+          </S.TitleEdit>
         )
     }
   }
