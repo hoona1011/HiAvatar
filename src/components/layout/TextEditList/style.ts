@@ -9,6 +9,7 @@ export const Wrapper = styled.div`
   border-radius: 0.4rem;
   background-color: #ffffff;
   position: relative;
+  margin-bottom: 2.4rem;
 `
 export const Title = styled.p`
   font-size: 1.5rem;
