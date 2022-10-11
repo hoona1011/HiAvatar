@@ -1,50 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
-import { EditIcon, LogoIcon } from '../../Icons'
+import { LogoIcon } from '../../Icons'
 import { Outlet, useLocation, useParams } from 'react-router-dom'
-import {
-  useCreateProjectMutation,
-  useEditProjectMutation,
-  useGetHistoryQuery
-} from 'api/historyApi'
-// import { useHistory } from 'store/slices/historySlice'
+import { ProjectTitleEdit } from 'components/ui/ProjectTitleEdit'
 
 export const TheHeader = (propFunction: any) => {
-  // const [createProject] = useCreateProjectMutation()
-  const { data, isLoading, isError }: any = useGetHistoryQuery()
-  const [editProject] = useEditProjectMutation()
   const location = useLocation()
   const { projectId } = useParams()
-  const [projectName, setProjectName] = useState()
-  const [userTitleInput, setUserTitleInput]: any = useState({ projectName: '' })
-  const [isVisible, setIsVisible] = useState(true)
-  const span: any = useRef()
-  const [width, setWidth] = useState(0)
-  const TitleEdit: any = useRef()
-
-  // const { projects } = useHistory()
-  // console.log(projects)
-
-  useEffect(() => {
-    const findProject = data?.projects.find((item: any) => {
-      return item.projectId === Number(projectId)
-    })
-    if (findProject) {
-      setProjectName(findProject.projectName)
-      setUserTitleInput({ projectName: findProject.projectName })
-      // setWidth(findProject.projectName)
-      // console.log(width)
-    }
-  }, [data])
-
-  useEffect(() => {
-    if (!isVisible) {
-      TitleEdit.current.focus()
-      setWidth(span.current?.offsetWidth)
-    }
-  }, [isVisible, userTitleInput.projectName])
-
-  // console.log('userTitleInput.projectName', userTitleInput.projectName)
 
   const rightRenderBtnList = () => {
     switch (location.pathname) {
@@ -73,76 +35,11 @@ export const TheHeader = (propFunction: any) => {
     }
   }
 
-  const userEditHandeler = () => {
-    setIsVisible(!isVisible)
-  }
-
-  const userTitleEditHandeler: any = (e: any) => {
-    // console.log(e.key)
-    const { name, value } = e.target
-    setUserTitleInput({ ...userTitleInput, [name]: value })
-    if (e.key === 'Enter') {
-      requestModifyTitle()
-      setIsVisible(!isVisible)
-    }
-  }
-
-  const userOnBlurHandeler = () => {
-    requestModifyTitle()
-    setIsVisible(!isVisible)
-  }
-
-  const requestModifyTitle = () => {
-    let test
-    editProject({ userTitleInput, projectId })
-      .unwrap()
-      .then((data: any) => {
-        setProjectName(data.projectName)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-  }
-
   const leftRenderBtnList = () => {
-    // console.log('projectName', width)
-    let test
-    // if (userTitleInput.projectName.length) {
-    //   test = userTitleInput.projectName.length
-    // }
-
     switch (location.pathname) {
       case `/project-text-edit/${projectId}`:
       case `/project-avatar/${projectId}`:
-        return (
-          <S.TitleEdit>
-            {isVisible ? (
-              <S.ProjectName>{projectName}</S.ProjectName>
-            ) : (
-              <>
-                <span
-                  className='hide'
-                  ref={span}
-                  style={{ fontSize: '1.6rem' }}
-                >
-                  {userTitleInput.projectName}
-                </span>
-                <input
-                  name='projectName'
-                  defaultValue={projectName}
-                  onChange={userTitleEditHandeler}
-                  onKeyPress={userTitleEditHandeler}
-                  onBlur={userOnBlurHandeler}
-                  style={{ width }}
-                  ref={TitleEdit}
-                />
-              </>
-            )}
-            <S.EditBtn onClick={userEditHandeler}>
-              <EditIcon width='17' height='17' />
-            </S.EditBtn>
-          </S.TitleEdit>
-        )
+        return <ProjectTitleEdit />
     }
   }
 
