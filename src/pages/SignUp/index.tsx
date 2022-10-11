@@ -1,11 +1,16 @@
 import React, { useState, FC } from 'react'
 import * as S from './style'
-import { PwErrorIcon, PwCheckIcon } from 'components/Icons'
+import {
+  PwErrorIcon,
+  PwCheckIcon,
+  KakaoIcon,
+  GoogleIcon
+} from 'components/Icons'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form, useFormik } from 'formik'
 import * as Yup from 'yup'
-import { postUserInfo, postUserCheck } from 'api/userApi'
+import { postUserInfo, idCheck } from 'api/userApi'
 
 interface SignUpForm {
   id: string
@@ -48,7 +53,6 @@ export const SignUp: FC = () => {
         .required('입력한 비밀번호가 없습니다.')
     }),
     onSubmit: async (values) => {
-      alert('test')
       console.log(values)
       try {
         const response = await postUserInfo({
@@ -71,12 +75,23 @@ export const SignUp: FC = () => {
     e.preventDefault()
     console.log('이메일 중복검사')
     try {
-      const response = await postUserCheck(id)
-      setEmailCheck(true)
-      setEmailMsg('')
+      const response = await idCheck(id)
+      console.log(id)
+      if (response.data.data.idAvailable == false) {
+        setEmailCheck(false)
+        setEmailMsg('중복된 이메일 주소가 있습니다.')
+        alert('중복메일')
+      } else if (id == '') {
+        setEmailCheck(false)
+        alert('이메일을 입력해주세요.')
+        setEmailMsg('이메일 입력.')
+      } else if (response.data.data.idAvailable == true) {
+        setEmailCheck(true)
+        setEmailMsg('사용가능한 이메일입니다.')
+        alert('사용가능')
+      }
     } catch (e) {
       console.log(e)
-      setEmailMsg('중복된 이메일 주소가 있습니다.')
     }
   }
 
@@ -92,11 +107,11 @@ export const SignUp: FC = () => {
               type='text'
               placeholder='이메일 주소를 입력해 주세요.'
               //이메일 중복검사 후 인풋 변경을 불가능하도록 disabled추가
-              disabled={EmailCheck}
+              // disabled={EmailCheck}
               {...formik.getFieldProps('id')}
             />
             {/* 이메일 중복, 에러메세지 */}
-            {EmailMsg}
+            <S.ErrorSpan>{EmailMsg}</S.ErrorSpan>
             {formik.touched.id && formik.errors.id ? (
               <S.ErrorSpan>{formik.errors.id}</S.ErrorSpan>
             ) : null}
@@ -141,14 +156,14 @@ export const SignUp: FC = () => {
             null}
           </S.PwWrapper>
           <S.SignUpBtn
-            // disabled={
-            //   !(
-            //     EmailCheck &&
-            //     formik.values.id &&
-            //     formik.values.password &&
-            //     formik.values.confirmPassword
-            //   )
-            // }
+            disabled={
+              !(
+                EmailCheck &&
+                formik.values.id &&
+                formik.values.password &&
+                formik.values.confirmPassword
+              )
+            }
             type='submit'
           >
             회원가입
