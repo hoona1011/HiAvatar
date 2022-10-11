@@ -47,7 +47,7 @@ export const ProjectVoiceUploadButton = () => {
 
   return (
     <S.Button onClick={onClickHandler}>
-      <div className='button-label'>텍스트 입력</div>
+      <div className='button-label'>음성 업로드</div>
       <input
         type='file'
         accept='audio/*'

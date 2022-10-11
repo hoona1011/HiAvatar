@@ -1,13 +1,30 @@
-import React from 'react'
+import { useNavigate, useParams } from 'react-router-dom'
 import * as S from './style'
+import { NextButtonProps } from 'index'
+import { useAppSelector } from 'store'
+import { usePostOptionsMutation } from 'api/optionApi'
+export const ProjectSaveButton = ({ requestFunc }: NextButtonProps) => {
+  const navigate = useNavigate()
+  const { projectId } = useParams()
+  const optionData = useAppSelector((state) => state.option)
 
-export const ProjectSaveButton = () => {
-  const onClickHandler = () => {
-    console.log('클릭')
+  const [postOptions, { isLoading }] = usePostOptionsMutation()
+
+  const onClickHandler = async () => {
+    const projectData: any = { ...optionData }
+    delete projectData.userSelectedList
+    const res = await postOptions({
+      projectData,
+      projectId
+    })
+    if ((res as any).data.data?.result !== 'Success') {
+      alert('에러가 발생했습니다. 다시 시도해주세요')
+    }
   }
+
   return (
-    <S.Button onClick={onClickHandler}>
-      <span>프로젝트 저장</span>
+    <S.Button disabled={optionData.texts.length === 0} onClick={onClickHandler}>
+      {!isLoading ? <span>프로젝트 저장</span> : <span>저장 중</span>}
     </S.Button>
   )
 }

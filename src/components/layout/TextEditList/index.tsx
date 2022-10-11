@@ -60,8 +60,8 @@ export const TextEditList = () => {
       <S.TitleGroup>
         <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
         <div className='button-group'>
-          <ProjectVoiceUploadButton />
           <ProjectTextEnterButton setModal={setModal} />
+          <ProjectVoiceUploadButton />
         </div>
       </S.TitleGroup>
 
