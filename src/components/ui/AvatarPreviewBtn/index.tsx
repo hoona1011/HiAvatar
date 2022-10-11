@@ -10,7 +10,7 @@ import {
 import { useCreateAvatarPreviewMutation } from 'api/avatarApi'
 
 export const AvatarPreviewBtn = () => {
-  const { selectedValue, isAllSelected, dispatch } = useAvatar()
+  const { selectedValue, isAllSelected, avatarPreview, dispatch } = useAvatar()
   const [createPreview] = useCreateAvatarPreviewMutation()
 
   //**selectedValue의 값이 모두 있는 경우에만 버튼을 활성화 시키기 위한 함수*/
@@ -42,7 +42,11 @@ export const AvatarPreviewBtn = () => {
       disabled={!isAllSelected}
     >
       <S.Inner>
-        <S.Content>미리보기 재설정</S.Content>
+        {avatarPreview ? (
+          <S.Content>미리보기 재설정</S.Content>
+        ) : (
+          <S.Content>미리보기</S.Content>
+        )}
         <PreviewReload width='1.3rem' height='1.2rem' />
       </S.Inner>
     </S.Button>
