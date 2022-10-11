@@ -101,7 +101,12 @@ export const SignIn = () => {
         <form onSubmit={formik.handleSubmit}>
           <S.EmailWrapper>
             <S.MidText htmlFor='id'>아이디</S.MidText>
-            <S.EmailInput type='text' id='id' {...formik.getFieldProps('id')} />
+            <S.EmailInput
+              type='text'
+              id='id'
+              placeholder='아이디를 입력해 주세요.'
+              {...formik.getFieldProps('id')}
+            />
             {formik.touched.id && formik.errors.id ? (
               <S.ErrorSpan>{formik.errors.id}</S.ErrorSpan>
             ) : null}
@@ -111,6 +116,7 @@ export const SignIn = () => {
             <S.PwInput
               type='password'
               id='password'
+              placeholder='비밀번호를 입력해 주세요.'
               {...formik.getFieldProps('password')}
             />
           </S.PwWrapper>
