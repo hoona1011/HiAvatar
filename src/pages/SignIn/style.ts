@@ -1,26 +1,30 @@
 import styled from 'styled-components'
 
 export const Container = styled.div`
-  background-color: pink;
+  background-color: ${({ theme }) => theme.palette.background};
   display: flex;
+  margin-top: 6rem;
 `
 export const Wrapper = styled.div`
   margin: 0 auto;
 `
 export const TopText = styled.div`
-  font-size: 4rem;
+  font-size: 4.8rem;
   font-weight: 700;
+  /* line-height: 3.8rem; */
   margin-bottom: 2rem;
   text-align: center;
 `
 export const EmailWrapper = styled.div`
   /* background-color: salmon; */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2.4rem;
 `
 export const MidText = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
-  margin-top: 1.5rem;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.4rem;
 `
 export const EmailInput = styled.input`
   width: 38.4rem;
@@ -30,6 +34,8 @@ export const EmailInput = styled.input`
 `
 export const PwWrapper = styled.div`
   margin-bottom: 2rem;
+  display: flex;
+  flex-direction: column;
 `
 export const PwInput = styled.input`
   width: 38.4rem;
@@ -56,10 +62,6 @@ export const SignUpSpan = styled.span`
   text-decoration: underline;
   cursor: pointer;
 `
-export const SimpleWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`
 export const SimpleLogBtn = styled.button`
   background-color: #e9e9e9;
   width: 38.4rem;
@@ -68,4 +70,26 @@ export const SimpleLogBtn = styled.button`
   font-size: 1.5rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+`
+export const ErrorSpan = styled.span`
+  color: ${({ theme }) => theme.palette.orange2};
+`
+export const SimpleText = styled.div`
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 2rem;
+  margin-top: 2.4rem;
+  margin-bottom: 0.8rem;
+  text-align: center;
+`
+export const SimpleWrapper = styled.div`
+  /* background-color: red; */
+  /* display: flex; */
+  div {
+    display: inline;
+    margin-left: 0.8rem;
+  }
+  align-items: center;
+  text-align: center;
+  margin-bottom: 5.3rem;
 `
