@@ -173,10 +173,10 @@ export const MainSlider = ({ renderType }: MainSliderProps) => {
 
   return (
     <S.Container>
-      <S.PrevBtnContainer ref={prevRef}>
+      <S.PrevBtnContainer className='btn' ref={prevRef}>
         <SwiperPrevIcon width='3.2rem' height='3.2rem' />
       </S.PrevBtnContainer>
-      <S.NextBtnContainer ref={nextRef}>
+      <S.NextBtnContainer className='btn' ref={nextRef}>
         <SwiperNextIcon width='3.2rem' height='3.2rem' />
       </S.NextBtnContainer>
       {swiperSetting && RenderValue()}
