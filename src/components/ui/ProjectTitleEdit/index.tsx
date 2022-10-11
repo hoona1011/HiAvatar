@@ -88,7 +88,7 @@ export const ProjectTitleEdit = () => {
           </>
         )}
         <S.EditBtn onClick={userEditHandeler}>
-          <EditIcon width='17' height='17' />
+          <EditIcon width='12' height='12' fillColor='#4C7EFF' />
         </S.EditBtn>
       </S.TitleEdit>
     </div>
