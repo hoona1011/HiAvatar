@@ -1,7 +1,6 @@
 import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Avatar, AvatarPreview } from 'avatar'
-import type { Video } from 'history'
 
 const url = import.meta.env.VITE_SERVICE_URL
 const cookies = new Cookies()
