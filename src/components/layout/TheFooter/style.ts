@@ -21,7 +21,6 @@ export const FooterTextBot = styled.div`
 `
 
 export const FooterLogo = styled.div`
-  background-color: #d9d9d9;
   position: relative;
   right: 5%;
   margin-top: 3rem;
