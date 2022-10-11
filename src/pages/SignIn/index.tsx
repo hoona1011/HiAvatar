@@ -39,20 +39,23 @@ export const SignIn = () => {
           id: formik.values.id,
           password: formik.values.password
         })
-        if (response.data.code != 200) {
+        if (response.data.code !== 200) {
           alert('아이디가 존재하지않거나 비밀번호가 올바르지않습니다.')
           return
         }
-        const access_token = response.data.accessToken
+        console.log('응답값', response)
+        const access_token = response.data.data.accessToken
+
+        console.log('액세스 토큰', access_token)
         axios.defaults.headers.common[
           'Authorization'
         ] = `Bearer ${access_token}`
-        cookies.set('id', response.data.accessToken)
-        localStorage.setItem('rt', response.data.refreshToken)
-        console.log('values: ', values)
-        console.log('response:', response)
+        cookies.set('accessToken', access_token)
+        localStorage.setItem('rt', response.data.data.refreshToken)
+        // console.log('values: ', values)
+        // console.log('response:', response)
         console.log(cookies)
-        if (response.data.code == 200) {
+        if (response.data.code === 200) {
           navigate('/project-history')
         }
 
