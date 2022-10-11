@@ -16,6 +16,7 @@ interface SignUpForm {
   id: string
   password: string
   confirmPassword: string
+  isActive?: boolean
 }
 
 export const SignUp: FC = () => {
@@ -25,7 +26,8 @@ export const SignUp: FC = () => {
   //이메일 중복검사 에러메세지
   const [EmailMsg, setEmailMsg] = useState<string>('')
   //중복확인 안할시 버튼 비활성화
-  const [disabledBtn, setDisabledBtn] = useState(false)
+  const [disabledBtn, setDisabledBtn] = useState<boolean>(false)
+  const [isActive, setIsActive] = useState<boolean>(false)
 
   const formik = useFormik({
     //initialValues, onSubmit, yup유효성검사
@@ -67,7 +69,23 @@ export const SignUp: FC = () => {
       }
     }
   })
-
+  const color = () => {
+    const a =
+      EmailCheck &&
+      formik.values.id &&
+      formik.values.password &&
+      formik.values.confirmPassword
+    if (a) {
+      setIsActive(true)
+    } else {
+      setIsActive(false)
+    }
+  }
+  const a =
+    EmailCheck &&
+    formik.values.id &&
+    formik.values.password &&
+    formik.values.confirmPassword
   const EmailCheckHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: string
