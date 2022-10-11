@@ -7,6 +7,7 @@ import {
   useEditProjectMutation,
   useGetHistoryQuery
 } from 'api/historyApi'
+// import { useHistory } from 'store/slices/historySlice'
 
 export const TheHeader = (propFunction: any) => {
   // const [createProject] = useCreateProjectMutation()
@@ -20,6 +21,9 @@ export const TheHeader = (propFunction: any) => {
   const span: any = useRef()
   const [width, setWidth] = useState(0)
   const TitleEdit: any = useRef()
+
+  // const { projects } = useHistory()
+  // console.log(projects)
 
   useEffect(() => {
     const findProject = data?.projects.find((item: any) => {
