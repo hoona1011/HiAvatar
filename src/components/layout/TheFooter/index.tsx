@@ -13,7 +13,7 @@ export const TheFooter = () => {
         <S.FooterTextBot>ⓒ AIPARK CO.,LTD All rights reserved</S.FooterTextBot>
       </S.FooterTextWrapper>
       <S.FooterLogo>
-        <LogoIcon width='100' height='40' />
+        <LogoIcon width='100' height='40' fillColor='#fff' />
       </S.FooterLogo>
     </S.FooterContainer>
   )

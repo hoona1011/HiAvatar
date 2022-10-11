@@ -7,7 +7,8 @@ export { AvatarVoiceMenu } from './layout/AvatarVoiceMenu'
 export { ProjectText } from './layout/ProjectText'
 export { ProjectAvatarModal } from 'components/layout/ProjectAvatarModal'
 export { ProjectHistoryModal } from 'components/layout/ProjectHistoryModal'
-
+export { Layout } from 'components/layout/Layout'
+export { LoginLayout } from 'components/layout/LoginLayout'
 // ui
 export { VoiceController } from './ui/VoiceController'
 export { ProjectSaveButton } from './ui/ProjectSaveButton'
