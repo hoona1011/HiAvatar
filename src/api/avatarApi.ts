@@ -19,8 +19,8 @@ export const avatarApi = createApi({
   }),
   endpoints: (builder) => ({
     getAvatar: builder.query({
-      query: (id) => ({
-        url: `projects/${id}/avatar`,
+      query: (projectId) => ({
+        url: `projects/${projectId}/avatar`,
         method: 'GET'
       }),
       transformResponse: (responseData: Avatar) => {
