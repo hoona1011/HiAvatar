@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   margin-bottom: 3.4rem;
-  overflow: auto;
+  /* overflow: auto; */
 `
 
 export const Title = styled.div`
@@ -31,3 +31,19 @@ export const Language = styled.div`
   display: flex;
 `
 export const VoicePlayerContainer = styled.div``
+
+export const Tooltip = styled.div`
+  position: relative;
+
+  .message {
+    font-weight: 500;
+    font-size: 12;
+    display: none;
+    opacity: 1;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`

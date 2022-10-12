@@ -4,6 +4,7 @@ import { Modalprops } from 'index'
 import { changeOption } from 'store/slices/optionSlice'
 import * as S from './style'
 import { ModalCloseIcon, TooltipIcon } from 'components/Icons'
+import { TootipMessage } from '../TootipMessage'
 
 export const ProjectTextModal = ({
   setModal,
@@ -35,7 +36,16 @@ export const ProjectTextModal = ({
       <S.Modal>
         <S.Top>
           <S.Label>
-            <TooltipIcon width='1.6rem' height='1.6rem' />
+            <S.Tooltip>
+              <TooltipIcon width='1.6rem' height='1.6rem' />
+              <div className='message'>
+                <TootipMessage
+                  content='영상 제작에 필요한 스크립트를 입력 후
+              확인 버튼을 눌러주세요.'
+                  width='20.5rem'
+                />
+              </div>
+            </S.Tooltip>
             <label>텍스트를 입력해주세요</label>
           </S.Label>
           <S.CloseBtn onClick={onCloseHandler}>
