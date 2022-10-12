@@ -8,6 +8,18 @@ export const Title = styled.div`
   margin-left: 0.8rem;
 `
 
+export const Tooltip = styled.div`
+  position: relative;
+  .message {
+    display: none;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`
+
 export const Top = styled.div`
   display: flex;
   align-items: center;

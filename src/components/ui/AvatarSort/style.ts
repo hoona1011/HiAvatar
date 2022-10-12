@@ -8,6 +8,18 @@ export const Container = styled.div`
   border-radius: 0.4rem;
   background-color: ${({ theme }) => theme.palette.white};
 `
+export const Tooltip = styled.div`
+  z-index: 3;
+  position: relative;
+  .message {
+    display: none;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`
 
 export const Top = styled.div`
   display: flex;
