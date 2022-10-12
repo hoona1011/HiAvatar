@@ -9,7 +9,7 @@ export const LandingPage = () => {
   const navigate = useNavigate()
   const onClickHandler = () => {
     const token = cookies.get('accessToken')
-    if (!token) {
+    if (!token || token === 'undefined') {
       alert('로그인이 필요한 서비스입니다')
       navigate('/sign-in')
     } else {
