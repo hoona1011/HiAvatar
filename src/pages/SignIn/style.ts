@@ -31,6 +31,10 @@ export const EmailInput = styled.input`
   height: 5.6rem;
   border-radius: 0.8rem;
   border: 0.1rem solid #b7b7b7;
+  ::placeholder {
+    color: ${({ theme }) => theme.palette.gray20};
+  }
+  text-indent: 1.6rem;
 `
 export const PwWrapper = styled.div`
   margin-bottom: 2rem;
@@ -42,15 +46,22 @@ export const PwInput = styled.input`
   height: 5.6rem;
   border-radius: 0.8rem;
   border: 0.1rem solid #b7b7b7;
+  ::placeholder {
+    color: ${({ theme }) => theme.palette.gray20};
+  }
+  text-indent: 1.6rem;
 `
 export const SignInBtn = styled.button`
-  background-color: #757575;
+  background-color: ${({ theme }) => theme.palette.gray20};
   color: #fff;
   width: 38.4rem;
   height: 6rem;
   border-radius: 1rem;
   font-size: 2rem;
   font-weight: 500;
+  :active {
+    background-color: ${({ theme }) => theme.palette.blue90};
+  }
 `
 export const BotText = styled.div`
   text-align: center;

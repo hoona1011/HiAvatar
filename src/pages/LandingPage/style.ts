@@ -1,68 +1,101 @@
 import styled from 'styled-components'
 export const Landing = styled.div`
-  margin: 0;
+  background-color: ${({ theme }) => theme.palette.background};
 `
-export const Section1 = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: 1;
-  margin-bottom: 0;
+export const section1Container = styled.div`
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('https://user-images.githubusercontent.com/91241596/195174785-8876fde7-5ca8-4397-8cb7-4868b57a506f.png');
 `
-export const Section2 = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+export const section1Inner = styled.div`
+  width: 1200px;
+  position: relative;
+  top: 200px;
+  left: 150px;
 `
-export const Section3 = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+export const section2Container = styled.div`
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('https://user-images.githubusercontent.com/91241596/195172289-452e889e-c60a-41e4-aa59-e25dee5e21ca.png');
 `
-export const Section4 = styled.div`
-  width: 100%;
-  height: 100%;
-  z-index: 1;
+export const section2Inner = styled.div`
+  width: 1200px;
+  color: white;
+  position: relative;
+  top: 274px;
+  left: 650px;
 `
-export const Section1Container = styled.div`
-  position: absolute;
-  top: 260px;
-  left: 105px;
-  z-index: 2;
+export const section3Container = styled.div`
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('https://user-images.githubusercontent.com/91241596/195172001-1398368e-5f72-4c9e-b832-f3fddd20a8c7.png');
 `
-export const Section2Container = styled.div`
-  position: absolute;
-  top: 963px;
-  right: 174px;
-  z-index: 2;
+export const section3Inner = styled.div`
+  width: 1200px;
+  text-align: center;
+  position: relative;
+  top: 100px;
 `
-export const Section3Container = styled.div`
-  position: absolute;
-  top: 1516px;
-  right: 409px;
-  z-index: 2;
+export const section3Image = styled.div`
+  position: relative;
+  top: 76px;
 `
-export const Section4Container = styled.div`
-  position: absolute;
-  top: 2581px;
-  right: 452px;
-  z-index: 2;
+export const section4Container = styled.div`
+  height: 750px;
+  display: flex;
+  justify-content: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url('https://user-images.githubusercontent.com/91241596/195172538-e1da0c28-50a6-43ae-b748-9e5e5bd1d9db.png');
+`
+export const section4Inner = styled.div`
+  width: 1200px;
+  position: relative;
+  top: 480px;
+  left: 480px;
+`
+export const wrap = styled.div`
+  display: flex;
+  flex-direction: row;
+  margin-right: 20px;
 `
 export const TopText = styled.div`
-  font-size: 36px;
+  font-size: 3.6rem;
   font-weight: 700;
-  line-height: 43px;
-  margin-bottom: 16px;
+  line-height: 4.3rem;
+  margin-bottom: 1.6rem;
 `
 export const MidText = styled.div`
-  font-size: 16px;
+  font-size: 1.6rem;
   font-weight: 500;
-  line-height: 20px;
-  margin-bottom: 24px;
+  line-height: 2rem;
+  margin-bottom: 2.4rem;
+  /* margin-right: 84px; */
+`
+export const MidText4 = styled.div`
+  font-size: 1.6rem;
+  font-weight: 500;
+  line-height: 2rem;
+  margin-bottom: 2.4rem;
+  margin-right: 84px;
 `
 export const Button = styled.button`
-  width: 160px;
-  height: 48px;
-  border-radius: 10px;
-  background-color: blue;
-  color: white;
+  width: 16rem;
+  height: 4.8rem;
+  border-radius: 1rem;
+  background-color: ${({ theme }) => theme.palette.blue70};
+  color: ${({ theme }) => theme.palette.white};
 `

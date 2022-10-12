@@ -1,8 +1,11 @@
 import styled from 'styled-components'
+import type { StyledComponentsProps } from 'index'
 
 export const Container = styled.div`
   display: flex;
   /* text-align: center; */
+  margin-top: 6rem;
+  margin-bottom: 7.5rem;
   background-color: ${({ theme }) => theme.palette.background};
 `
 export const Wrapper = styled.div`
@@ -24,6 +27,7 @@ export const EmailWrapper = styled.div`
 export const MidText = styled.label`
   font-size: 1.5rem;
   font-weight: 600;
+  line-height: 1.8rem;
   margin-bottom: 0.5rem;
 `
 export const PositionWrap = styled.div`
@@ -51,10 +55,9 @@ export const IdCheckBtn = styled.button`
   height: 3.2rem;
   border-radius: 1rem;
   font-size: 1.2rem;
-
   position: absolute;
   left: 29.2rem;
-  top: 3.2rem;
+  top: 3.5rem;
 `
 export const PwWrapper = styled.div`
   display: flex;
@@ -88,8 +91,21 @@ export const SignUpBtn = styled.button`
   height: 6rem;
   border-radius: 1rem;
   background-color: ${({ theme }) => theme.palette.gray20};
+  :active {
+    background-color: ${({ theme }) => theme.palette.blue90};
+  }
   font-size: 2rem;
   margin-top: 1rem;
+  color: ${({ theme }) => theme.palette.white};
+`
+export const SignUpABtn = styled.button`
+  width: 38.4rem;
+  height: 6rem;
+  border-radius: 1rem;
+  background-color: ${({ theme }) => theme.palette.blue70};
+  font-size: 2rem;
+  margin-top: 1rem;
+  margin-bottom: 7.5rem;
   color: ${({ theme }) => theme.palette.white};
 `
 export const ErrorSpan = styled.span`
