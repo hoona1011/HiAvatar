@@ -20,6 +20,10 @@ export const TextGroup = styled.div`
 `
 
 export const TextBox = styled.div<{ findData: any }>`
+  &::after {
+    content: '문장';
+    opacity: 0;
+  }
   background-color: ${({ findData }) => (!findData ? 'none' : '#E6EDFF')};
   border-radius: 1rem;
   padding: 1rem;
