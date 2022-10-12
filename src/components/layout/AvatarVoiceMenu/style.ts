@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   margin-bottom: 3.4rem;
+  overflow: auto;
 `
 
 export const Title = styled.div`

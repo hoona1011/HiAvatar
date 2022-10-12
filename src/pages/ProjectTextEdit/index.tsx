@@ -8,7 +8,8 @@ import {
   TextEditList,
   ProjectNav,
   VoicePreviewPlayer,
-  ProjectRightMenu
+  ProjectRightMenu,
+  TheHeader
 } from 'components'
 import * as S from './style'
 import { useGetOptionQuery } from 'api/optionApi'
@@ -44,6 +45,7 @@ export const ProjectTextEdit = () => {
   return (
     <>
       <div>
+        <TheHeader />
         <S.Wrapper>
           <S.Inner>
             <S.Left>

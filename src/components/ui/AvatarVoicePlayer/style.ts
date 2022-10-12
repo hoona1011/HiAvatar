@@ -18,6 +18,7 @@ export const VoicePlayer = styled.label<Props>`
     isSelected ? theme.palette.blue5 : theme.palette.white};
   border-radius: 1rem;
   display: flex;
+  justify-content: space-between;
   margin-bottom: 1.6rem;
   box-shadow: 0 0 2rem 0 rgba(231, 234, 244, 1);
 `

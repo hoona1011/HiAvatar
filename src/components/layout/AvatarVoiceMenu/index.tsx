@@ -19,6 +19,8 @@ export const AvatarVoiceMenu = () => {
     dispatch(changeOption({ name, value }))
   }
 
+  console.log('dummyData', dummyData)
+
   const languageConverter = (language: any) => {
     switch (language) {
       case '한국어':
