@@ -16,9 +16,8 @@ export const VoiceControlMenu = () => {
           <TooltipIcon width='1.6rem' height='1.6rem' />
           <div className='message'>
             <TootipMessage
-              content='영상 제작에 필요한 스크립트를 입력 후
-              확인 버튼을 눌러주세요.'
-              width='20.5rem'
+              content='선택한 음성의 속도, 톤, 간격을 조절할 수 있어요..'
+              width='25.1rem'
             />
           </div>
         </S.Tooltip>
