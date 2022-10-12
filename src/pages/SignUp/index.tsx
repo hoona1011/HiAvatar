@@ -1,11 +1,6 @@
 import React, { useState, FC } from 'react'
 import * as S from './style'
-import {
-  PwErrorIcon,
-  PwCheckIcon,
-  KakaoIcon,
-  GoogleIcon
-} from 'components/Icons'
+import { PwErrorIcon, PwCheckIcon } from 'components/Icons'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { Formik, Form, useFormik } from 'formik'
@@ -16,7 +11,6 @@ interface SignUpForm {
   id: string
   password: string
   confirmPassword: string
-  isActive?: boolean
 }
 
 export const SignUp: FC = () => {
@@ -27,7 +21,6 @@ export const SignUp: FC = () => {
   const [EmailMsg, setEmailMsg] = useState<string>('')
   //중복확인 안할시 버튼 비활성화
   const [disabledBtn, setDisabledBtn] = useState<boolean>(false)
-  const [isActive, setIsActive] = useState<boolean>(false)
 
   const formik = useFormik({
     //initialValues, onSubmit, yup유효성검사
@@ -43,12 +36,12 @@ export const SignUp: FC = () => {
           '올바른 이메일 형식을 입력해주세요'
         )
         .required('입력한 이메일이 없습니다.'),
-      password: Yup.string(),
-      // .matches(
-      //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/,
-      //   '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
-      // )
-      // .required('입력한 비밀번호가 없습니다'),
+      password: Yup.string()
+        // .matches(
+        //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/,
+        //   '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
+        // )
+        .required('입력한 비밀번호가 없습니다'),
       confirmPassword: Yup.string()
         //비밀번호 일치여부체크
         .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.')
@@ -69,44 +62,27 @@ export const SignUp: FC = () => {
       }
     }
   })
-  const color = () => {
-    const a =
-      EmailCheck &&
-      formik.values.id &&
-      formik.values.password &&
-      formik.values.confirmPassword
-    if (a) {
-      setIsActive(true)
-    } else {
-      setIsActive(false)
-    }
-  }
-  const a =
-    EmailCheck &&
-    formik.values.id &&
-    formik.values.password &&
-    formik.values.confirmPassword
+
   const EmailCheckHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: string
   ) => {
     e.preventDefault()
-    console.log('이메일 중복검사')
     try {
       const response = await idCheck(id)
       console.log(id)
       if (response.data.data.idAvailable == false) {
         setEmailCheck(false)
         setEmailMsg('중복된 이메일 주소가 있습니다.')
-        alert('중복메일')
+        alert('중복된 이메일 주소가 있습니다.')
       } else if (id == '') {
         setEmailCheck(false)
+        setEmailMsg('이메일 입력을 입력해주세요.')
         alert('이메일을 입력해주세요.')
-        setEmailMsg('이메일 입력.')
       } else if (response.data.data.idAvailable == true) {
         setEmailCheck(true)
         setEmailMsg('사용가능한 이메일입니다.')
-        alert('사용가능')
+        alert('사용가능한 이메일입니다.')
       }
     } catch (e) {
       console.log(e)
@@ -135,6 +111,9 @@ export const SignUp: FC = () => {
             ) : null}
             <S.IdCheckBtn
               disabled={disabledBtn}
+              style={{
+                backgroundColor: EmailCheck ? '#6691FF' : '#D0D0D1'
+              }}
               onClick={(e) => EmailCheckHandler(e, formik.values.id)}
             >
               중복 확인
@@ -182,6 +161,15 @@ export const SignUp: FC = () => {
                 formik.values.confirmPassword
               )
             }
+            style={{
+              backgroundColor:
+                EmailCheck &&
+                formik.values.id &&
+                formik.values.password &&
+                formik.values.confirmPassword
+                  ? '#336CFF'
+                  : '#D0D0D1'
+            }}
             type='submit'
           >
             회원가입

@@ -49,7 +49,10 @@ export const EmailInput = styled.input`
   text-indent: 1.6rem;
 `
 export const IdCheckBtn = styled.button`
-  background-color: ${({ theme }) => theme.palette.blue50};
+  background-color: ${({ theme }) => theme.palette.gray20};
+  :active {
+    background-color: ${({ theme }) => theme.palette.blue70};
+  }
   color: ${({ theme }) => theme.palette.white};
   width: 7.7rem;
   height: 3.2rem;
