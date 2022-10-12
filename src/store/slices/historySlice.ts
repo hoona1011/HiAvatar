@@ -29,22 +29,4 @@ export const historySlice = createSlice({
 export const { changeHistory, changeIsCreating, changeIsShowHistoryModal } =
   historySlice.actions
 
-export const useHistory = () => {
-  const projects = useAppSelector((state) => state.history.projects)
-  const videos = useAppSelector((state) => state.history.videos)
-  const isCreateing = useAppSelector((state) => state.history.isCreateing)
-  const isShowHistoryModal = useAppSelector(
-    (state) => state.history.isShowHistoryModal
-  )
-  const dispatch = useAppDispatch()
-
-  return {
-    projects,
-    videos,
-    isCreateing,
-    isShowHistoryModal,
-    dispatch
-  }
-}
-
 export default historySlice.reducer

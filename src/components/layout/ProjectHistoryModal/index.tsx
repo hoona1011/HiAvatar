@@ -1,9 +1,10 @@
 import React from 'react'
 import * as S from './style'
 import { AvatarModalCloseIcon } from 'components/Icons'
-import { changeIsShowHistoryModal, useHistory } from 'store/slices/historySlice'
+import { changeIsShowHistoryModal } from 'store/slices/historySlice'
 import { useCreateProjectMutation } from 'api/historyApi'
 import { useNavigate } from 'react-router-dom'
+import { useHistory } from 'hooks'
 
 export const ProjectHistoryModal = () => {
   const { isShowHistoryModal, dispatch } = useHistory()

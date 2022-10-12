@@ -1,6 +1,7 @@
 import React from 'react'
 import * as S from './style'
-import { useAvatar, changeIsShowModal } from 'store/slices/avatarSlice'
+import { changeIsShowModal } from 'store/slices/avatarSlice'
+import { useAvatar } from 'hooks'
 
 export const CompleteButton = () => {
   const { isAllSelected, dispatch } = useAvatar()
