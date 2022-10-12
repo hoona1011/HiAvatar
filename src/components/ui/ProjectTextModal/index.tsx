@@ -27,8 +27,9 @@ export const ProjectTextModal = ({
   const onCloseHandler = () => {
     setModal(false)
   }
-  const isEmpty = (textRef as any).current?.value.length === 0
-
+  const isEmpty =
+    (textRef as any).current === null ||
+    (textRef as any).current.value?.length === 0
   return (
     <S.Background>
       <S.Modal>
