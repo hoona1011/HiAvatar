@@ -62,7 +62,13 @@ export interface StyledComponentsProps {
   isShowModal?: boolean
   isShowHistoryModal?: boolean
   thumbnail?: string
+  width?: string
   theme: any
+}
+
+export interface TooltipMessageProps {
+  content: string
+  width: string
 }
 
 // 현재

@@ -3,14 +3,17 @@ import { Cookies } from 'react-cookie'
 const url = import.meta.env.VITE_SERVICE_URL
 const cookies = new Cookies()
 
-const token = cookies.get('accessToken')
-console.log('token', token)
+// const token = cookies.get('accessToken')
+// console.log('옵션api토큰', token)
 export const optionApi = createApi({
   reducerPath: 'optionApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      headers.set('Authorization', `Bearer ${token}`)
+      const token = cookies.get('accessToken')
+      if (token) {
+        headers.set('Authorization', `Bearer ${token}`)
+      }
       return headers
     }
   }),
@@ -44,7 +47,7 @@ export const optionApi = createApi({
       }),
       transformResponse: (response: any) => {
         // 콘솔로그 삭제시 타입도 같이 삭제
-        // console.log('get옵션', response.data)
+        console.log('getOption 실행', response.data)
         return (response as any).data
       }
     }),

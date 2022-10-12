@@ -3,7 +3,8 @@ import * as S from './style'
 import { useCreateProjectMutation } from 'api/historyApi'
 import { CreateProjectButtonIcon } from 'components/Icons'
 import { useNavigate } from 'react-router-dom'
-import { changeIsShowHistoryModal, useHistory } from 'store/slices/historySlice'
+import { changeIsShowHistoryModal } from 'store/slices/historySlice'
+import { useHistory } from 'hooks'
 
 export const CreateProjectButton = () => {
   const [createProject] = useCreateProjectMutation()

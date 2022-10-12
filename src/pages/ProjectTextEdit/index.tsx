@@ -8,13 +8,15 @@ import {
   TextEditList,
   ProjectNav,
   VoicePreviewPlayer,
-  ProjectRightMenu
+  ProjectRightMenu,
+  TheHeader
 } from 'components'
 import * as S from './style'
 import { useGetOptionQuery } from 'api/optionApi'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getOption } from 'store/slices/optionSlice'
+import { useAppSelector } from 'store'
 
 export const ProjectTextEdit = () => {
   //현재
@@ -23,8 +25,9 @@ export const ProjectTextEdit = () => {
   const dispatch = useDispatch()
   const { projectId } = useParams()
   const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
+
   // <<<<<<< HEAD
-  //   const { dummyData, splitTextList } = useAppSelector((state) => state.option)
+  // const optionState = useAppSelector((state) => state.option) // 일단 리렌더링을 위해 다시 살렸습니다. 추후 리팩토링
 
   //   // console.log('splitTextList', splitTextList)
 
@@ -34,7 +37,9 @@ export const ProjectTextEdit = () => {
   // =======
 
   useEffect(() => {
+    console.log('optionData', optionData)
     optionData && dispatch(getOption(optionData))
+
     // >>>>>>> 4c622e95a7d3331ef28fd92034ecf8506e59a45d
   }, [optionData])
 
@@ -44,6 +49,7 @@ export const ProjectTextEdit = () => {
   return (
     <>
       <div>
+        <TheHeader />
         <S.Wrapper>
           <S.Inner>
             <S.Left>

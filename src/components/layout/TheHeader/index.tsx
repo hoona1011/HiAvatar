@@ -34,6 +34,8 @@ export const TheHeader = (propFunction: any) => {
       setIsVisible(!isVisible)
     }
 
+    console.log(location.pathname)
+
     switch (location.pathname) {
       case '/':
         return (
@@ -56,7 +58,7 @@ export const TheHeader = (propFunction: any) => {
         )
       case '/sign-up':
       case '/my-page':
-      case '/project-history':
+      case `/project-history${projectId}`:
         return (
           <>
             <S.BtnFormV1 onClick={propFunction.addProject}>

@@ -6,17 +6,19 @@ import {
   AvatarBg,
   ProjectNav,
   ProjectAvatarModal,
-  Loading
+  Loading,
+  TheHeader
 } from 'components'
 import { useGetAvatarQuery } from 'api/avatarApi'
 import { useParams } from 'react-router-dom'
 import {
   changeAvatarDetailList,
+  changeAvatarPreview,
   changeSelectedValue,
-  changeTotalAvatarData,
-  useAvatar
+  changeTotalAvatarData
 } from 'store/slices/avatarSlice'
 import * as S from './style'
+import { useAvatar } from 'hooks'
 
 export const ProjectAvatar = () => {
   const { projectId } = useParams()
@@ -25,11 +27,13 @@ export const ProjectAvatar = () => {
   const { avatarName, avatarType, bgName } = totalAvatarData
 
   const avatarListHandler = () => {
+    console.log(data)
     data && dispatch(changeTotalAvatarData(data))
   }
   const selectedValueHandler = () => {
     dispatch(changeSelectedValue({ avatarName }))
     avatarDetailListHandler(avatarName)
+    dispatch(changeAvatarPreview(''))
     if (avatarType === '미정') {
       dispatch(changeSelectedValue({ avatarType: '' }))
     } else {
@@ -63,6 +67,7 @@ export const ProjectAvatar = () => {
 
   return (
     <>
+      <TheHeader />
       <S.Container>
         <S.LeftContainer>
           <ProjectNav renderType='ProjectAvatar' />
