@@ -3,6 +3,7 @@ import * as S from './style'
 import { NextButtonProps } from 'index'
 import { useAppSelector } from 'store'
 import { usePostOptionsMutation } from 'api/optionApi'
+import { Spinner } from 'components'
 export const ProjectSaveButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
   const { projectId } = useParams()
@@ -24,7 +25,14 @@ export const ProjectSaveButton = ({ requestFunc }: NextButtonProps) => {
 
   return (
     <S.Button disabled={optionData.texts.length === 0} onClick={onClickHandler}>
-      {!isLoading ? <span>프로젝트 저장</span> : <span>저장 중</span>}
+      {!isLoading ? (
+        <span>프로젝트 저장</span>
+      ) : (
+        <>
+          <span>프로젝트 저장</span>&nbsp;&nbsp;&nbsp;&nbsp;
+          <Spinner width='0.2rem' />
+        </>
+      )}
     </S.Button>
   )
 }
