@@ -5,23 +5,29 @@ import {
   ProjectVideoList,
   CreateProjectButton,
   Loading,
-  ProjectHistoryModal
+  ProjectHistoryModal,
+  TheHeader
 } from 'components'
 import { useGetHistoryQuery } from 'api/historyApi'
-import { changeHistory, useHistory } from 'store/slices/historySlice'
+import { changeHistory } from 'store/slices/historySlice'
+import { Cookies } from 'react-cookie'
+import { useHistory } from 'hooks'
 
 export const ProjectHistory = () => {
   const { data, isLoading, isError } = useGetHistoryQuery()
   const { dispatch } = useHistory()
 
+  useEffect(() => {
+    const cookies = new Cookies()
+    const token = cookies.get('accessToken')
+    if (token) {
+      data && changeHistoryHandler()
+    }
+  }, [data])
+
   const changeHistoryHandler = () => {
     data && dispatch(changeHistory(data))
   }
-
-  useEffect(() => {
-    console.log(data)
-    data && changeHistoryHandler()
-  }, [data])
 
   if (isLoading || !data) {
     return <Loading />
@@ -32,6 +38,7 @@ export const ProjectHistory = () => {
   }
   return (
     <>
+      <TheHeader />
       <S.Container>
         <CreateProjectButton />
         <ProjectList />

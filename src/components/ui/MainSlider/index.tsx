@@ -6,10 +6,9 @@ import { SwiperNextIcon, SwiperPrevIcon } from 'components/Icons'
 import 'swiper/components/navigation/navigation.min.css'
 import {
   changeAvatarDetailList,
-  useAvatar,
   changeSelectedValue
 } from 'store/slices/avatarSlice'
-
+import { useAvatar } from 'hooks'
 import type { MainSliderProps } from 'index'
 import type { SelectedValue, DetailList } from 'avatar'
 

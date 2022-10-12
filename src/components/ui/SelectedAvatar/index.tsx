@@ -2,7 +2,7 @@ import React from 'react'
 import * as S from './style'
 import { AvatarPreviewBtn, Spinner, TootipMessage } from 'components'
 import { TooltipIcon } from 'components/Icons'
-import { useAvatar } from 'store/slices/avatarSlice'
+import { useAvatar } from 'hooks'
 
 export const SelectedAvatar = () => {
   const { avatarPreview, isAvatarPreviewLoading } = useAvatar()

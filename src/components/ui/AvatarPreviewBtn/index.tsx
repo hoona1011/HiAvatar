@@ -2,12 +2,12 @@ import React, { useEffect } from 'react'
 import * as S from './style'
 import { PreviewReload } from 'components/Icons'
 import {
-  useAvatar,
   changeIsAllSelected,
   changeAvatarPreview,
   changeIsAvatarPreviewLoading
 } from 'store/slices/avatarSlice'
 import { useCreateAvatarPreviewMutation } from 'api/avatarApi'
+import { useAvatar } from 'hooks'
 
 export const AvatarPreviewBtn = () => {
   const { selectedValue, isAllSelected, avatarPreview, dispatch } = useAvatar()

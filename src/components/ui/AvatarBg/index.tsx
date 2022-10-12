@@ -1,8 +1,9 @@
 import React from 'react'
 import * as S from './style'
-import { changeSelectedValue, useAvatar } from 'store/slices/avatarSlice'
+import { changeSelectedValue } from 'store/slices/avatarSlice'
 import { TooltipIcon } from 'components/Icons'
 import type { SelectedValue } from 'avatar'
+import { useAvatar } from 'hooks'
 export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
 

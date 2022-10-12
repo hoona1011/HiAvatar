@@ -1,7 +1,7 @@
 import React from 'react'
 import * as S from './style'
 import { TooltipIcon } from 'components/Icons'
-import { useHistory } from 'store/slices/historySlice'
+import { useHistory } from 'hooks'
 import { useNavigate } from 'react-router-dom'
 
 export const ProjectList = () => {
