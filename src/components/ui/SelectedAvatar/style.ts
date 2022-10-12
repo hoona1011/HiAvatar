@@ -18,6 +18,18 @@ export const Title = styled.div`
   margin-left: 0.8rem;
 `
 
+export const Tooltip = styled.div`
+  position: relative;
+  .message {
+    display: none;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`
+
 export const PreviewAvatar = styled.div<StyledComponentsProps>`
   width: 15.6rem;
   height: 27.8rem;

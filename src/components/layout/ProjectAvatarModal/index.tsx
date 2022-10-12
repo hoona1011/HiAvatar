@@ -3,8 +3,9 @@ import * as S from './style'
 import { AvatarModalCloseIcon } from 'components/Icons'
 import { useNavigate, useParams } from 'react-router-dom'
 import { useCreateVideoMutation } from 'api/historyApi'
-import { useAvatar, changeIsShowModal } from 'store/slices/avatarSlice'
-import { useHistory, changeIsCreating } from 'store/slices/historySlice'
+import { changeIsShowModal } from 'store/slices/avatarSlice'
+import { changeIsCreating } from 'store/slices/historySlice'
+import { useAvatar, useHistory } from 'hooks'
 
 export const ProjectAvatarModal = () => {
   const { isShowModal, selectedValue, dispatch } = useAvatar()

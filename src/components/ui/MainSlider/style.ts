@@ -16,9 +16,15 @@ export const Container = styled.div`
       }
     }
   }
+  &:hover {
+    .btn {
+      display: block;
+    }
+  }
 `
 
 export const PrevBtnContainer = styled.button`
+  display: none;
   z-index: 2;
   position: absolute;
 
@@ -26,6 +32,8 @@ export const PrevBtnContainer = styled.button`
   left: -1.6rem;
 `
 export const NextBtnContainer = styled.button`
+  display: none;
+
   z-index: 2;
   position: absolute;
 

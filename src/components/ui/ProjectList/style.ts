@@ -66,7 +66,7 @@ export const Name = styled.div`
 `
 
 export const Date = styled.div`
-  color: '#7A7575';
+  color: rgba(122, 117, 117, 1);
   font-size: 1rem;
   font-weight: 500;
 

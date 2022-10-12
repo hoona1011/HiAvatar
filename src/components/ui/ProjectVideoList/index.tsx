@@ -2,7 +2,7 @@ import React, { useEffect } from 'react'
 import * as S from './style'
 import { TooltipIcon } from 'components/Icons'
 import { ProjectHistoryPlayer, Spinner } from 'components'
-import { useHistory } from 'store/slices/historySlice'
+import { useHistory } from 'hooks'
 
 export const ProjectVideoList = () => {
   const { videos, isCreateing } = useHistory()
