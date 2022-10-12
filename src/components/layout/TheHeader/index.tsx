@@ -27,7 +27,9 @@ export const TheHeader = (propFunction: any) => {
     const signOut = () => {
       removeCookie('accessToken', undefined)
       console.log('test')
+      navigate('/')
       navigate(0)
+
       // window.localStorage.removeItem('rt')
     }
     const userHoverHandler = () => {
@@ -42,23 +44,25 @@ export const TheHeader = (propFunction: any) => {
           <nav>
             {token === undefined || token === 'undefined' ? (
               <S.AuthBtnGroup>
-                <Link to='sign-in'>
+                <Link to='/sign-in'>
                   <S.BtnForm>로그인</S.BtnForm>
                 </Link>
-                <Link to='sign-up'>
+                <Link to='/sign-up'>
                   <S.BtnForm>회원가입</S.BtnForm>
                 </Link>
               </S.AuthBtnGroup>
             ) : (
               <div>
-                <S.BtnForm onClick={signOut}>로그아웃</S.BtnForm>
+                <Link to='/'>
+                  <S.BtnForm onClick={signOut}>로그아웃</S.BtnForm>
+                </Link>
               </div>
             )}
           </nav>
         )
       case '/sign-up':
       case '/my-page':
-      case `/project-history${projectId}`:
+      case '/project-history':
         return (
           <>
             <S.BtnFormV1 onClick={propFunction.addProject}>
@@ -80,7 +84,7 @@ export const TheHeader = (propFunction: any) => {
               <div className='my-info-con'>
                 <div className='my-info-con__inner'>
                   <div className='title'>userId</div>
-                  <Link to='my-page'>
+                  <Link to='/my-page'>
                     <div className='my-account-btn'>내 계정 관리</div>
                   </Link>
                   <div className='sign-out-btn' onClick={signOut}>
