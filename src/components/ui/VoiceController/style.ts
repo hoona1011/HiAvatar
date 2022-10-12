@@ -41,8 +41,8 @@ export const RangeContainer = styled.div<Props>`
     .slider-balloon {
       position: absolute;
       top: -3rem;
-      left: ${({ progress }) => `calc(${progress}%)`};
-
+      left: ${({ progress }) => `${progress}%`};
+      margin-left: -1.7rem;
       background: ${({ theme, controlType }) => {
         switch (controlType) {
           case 'speed':

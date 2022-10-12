@@ -26,6 +26,11 @@ export const Right = styled.div`
   height: calc(100vh - 5.6rem);
   background-color: #fff;
   overflow: auto;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
   /* overflow: scroll; */
 `
 
