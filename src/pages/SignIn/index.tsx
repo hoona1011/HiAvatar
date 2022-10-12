@@ -8,6 +8,7 @@ import { useCookies, Cookies } from 'react-cookie'
 import axios from 'axios'
 import { KakaoIcon, GoogleIcon } from 'components/Icons'
 import { useDispatch } from 'react-redux'
+import iframe from 'react-iframe'
 
 interface SignInForm {
   id: string
@@ -30,7 +31,12 @@ export const SignIn = () => {
           '올바른 이메일 형식을 입력해주세요'
         )
         .required('입력한 이메일이 없습니다.'),
-      password: Yup.string().required('입력한 비밀번호가 없습니다')
+      password: Yup.string()
+        // .matches(
+        //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/,
+        //   '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
+        // )
+        .required('입력한 비밀번호가 없습니다')
     }),
     onSubmit: async (values) => {
       console.log('로그인버튼클릭')
@@ -58,22 +64,11 @@ export const SignIn = () => {
         if (response.data.code === 200) {
           navigate('/project-history')
         }
-
-        // axios
-        // .post('https://hiavatar.minoflower.com/login', {id:formik.values.id, password:formik.values.password})
-        // .then((res)=> {
-        //   console.log(res.data)
-        //   console.log('aT: ', res.data.data.accessToken)
-        //   const token = localStorage.setItem("token", res.data.data.accessToken)
-        //   console.log(token)
-        //   setCookie('id', res.data.data.accessToken)
-        // })
       } catch (e) {
         console.log(e)
       }
     }
   })
-
   const navigateSignUp = () => {
     navigate('/sign-up')
   }
@@ -86,12 +81,9 @@ export const SignIn = () => {
   const g = async () => {
     console.log('google_login')
 
-    window.location.href =
-      'https://hiavatar.minoflower.com/oauth2/authorization/google'
+    // window.location.href =
+    //   'https://hiavatar.minoflower.com/oauth2/authorization/google'
     // console.log('구글간편로그인');
-    let codeValue = new URL(window.location.href).searchParams.get('state')
-    // console.log(codeValue);
-    const dispatch = useDispatch()
   }
 
   return (
@@ -126,7 +118,13 @@ export const SignIn = () => {
           </S.BotText>
           <S.SignInBtn
             type='submit'
-            // disabled={(!(formik.values.id &&formik.values.password))? alert('입력확인부탁') :'null'}
+            disabled={!(formik.values.id && formik.values.password)}
+            style={{
+              backgroundColor:
+                formik.values.id && formik.values.password
+                  ? '#336CFF'
+                  : '#D0D0D1'
+            }}
           >
             로그인
           </S.SignInBtn>

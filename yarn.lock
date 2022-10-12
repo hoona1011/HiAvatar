@@ -2313,7 +2313,7 @@ normalize-url@^4.1.0:
   resolved "https://registry.yarnpkg.com/normalize-url/-/normalize-url-4.5.1.tgz#0dd90cf1288ee1d1313b87081c9a5932ee48518a"
   integrity sha512-9UZCFRHQdNrfTpGg8+1INIg93B6zE0aXMVFkw1WFwvO4SlZywU6aLg5Of0Ap/PgcbSw4LNxvMWXMeugwMCX0AA==
 
-object-assign@^4:
+object-assign@^4, object-assign@^4.1.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"
   integrity sha512-rJgTQnkUnH1sFw8yT6VSU3zD3sWmu6sZhIseY8VX+GRu3P6F7Fu+JNDoXfklElbLJSnc3FUQHVe4cU5hj+BcUg==
@@ -2617,6 +2617,13 @@ react-h5-audio-player@^3.8.5:
     "@babel/runtime" "^7.10.2"
     "@iconify/icons-mdi" "~1.1.0"
     "@iconify/react" "^3.1.3"
+
+react-iframe@^1.8.4:
+  version "1.8.4"
+  resolved "https://registry.yarnpkg.com/react-iframe/-/react-iframe-1.8.4.tgz#c7173d9a272647146a4af8b09359e22e7e5ef96c"
+  integrity sha512-/yhhubhUBjcckJyPJ/83ZLitM81wAptVpgdBVx5+d8D7U/lyynZGgFjY0SQpfUYvMK8UEh5QvCGpH94O5ehQsA==
+  dependencies:
+    object-assign "^4.1.1"
 
 react-is@^16.7.0:
   version "16.13.1"
