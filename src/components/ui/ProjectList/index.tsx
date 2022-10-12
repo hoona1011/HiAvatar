@@ -3,6 +3,7 @@ import * as S from './style'
 import { TooltipIcon } from 'components/Icons'
 import { useHistory } from 'hooks'
 import { useNavigate } from 'react-router-dom'
+import { TootipMessage } from '../TootipMessage'
 
 export const ProjectList = () => {
   const { projects } = useHistory()
@@ -41,7 +42,15 @@ export const ProjectList = () => {
   return (
     <S.Container>
       <S.Top>
-        <TooltipIcon width='1.6rem' height='1.6rem' />
+        <S.Tooltip>
+          <TooltipIcon width='1.6rem' height='1.6rem' />
+          <div className='message'>
+            <TootipMessage
+              content='최근 작업한 프로젝트를 확인하고 편집할 수 있어요.'
+              width='26.3rem'
+            />
+          </div>
+        </S.Tooltip>
         <S.Title>프로젝트 히스토리를 확인하세요.</S.Title>
       </S.Top>
       <S.ProjectContainer>{renderValue()}</S.ProjectContainer>
