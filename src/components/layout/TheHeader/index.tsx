@@ -13,9 +13,11 @@ import { ProjectTitleEdit } from 'components/ui/ProjectTitleEdit'
 import { useCookies } from 'react-cookie'
 import test from 'node:test'
 import { ProjectSaveButton } from 'components/ui/ProjectSaveButton'
+import { useCreateProject } from 'hooks'
 // import { CreateProjectButtonHeader } from 'components'
 
 export const TheHeader = (propFunction: any) => {
+  const { useFunction } = useCreateProject()
   const location = useLocation()
   const { projectId } = useParams()
   const [cookies, removeCookie] = useCookies()
@@ -65,7 +67,7 @@ export const TheHeader = (propFunction: any) => {
       case '/project-history':
         return (
           <>
-            <S.BtnFormV1 onClick={propFunction.addProject}>
+            <S.BtnFormV1 onClick={useFunction}>
               <div className='icon'>
                 <CreateProjectButtonIcon width='1.2rem' height='1.8rem' />
               </div>
