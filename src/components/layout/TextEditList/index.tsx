@@ -15,19 +15,11 @@ export const TextEditList = () => {
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)
 
+  // console.log(splitTextList.length === 1 && splitTextList[0].text === '미정') //조건부
+
   useEffect(() => {
     dispatch(renderText(textDatas))
   }, [texts])
-
-  // console.log(splitTextList)
-  // console.log(texts)
-
-  // const textData = {
-  //   sentenceId: '',
-  //   text: '',
-  //   sentenceSpacing: ''
-  // }
-  // console.log('텍스트 리스트', splitTextList)
 
   const textDatas = texts.split('.').map((item, index) => {
     return { ...splitTextList[0], sentenceId: index + 1, text: item }
@@ -55,14 +47,20 @@ export const TextEditList = () => {
     )
   })
 
+  console.log(splitTextList.length === 1 && splitTextList[0].text === '미정')
+
   return (
     <S.Wrapper onClick={userOutFocusHandler}>
       <S.TitleGroup>
         <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
-        <div className='button-group'>
-          <ProjectTextEnterButton setModal={setModal} />
-          <ProjectVoiceUploadButton />
-        </div>
+        {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
+          <></>
+        ) : (
+          <div className='button-group'>
+            <ProjectTextEnterButton setModal={setModal} />
+            <ProjectVoiceUploadButton />
+          </div>
+        )}
       </S.TitleGroup>
 
       {modal && (
@@ -72,8 +70,16 @@ export const TextEditList = () => {
           setModalText={setModalText}
         />
       )}
-
-      {render}
+      <>
+        {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
+          <S.StartPage>
+            <VoiceUploadButton />
+            <TextEnterButton setModal={setModal} />
+          </S.StartPage>
+        ) : (
+          <>{render}</>
+        )}
+      </>
     </S.Wrapper>
   )
 }

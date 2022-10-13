@@ -27,3 +27,17 @@ export const VoiceControllerContainer = styled.div`
     }
   }
 `
+
+export const Tooltip = styled.div`
+  position: relative;
+  .message {
+    font-weight: 500;
+    font-size: 12;
+    display: none;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`

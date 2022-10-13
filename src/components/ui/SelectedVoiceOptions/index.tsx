@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import * as S from './style'
 import { useAvatar } from 'hooks'
 import { TooltipIcon } from 'components/Icons'
+import { TootipMessage } from '../TootipMessage'
 
 export const SelectedVoiceOptions = () => {
   const { totalAvatarData } = useAvatar()
@@ -9,7 +10,15 @@ export const SelectedVoiceOptions = () => {
   return (
     <S.Container>
       <S.Top>
-        <TooltipIcon width='1.6rem' height='1.6rem' />
+        <S.Tooltip>
+          <TooltipIcon width='1.6rem' height='1.6rem' />
+          <div className='message'>
+            <TootipMessage
+              content='이전 단계에서 선택한 음성 옵션 정보를 영상 제작 전에 미리 확인할 수 있어요.'
+              width='20.5rem'
+            />
+          </div>
+        </S.Tooltip>
         <S.Title>내가 선택한 음성 옵션이에요</S.Title>
       </S.Top>
       <S.Options>

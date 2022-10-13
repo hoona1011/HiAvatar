@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import * as S from './style'
 import { PlayIcon, PauseIcon, StopIcon, CloseIcon } from '../../Icons'
 import {
@@ -25,38 +25,27 @@ export const TextPlayer = ({
   const [spacingValue, setSpacingValue] = useState(0)
   const [postText] = usePostTextMutation()
 
-  // console.log(audioElem)
-
-  useEffect(() => {
-    // console.log(Boolean(audioFile))
-    if (Boolean(audioFile)) {
-      if (isPlaying) {
-        audioElem.current.play()
-      } else {
-        audioElem.current.pause()
-      }
-    }
-  }, [isPlaying, audioFile])
-
   useEffect(() => {
     postText(textPreviewData)
       .unwrap()
       .then((data) => {
         setAudioFile(data.data.audioFile)
+        console.log(`${textPreviewData.text}의 audioElem`, audioElem.current)
       })
       .catch((error) => {
         console.log(error)
       })
-  }, [textPreviewData.text, audioFile])
-
-  // const userInputHandler = (e) => {
-  //   const { name, value } = e.target
-  //   setInputData({ ...inputData, [name]: value })
-  //   dispatch(changeText(inputData))
-  // }
-
-  // console.log(itemData)
-  // console.log(userSelectedData)
+      .finally(() => {
+        if (audioFile) {
+          if (isPlaying) {
+            console.log('textPreviewData.text: ', textPreviewData.text)
+            audioElem.current.play()
+          } else {
+            audioElem.current.pause()
+          }
+        }
+      })
+  }, [textPreviewData.text, audioFile, isPlaying])
 
   const userInputHandler = (e: any) => {
     const { name, value } = e.target
@@ -83,9 +72,16 @@ export const TextPlayer = ({
     // console.log(audioFile)
 
     setIsPlaying(!isPlaying)
+    console.log('클릭')
   }
 
-  const audioFileUrl = `data:audio/wav;base64,${audioFile}`
+  if (audioFile) {
+    audioElem.current.onended = () => {
+      audioElem.current.pause()
+      audioElem.current.currentTime = 0
+      setIsPlaying(false)
+    }
+  }
 
   const stop = () => {
     audioElem.current.pause()
@@ -95,7 +91,6 @@ export const TextPlayer = ({
 
   const chnsnSpcng = (e: any) => {
     setSpacingValue(e.target.value)
-    // console.log({ ...itemData, sentenceSpacing: e.target.value })
     dispatch(
       changeChnsnSpcng({ ...itemData, sentenceSpacing: Number(e.target.value) })
     )
@@ -106,7 +101,7 @@ export const TextPlayer = ({
       <S.PlayerBar focus={findData?.focus}>
         <li>
           <div>
-            <audio src={audioFileUrl} ref={audioElem} />
+            <audio src={`data:audio/wav;base64,${audioFile}`} ref={audioElem} />
             <div onClick={playPause}>
               {isPlaying ? (
                 <PauseIcon
@@ -134,11 +129,6 @@ export const TextPlayer = ({
             onChange={userInputHandler}
             value={itemData.text}
           />
-          {/* <S.TextEdit
-            name='text'
-            onChange={userInputHandler}
-            defaultValue={itemData.text}
-          /> */}
         </li>
         <li>
           <div>

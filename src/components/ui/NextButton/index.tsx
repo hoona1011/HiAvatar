@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import * as S from './style'
 import { NextButtonProps } from 'index'
 import { useAppSelector } from 'store'
-import { usePostOptionsMutation } from 'api/optionApi'
+import { usePostOptionsMutation } from 'api/avatarApi'
 import { Spinner } from 'components'
 export const NextButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
@@ -26,7 +26,10 @@ export const NextButton = ({ requestFunc }: NextButtonProps) => {
   }
 
   return (
-    <S.Button disabled={optionData.texts.length === 0} onClick={onClickHandler}>
+    <S.Button
+      disabled={optionData.texts.length === 0 || optionData.texts === '미정'}
+      onClick={onClickHandler}
+    >
       {!isLoading ? <span>다음</span> : <Spinner width='0.5rem' />}
     </S.Button>
   )
