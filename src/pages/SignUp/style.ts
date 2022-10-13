@@ -83,7 +83,7 @@ export const PwInput = styled.input`
   }
   text-indent: 1.6rem;
 `
-export const PwCheckBtn = styled.button`
+export const PwCheckBtn = styled.div`
   position: absolute;
   top: 2rem;
   left: 34rem;
