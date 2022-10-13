@@ -30,6 +30,7 @@ export const TheHeader = (propFunction: any) => {
   const rightRenderBtnList = () => {
     const signOut = () => {
       localStorage.removeItem('accessToken')
+      localStorage.removeItem('userid')
       console.log('test')
       navigate('/')
       navigate(0)
