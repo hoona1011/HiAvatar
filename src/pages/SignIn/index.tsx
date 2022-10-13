@@ -37,7 +37,6 @@ export const SignIn = () => {
     setId(idCurrent)
     const iRegex =
       /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
-
     if (idCurrent === '') {
       setIdMsg('입력한 아이디가 없습니다.')
       setIsId(false)
@@ -99,13 +98,10 @@ export const SignIn = () => {
   }
   const g = async () => {
     console.log('google_login')
-
     window.location.href =
       'https://hiavatar.minoflower.com/oauth2/authorization/google'
     // console.log('구글간편로그인');
     let codeValue = new URL(window.location.href).searchParams.get('state')
-    // console.log(codeValue);
-    const dispatch = useDispatch()
   }
 
   return (

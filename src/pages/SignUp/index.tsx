@@ -60,6 +60,7 @@ export const SignUp: FC = () => {
   }
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const passwordCurrent = e.target.value
     setPassword(passwordCurrent)
     const pRegex =
@@ -82,6 +83,7 @@ export const SignUp: FC = () => {
   }
 
   const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const passwordConfirmCurrent = e.target.value
     setConfirmPassword(passwordConfirmCurrent)
     if (passwordConfirmCurrent === '') {
@@ -132,11 +134,11 @@ export const SignUp: FC = () => {
         id,
         password
       })
-      alert('회원가입완료')
+      alert('회원가입완료이 완료되었습니다.')
       navigate('/sign-in')
     } catch (error) {
       console.log(error)
-      alert('회원가입실패')
+      alert('회원가입실패에 실패하였습니다.')
     }
   }
 

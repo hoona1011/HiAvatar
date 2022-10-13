@@ -31,6 +31,7 @@ export const MyPage = () => {
   const [cfPwColor, setCfPwColor] = useState({ borderColor: '#88888D' })
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const passwordCurrent = e.target.value
     if (passwordCurrent === '') {
       setPasswordMsg('입력한 비밀번호가 없습니다.')
@@ -43,6 +44,7 @@ export const MyPage = () => {
     }
   }
   const onChangeNewPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const pRegex =
       /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/
     const newPasswordCurrent = e.target.value
@@ -64,6 +66,7 @@ export const MyPage = () => {
     }
   }
   const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const passwordConfirmCurrent = e.target.value
     setConfirmPassword(passwordConfirmCurrent)
     if (passwordConfirmCurrent === '') {
@@ -74,7 +77,10 @@ export const MyPage = () => {
       setConfirmPasswordMsg('변경할 비밀번호가 일치하지않습니다.')
       setIsConfirmPassword(false)
       setCfPwColor({ borderColor: '#E47B00' })
-    } else if (newPassword === passwordConfirmCurrent) {
+    } else if (
+      newPassword === passwordConfirmCurrent &&
+      isNewPassword == true
+    ) {
       setConfirmPasswordMsg('')
       setIsConfirmPassword(true)
       setIsIcon(true)

@@ -42,11 +42,11 @@ export const EmailInput = styled.input`
     border: 0.1rem solid ${({ theme }) => theme.palette.orange2};
   } */
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
 export const IdCheckBtn = styled.button`
   background-color: ${({ theme }) => theme.palette.gray20};
@@ -77,11 +77,11 @@ export const PwInput = styled.input`
   border-radius: 0.8rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
 export const PwCheckBtn = styled.div`
   position: absolute;
