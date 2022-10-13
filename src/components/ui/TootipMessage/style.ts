@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import type { StyledComponentsProps } from 'index'
 
 export const Container = styled.div<StyledComponentsProps>`
+  z-index: 5;
   width: ${({ width }) => width};
   position: absolute;
   padding: 1.2rem;

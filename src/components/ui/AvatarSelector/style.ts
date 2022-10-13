@@ -12,7 +12,6 @@ export const Container = styled.div`
 `
 
 export const Tooltip = styled.div`
-  z-index: 3;
   position: relative;
   .message {
     display: none;

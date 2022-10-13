@@ -9,7 +9,6 @@ export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.white};
 `
 export const Tooltip = styled.div`
-  z-index: 3;
   position: relative;
   .message {
     display: none;
