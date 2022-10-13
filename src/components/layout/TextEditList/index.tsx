@@ -47,14 +47,20 @@ export const TextEditList = () => {
     )
   })
 
+  console.log(splitTextList.length === 1 && splitTextList[0].text === '미정')
+
   return (
     <S.Wrapper onClick={userOutFocusHandler}>
       <S.TitleGroup>
         <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
-        <div className='button-group'>
-          <ProjectTextEnterButton setModal={setModal} />
-          <ProjectVoiceUploadButton />
-        </div>
+        {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
+          <></>
+        ) : (
+          <S.StartPage className='button-group'>
+            <ProjectTextEnterButton setModal={setModal} />
+            <ProjectVoiceUploadButton />
+          </S.StartPage>
+        )}
       </S.TitleGroup>
 
       {modal && (
@@ -64,8 +70,16 @@ export const TextEditList = () => {
           setModalText={setModalText}
         />
       )}
-
-      {render}
+      <>
+        {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
+          <S.StartPage>
+            <VoiceUploadButton />
+            <TextEnterButton setModal={setModal} />
+          </S.StartPage>
+        ) : (
+          <>{render}</>
+        )}
+      </>
     </S.Wrapper>
   )
 }
