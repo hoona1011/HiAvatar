@@ -56,10 +56,10 @@ export const TextEditList = () => {
         {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
           <></>
         ) : (
-          <S.StartPage className='button-group'>
+          <div className='button-group'>
             <ProjectTextEnterButton setModal={setModal} />
             <ProjectVoiceUploadButton />
-          </S.StartPage>
+          </div>
         )}
       </S.TitleGroup>
 
