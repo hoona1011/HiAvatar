@@ -15,11 +15,12 @@ export const MyModal = () => {
     //약관페이지가 없어 임시 알람창으로 대신합니다.
     alert('약관페이지 준비중')
   }
+  const saved = localStorage.getItem('user')
 
   return (
     <S.Container>
       <S.Wrap>
-        <S.IdInfo>id</S.IdInfo>
+        <S.IdInfo>{localStorage.userid}</S.IdInfo>
         <S.MyBtn onClick={() => navigate('/my-page')}>내 계정 관리</S.MyBtn>
         <S.LogoutBtn onClick={logout}>로그아웃</S.LogoutBtn>
         <S.LinkWrap>

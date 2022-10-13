@@ -80,27 +80,13 @@ export const SignIn = () => {
     console.log('userinfo', id, password)
 
     const response = await signIn({ id: id, password: password })
-
-    // console.log(response.data.code === 200)
+    const idValue = id
+    console.log(idValue)
+    localStorage.setItem('userid', idValue)
     if ((response as any).data.code === 200) {
       navigate('/project-history')
     }
   }
-  // try{
-  //   const response = await login({id:id, password:password})
-  //   if (response.data.code != 200) {
-  //     alert('아이디가 존재하지않거나 비밀번호가 올바르지않습니다.')
-  //     return
-  //   }
-  //   const access_token = response.data.accessToken;
-  //   cookies.set('id', response.data.accessToken)
-  //   localStorage.setItem('rt', response.data.refreshToken)
-  //   console.log('values: ', info)
-  //   console.log('response:', response)
-  //   console.log(cookies)
-  //   if (response.data.code == 200) {
-  //     navigate('/project-history')
-  //   }
 
   const navigateSignUp = () => {
     navigate('/sign-up')

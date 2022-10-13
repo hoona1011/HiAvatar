@@ -17,6 +17,7 @@ import {
 import { useCookies } from 'react-cookie'
 import test from 'node:test'
 import { useCreateProject } from 'hooks'
+import { MyModal } from 'pages'
 
 export const TheHeader = (propFunction: any) => {
   const { useFunction } = useCreateProject()
@@ -127,10 +128,9 @@ export const TheHeader = (propFunction: any) => {
               >
                 내정보
               </button>
-
               <div className='my-info-con'>
                 <div className='my-info-con__inner'>
-                  <div className='title'>userId</div>
+                  <div className='title'>{localStorage.userid}</div>
                   <Link to='/my-page'>
                     <div className='my-account-btn'>내 계정 관리</div>
                   </Link>
