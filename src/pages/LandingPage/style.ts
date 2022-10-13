@@ -5,13 +5,15 @@ export const Landing = styled.div`
   overflow-y: hidden;
 `
 export const section1Container = styled.div`
+  width: 100%;
   height: 70rem;
   display: flex;
   justify-content: center;
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
-  background-image: url('https://user-images.githubusercontent.com/91241596/195276806-8be2a0a8-a859-4a86-b1c9-e2bef6444bbf.png');
+  background-clip: content-box;
+  background-image: url('https://user-images.githubusercontent.com/91241596/195276806-8be2a0a8-a859-4a86-b1c9-e2bef6444bbf.png'); ;
 `
 export const section1Inner = styled.div`
   width: 120rem;
@@ -23,7 +25,7 @@ export const section2Container = styled.div`
   height: 75rem;
   display: flex;
   justify-content: center;
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url('https://user-images.githubusercontent.com/91241596/195172289-452e889e-c60a-41e4-aa59-e25dee5e21ca.png');
@@ -39,7 +41,7 @@ export const section3Container = styled.div`
   height: 75rem;
   display: flex;
   justify-content: center;
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url('https://user-images.githubusercontent.com/91241596/195172001-1398368e-5f72-4c9e-b832-f3fddd20a8c7.png');
@@ -58,7 +60,7 @@ export const section4Container = styled.div`
   height: 75rem;
   display: flex;
   justify-content: center;
-  background-size: contain;
+  background-size: auto;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url('https://user-images.githubusercontent.com/91241596/195278519-cf3fda40-4e05-44f0-9964-e90732420a30.png');
