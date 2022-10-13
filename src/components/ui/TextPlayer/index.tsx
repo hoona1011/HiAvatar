@@ -45,7 +45,7 @@ export const TextPlayer = ({
           }
         }
       })
-  }, [textPreviewData.text, audioFile, isPlaying, audioFile])
+  }, [textPreviewData.text, audioFile, isPlaying])
 
   const userInputHandler = (e: any) => {
     const { name, value } = e.target
