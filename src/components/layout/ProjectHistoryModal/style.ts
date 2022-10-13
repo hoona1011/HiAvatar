@@ -2,7 +2,7 @@ import styled from 'styled-components'
 import type { StyledComponentsProps } from 'index'
 
 export const Container = styled.div`
-  z-index: 2;
+  z-index: 4;
 
   display: ${({ isShowHistoryModal }: StyledComponentsProps) =>
     isShowHistoryModal ? 'flex' : 'none'};

@@ -7,6 +7,7 @@ const cookies = new Cookies()
 
 export const avatarApi = createApi({
   reducerPath: 'avatarApi',
+  tagTypes: ['Avatar', 'Option'],
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
@@ -23,6 +24,7 @@ export const avatarApi = createApi({
         url: `projects/${projectId}/avatar`,
         method: 'GET'
       }),
+      providesTags: [{ type: 'Avatar', id: 'LIST' }],
       transformResponse: (responseData: Avatar) => {
         return responseData['data']
       }
@@ -32,7 +34,9 @@ export const avatarApi = createApi({
         url: `projects/${projectId}/avatar`,
         method: 'PATCH',
         body: selectedValue
-      })
+      }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Option', id: 'LIST' }] : []
     }),
     createAvatarPreview: builder.mutation({
       query: (selectedValue) => ({
@@ -43,6 +47,25 @@ export const avatarApi = createApi({
       transformResponse: (responseData: AvatarPreview) => {
         return responseData['data']
       }
+    }),
+    postOptions: builder.mutation({
+      query: ({ projectData, projectId }) => ({
+        url: `/projects/${projectId}/save`,
+        method: 'POST',
+        body: projectData
+      }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Avatar', id: 'LIST' }] : []
+    }),
+    getOption: builder.query({
+      query: (projectId) => ({
+        url: `/projects/${projectId}/save`,
+        method: 'GET'
+      }),
+      providesTags: [{ type: 'Option', id: 'LIST' }],
+      transformResponse: (response: any) => {
+        return response.data
+      }
     })
   })
 })
@@ -50,5 +73,7 @@ export const avatarApi = createApi({
 export const {
   useGetAvatarQuery,
   useSaveAvatarMutation,
-  useCreateAvatarPreviewMutation
+  useCreateAvatarPreviewMutation,
+  usePostOptionsMutation,
+  useGetOptionQuery
 } = avatarApi

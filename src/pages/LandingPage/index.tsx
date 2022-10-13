@@ -1,10 +1,21 @@
 import { TheHeader } from 'components'
 import React from 'react'
+import { Cookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
 import * as S from './style'
 
 export const LandingPage = () => {
+  const cookies = new Cookies()
   const navigate = useNavigate()
+  const onClickHandler = () => {
+    const token = cookies.get('accessToken')
+    if (!token || token === 'undefined') {
+      alert('로그인이 필요한 서비스입니다')
+      navigate('/sign-in')
+    } else {
+      navigate('/project-history')
+    }
+  }
 
   return (
     <div>
@@ -22,13 +33,7 @@ export const LandingPage = () => {
               <br />
               편집부터, 다국어 음성까지 편리하게 만들어주는 서비스입니다.
             </S.MidText>
-            <S.Button
-              onClick={() => {
-                navigate('/project-history')
-              }}
-            >
-              지금 시작해보세요.
-            </S.Button>
+            <S.Button onClick={onClickHandler}>지금 시작해보세요.</S.Button>
           </S.section1Inner>
         </S.section1Container>
         <div>
@@ -44,13 +49,7 @@ export const LandingPage = () => {
                 <br />
                 내가 원하는 영상을 만들 수 있습니다.
               </S.MidText>
-              <S.Button
-                onClick={() => {
-                  navigate('/project-history')
-                }}
-              >
-                지금 시작해보세요.
-              </S.Button>
+              <S.Button onClick={onClickHandler}>지금 시작해보세요.</S.Button>
             </S.section2Inner>
           </S.section2Container>
         </div>
@@ -66,13 +65,7 @@ export const LandingPage = () => {
               <br />
               평생 자동으로 영상제작이 가능합니다.
             </S.MidText>
-            <S.Button
-              onClick={() => {
-                navigate('/project-history')
-              }}
-            >
-              지금 시작해보세요.
-            </S.Button>
+            <S.Button onClick={onClickHandler}>지금 시작해보세요.</S.Button>
             <S.section3Image>
               <img
                 src='https://user-images.githubusercontent.com/91241596/195172957-ee21439b-84d7-4ac5-97e4-c3e12d9135e4.png'
@@ -94,13 +87,7 @@ export const LandingPage = () => {
                 <br />
                 말할 수 있도록 도와드립니다.
               </S.MidText4>
-              <S.Button
-                onClick={() => {
-                  navigate('/project-history')
-                }}
-              >
-                지금 시작해보세요.
-              </S.Button>
+              <S.Button onClick={onClickHandler}>지금 시작해보세요.</S.Button>
             </S.wrap>
           </S.section4Inner>
         </S.section4Container>
