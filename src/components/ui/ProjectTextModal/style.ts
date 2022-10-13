@@ -110,3 +110,16 @@ export const EnterBtn = styled.button`
     background-color: ${({ theme }) => theme.palette.gray20};
   }
 `
+export const Tooltip = styled.div`
+  position: relative;
+  .message {
+    font-weight: 500;
+    font-size: 12;
+    display: none;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`

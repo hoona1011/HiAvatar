@@ -26,7 +26,10 @@ export const NextButton = ({ requestFunc }: NextButtonProps) => {
   }
 
   return (
-    <S.Button disabled={optionData.texts.length === 0} onClick={onClickHandler}>
+    <S.Button
+      disabled={optionData.texts.length === 0 || optionData.texts === '미정'}
+      onClick={onClickHandler}
+    >
       {!isLoading ? <span>다음</span> : <Spinner width='0.5rem' />}
     </S.Button>
   )
