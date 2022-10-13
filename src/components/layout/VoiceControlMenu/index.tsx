@@ -16,7 +16,7 @@ export const VoiceControlMenu = () => {
           <TooltipIcon width='1.6rem' height='1.6rem' />
           <div className='message'>
             <TootipMessage
-              content='선택한 음성의 속도, 톤, 간격을 조절할 수 있어요..'
+              content='선택한 음성의 속도, 톤, 간격을 조절할 수 있어요.'
               width='25.1rem'
             />
           </div>
