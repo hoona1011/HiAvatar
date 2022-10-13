@@ -22,14 +22,13 @@ export const TheHeader = (propFunction: any) => {
   const { useFunction } = useCreateProject()
   const location = useLocation()
   const { projectId } = useParams()
-  const [cookies, removeCookie] = useCookies()
-  const token = cookies.accessToken
+  const token = localStorage.getItem('accessToken')
   const navigate = useNavigate()
   const [isVisible, setIsVisible] = useState(false)
 
   const rightRenderBtnList = () => {
     const signOut = () => {
-      removeCookie('accessToken', undefined)
+      localStorage.removeItem('accessToken')
       console.log('test')
       navigate('/')
       navigate(0)

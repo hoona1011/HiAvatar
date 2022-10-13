@@ -1,15 +1,13 @@
 import React from 'react'
 import * as S from './style'
 import { useNavigate } from 'react-router-dom'
-import { Cookies } from 'react-cookie'
 
 export const MyModal = () => {
   const navigate = useNavigate()
-  const cookies = new Cookies()
 
   const logout = () => {
     console.log('로그아웃')
-    cookies.remove('accessToken')
+    localStorage.removeItem('accessToken')
     localStorage.removeItem('rt')
     navigate('/')
   }
