@@ -9,6 +9,7 @@ const cookies = new Cookies()
 export interface UserInfo {
   id: string
   password: string
+  newPassword?: string
 }
 //회원가입
 export const postUserInfo = async (info: UserInfo) => {
@@ -42,10 +43,15 @@ export const login = async (info: UserInfo) => {
 // }
 export const google = async () => {}
 //비밀번호 변경
-export const edit = async () => {
-  const response = await axios.post('https://hiavatart.minoflower.com/my-page')
+//비밀번호 변경
+export const edit = async (info: UserInfo['newPassword']) => {
+  const response = await axios.post(
+    'https://hiavatart.minoflower.com/my-page',
+    'newPassword'
+  )
   return response
 }
+
 // const url = import.meta.env.VITE_SERVICE_URL
 
 // export const signUpApi = createApi({

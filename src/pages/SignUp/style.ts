@@ -60,7 +60,7 @@ export const IdCheckBtn = styled.button`
   font-size: 1.2rem;
   position: absolute;
   left: 29.2rem;
-  top: 3.5rem;
+  top: 1.3rem;
 `
 export const PwWrapper = styled.div`
   display: flex;
@@ -85,7 +85,7 @@ export const PwInput = styled.input`
 `
 export const PwCheckBtn = styled.button`
   position: absolute;
-  top: 1.8rem;
+  top: 2rem;
   left: 34rem;
   cursor: default;
 `
@@ -112,5 +112,9 @@ export const SignUpABtn = styled.button`
   color: ${({ theme }) => theme.palette.white};
 `
 export const ErrorSpan = styled.span`
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   color: ${({ theme }) => theme.palette.orange2};
 `

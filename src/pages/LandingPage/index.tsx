@@ -1,4 +1,4 @@
-import { TheHeader } from 'components'
+import { TheFooter, TheHeader } from 'components'
 import React from 'react'
 import { Cookies } from 'react-cookie'
 import { useNavigate } from 'react-router-dom'
@@ -92,6 +92,7 @@ export const LandingPage = () => {
           </S.section4Inner>
         </S.section4Container>
       </S.Landing>
+      <TheFooter />
     </div>
   )
 }
