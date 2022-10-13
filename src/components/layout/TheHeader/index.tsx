@@ -9,13 +9,17 @@ import {
   useNavigate,
   useParams
 } from 'react-router-dom'
-import { ProjectTitleEdit } from 'components/ui/ProjectTitleEdit'
+import {
+  ProjectTitleEdit,
+  ProjectSaveButton,
+  ProjectAvatarSaveButton
+} from 'components'
 import { useCookies } from 'react-cookie'
 import test from 'node:test'
-import { ProjectSaveButton } from 'components/ui/ProjectSaveButton'
-// import { CreateProjectButtonHeader } from 'components'
+import { useCreateProject } from 'hooks'
 
 export const TheHeader = (propFunction: any) => {
+  const { useFunction } = useCreateProject()
   const location = useLocation()
   const { projectId } = useParams()
   const [cookies, removeCookie] = useCookies()
@@ -42,7 +46,7 @@ export const TheHeader = (propFunction: any) => {
       case '/':
         return (
           <nav>
-            {token === undefined || token === 'undefined' ? (
+            {!token || token === 'undefined' ? (
               <S.AuthBtnGroup>
                 <Link to='/sign-in'>
                   <S.BtnForm>로그인</S.BtnForm>
@@ -65,7 +69,7 @@ export const TheHeader = (propFunction: any) => {
       case '/project-history':
         return (
           <>
-            <S.BtnFormV1 onClick={propFunction.addProject}>
+            <S.BtnFormV1 onClick={useFunction}>
               <div className='icon'>
                 <CreateProjectButtonIcon width='1.2rem' height='1.8rem' />
               </div>
@@ -103,8 +107,13 @@ export const TheHeader = (propFunction: any) => {
             </S.MyInfo>
           </>
         )
-      case `/project-text-edit/${projectId}`:
       case `/project-avatar/${projectId}`:
+        return (
+          <>
+            <ProjectAvatarSaveButton />
+          </>
+        )
+      case `/project-text-edit/${projectId}`:
         return (
           <>
             <ProjectSaveButton requestFunc={() => console.log('요청 완료')} />

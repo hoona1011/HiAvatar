@@ -10,6 +10,18 @@ export const Container = styled.div`
   box-shadow: 0 0 2rem 0 ${({ theme }) => theme.palette.boxShadow};
 `
 
+export const Tooltip = styled.div`
+  position: relative;
+  .message {
+    display: none;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
+`
+
 export const Top = styled.div`
   display: flex;
   align-items: center;

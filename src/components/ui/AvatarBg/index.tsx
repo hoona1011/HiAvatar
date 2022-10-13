@@ -4,6 +4,7 @@ import { changeSelectedValue } from 'store/slices/avatarSlice'
 import { TooltipIcon } from 'components/Icons'
 import type { SelectedValue } from 'avatar'
 import { useAvatar } from 'hooks'
+import { TootipMessage } from 'components'
 export const AvatarBg = () => {
   const { backgroundList, selectedValue, dispatch } = useAvatar()
 
@@ -14,7 +15,15 @@ export const AvatarBg = () => {
   return (
     <S.Container>
       <S.Top>
-        <TooltipIcon width='1.6rem' height='1.6rem' />
+        <S.Tooltip>
+          <TooltipIcon width='1.6rem' height='1.6rem' />
+          <div className='message'>
+            <TootipMessage
+              content='영상의 배경을 선택할 수 있어요.'
+              width='17.4rem'
+            />
+          </div>
+        </S.Tooltip>
         <S.Title>배경을 선택해주세요</S.Title>
       </S.Top>
       <S.BgContainer>
