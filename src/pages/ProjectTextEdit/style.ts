@@ -19,6 +19,7 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   width: calc(100% - 38.4rem);
+  height: calc(100vh - 5.6rem);
 `
 
 export const Right = styled.div`

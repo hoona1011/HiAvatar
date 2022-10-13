@@ -81,9 +81,9 @@ export const optionSlice = createSlice({
         return item.sentenceId === itemData.sentenceId
       })
 
-      let i = findTextItem.sentenceId
+      let i = findTextItem.sentenceId + 1
 
-      for (i; i < state.splitTextList.length; i += 1) {
+      for (i; i <= state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
           if (item.sentenceId === i) {
             item.sentenceId = i += 1
@@ -118,10 +118,13 @@ export const optionSlice = createSlice({
         return item.sentenceId === itemData.sentenceId
       })
 
-      console.log('itemData', itemData)
-      console.log('findTextItem', current(findTextItem))
+      // console.log('itemData', itemData)
+      // console.log('findTextItem', current(findTextItem))
 
-      let i = findTextItem.sentenceId
+      console.log('find', findTextItem.sentenceId)
+      console.log('splitTextList', current(state.splitTextList))
+
+      let i = findTextItem.sentenceId + 1
 
       for (i; i <= state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
@@ -134,7 +137,7 @@ export const optionSlice = createSlice({
       state.splitTextList = [
         ...state.splitTextList,
         {
-          sentenceId: findTextItem.sentenceId - 1,
+          sentenceId: findTextItem.sentenceId + 1,
           text: '',
           sentenceSpacing: 0
         }
