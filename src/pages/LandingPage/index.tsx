@@ -1,14 +1,12 @@
-import { TheFooter, TheHeader } from 'components'
 import React from 'react'
-import { Cookies } from 'react-cookie'
+import { TheFooter, TheHeader } from 'components'
 import { useNavigate } from 'react-router-dom'
 import * as S from './style'
 
 export const LandingPage = () => {
-  const cookies = new Cookies()
   const navigate = useNavigate()
   const onClickHandler = () => {
-    const token = cookies.get('accessToken')
+    const token = localStorage.getItem('acessToken')
     if (!token || token === 'undefined') {
       alert('로그인이 필요한 서비스입니다')
       navigate('/sign-in')
