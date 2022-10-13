@@ -37,18 +37,9 @@ export const login = async (info: UserInfo) => {
 //   await axios.post('https://hiavatar.minoflower.com/oauth2/authorization/kakao')
 // }
 export const google = async () => {}
-//비밀번호 변경
-//비밀번호 변경
-export const edit = async (info: UserInfo['newPassword']) => {
-  const response = await axios.post(
-    'https://hiavatart.minoflower.com/my-page',
-    'newPassword'
-  )
-  return response
-}
 
 const url = import.meta.env.VITE_SERVICE_URL
-
+//로그인
 export const userApi = createApi({
   reducerPath: 'userApi',
   baseQuery: fetchBaseQuery({
@@ -65,10 +56,27 @@ export const userApi = createApi({
         localStorage.setItem('accessToken', response.data['accessToken'])
         return response
       }
+    }),
+    edit: builder.mutation({
+      query: (info) => ({
+        url: '/my-page',
+        method: 'POST'
+      }),
+      transformResponse: (response: any) => {
+        return response
+      }
     })
   })
 })
+//비밀번호 변경
 
+export const edit = async (info: UserInfo['newPassword']) => {
+  const response = await axios.post(
+    'https://hiavatart.minoflower.com/my-page',
+    'newPassword'
+  )
+  return response
+}
 export const { useSignInMutation } = userApi
 
 // signUp: builder.mutation({
