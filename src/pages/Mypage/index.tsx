@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import * as S from './style'
 import { PwCheckIcon, PwErrorIcon } from 'components/Icons'
 import { edit } from 'api/userApi'
+import { TheFooter, TheHeader } from 'components'
 
 interface MyPageForm {
   password: string
@@ -81,86 +82,91 @@ export const MyPage = () => {
     }
   }
 
-  const onSubmit = async (newPassword: string) => {
+  const onSubmit = async (e: any) => {
+    e.preventDefault()
+
     console.log('비밀번호 변경하기')
-    const response = await edit(newPassword)
+    const response = await edit({
+      newPassword: newPassword
+    } as any)
     console.log(response)
   }
   return (
-    <S.Container>
-      <S.Wrapper>
-        <form onSubmit={() => onSubmit}>
-          <S.TopText>계정관리</S.TopText>
-          <S.MyPwWrapper>
-            <S.MidText>기존 비밀번호</S.MidText>
-            <S.PositionWrap>
-              <S.PwInput
-                id='password'
-                type='password'
-                placeholder='기존 비밀번호를 입력해주세요.'
-                onChange={onChangePassword}
-                style={pwColor}
-              />
-              <S.ErrorSpan>{passwordMsg}</S.ErrorSpan>
-            </S.PositionWrap>
-          </S.MyPwWrapper>
-          <S.ChangePwWrapper>
-            <S.MidText>변경할 비밀번호</S.MidText>
-            <S.PositionWrap>
-              <S.PwInput
-                id='newPassword'
-                type='password'
-                placeholder='변경할 비밀번호를 입력해주세요.'
-                onChange={onChangeNewPassword}
-                style={newColor}
-              />
-              <S.ErrorSpan>{newPasswordMsg}</S.ErrorSpan>
-              {isIcon === true ? (
-                <S.PwCheckBtn>
-                  <PwCheckIcon width='18' height='18' />
-                </S.PwCheckBtn>
-              ) : (
-                ''
-              )}
-            </S.PositionWrap>
-          </S.ChangePwWrapper>
-          <S.NewPwWrapper>
-            <S.MidText>새로운 비밀번호 확인</S.MidText>
-            <S.PositionWrap>
-              <S.PwInput
-                id='confirmPassword'
-                type='password'
-                placeholder='변경할 비밀번호를 확인해주세요.'
-                onChange={onChangeConfirmPassword}
-                style={cfPwColor}
-              />
-              <S.ErrorSpan>{confirmPasswordMsg}</S.ErrorSpan>
-              {isIcon === true ? (
-                <S.PwCheckBtn>
-                  <PwCheckIcon width='18' height='18' />
-                </S.PwCheckBtn>
-              ) : (
-                ''
-              )}
-              {/* <S.PwCheckBtn>
-              <PwCheckIcon width='18' height='18' />
-            </S.PwCheckBtn> */}
-            </S.PositionWrap>
-          </S.NewPwWrapper>
-          <S.SubmitBtn
-            disabled={!(isPassword && isNewPassword && isConfirmPassword)}
-            style={{
-              backgroundColor:
-                isPassword && isNewPassword && isConfirmPassword
-                  ? '#336CFF'
-                  : '#D0D0D1'
-            }}
-            type='submit'
-          >
-            비밀번호 변경하기
-          </S.SubmitBtn>
-        </form>
-      </S.Wrapper>
-    </S.Container>
+    <div>
+      <TheHeader />
+      <S.Container>
+        <S.Wrapper>
+          <form onSubmit={onSubmit as any}>
+            <S.TopText>계정관리</S.TopText>
+            <S.MyPwWrapper>
+              <S.MidText>기존 비밀번호</S.MidText>
+              <S.PositionWrap>
+                <S.PwInput
+                  id='password'
+                  type='password'
+                  placeholder='기존 비밀번호를 입력해주세요.'
+                  onChange={onChangePassword}
+                  style={pwColor}
+                />
+                <S.ErrorSpan>{passwordMsg}</S.ErrorSpan>
+              </S.PositionWrap>
+            </S.MyPwWrapper>
+            <S.ChangePwWrapper>
+              <S.MidText>변경할 비밀번호</S.MidText>
+              <S.PositionWrap>
+                <S.PwInput
+                  id='newPassword'
+                  type='password'
+                  placeholder='변경할 비밀번호를 입력해주세요.'
+                  onChange={onChangeNewPassword}
+                  style={newColor}
+                />
+                <S.ErrorSpan>{newPasswordMsg}</S.ErrorSpan>
+                {isIcon === true ? (
+                  <S.PwCheckBtn>
+                    <PwCheckIcon width='18' height='18' />
+                  </S.PwCheckBtn>
+                ) : (
+                  ''
+                )}
+              </S.PositionWrap>
+            </S.ChangePwWrapper>
+            <S.NewPwWrapper>
+              <S.MidText>새로운 비밀번호 확인</S.MidText>
+              <S.PositionWrap>
+                <S.PwInput
+                  id='confirmPassword'
+                  type='password'
+                  placeholder='변경할 비밀번호를 확인해주세요.'
+                  onChange={onChangeConfirmPassword}
+                  style={cfPwColor}
+                />
+                <S.ErrorSpan>{confirmPasswordMsg}</S.ErrorSpan>
+                {isIcon === true ? (
+                  <S.PwCheckBtn>
+                    <PwCheckIcon width='18' height='18' />
+                  </S.PwCheckBtn>
+                ) : (
+                  ''
+                )}
+              </S.PositionWrap>
+            </S.NewPwWrapper>
+            <S.SubmitBtn
+              disabled={!(isPassword && isNewPassword && isConfirmPassword)}
+              style={{
+                backgroundColor:
+                  isPassword && isNewPassword && isConfirmPassword
+                    ? '#336CFF'
+                    : '#D0D0D1'
+              }}
+              type='submit'
+            >
+              비밀번호 변경하기
+            </S.SubmitBtn>
+          </form>
+        </S.Wrapper>
+      </S.Container>
+      <TheFooter />
+    </div>
   )
 }

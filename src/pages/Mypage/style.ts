@@ -48,7 +48,7 @@ export const PositionWrap = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const PwCheckBtn = styled.button`
+export const PwCheckBtn = styled.div`
   position: absolute;
   top: 1.8rem;
   left: 34rem;
