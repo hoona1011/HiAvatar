@@ -1,6 +1,8 @@
 import styled from 'styled-components'
 export const Landing = styled.div`
   background-color: ${({ theme }) => theme.palette.background};
+  overflow-x: hidden;
+  overflow-y: hidden;
 `
 export const section1Container = styled.div`
   height: 70rem;
