@@ -1,3 +1,4 @@
+import { TheFooter, TheHeader } from 'components'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import * as S from './style'
@@ -7,6 +8,7 @@ export const LandingPage = () => {
 
   return (
     <div>
+      <TheHeader />
       <S.Landing>
         <S.section1Container>
           <S.section1Inner>
@@ -103,6 +105,7 @@ export const LandingPage = () => {
           </S.section4Inner>
         </S.section4Container>
       </S.Landing>
+      <TheFooter />
     </div>
   )
 }
