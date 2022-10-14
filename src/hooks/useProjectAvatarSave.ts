@@ -15,8 +15,8 @@ export const useProjectAvatarSave = () => {
         if (result.code === 200) {
           switch (requiredType) {
             case 'header': {
-              // navigate('/project-history')
               alert('저장되었습니다')
+              navigate('/project-history')
               break
             }
             case 'project-avatar': {

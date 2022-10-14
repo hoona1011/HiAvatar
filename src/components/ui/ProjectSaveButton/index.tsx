@@ -18,6 +18,10 @@ export const ProjectSaveButton = ({ requestFunc }: NextButtonProps) => {
       projectData,
       projectId
     })
+    if ((res as any).data.data?.result === 'Success') {
+      alert('프로젝트가 저장되었습니다.')
+      navigate('/project-history')
+    }
     if ((res as any).data.data?.result !== 'Success') {
       alert('에러가 발생했습니다. 다시 시도해주세요')
     }
