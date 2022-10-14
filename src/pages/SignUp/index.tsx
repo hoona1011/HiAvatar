@@ -49,7 +49,7 @@ export const SignUp: FC = () => {
       setIsId(false)
       setIdColor({ borderColor: '#E47B00' })
     } else if (!iRegex.test(idCurrent)) {
-      setIdMsg('소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.')
+      setIdMsg('입력한 아이디를 확인해주세요.')
       setIsId(false)
       setIdColor({ borderColor: '#E47B00' })
     } else if (iRegex.test(idCurrent)) {
@@ -134,7 +134,7 @@ export const SignUp: FC = () => {
         id,
         password
       })
-      alert('회원가입완료이 완료되었습니다.')
+      alert('회원가입이 완료되었습니다.')
       navigate('/sign-in')
     } catch (error) {
       console.log(error)
