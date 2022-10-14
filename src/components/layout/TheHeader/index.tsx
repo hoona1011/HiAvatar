@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useState } from 'react'
 import * as S from './style'
 import { CreateProjectButtonIcon, LogoIcon } from '../../Icons'
 import {
@@ -14,13 +14,8 @@ import {
   ProjectSaveButton,
   ProjectAvatarSaveButton
 } from 'components'
-import { useCookies } from 'react-cookie'
-import test from 'node:test'
-import { useCreateProject } from 'hooks'
-import { MyModal } from 'pages'
 
 export const TheHeader = (propFunction: any) => {
-  const { useFunction } = useCreateProject()
   const location = useLocation()
   const { projectId } = useParams()
   const token = localStorage.getItem('accessToken')
@@ -57,11 +52,47 @@ export const TheHeader = (propFunction: any) => {
                 </Link>
               </S.AuthBtnGroup>
             ) : (
-              <div>
-                <Link to='/'>
-                  <S.BtnForm onClick={signOut}>로그아웃</S.BtnForm>
-                </Link>
-              </div>
+              <S.AuthBtnGroup>
+                <S.BtnFormV1
+                  onClick={() => {
+                    navigate('/project-history')
+                  }}
+                >
+                  <div className='icon'>
+                    <CreateProjectButtonIcon width='1.2rem' height='1.8rem' />
+                  </div>
+                  히스토리
+                </S.BtnFormV1>
+                <S.MyInfo>
+                  <button
+                    className='my-info-button'
+                    onClick={propFunction.myInfo}
+                    onMouseOver={userHoverHandler}
+                    onMouseOut={userHoverHandler}
+                  >
+                    내정보
+                  </button>
+                  <div className='my-info-con'>
+                    <div className='my-info-con__inner'>
+                      <div className='title'>{localStorage.userid}</div>
+                      <Link to='/my-page'>
+                        <div className='my-account-btn'>내 계정 관리</div>
+                      </Link>
+                      <div className='sign-out-btn' onClick={signOut}>
+                        로그아웃
+                      </div>
+                      <div className='service'>
+                        <Link to='#'>
+                          <span>개인정보처리방침</span>
+                        </Link>
+                        <Link to='#'>
+                          <span>서비스 약관</span>
+                        </Link>
+                      </div>
+                    </div>
+                  </div>
+                </S.MyInfo>
+              </S.AuthBtnGroup>
             )}
           </nav>
         )
@@ -93,11 +124,15 @@ export const TheHeader = (propFunction: any) => {
       case '/project-history':
         return (
           <>
-            <S.BtnFormV1 onClick={useFunction}>
+            <S.BtnFormV1
+              onClick={() => {
+                navigate('/project-history')
+              }}
+            >
               <div className='icon'>
                 <CreateProjectButtonIcon width='1.2rem' height='1.8rem' />
               </div>
-              프로젝트
+              히스토리
             </S.BtnFormV1>
             <S.MyInfo>
               <button

@@ -11,7 +11,7 @@ export const Title = styled.div`
   margin-bottom: 1.5rem;
   display: flex;
   & .title {
-    margin-left: 0.8rem;
+    margin-left: 2.4rem;
   }
 `
 
@@ -47,4 +47,8 @@ export const Tooltip = styled.div`
       display: block;
     }
   }
+`
+
+export const Psition = styled.div`
+  position: absolute;
 `

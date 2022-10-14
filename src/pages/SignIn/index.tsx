@@ -63,7 +63,9 @@ export const SignIn = () => {
       setIsPassword(false)
       setPwColor({ borderColor: '#E47B00' })
     } else if (!pRegex.test(passwordCurrent)) {
-      setPasswordMsg('입력한 비밀번호를 확인해주세요.')
+      setPasswordMsg(
+        '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
+      )
       setIsPassword(false)
       setPwColor({ borderColor: '#E47B00' })
     } else if (pRegex.test(passwordCurrent)) {

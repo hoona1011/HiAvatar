@@ -26,16 +26,17 @@ export const ProjectText = () => {
   return (
     <S.Wrapper>
       <S.Title>
-        <S.Tooltip>
-          <TooltipIcon width='1.6rem' height='1.6rem' />
-          <div className='message'>
-            <TootipMessage
-              content='입력하신 전체 텍스트를 확인할 수 있어요.
-              문장을 선택하면 좌측 영역에서 바로 수정할 수 있어요.'
-              width='27.6rem'
-            />
-          </div>
-        </S.Tooltip>
+        <S.Psition>
+          <S.Tooltip>
+            <TooltipIcon width='1.6rem' height='1.6rem' />
+            <div className='message'>
+              <TootipMessage
+                content='입력하신 전체 텍스트를 확인할 수 있어요. 문장을 선택하면 좌측 영역에서 바로 수정할 수 있어요.'
+                width='27.6rem'
+              />
+            </div>
+          </S.Tooltip>
+        </S.Psition>
         <span className='title'>전체 텍스트를 확인해주세요</span>
       </S.Title>
       <S.TextGroup>{render}</S.TextGroup>

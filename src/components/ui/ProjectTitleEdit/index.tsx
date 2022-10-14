@@ -2,22 +2,20 @@ import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { EditIcon } from '../../Icons'
 import { useEditProjectMutation, useGetHistoryQuery } from 'api/historyApi'
-import { useParams } from 'react-router-dom'
-// import { useHistory } from 'store/slices/historySlice'
+import { useLocation, useParams } from 'react-router-dom'
 
 export const ProjectTitleEdit = () => {
   const { data, isLoading, isError }: any = useGetHistoryQuery()
   const [editProject] = useEditProjectMutation()
   const { projectId } = useParams()
+  const { pathname } = useLocation()
+
   const [projectName, setProjectName] = useState()
   const [userTitleInput, setUserTitleInput]: any = useState({ projectName: '' })
   const [isVisible, setIsVisible] = useState(true)
   const span: any = useRef()
   const [width, setWidth] = useState(0)
   const TitleEdit: any = useRef()
-
-  // const { projects } = useHistory()
-  // console.log(projects)
 
   useEffect(() => {
     const findProject = data?.projects.find((item: any) => {
@@ -41,7 +39,6 @@ export const ProjectTitleEdit = () => {
   }
 
   const userTitleEditHandeler: any = (e: any) => {
-    // console.log(e.key)
     const { name, value } = e.target
     setUserTitleInput({ ...userTitleInput, [name]: value })
     if (e.key === 'Enter') {
@@ -56,7 +53,15 @@ export const ProjectTitleEdit = () => {
   }
 
   const requestModifyTitle = () => {
-    let test
+    editProject({ userTitleInput, projectId })
+      .unwrap()
+      .then((data: any) => {
+        setProjectName(data.projectName)
+      })
+      .catch((error) => {
+        console.log(error)
+      })
+
     editProject({ userTitleInput, projectId })
       .unwrap()
       .then((data: any) => {

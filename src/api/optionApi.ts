@@ -5,6 +5,7 @@ const cookies = new Cookies()
 
 export const optionApi = createApi({
   reducerPath: 'optionApi',
+  tagTypes: ['Text'],
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
@@ -22,6 +23,8 @@ export const optionApi = createApi({
         method: 'POST',
         body: projectData
       }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Text', id: 'LIST' }] : [],
       transformResponse: (response) => {
         console.log('postOptions 응답값', response)
         return response
@@ -33,6 +36,8 @@ export const optionApi = createApi({
         method: 'POST',
         body: voiceData
       }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Text', id: 'LIST' }] : [],
       transformResponse: (response) => {
         console.log('postVoice 응답값', response)
         return response
@@ -43,6 +48,7 @@ export const optionApi = createApi({
         url: `/projects/${projectId}/save`,
         method: 'GET'
       }),
+      providesTags: [{ type: 'Text', id: 'LIST' }],
       transformResponse: (response: any) => {
         // 콘솔로그 삭제시 타입도 같이 삭제
         console.log('getOption 실행', response.data)
@@ -54,7 +60,9 @@ export const optionApi = createApi({
         url: '/projects/save/text',
         method: 'POST',
         body: data
-      })
+      }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Text', id: 'LIST' }] : []
     })
   })
 })

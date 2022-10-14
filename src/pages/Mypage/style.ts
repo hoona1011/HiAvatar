@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 export const Container = styled.div`
   background-color: ${({ theme }) => theme.palette.background};
-  display: flex;
-  margin-top: 4.4rem;
+  ${({ theme }) => theme.common.flexCenter};
+  height: calc(100vh - 10rem - 5.6rem);
 `
 export const Wrapper = styled.div`
   margin: 0 auto;

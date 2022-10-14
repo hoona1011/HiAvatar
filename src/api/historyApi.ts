@@ -62,6 +62,8 @@ export const historyApi = createApi({
         method: 'PATCH',
         body: userTitleInput
       }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'History', id: 'LIST' }] : [],
       transformResponse: (responseData: Project) => {
         console.log('응답값', responseData)
         return responseData['data']
