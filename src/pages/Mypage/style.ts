@@ -27,10 +27,12 @@ export const PwInput = styled.input`
   height: 5.6rem;
   border-radius: 0.8rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
 export const TempSpan = styled.div`
   font-size: 1.2rem;
@@ -48,7 +50,7 @@ export const PositionWrap = styled.div`
   display: flex;
   flex-direction: column;
 `
-export const PwCheckBtn = styled.button`
+export const PwCheckBtn = styled.div`
   position: absolute;
   top: 1.8rem;
   left: 34rem;

@@ -31,10 +31,12 @@ export const EmailInput = styled.input`
   height: 5.6rem;
   border-radius: 0.8rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
 export const PwWrapper = styled.div`
   margin-bottom: 2rem;
@@ -46,10 +48,12 @@ export const PwInput = styled.input`
   height: 5.6rem;
   border-radius: 0.8rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.5);
+  margin-bottom: 0.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
 export const SignInBtn = styled.button`
   background-color: ${({ theme }) => theme.palette.gray20};

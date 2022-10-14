@@ -1,9 +1,7 @@
-import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Avatar, AvatarPreview } from 'avatar'
 
 const url = import.meta.env.VITE_SERVICE_URL
-const cookies = new Cookies()
 
 export const avatarApi = createApi({
   reducerPath: 'avatarApi',
@@ -11,7 +9,7 @@ export const avatarApi = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      const token = cookies.get('accessToken')
+      const token = localStorage.getItem('accessToken')
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }

@@ -11,6 +11,7 @@ import { avatarApi } from 'api/avatarApi'
 // history
 import historyReducer from './slices/historySlice'
 import { historyApi } from 'api/historyApi'
+import { userApi } from 'api/userApi'
 
 const store = configureStore({
   reducer: {
@@ -21,13 +22,16 @@ const store = configureStore({
     avatar: avatarReducer,
     history: historyReducer,
     [avatarApi.reducerPath]: avatarApi.reducer,
-    [historyApi.reducerPath]: historyApi.reducer
+    [historyApi.reducerPath]: historyApi.reducer,
+
+    [userApi.reducerPath]: userApi.reducer
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware().concat([
       optionApi.middleware,
       avatarApi.middleware,
-      historyApi.middleware
+      historyApi.middleware,
+      userApi.middleware
     ])
 })
 

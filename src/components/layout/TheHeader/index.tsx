@@ -17,19 +17,20 @@ import {
 import { useCookies } from 'react-cookie'
 import test from 'node:test'
 import { useCreateProject } from 'hooks'
+import { MyModal } from 'pages'
 
 export const TheHeader = (propFunction: any) => {
   const { useFunction } = useCreateProject()
   const location = useLocation()
   const { projectId } = useParams()
-  const [cookies, removeCookie] = useCookies()
-  const token = cookies.accessToken
+  const token = localStorage.getItem('accessToken')
   const navigate = useNavigate()
   const [isVisible, setIsVisible] = useState(false)
 
   const rightRenderBtnList = () => {
     const signOut = () => {
-      removeCookie('accessToken', undefined)
+      localStorage.removeItem('accessToken')
+      localStorage.removeItem('userid')
       console.log('test')
       navigate('/')
       navigate(0)
@@ -65,6 +66,50 @@ export const TheHeader = (propFunction: any) => {
           </nav>
         )
       case '/sign-up':
+        return (
+          <nav>
+            {
+              <S.AuthBtnGroup>
+                <Link to='/sign-in'>
+                  <S.BtnForm>로그인</S.BtnForm>
+                </Link>
+              </S.AuthBtnGroup>
+            }
+          </nav>
+        )
+      case '/sign-in':
+        return (
+          <nav>
+            {
+              <S.AuthBtnGroup>
+                <Link to='/sign-up'>
+                  <S.BtnForm>회원가입</S.BtnForm>
+                </Link>
+              </S.AuthBtnGroup>
+            }
+          </nav>
+        )
+      case '/my-page':
+        return (
+          <nav>
+            {!token || token === 'undefined' ? (
+              <S.AuthBtnGroup>
+                <Link to='/sign-in'>
+                  <S.BtnForm>로그인</S.BtnForm>
+                </Link>
+                <Link to='/sign-up'>
+                  <S.BtnForm>회원가입</S.BtnForm>
+                </Link>
+              </S.AuthBtnGroup>
+            ) : (
+              <div>
+                <Link to='/'>
+                  <S.BtnForm onClick={signOut}>로그아웃</S.BtnForm>
+                </Link>
+              </div>
+            )}
+          </nav>
+        )
       case '/my-page':
       case '/project-history':
         return (
@@ -84,10 +129,9 @@ export const TheHeader = (propFunction: any) => {
               >
                 내정보
               </button>
-
               <div className='my-info-con'>
                 <div className='my-info-con__inner'>
-                  <div className='title'>userId</div>
+                  <div className='title'>{localStorage.userid}</div>
                   <Link to='/my-page'>
                     <div className='my-account-btn'>내 계정 관리</div>
                   </Link>

@@ -60,6 +60,7 @@ export const SignUp: FC = () => {
   }
 
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const passwordCurrent = e.target.value
     setPassword(passwordCurrent)
     const pRegex =
@@ -68,14 +69,13 @@ export const SignUp: FC = () => {
       setPasswordMsg('입력한 비밀번호가 없습니다.')
       setIsPassword(false)
       setPwColor({ borderColor: '#E47B00' })
-    }
-    // else if (!pRegex.test(passwordCurrent)) {
-    //   setPasswordMsg(
-    //     '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
-    //   )
-    //   setIsPassword(false)
-    //   setPwColor({ borderColor: '#E47B00' })}
-    else if (pRegex.test(passwordCurrent)) {
+    } else if (!pRegex.test(passwordCurrent)) {
+      setPasswordMsg(
+        '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
+      )
+      setIsPassword(false)
+      setPwColor({ borderColor: '#E47B00' })
+    } else if (pRegex.test(passwordCurrent)) {
       setPasswordMsg('')
       setIsPassword(true)
       setPwColor({ borderColor: '#336CFF' })
@@ -83,6 +83,7 @@ export const SignUp: FC = () => {
   }
 
   const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
     const passwordConfirmCurrent = e.target.value
     setConfirmPassword(passwordConfirmCurrent)
     if (passwordConfirmCurrent === '') {
@@ -125,18 +126,19 @@ export const SignUp: FC = () => {
       console.log(e)
     }
   }
-  const onSubmit = async (info: UserInfo) => {
-    console.log(info)
+  const onSubmit = async (e: any) => {
+    e.preventDefault()
+    console.log({ id, password })
     try {
       const response = await postUserInfo({
-        id: info.id,
-        password: info.password
+        id,
+        password
       })
-      alert('회원가입완료')
+      alert('회원가입완료이 완료되었습니다.')
       navigate('/sign-in')
     } catch (error) {
       console.log(error)
-      alert('회원가입실패')
+      alert('회원가입실패에 실패하였습니다.')
     }
   }
 
@@ -146,7 +148,7 @@ export const SignUp: FC = () => {
       <S.Container>
         <S.Wrapper>
           <S.TopText>회원가입</S.TopText>
-          <form onSubmit={() => onSubmit}>
+          <form onSubmit={onSubmit as any}>
             <S.EmailWrapper>
               <S.MidText htmlFor='id'>이메일</S.MidText>
               <S.PositionWrap>
@@ -187,9 +189,6 @@ export const SignUp: FC = () => {
                     <PwCheckIcon width='18' height='18' />
                   </S.PwCheckBtn>
                 ) : (
-                  // (<S.PwCheckBtn>
-                  //   <PwErrorIcon width='18' height='18' />
-                  // </S.PwCheckBtn> )
                   ''
                 )}
               </S.PositionWrap>
@@ -210,15 +209,8 @@ export const SignUp: FC = () => {
                     <PwCheckIcon width='18' height='18' />
                   </S.PwCheckBtn>
                 ) : (
-                  // (<S.PwCheckBtn>
-                  //     <PwErrorIcon width='18' height='18' />
-                  //   </S.PwCheckBtn>)
                   ''
                 )}
-
-                {/* <S.PwCheckBtn>
-              <PwCheckIcon width='18' height='18' />
-            </S.PwCheckBtn> */}
               </S.PositionWrap>
             </S.PwWrapper>
             <S.SignUpBtn
