@@ -5,7 +5,7 @@ export const Wrapper = styled.div`
   overflow: auto;
 `
 
-export const Title = styled.p`
+export const Title = styled.div`
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 1.5rem;

@@ -121,8 +121,8 @@ export const optionSlice = createSlice({
       // console.log('itemData', itemData)
       // console.log('findTextItem', current(findTextItem))
 
-      console.log('find', findTextItem.sentenceId)
-      console.log('splitTextList', current(state.splitTextList))
+      // console.log('find', findTextItem.sentenceId)
+      // console.log('splitTextList', current(state.splitTextList))
 
       let i = findTextItem.sentenceId + 1
 

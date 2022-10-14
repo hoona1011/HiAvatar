@@ -27,7 +27,12 @@ export const TextEditList = () => {
   }, [texts])
 
   const textDatas = texts.split('.').map((item, index) => {
-    return { ...splitTextList[0], sentenceId: index + 1, text: item }
+    return {
+      ...splitTextList[0],
+      sentenceId: index + 1,
+      text: item,
+      sentenceSpacing: 0
+    }
   })
 
   const userOutFocusHandler = () => {
@@ -52,8 +57,6 @@ export const TextEditList = () => {
     )
   })
 
-  console.log(splitTextList.length === 1 && splitTextList[0].text === '미정')
-
   return (
     <S.Wrapper onClick={userOutFocusHandler}>
       <S.TitleGroup>
@@ -70,7 +73,7 @@ export const TextEditList = () => {
           </S.Tooltip>
           <span className='title'>문장별로 텍스트를 수정해주세요</span>
         </S.Title>
-        {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
+        {!splitTextList.length ? (
           <></>
         ) : (
           <div className='button-group'>
@@ -88,7 +91,7 @@ export const TextEditList = () => {
         />
       )}
       <>
-        {splitTextList.length === 1 ? (
+        {!splitTextList.length ? (
           <S.StartPage>
             <VoiceUploadButton />
             <TextEnterButton setModal={setModal} />

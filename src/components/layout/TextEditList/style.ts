@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   position: relative;
   margin-bottom: 2.4rem;
 `
-export const Title = styled.p`
+export const Title = styled.div`
   font-size: 1.5rem;
   display: flex;
 
