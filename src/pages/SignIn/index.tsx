@@ -82,7 +82,10 @@ export const SignIn = () => {
     const idValue = id
     console.log(idValue)
     localStorage.setItem('userid', idValue)
-    if ((response as any).data.code === 200) {
+
+    if ((response as any).data == undefined) {
+      alert('아이디가 존재하지않거나 비밀번호가 올바르지않습니다.')
+    } else if ((response as any).data.code === 200) {
       navigate('/project-history')
     }
   }
