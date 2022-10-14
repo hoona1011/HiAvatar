@@ -5,6 +5,10 @@ export const TitleGroup = styled.div`
     font-size: 1.6rem;
     font-weight: 500;
     color: #0e1937;
+    display: flex;
+    & .title {
+      margin-left: 0.8rem;
+    }
   }
   & .download {
     font-size: 1.2rem;
@@ -75,4 +79,18 @@ export const CustomStyle = styled.div`
 
 export const StopBtn = styled.button`
   line-height: 0;
+`
+export const Tooltip = styled.div`
+  position: relative;
+
+  z-index: 1111;
+  .message {
+    display: none;
+    width: max-content;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
 `

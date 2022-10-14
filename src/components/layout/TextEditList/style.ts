@@ -11,8 +11,13 @@ export const Wrapper = styled.div`
   position: relative;
   margin-bottom: 2.4rem;
 `
-export const Title = styled.p`
+export const Title = styled.div`
   font-size: 1.5rem;
+  display: flex;
+
+  & .title {
+    margin-left: 0.8rem;
+  }
 `
 
 export const TitleGroup = styled.div`
@@ -21,6 +26,8 @@ export const TitleGroup = styled.div`
   align-items: center;
   height: 3.2rem;
   margin-bottom: 1.6rem;
+  position: relative;
+  z-index: 3;
   & .button-group {
     & button {
       margin-left: 1rem;
@@ -40,4 +47,19 @@ export const StartPage = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+`
+
+export const Tooltip = styled.div`
+  position: relative;
+
+  z-index: 1111;
+  .message {
+    display: none;
+    width: max-content;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
 `
