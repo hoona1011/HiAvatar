@@ -4,7 +4,8 @@ import {
   VoicePrePlayIcon,
   VoicePreRewindIcon,
   VoicePauseIcon,
-  VoiceStopIcon
+  VoiceStopIcon,
+  TooltipIcon
 } from 'components/Icons'
 import React, { useEffect, useRef, useState } from 'react'
 import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
@@ -12,6 +13,7 @@ import 'react-h5-audio-player/lib/styles.css'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'store'
 import { textsCreatePreview } from 'store/slices/optionSlice'
+import { TootipMessage } from 'components/ui/TootipMessage'
 import * as S from './style'
 
 // 타입스크립트 추가 예정
@@ -48,6 +50,8 @@ export const VoicePreviewPlayer = () => {
       textPreviewData,
       textsPreviewData,
       audioFile,
+      dummyData,
+      totalAudioUrl,
       ...textData
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
@@ -66,7 +70,18 @@ export const VoicePreviewPlayer = () => {
   return (
     <>
       <S.TitleGroup>
-        <div className='title'>합친 음성을 미리 들을 수 있어요</div>
+        <div className='title'>
+          <S.Tooltip>
+            <TooltipIcon width='1.6rem' height='1.6rem' />
+            <div className='message'>
+              <TootipMessage
+                content='전체 스크립트를 미리 듣고 다운로드 할 수 있어요.'
+                width='max-content;'
+              />
+            </div>
+          </S.Tooltip>
+          <span className='title'>합친 음성을 미리 들을 수 있어요</span>
+        </div>
         <a
           className='download'
           href='#'

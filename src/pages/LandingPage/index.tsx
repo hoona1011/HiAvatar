@@ -6,7 +6,7 @@ import * as S from './style'
 export const LandingPage = () => {
   const navigate = useNavigate()
   const onClickHandler = () => {
-    const token = localStorage.getItem('acessToken')
+    const token = localStorage.getItem('accessToken')
     if (!token || token === 'undefined') {
       alert('로그인이 필요한 서비스입니다')
       navigate('/sign-in')
