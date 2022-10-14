@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import * as S from './style'
 import { PwCheckIcon, PwErrorIcon } from 'components/Icons'
-import { edit } from 'api/userApi'
+import { edit, useEditMutation } from 'api/userApi'
 import { TheFooter, TheHeader } from 'components'
 
 interface MyPageForm {
@@ -11,6 +11,7 @@ interface MyPageForm {
 }
 
 export const MyPage = () => {
+  const [editPw] = useEditMutation()
   // 비밀번호 확인
   const [password, setPassword] = useState<string>('')
   const [newPassword, setNewPassword] = useState<string>('')
@@ -33,6 +34,7 @@ export const MyPage = () => {
   const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
     e.preventDefault()
     const passwordCurrent = e.target.value
+    setPassword(passwordCurrent)
     if (passwordCurrent === '') {
       setPasswordMsg('입력한 비밀번호가 없습니다.')
       setIsPassword(false)
@@ -57,6 +59,10 @@ export const MyPage = () => {
       setNewPasswordMsg(
         '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
       )
+      setIsNewPassword(false)
+      setNewColor({ borderColor: '#E47B00' })
+    } else if (password === newPasswordCurrent) {
+      setNewPasswordMsg('기존 비밀번호와 동일합니다.')
       setIsNewPassword(false)
       setNewColor({ borderColor: '#E47B00' })
     } else if (pRegex.test(newPasswordCurrent)) {
@@ -90,13 +96,17 @@ export const MyPage = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault()
-
     console.log('비밀번호 변경하기')
-    const response = await edit({
-      newPassword: newPassword
-    } as any)
-    console.log(response)
+    const response = await edit(newPassword)
+    if (response.data.code == 401) {
+      console.log('코드401')
+      alert('비밀번호 변경에 실패하였습니다.')
+    } else if (response.data.code == 200) {
+      alert('비밀번호 변경이 완료되었습니다.')
+    }
+    console.log('토큰콘솔', localStorage.accessToken)
   }
+
   return (
     <div>
       <TheHeader />

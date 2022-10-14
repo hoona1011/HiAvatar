@@ -1,5 +1,9 @@
 import axios from 'axios'
-import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import {
+  createApi,
+  fetchBaseQuery,
+  skipToken
+} from '@reduxjs/toolkit/query/react'
 
 export interface UserInfo {
   id: string
@@ -54,67 +58,35 @@ export const userApi = createApi({
       }),
       transformResponse: (response: any) => {
         localStorage.setItem('accessToken', response.data['accessToken'])
+        const mat = localStorage.accessToken
+        axios.defaults.headers.common['Authorization'] = `Bearer ${mat}`
         return response
       }
     }),
     edit: builder.mutation({
       query: (info) => ({
         url: '/my-page',
-        method: 'POST'
+        method: 'POST',
+        body: info.newPassword
       }),
       transformResponse: (response: any) => {
+        console.log('editapi', response)
         return response
       }
     })
   })
 })
-//비밀번호 변경
+export const { useSignInMutation, useEditMutation } = userApi
 
-export const edit = async (info: UserInfo['newPassword']) => {
-  const response = await axios.post(
-    'https://hiavatart.minoflower.com/my-page',
-    'newPassword'
-  )
+//비밀번호 변경
+export const edit = async (newPassword: string) => {
+  const token = localStorage.getItem('accessToken')
+  const mat = localStorage.accessToken
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
+
+  const response = await axios.post('https://hiavatar.minoflower.com/my-page', {
+    newPassword: newPassword
+  })
+  console.log('api', response)
   return response
 }
-export const { useSignInMutation } = userApi
-
-// signUp: builder.mutation({
-//   query: ({ info: UserInfo }) => ({
-//     url: '/sign-up',
-//     method: 'POST'
-//   }),
-//   transformResponse: (response) => {
-//     return response
-//   }
-// }),
-
-// postUserCheck: builder.mutation({
-//   query: ({ info }) => ({
-//     url: '/sign-up/check/duplicate-id',
-//     method: 'POST'
-//   }),
-//   transformResponse: (response) => {
-//     return response
-//   }
-// }),
-
-// googleLogin: builder.mutation({
-//   query: ({}) => ({
-//     url: '/oauth2/authorization/google',
-//     method: 'POST'
-//   }),
-//   transformResponse: (response) => {
-//     return response
-//   }
-// }),
-
-// kakaoLogin: builder.mutation({
-//   query: ({}) => ({
-//     url: '/oauth2/authorization/kakao',
-//     method: 'POST'
-//   }),
-//   transformResponse: (response) => {
-//     return response
-//   }
-// })
