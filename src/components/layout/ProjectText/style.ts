@@ -9,6 +9,10 @@ export const Title = styled.p`
   font-size: 1.6rem;
   font-weight: 600;
   margin-bottom: 1.5rem;
+  display: flex;
+  & .title {
+    margin-left: 0.8rem;
+  }
 `
 
 export const TextGroup = styled.div`
@@ -28,4 +32,19 @@ export const TextBox = styled.div<{ findData: any }>`
   border-radius: 1rem;
   padding: 1rem;
   word-break: break-all;
+`
+
+export const Tooltip = styled.div`
+  position: relative;
+
+  z-index: 1;
+  .message {
+    display: none;
+    width: max-content;
+  }
+  &:hover {
+    .message {
+      display: block;
+    }
+  }
 `

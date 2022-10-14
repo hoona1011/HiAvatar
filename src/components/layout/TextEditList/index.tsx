@@ -6,7 +6,12 @@ import { renderText, outFocus } from 'store/slices/optionSlice'
 import { VoiceUploadButton } from 'components/ui/VoiceUploadButton'
 import { TextEnterButton } from 'components/ui/TextEnterButton'
 import { ProjectTextModal } from 'components/ui/ProjectTextModal'
-import { ProjectTextEnterButton, ProjectVoiceUploadButton } from 'components'
+import {
+  ProjectTextEnterButton,
+  ProjectVoiceUploadButton,
+  TootipMessage
+} from 'components'
+import { TooltipIcon } from 'components/Icons'
 
 export const TextEditList = () => {
   const dispatch = useAppDispatch()
@@ -52,14 +57,26 @@ export const TextEditList = () => {
   return (
     <S.Wrapper onClick={userOutFocusHandler}>
       <S.TitleGroup>
-        <S.Title>문장별로 텍스트를 수정해주세요</S.Title>
+        <S.Title>
+          <S.Tooltip>
+            <TooltipIcon width='1.6rem' height='1.6rem' />
+            <div className='message'>
+              <TootipMessage
+                content='문장을 선택하면 문장별로 스크립트 수정이 가능하고 
+                간격 조절과 문장을 추가, 삭제할 수 있어요.'
+                width='27.0rem'
+              />
+            </div>
+          </S.Tooltip>
+          <span className='title'>문장별로 텍스트를 수정해주세요</span>
+        </S.Title>
         {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
           <></>
         ) : (
-          <S.StartPage className='button-group'>
+          <div className='button-group'>
             <ProjectTextEnterButton setModal={setModal} />
             <ProjectVoiceUploadButton />
-          </S.StartPage>
+          </div>
         )}
       </S.TitleGroup>
 
@@ -71,7 +88,7 @@ export const TextEditList = () => {
         />
       )}
       <>
-        {splitTextList.length === 1 && splitTextList[0].text === '미정' ? (
+        {splitTextList.length === 1 ? (
           <S.StartPage>
             <VoiceUploadButton />
             <TextEnterButton setModal={setModal} />

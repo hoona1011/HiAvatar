@@ -17,28 +17,34 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
     case 'ProjectText':
       return (
         <S.Container>
-          <ProjectText />
-          <S.BtnContainer>
-            <NextButton requestFunc={() => console.log('요청 완료')} />
-          </S.BtnContainer>
+          <S.Inner>
+            <ProjectText />
+            <S.BtnContainer>
+              <NextButton requestFunc={() => console.log('요청 완료')} />
+            </S.BtnContainer>
+          </S.Inner>
         </S.Container>
       )
     case 'VoiceControllerMenu':
       return (
         <S.Container>
-          <VoiceControlMenu />
-          <S.BtnContainer>
-            <NextButton requestFunc={() => console.log('요청 완료')} />
-          </S.BtnContainer>
+          <S.Inner>
+            <VoiceControlMenu />
+            <S.BtnContainer>
+              <NextButton requestFunc={() => console.log('요청 완료')} />
+            </S.BtnContainer>
+          </S.Inner>
         </S.Container>
       )
     case 'AvatarVoicePlayersMenu':
       return (
         <S.Container>
-          <AvatarVoiceMenu />
-          <S.BtnContainer>
-            <NextButton requestFunc={() => console.log('요청 완료')} />
-          </S.BtnContainer>
+          <S.Inner>
+            <AvatarVoiceMenu />
+            <S.BtnContainer>
+              <NextButton requestFunc={() => console.log('요청 완료')} />
+            </S.BtnContainer>
+          </S.Inner>
         </S.Container>
       )
     case 'ProjectAvatar':
@@ -47,9 +53,11 @@ export const ProjectRightNav = ({ renderType }: ProjectRightNavProps) => {
           <S.Inner>
             <SelectedAvatar />
             <SelectedVoiceOptions />
+            <S.BtnGr>
+              <PrevButton />
+              <CompleteButton />
+            </S.BtnGr>
           </S.Inner>
-          <PrevButton />
-          <CompleteButton />
         </S.Container>
       )
     default:
