@@ -5,7 +5,7 @@ const url = import.meta.env.VITE_SERVICE_URL
 
 export const avatarApi = createApi({
   reducerPath: 'avatarApi',
-  tagTypes: ['Avatar', 'Option'],
+  tagTypes: ['Avatar'],
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
@@ -34,7 +34,7 @@ export const avatarApi = createApi({
         body: selectedValue
       }),
       invalidatesTags: (result) =>
-        result ? [{ type: 'Option', id: 'LIST' }] : []
+        result ? [{ type: 'Avatar', id: 'OPTION' }] : []
     }),
     createAvatarPreview: builder.mutation({
       query: (selectedValue) => ({
@@ -53,14 +53,14 @@ export const avatarApi = createApi({
         body: projectData
       }),
       invalidatesTags: (result) =>
-        result ? [{ type: 'Avatar', id: 'LIST' }] : []
+        result ? [{ type: 'Avatar', id: 'OPTION' }] : []
     }),
     getOption: builder.query({
       query: (projectId) => ({
         url: `/projects/${projectId}/save`,
         method: 'GET'
       }),
-      providesTags: [{ type: 'Option', id: 'LIST' }],
+      providesTags: [{ type: 'Avatar', id: 'OPTION' }],
       transformResponse: (response: any) => {
         return response.data
       }

@@ -2,7 +2,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import * as S from './style'
 import { NextButtonProps } from 'index'
 import { useAppSelector } from 'store'
-import { usePostOptionsMutation } from 'api/optionApi'
+import { usePostOptionsMutation } from 'api/avatarApi'
 import { Spinner } from 'components'
 export const ProjectSaveButton = ({ requestFunc }: NextButtonProps) => {
   const navigate = useNavigate()
