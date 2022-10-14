@@ -90,27 +90,6 @@ export const TheHeader = (propFunction: any) => {
           </nav>
         )
       case '/my-page':
-        return (
-          <nav>
-            {!token || token === 'undefined' ? (
-              <S.AuthBtnGroup>
-                <Link to='/sign-in'>
-                  <S.BtnForm>로그인</S.BtnForm>
-                </Link>
-                <Link to='/sign-up'>
-                  <S.BtnForm>회원가입</S.BtnForm>
-                </Link>
-              </S.AuthBtnGroup>
-            ) : (
-              <div>
-                <Link to='/'>
-                  <S.BtnForm onClick={signOut}>로그아웃</S.BtnForm>
-                </Link>
-              </div>
-            )}
-          </nav>
-        )
-      case '/my-page':
       case '/project-history':
         return (
           <>
