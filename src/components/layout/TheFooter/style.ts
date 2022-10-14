@@ -10,7 +10,7 @@ export const FooterTextWrapper = styled.div`
   color: #fff;
   margin: auto;
   position: relative;
-  right: 35%;
+  right: 25%;
 `
 export const FooterTextTop = styled.div`
   line-height: 150%;
@@ -22,6 +22,6 @@ export const FooterTextBot = styled.div`
 
 export const FooterLogo = styled.div`
   position: relative;
-  right: 5%;
-  margin-top: 3rem;
+  right: 20%;
+  margin-top: 4rem;
 `

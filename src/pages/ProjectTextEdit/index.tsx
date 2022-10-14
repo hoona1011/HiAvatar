@@ -12,7 +12,7 @@ import {
   TheHeader
 } from 'components'
 import * as S from './style'
-import { useGetOptionQuery } from 'api/optionApi'
+import { useGetOptionQuery } from 'api/avatarApi'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getOption } from 'store/slices/optionSlice'

@@ -3,9 +3,8 @@ import * as S from './style'
 import { PwErrorIcon, PwCheckIcon } from 'components/Icons'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { Formik, Form, useFormik } from 'formik'
-import * as Yup from 'yup'
-import { postUserInfo, idCheck } from 'api/userApi'
+import { postUserInfo, idCheck, UserInfo } from 'api/userApi'
+import { TheFooter, TheHeader } from 'components'
 
 interface SignUpForm {
   id: string
@@ -14,55 +13,94 @@ interface SignUpForm {
 }
 
 export const SignUp: FC = () => {
-  const navigate = useNavigate()
+  const [id, setId] = useState<string>('')
+  const [password, setPassword] = useState<string>('')
+  const [confirmPassword, setConfirmPassword] = useState<string>('')
+  // 오류메세지
+  const [idMsg, setIdMsg] = useState<string>('')
+  const [passwordMsg, setPasswordMsg] = useState<string>('')
+  const [confirmPasswordMsg, setConfirmPasswordMsg] = useState<string>('')
+  //유효성검사
+  const [isId, setIsId] = useState<boolean>(false)
+  const [isPassword, setIsPassword] = useState<boolean>(false)
+  const [isConfirmPassword, setIsConfirmPassword] = useState<boolean>(false)
+  //에러 아이콘
+  const [isIcon, setIsIcon] = useState<boolean>(false)
+  //에러 색상
+  const [idColor, setIdColor] = useState({ borderColor: '#88888D' })
+  const [pwColor, setPwColor] = useState({ borderColor: '#88888D' })
+  const [cfPwColor, setCfPwColor] = useState({ borderColor: '#88888D' })
   //이메일 중복검사
   const [EmailCheck, setEmailCheck] = useState<boolean>(false)
   //이메일 중복검사 에러메세지
   const [EmailMsg, setEmailMsg] = useState<string>('')
   //중복확인 안할시 버튼 비활성화
   const [disabledBtn, setDisabledBtn] = useState<boolean>(false)
+  const navigate = useNavigate()
 
-  const formik = useFormik({
-    //initialValues, onSubmit, yup유효성검사
-    initialValues: {
-      id: '',
-      password: '',
-      confirmPassword: ''
-    },
-    validationSchema: Yup.object({
-      id: Yup.string()
-        .matches(
-          /^[a-zA-Z0-9+-\_.]+@[a-zA-Z0-9-]+\.[a-zA-Z0-9-.]+$/,
-          '올바른 이메일 형식을 입력해주세요'
-        )
-        .required('입력한 이메일이 없습니다.'),
-      password: Yup.string()
-        // .matches(
-        //   /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/,
-        //   '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
-        // )
-        .required('입력한 비밀번호가 없습니다'),
-      confirmPassword: Yup.string()
-        //비밀번호 일치여부체크
-        .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다.')
-        .required('입력한 비밀번호가 없습니다.')
-    }),
-    onSubmit: async (values) => {
-      console.log(values)
-      try {
-        const response = await postUserInfo({
-          id: values.id,
-          password: values.password
-        })
-        alert('회원가입완료')
-        navigate('/sign-in')
-      } catch (error) {
-        console.log(error)
-        alert('회원가입실패')
-      }
+  const onChangeId = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const idCurrent = e.target.value
+    setId(idCurrent)
+    const iRegex =
+      /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/
+
+    if (idCurrent === '') {
+      setIdMsg('입력한 아이디가 없습니다.')
+      setIsId(false)
+      setIdColor({ borderColor: '#E47B00' })
+    } else if (!iRegex.test(idCurrent)) {
+      setIdMsg('소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.')
+      setIsId(false)
+      setIdColor({ borderColor: '#E47B00' })
+    } else if (iRegex.test(idCurrent)) {
+      setIdMsg('')
+      setIsId(true)
+      setIdColor({ borderColor: '#336CFF' })
     }
-  })
+  }
 
+  const onChangePassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    const passwordCurrent = e.target.value
+    setPassword(passwordCurrent)
+    const pRegex =
+      /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[!@#])[\da-zA-Z!@#]{8,}$/
+    if (passwordCurrent === '') {
+      setPasswordMsg('입력한 비밀번호가 없습니다.')
+      setIsPassword(false)
+      setPwColor({ borderColor: '#E47B00' })
+    } else if (!pRegex.test(passwordCurrent)) {
+      setPasswordMsg(
+        '소문자,대문자,숫자,특수문자를 포함하여 최소8자로 입력해주세요.'
+      )
+      setIsPassword(false)
+      setPwColor({ borderColor: '#E47B00' })
+    } else if (pRegex.test(passwordCurrent)) {
+      setPasswordMsg('')
+      setIsPassword(true)
+      setPwColor({ borderColor: '#336CFF' })
+    }
+  }
+
+  const onChangeConfirmPassword = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault()
+    const passwordConfirmCurrent = e.target.value
+    setConfirmPassword(passwordConfirmCurrent)
+    if (passwordConfirmCurrent === '') {
+      setConfirmPasswordMsg('입력한 비밀번호가 없습니다.')
+      setIsConfirmPassword(false)
+      setCfPwColor({ borderColor: '#E47B00' })
+    } else if (!(password === passwordConfirmCurrent)) {
+      setConfirmPasswordMsg('변경할 비밀번호가 일치하지않습니다.')
+      setIsConfirmPassword(false)
+      setCfPwColor({ borderColor: '#E47B00' })
+    } else if (password === passwordConfirmCurrent) {
+      setConfirmPasswordMsg('')
+      setIsConfirmPassword(true)
+      setIsIcon(true)
+      setCfPwColor({ borderColor: '#336CFF' })
+    }
+  }
   const EmailCheckHandler = async (
     e: React.MouseEvent<HTMLButtonElement>,
     id: string
@@ -88,94 +126,109 @@ export const SignUp: FC = () => {
       console.log(e)
     }
   }
+  const onSubmit = async (e: any) => {
+    e.preventDefault()
+    console.log({ id, password })
+    try {
+      const response = await postUserInfo({
+        id,
+        password
+      })
+      alert('회원가입완료이 완료되었습니다.')
+      navigate('/sign-in')
+    } catch (error) {
+      console.log(error)
+      alert('회원가입실패에 실패하였습니다.')
+    }
+  }
 
   return (
-    <S.Container>
-      <S.Wrapper>
-        <S.TopText>회원가입</S.TopText>
-        <form onSubmit={formik.handleSubmit}>
-          <S.EmailWrapper>
-            <S.MidText htmlFor='id'>이메일</S.MidText>
-            <S.EmailInput
-              id='id'
-              type='text'
-              placeholder='이메일 주소를 입력해 주세요.'
-              //이메일 중복검사 후 인풋 변경을 불가능하도록 disabled추가
-              // disabled={EmailCheck}
-              {...formik.getFieldProps('id')}
-            />
-            {/* 이메일 중복, 에러메세지 */}
-            <S.ErrorSpan>{EmailMsg}</S.ErrorSpan>
-            {formik.touched.id && formik.errors.id ? (
-              <S.ErrorSpan>{formik.errors.id}</S.ErrorSpan>
-            ) : null}
-            <S.IdCheckBtn
-              disabled={disabledBtn}
+    <div>
+      <TheHeader />
+      <S.Container>
+        <S.Wrapper>
+          <S.TopText>회원가입</S.TopText>
+          <form onSubmit={onSubmit as any}>
+            <S.EmailWrapper>
+              <S.MidText htmlFor='id'>이메일</S.MidText>
+              <S.PositionWrap>
+                <S.EmailInput
+                  id='id'
+                  type='text'
+                  placeholder='이메일 주소를 입력해 주세요.'
+                  //이메일 중복검사 후 인풋 변경을 불가능하도록 disabled추가
+                  // disabled={EmailCheck}
+                  onChange={onChangeId}
+                  style={idColor}
+                />
+                <S.ErrorSpan>{idMsg}</S.ErrorSpan>
+                <S.IdCheckBtn
+                  disabled={disabledBtn}
+                  style={{
+                    backgroundColor: EmailCheck ? '#D0D0D1' : '#6691FF'
+                  }}
+                  onClick={(e) => EmailCheckHandler(e, id)}
+                >
+                  중복 확인
+                </S.IdCheckBtn>
+              </S.PositionWrap>
+            </S.EmailWrapper>
+            <S.PwWrapper>
+              <S.MidText htmlFor='password'>비밀번호</S.MidText>
+              <S.PositionWrap>
+                <S.PwInput
+                  id='password'
+                  type='password'
+                  placeholder='비밀번호를 입력해주세요.'
+                  onChange={onChangePassword}
+                  style={pwColor}
+                />
+                <S.ErrorSpan>{passwordMsg}</S.ErrorSpan>
+                {isIcon === true ? (
+                  <S.PwCheckBtn>
+                    <PwCheckIcon width='18' height='18' />
+                  </S.PwCheckBtn>
+                ) : (
+                  ''
+                )}
+              </S.PositionWrap>
+            </S.PwWrapper>
+            <S.PwWrapper>
+              <S.MidText htmlFor='confirmPassword'>비밀번호 확인</S.MidText>
+              <S.PositionWrap>
+                <S.PwInput
+                  id='confirmPassword'
+                  type='password'
+                  placeholder='비밀번호를 확인해주세요.'
+                  onChange={onChangeConfirmPassword}
+                  style={cfPwColor}
+                />
+                <S.ErrorSpan>{confirmPasswordMsg}</S.ErrorSpan>
+                {isIcon === true ? (
+                  <S.PwCheckBtn>
+                    <PwCheckIcon width='18' height='18' />
+                  </S.PwCheckBtn>
+                ) : (
+                  ''
+                )}
+              </S.PositionWrap>
+            </S.PwWrapper>
+            <S.SignUpBtn
+              disabled={!(isId && isPassword && isConfirmPassword)}
               style={{
-                backgroundColor: EmailCheck ? '#6691FF' : '#D0D0D1'
+                backgroundColor:
+                  isId && isPassword && isConfirmPassword
+                    ? '#336CFF'
+                    : '#D0D0D1'
               }}
-              onClick={(e) => EmailCheckHandler(e, formik.values.id)}
+              type='submit'
             >
-              중복 확인
-            </S.IdCheckBtn>
-          </S.EmailWrapper>
-          <S.PwWrapper>
-            <S.MidText htmlFor='password'>비밀번호</S.MidText>
-            <S.PwInput
-              id='password'
-              type='password'
-              placeholder='비밀번호를 입력해 주세요.'
-              {...formik.getFieldProps('password')}
-            />
-            {/* 비밀번호 에러메세지 */}
-            {formik.touched.password && formik.errors.password ? (
-              <S.ErrorSpan>
-                {formik.errors.password} <PwErrorIcon width='18' height='18' />
-              </S.ErrorSpan>
-            ) : // <PwCheckIcon width='18' height='18' />
-            null}
-          </S.PwWrapper>
-          <S.PwWrapper>
-            <S.MidText htmlFor='confirmPassword'>비밀번호 확인</S.MidText>
-            <S.PwInput
-              id='confirmPassword'
-              type='password'
-              placeholder='비밀번호를 확인해 주세요.'
-              {...formik.getFieldProps('confirmPassword')}
-            />
-            {/* 비밀번호확인 에러메세지 */}
-            {formik.touched.confirmPassword && formik.errors.confirmPassword ? (
-              <S.ErrorSpan>
-                {formik.errors.confirmPassword}
-                <PwErrorIcon width='18' height='18' />
-              </S.ErrorSpan>
-            ) : // <PwCheckIcon width='18' height='18' />
-            null}
-          </S.PwWrapper>
-          <S.SignUpBtn
-            disabled={
-              !(
-                EmailCheck &&
-                formik.values.id &&
-                formik.values.password &&
-                formik.values.confirmPassword
-              )
-            }
-            style={{
-              backgroundColor:
-                EmailCheck &&
-                formik.values.id &&
-                formik.values.password &&
-                formik.values.confirmPassword
-                  ? '#336CFF'
-                  : '#D0D0D1'
-            }}
-            type='submit'
-          >
-            회원가입
-          </S.SignUpBtn>
-        </form>
-      </S.Wrapper>
-    </S.Container>
+              회원가입
+            </S.SignUpBtn>
+          </form>
+        </S.Wrapper>
+      </S.Container>
+      <TheFooter />
+    </div>
   )
 }

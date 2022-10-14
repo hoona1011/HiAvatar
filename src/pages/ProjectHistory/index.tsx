@@ -18,8 +18,9 @@ export const ProjectHistory = () => {
   const { dispatch } = useHistory()
 
   useEffect(() => {
-    const cookies = new Cookies()
-    const token = cookies.get('accessToken')
+    // const cookies = new Cookies()
+
+    const token = localStorage.getItem('accessToken')
     if (token) {
       data && changeHistoryHandler()
     }

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import * as S from './style'
 import { TooltipIcon } from 'components/Icons'
-import { ProjectHistoryPlayer, Spinner } from 'components'
+import { ProjectHistoryPlayer, Spinner, TootipMessage } from 'components'
 import { useHistory } from 'hooks'
 
 export const ProjectVideoList = () => {
@@ -36,7 +36,15 @@ export const ProjectVideoList = () => {
   return (
     <S.Container>
       <S.Top>
-        <TooltipIcon width='1.6rem' height='1.6rem' />
+        <S.Tooltip>
+          <TooltipIcon width='1.6rem' height='1.6rem' />
+          <div className='message'>
+            <TootipMessage
+              content='생성된 영상을 확인하고 다운받을 수 있어요.'
+              width='22.9rem'
+            />
+          </div>
+        </S.Tooltip>
         <S.Title>생성된 영상을 확인하세요.</S.Title>
       </S.Top>
       <S.VideoContainer>

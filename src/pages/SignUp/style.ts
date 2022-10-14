@@ -42,11 +42,11 @@ export const EmailInput = styled.input`
     border: 0.1rem solid ${({ theme }) => theme.palette.orange2};
   } */
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
 export const IdCheckBtn = styled.button`
   background-color: ${({ theme }) => theme.palette.gray20};
@@ -60,7 +60,7 @@ export const IdCheckBtn = styled.button`
   font-size: 1.2rem;
   position: absolute;
   left: 29.2rem;
-  top: 3.5rem;
+  top: 1.3rem;
 `
 export const PwWrapper = styled.div`
   display: flex;
@@ -77,15 +77,15 @@ export const PwInput = styled.input`
   border-radius: 0.8rem;
   border: 0.1rem solid rgba(0, 0, 0, 0.5);
   margin-bottom: 0.5rem;
-  font-size: 1.5rem;
   ::placeholder {
     color: ${({ theme }) => theme.palette.gray20};
   }
   text-indent: 1.6rem;
+  font-size: 1.5rem;
 `
-export const PwCheckBtn = styled.button`
+export const PwCheckBtn = styled.div`
   position: absolute;
-  top: 1.8rem;
+  top: 2rem;
   left: 34rem;
   cursor: default;
 `
@@ -112,5 +112,9 @@ export const SignUpABtn = styled.button`
   color: ${({ theme }) => theme.palette.white};
 `
 export const ErrorSpan = styled.span`
+  display: flex;
+  font-size: 1.3rem;
+  font-weight: 400;
+  line-height: 1.5rem;
   color: ${({ theme }) => theme.palette.orange2};
 `

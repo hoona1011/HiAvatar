@@ -3,14 +3,12 @@ import { Cookies } from 'react-cookie'
 const url = import.meta.env.VITE_SERVICE_URL
 const cookies = new Cookies()
 
-// const token = cookies.get('accessToken')
-// console.log('옵션api토큰', token)
 export const optionApi = createApi({
   reducerPath: 'optionApi',
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      const token = cookies.get('accessToken')
+      const token = localStorage.getItem('accessToken')
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }

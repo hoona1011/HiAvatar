@@ -7,6 +7,7 @@ import { RadioButton } from 'components/ui/RadioButton'
 import { useAppSelector } from 'store'
 
 import * as S from './style'
+import { TootipMessage } from 'components/ui/TootipMessage'
 export const AvatarVoiceMenu = () => {
   const {
     dummyData,
@@ -52,9 +53,15 @@ export const AvatarVoiceMenu = () => {
   return (
     <S.Container>
       <S.Title>
-        <div>
+        <S.Tooltip>
           <TooltipIcon width='1.6rem' height='1.6rem' />
-        </div>
+          <div className='message'>
+            <TootipMessage
+              content='모델의 성별, 언어, 음성 스타일을 미리 듣고 선택할 수 있어요.'
+              width='28.5rem'
+            />
+          </div>
+        </S.Tooltip>
         <span>음성 모델을 선택해 주세요</span>
       </S.Title>
       <S.OptionContainer>

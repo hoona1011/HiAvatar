@@ -1,16 +1,15 @@
-import { Cookies } from 'react-cookie'
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 import type { Avatar, AvatarPreview } from 'avatar'
 
 const url = import.meta.env.VITE_SERVICE_URL
-const cookies = new Cookies()
 
 export const avatarApi = createApi({
   reducerPath: 'avatarApi',
+  tagTypes: ['Avatar', 'Option'],
   baseQuery: fetchBaseQuery({
     baseUrl: url,
     prepareHeaders: (headers) => {
-      const token = cookies.get('accessToken')
+      const token = localStorage.getItem('accessToken')
       if (token) {
         headers.set('Authorization', `Bearer ${token}`)
       }
@@ -23,6 +22,7 @@ export const avatarApi = createApi({
         url: `projects/${projectId}/avatar`,
         method: 'GET'
       }),
+      providesTags: [{ type: 'Avatar', id: 'LIST' }],
       transformResponse: (responseData: Avatar) => {
         return responseData['data']
       }
@@ -32,7 +32,9 @@ export const avatarApi = createApi({
         url: `projects/${projectId}/avatar`,
         method: 'PATCH',
         body: selectedValue
-      })
+      }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Option', id: 'LIST' }] : []
     }),
     createAvatarPreview: builder.mutation({
       query: (selectedValue) => ({
@@ -43,6 +45,25 @@ export const avatarApi = createApi({
       transformResponse: (responseData: AvatarPreview) => {
         return responseData['data']
       }
+    }),
+    postOptions: builder.mutation({
+      query: ({ projectData, projectId }) => ({
+        url: `/projects/${projectId}/save`,
+        method: 'POST',
+        body: projectData
+      }),
+      invalidatesTags: (result) =>
+        result ? [{ type: 'Avatar', id: 'LIST' }] : []
+    }),
+    getOption: builder.query({
+      query: (projectId) => ({
+        url: `/projects/${projectId}/save`,
+        method: 'GET'
+      }),
+      providesTags: [{ type: 'Option', id: 'LIST' }],
+      transformResponse: (response: any) => {
+        return response.data
+      }
     })
   })
 })
@@ -50,5 +71,7 @@ export const avatarApi = createApi({
 export const {
   useGetAvatarQuery,
   useSaveAvatarMutation,
-  useCreateAvatarPreviewMutation
+  useCreateAvatarPreviewMutation,
+  usePostOptionsMutation,
+  useGetOptionQuery
 } = avatarApi
