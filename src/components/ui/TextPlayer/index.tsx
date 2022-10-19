@@ -35,17 +35,18 @@ export const TextPlayer = ({
       .catch((error) => {
         console.log(error)
       })
-      .finally(() => {
-        if (audioFile) {
-          if (isPlaying) {
-            console.log('textPreviewData.text: ', textPreviewData.text)
-            audioElem.current.play()
-          } else {
-            audioElem.current.pause()
-          }
-        }
-      })
-  }, [textPreviewData.text, audioFile, isPlaying])
+  }, [textPreviewData.text])
+
+  useEffect(() => {
+    if (audioFile) {
+      if (isPlaying) {
+        console.log('textPreviewData.text: ', textPreviewData.text)
+        audioElem.current.play()
+      } else {
+        audioElem.current.pause()
+      }
+    }
+  }, [audioFile, isPlaying])
 
   const userInputHandler = (e: any) => {
     const { name, value } = e.target
