@@ -15,7 +15,6 @@ import { useAppDispatch, useAppSelector } from 'store'
 import { textsCreatePreview } from 'store/slices/optionSlice'
 import { TootipMessage } from 'components/ui/TootipMessage'
 import * as S from './style'
-import test from 'node:test'
 
 // 타입스크립트 추가 예정
 
@@ -25,7 +24,7 @@ export const VoicePreviewPlayer = () => {
   const dispatch = useAppDispatch()
   const [projectData, setProjectData] = useState()
   const [isPlaying, setIsPlaying] = useState(false)
-  const [audioDuration, setAudioDuration] = useState(0)
+  const [audioDurationTime, setAudioDurationTime] = useState(0)
   const [audioCurrentTime, setAudioCurrentTime] = useState(0)
   const player: any = useRef()
   const [textsPreviewUrl, setTextsPreviewUrl]: any = useState()
@@ -105,12 +104,24 @@ export const VoicePreviewPlayer = () => {
   }
 
   const onPlaying = () => {
-    setAudioDuration(parseInt(audioElem.current.duration))
+    setAudioDurationTime(parseInt(audioElem.current.duration))
     setAudioCurrentTime(parseInt(audioElem.current.currentTime))
   }
 
   const userCurrentTimeHandeler = (e: any) => {
     audioElem.current.currentTime = e.target.value
+  }
+
+  const RenderTime = (time: any) => {
+    let seconds: any = Object.values(time)
+
+    let min = parseInt((seconds[0] % 3600) / 60)
+    let sec = seconds[0] % 60
+    return (
+      <S.RenderTime>{`${min > 9 ? '' : '0'}${min}:${
+        sec > 9 ? '' : '0'
+      }${sec}`}</S.RenderTime>
+    )
   }
 
   return (
@@ -133,23 +144,33 @@ export const VoicePreviewPlayer = () => {
         </a>
       </S.TitleGroup>
       <audio src={textsPreviewUrl} ref={audioElem} onTimeUpdate={onPlaying} />
-      <div onClick={playPause}>
-        {isPlaying ? (
-          <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
-        ) : (
-          <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
-        )}
-      </div>
-      <div onClick={stop}>
-        <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
-      </div>
-      <input
-        type='range'
-        min={0}
-        max={audioDuration}
-        value={audioCurrentTime}
-        onChange={userCurrentTimeHandeler}
-      />
+      <S.AudioPlayer>
+        <S.Inner>
+          <S.PlayPauseButton onClick={playPause}>
+            {isPlaying ? (
+              <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
+            ) : (
+              <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
+            )}
+          </S.PlayPauseButton>
+          <S.PlayPauseButton onClick={stop}>
+            <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
+          </S.PlayPauseButton>
+
+          <S.ProgressBarGroup>
+            <RenderTime audioDurationTime={audioCurrentTime} />
+            {/* {audioCurrentTime} */}
+            <S.ProgressBar
+              type='range'
+              min={0}
+              max={audioDurationTime}
+              value={audioCurrentTime}
+              onChange={userCurrentTimeHandeler}
+            />
+            <RenderTime audioDurationTime={audioDurationTime} />
+          </S.ProgressBarGroup>
+        </S.Inner>
+      </S.AudioPlayer>
     </>
   )
 }
