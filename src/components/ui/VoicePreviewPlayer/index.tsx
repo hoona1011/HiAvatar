@@ -32,9 +32,8 @@ export const VoicePreviewPlayer = () => {
   // const textsPreviewUrl = useRef()
   const [postOptions] = usePostOptionsMutation()
   const { projectId } = useParams()
-  const renderCount: any = useRef(0)
 
-  const [isLoading, setIsLoading] = useState(false)
+  const changeFlag: any = useRef(false)
 
   useEffect(() => {
     const projectData = ProjectTextEditOption.textsPreviewData
@@ -49,15 +48,13 @@ export const VoicePreviewPlayer = () => {
           console.log(error)
         })
     }
-    renderCount.current = 0
+    changeFlag.current = true
     // console.log(ProjectTextEditOption.textsPreviewData.texts)
   }, [ProjectTextEditOption.textsPreviewData.texts])
 
   // console.log(textsPreviewUrl)
 
   useEffect(() => {
-    // console.log(renderCount.current)
-    console.log('오디오 플레이', audioElem.current)
     if (isPlaying) {
       textsPreviewUrl && audioElem.current.play()
     } else {
@@ -68,7 +65,23 @@ export const VoicePreviewPlayer = () => {
       audioElem.current.currentTime = 0
       setIsPlaying(false)
     }
-  }, [textsPreviewUrl, isPlaying])
+  }, [textsPreviewUrl])
+
+  useEffect(() => {
+    if (!changeFlag.current) {
+      if (isPlaying) {
+        textsPreviewUrl && audioElem.current.play()
+      } else {
+        audioElem.current.pause()
+      }
+      audioElem.current.onended = () => {
+        audioElem.current.pause()
+        audioElem.current.currentTime = 0
+        setIsPlaying(false)
+      }
+    }
+    console.log(changeFlag.current)
+  }, [isPlaying])
 
   const playPause = () => {
     const {
@@ -82,6 +95,7 @@ export const VoicePreviewPlayer = () => {
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
     setIsPlaying(!isPlaying)
+    changeFlag.current = false
   }
 
   const stop = () => {
@@ -93,15 +107,11 @@ export const VoicePreviewPlayer = () => {
   const onPlaying = () => {
     setAudioDuration(parseInt(audioElem.current.duration))
     setAudioCurrentTime(parseInt(audioElem.current.currentTime))
-    // console.log(audioDuration)
-    // console.log(audioCurrentTime)
   }
 
   const userCurrentTimeHandeler = (e: any) => {
     audioElem.current.currentTime = e.target.value
   }
-
-  // console.log('확인', textsPreviewUrl)
 
   return (
     <>
@@ -140,35 +150,6 @@ export const VoicePreviewPlayer = () => {
         value={audioCurrentTime}
         onChange={userCurrentTimeHandeler}
       />
-      {/* <S.CustomStyle>
-        <AudioPlayer
-          customIcons={{
-            play: (
-              <div onClick={play}>
-                <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
-              </div>
-            ),
-            previous: (
-              <VoicePreRewindIcon width='25' height='24' fillColor='#336CFF' />
-            ),
-            next: (
-              <VoicePreForwardIcon width='25' height='24' fillColor='#336CFF' />
-            ),
-            pause: <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
-          }}
-          customAdditionalControls={[
-            <S.StopBtn onClick={stop}>
-              <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
-            </S.StopBtn>
-          ]}
-          customVolumeControls={[]}
-          showJumpControls={false}
-          showSkipControls={false}
-          layout='horizontal-reverse'
-          src={textsPreviewUrl}
-          ref={player}
-        />
-      </S.CustomStyle> */}
     </>
   )
 }
