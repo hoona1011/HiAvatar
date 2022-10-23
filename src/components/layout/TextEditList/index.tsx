@@ -31,7 +31,9 @@ export const TextEditList = () => {
   // console.log(splitTextList.length === 1 && splitTextList[0].text === '미정') //조건부
 
   useEffect(() => {
-    dispatch(renderText(textDatas))
+    if (texts.length) {
+      dispatch(renderText(textDatas))
+    }
   }, [texts])
 
   const textDatas = texts.split('.').map((item: any, index: any) => {
@@ -60,7 +62,7 @@ export const TextEditList = () => {
     if (isPlaying) {
       audioElem.current.play()
     } else {
-      audioElem.current.pause()
+      audioElem.current?.pause()
     }
     // audioElem.current.onended = () => {
     //   audioElem.current.pause()
