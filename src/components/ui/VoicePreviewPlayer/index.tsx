@@ -115,7 +115,8 @@ export const VoicePreviewPlayer = () => {
   const RenderTime = (time: any) => {
     let seconds: any = Object.values(time)
 
-    let min = parseInt((seconds[0] % 3600) / 60)
+    // let min = parseInt((seconds[0] % 3600) / 60)
+    let min = Math.floor((seconds[0] % 3600) / 60)
     let sec = seconds[0] % 60
     return (
       <S.RenderTime>{`${min > 9 ? '' : '0'}${min}:${
