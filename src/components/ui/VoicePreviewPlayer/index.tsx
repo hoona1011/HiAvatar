@@ -19,15 +19,20 @@ import * as S from './style'
 // 타입스크립트 추가 예정
 
 export const VoicePreviewPlayer = () => {
-  const ProjectTextEditOption = useAppSelector((state) => state.option)
-  const { textsPreviewData: previewData }: any = ProjectTextEditOption
+  const audioElem: any = useRef(null)
+  const ProjectTextEditOption: any = useAppSelector((state) => state.option)
   const dispatch = useAppDispatch()
   const [projectData, setProjectData] = useState()
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [audioDurationTime, setAudioDurationTime] = useState(0)
+  const [audioCurrentTime, setAudioCurrentTime] = useState(0)
   const player: any = useRef()
-  const [textsPreviewUrl, setTextsPreviewUrl] = useState()
+  const [textsPreviewUrl, setTextsPreviewUrl]: any = useState()
   // const textsPreviewUrl = useRef()
   const [postOptions] = usePostOptionsMutation()
   const { projectId } = useParams()
+
+  const changeFlag: any = useRef(false)
 
   useEffect(() => {
     const projectData = ProjectTextEditOption.textsPreviewData
@@ -42,9 +47,42 @@ export const VoicePreviewPlayer = () => {
           console.log(error)
         })
     }
-  }, [ProjectTextEditOption.textsPreviewData])
+    changeFlag.current = true
+    // console.log(ProjectTextEditOption.textsPreviewData.texts)
+  }, [ProjectTextEditOption.textsPreviewData.texts])
 
-  const play = () => {
+  // console.log(textsPreviewUrl)
+
+  useEffect(() => {
+    if (isPlaying) {
+      textsPreviewUrl && audioElem.current.play()
+    } else {
+      audioElem.current.pause()
+    }
+    audioElem.current.onended = () => {
+      audioElem.current.pause()
+      audioElem.current.currentTime = 0
+      setIsPlaying(false)
+    }
+  }, [textsPreviewUrl])
+
+  useEffect(() => {
+    if (!changeFlag.current) {
+      if (isPlaying) {
+        textsPreviewUrl && audioElem.current.play()
+      } else {
+        audioElem.current.pause()
+      }
+      audioElem.current.onended = () => {
+        audioElem.current.pause()
+        audioElem.current.currentTime = 0
+        setIsPlaying(false)
+      }
+    }
+    console.log(changeFlag.current)
+  }, [isPlaying])
+
+  const playPause = () => {
     const {
       userSelectedList,
       textPreviewData,
@@ -55,16 +93,36 @@ export const VoicePreviewPlayer = () => {
       ...textData
     }: any = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
+    setIsPlaying(!isPlaying)
+    changeFlag.current = false
   }
 
   const stop = () => {
-    const audio = player.current.audio.current
-    audio.pause()
-    audio.currentTime = 0
+    audioElem.current.pause()
+    audioElem.current.currentTime = 0
+    setIsPlaying(false)
   }
 
-  const test = () => {
-    console.log(textsPreviewUrl)
+  const onPlaying = () => {
+    setAudioDurationTime(parseInt(audioElem.current.duration))
+    setAudioCurrentTime(parseInt(audioElem.current.currentTime))
+  }
+
+  const userCurrentTimeHandeler = (e: any) => {
+    audioElem.current.currentTime = e.target.value
+  }
+
+  const RenderTime = (time: any) => {
+    let seconds: any = Object.values(time)
+
+    // let min = parseInt((seconds[0] % 3600) / 60)
+    let min = Math.floor((seconds[0] % 3600) / 60)
+    let sec = seconds[0] % 60
+    return (
+      <S.RenderTime>{`${min > 9 ? '' : '0'}${min}:${
+        sec > 9 ? '' : '0'
+      }${sec}`}</S.RenderTime>
+    )
   }
 
   return (
@@ -82,44 +140,38 @@ export const VoicePreviewPlayer = () => {
           </S.Tooltip>
           <span className='title'>합친 음성을 미리 들을 수 있어요</span>
         </div>
-        <a
-          className='download'
-          href='#'
-          onClick={test}
-          download={textsPreviewUrl}
-        >
+        <a className='download' href='#' download={textsPreviewUrl}>
           전체 음성 다운로드
         </a>
       </S.TitleGroup>
-      <S.CustomStyle>
-        <AudioPlayer
-          customIcons={{
-            play: (
-              <div onClick={play}>
-                <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
-              </div>
-            ),
-            previous: (
-              <VoicePreRewindIcon width='25' height='24' fillColor='#336CFF' />
-            ),
-            next: (
-              <VoicePreForwardIcon width='25' height='24' fillColor='#336CFF' />
-            ),
-            pause: <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
-          }}
-          customAdditionalControls={[
-            <S.StopBtn onClick={stop}>
-              <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
-            </S.StopBtn>
-          ]}
-          customVolumeControls={[]}
-          showJumpControls={false}
-          showSkipControls={false}
-          layout='horizontal-reverse'
-          src={textsPreviewUrl}
-          ref={player}
-        />
-      </S.CustomStyle>
+      <audio src={textsPreviewUrl} ref={audioElem} onTimeUpdate={onPlaying} />
+      <S.AudioPlayer>
+        <S.Inner>
+          <S.PlayPauseButton onClick={playPause}>
+            {isPlaying ? (
+              <VoicePauseIcon width='25' height='24' fillColor='#336CFF' />
+            ) : (
+              <VoicePrePlayIcon width='25' height='24' fillColor='#336CFF' />
+            )}
+          </S.PlayPauseButton>
+          <S.PlayPauseButton onClick={stop}>
+            <VoiceStopIcon width='25' height='24' fillColor='#336CFF' />
+          </S.PlayPauseButton>
+
+          <S.ProgressBarGroup>
+            <RenderTime audioDurationTime={audioCurrentTime} />
+            {/* {audioCurrentTime} */}
+            <S.ProgressBar
+              type='range'
+              min={0}
+              max={audioDurationTime}
+              value={audioCurrentTime}
+              onChange={userCurrentTimeHandeler}
+            />
+            <RenderTime audioDurationTime={audioDurationTime} />
+          </S.ProgressBarGroup>
+        </S.Inner>
+      </S.AudioPlayer>
     </>
   )
 }

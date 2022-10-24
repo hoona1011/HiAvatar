@@ -16,36 +16,72 @@ export const TextPlayer = ({
   splitTextList,
   findData,
   textPreviewData,
-  dispatch
+  dispatch,
+  isPlaying,
+  setIsPlaying,
+  audioFile,
+  audioElem,
+  changeFlag,
+  onendedAudio
 }: any) => {
-  const [isPlaying, setIsPlaying] = useState(false)
-
-  const audioElem: any = useRef()
-  const [audioFile, setAudioFile] = useState()
   const [spacingValue, setSpacingValue] = useState(0)
-  const [postText] = usePostTextMutation()
+
+  const [buttonChange, setButtonChange] = useState(false)
 
   useEffect(() => {
-    postText(textPreviewData)
-      .unwrap()
-      .then((data) => {
-        setAudioFile(data.data.audioFile)
-        console.log(`${textPreviewData.text}의 audioElem`, audioElem.current)
-      })
-      .catch((error) => {
-        console.log(error)
-      })
-      .finally(() => {
-        if (audioFile) {
-          if (isPlaying) {
-            console.log('textPreviewData.text: ', textPreviewData.text)
-            audioElem.current.play()
-          } else {
-            audioElem.current.pause()
-          }
-        }
-      })
-  }, [textPreviewData.text, audioFile, isPlaying])
+    if (!onendedAudio.current) {
+      setButtonChange(false)
+      console.log(onendedAudio)
+    }
+  }, [onendedAudio.current])
+
+  // const [isPlaying, setIsPlaying] = useState(false)
+  // const audioElem: any = useRef()
+  // const [audioFile, setAudioFile] = useState()
+  // const [postText] = usePostTextMutation()
+  // const changeFlag: any = useRef(false)
+
+  // useEffect(() => {
+  //   // console.log(sentenceId)
+  //   postText(textPreviewData)
+  //     .unwrap()
+  //     .then((data) => {
+  //       setAudioFile(data.data.audioFile)
+  //     })
+  //     .catch((error) => {
+  //       console.log(error)
+  //     })
+  //   changeFlag.current = true
+  // }, [textPreviewData.text])
+
+  // useEffect(() => {
+  //   if (isPlaying) {
+  //     audioElem.current.play()
+  //   } else {
+  //     audioElem.current.pause()
+  //   }
+  //   audioElem.current.onended = () => {
+  //     audioElem.current.pause()
+  //     audioElem.current.currentTime = 0
+  //     setIsPlaying(false)
+  //   }
+  // }, [audioFile])
+
+  // useEffect(() => {
+  //   if (!changeFlag.current) {
+  //     // console.log(isPlaying)
+  //     if (isPlaying) {
+  //       audioElem.current.play()
+  //     } else {
+  //       audioElem.current.pause()
+  //     }
+  //   }
+  //   audioElem.current.onended = () => {
+  //     audioElem.current.pause()
+  //     audioElem.current.currentTime = 0
+  //     setIsPlaying(false)
+  //   }
+  // }, [isPlaying])
 
   const userInputHandler = (e: any) => {
     const { name, value } = e.target
@@ -72,16 +108,17 @@ export const TextPlayer = ({
     // console.log(audioFile)
 
     setIsPlaying(!isPlaying)
-    console.log('클릭')
+    setButtonChange(!buttonChange)
+    changeFlag.current = false
   }
 
-  if (audioFile) {
-    audioElem.current.onended = () => {
-      audioElem.current.pause()
-      audioElem.current.currentTime = 0
-      setIsPlaying(false)
-    }
-  }
+  // if (audioFile) {
+  //   audioElem.current.onended = () => {
+  //     audioElem.current.pause()
+  //     audioElem.current.currentTime = 0
+  //     setIsPlaying(false)
+  //   }
+  // }
 
   const stop = () => {
     audioElem.current.pause()
@@ -103,7 +140,7 @@ export const TextPlayer = ({
           <div>
             <audio src={`data:audio/wav;base64,${audioFile}`} ref={audioElem} />
             <div onClick={playPause}>
-              {isPlaying ? (
+              {buttonChange ? (
                 <PauseIcon
                   width='32'
                   height='32'
