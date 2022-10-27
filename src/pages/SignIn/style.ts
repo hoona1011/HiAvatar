@@ -11,12 +11,10 @@ export const Wrapper = styled.div`
 export const TopText = styled.div`
   font-size: 4.8rem;
   font-weight: 700;
-  /* line-height: 3.8rem; */
   margin-bottom: 2rem;
   text-align: center;
 `
 export const EmailWrapper = styled.div`
-  /* background-color: salmon; */
   display: flex;
   flex-direction: column;
   margin-bottom: 2.4rem;
@@ -101,8 +99,6 @@ export const SimpleText = styled.div`
   text-align: center;
 `
 export const SimpleWrapper = styled.div`
-  /* background-color: red; */
-  /* display: flex; */
   div {
     display: inline;
     margin-left: 0.8rem;

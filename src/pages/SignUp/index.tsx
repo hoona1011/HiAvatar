@@ -3,7 +3,7 @@ import * as S from './style'
 import { PwErrorIcon, PwCheckIcon } from 'components/Icons'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
-import { postUserInfo, idCheck, UserInfo } from 'api/userApi'
+import { postUserInfo, idCheck } from 'api/userApi'
 import { TheFooter, TheHeader } from 'components'
 
 interface SignUpForm {
@@ -108,7 +108,6 @@ export const SignUp: FC = () => {
     e.preventDefault()
     try {
       const response = await idCheck(id)
-      console.log(id)
       if (response.data.data.idAvailable == false) {
         setEmailCheck(false)
         setEmailMsg('중복된 이메일 주소가 있습니다.')
@@ -122,13 +121,12 @@ export const SignUp: FC = () => {
         setEmailMsg('사용가능한 이메일입니다.')
         alert('사용가능한 이메일입니다.')
       }
-    } catch (e) {
-      console.log(e)
+    } catch (error) {
+      alert(error)
     }
   }
   const onSubmit = async (e: any) => {
     e.preventDefault()
-    console.log({ id, password })
     try {
       const response = await postUserInfo({
         id,
@@ -137,7 +135,6 @@ export const SignUp: FC = () => {
       alert('회원가입이 완료되었습니다.')
       navigate('/sign-in')
     } catch (error) {
-      console.log(error)
       alert('회원가입실패에 실패하였습니다.')
     }
   }

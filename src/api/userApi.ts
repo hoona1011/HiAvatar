@@ -21,15 +21,10 @@ export const idCheck = async (id: string) => {
     'https://hiavatar.minoflower.com/sign-up/check/duplicate-id',
     { id: id }
   )
-  console.log(id)
-  console.log(response)
   return response
 }
 //로그인
 export const login = async (info: UserInfo) => {
-  // const res = await axios.post('https://hiavatar.minoflower.com/login', info)
-  // console.log('userApi.ts: ', res.data.data.accessToken)
-  // const token = res.data.data.accessToken
   const response = await axios.post(
     'https://hiavatar.minoflower.com/login',
     info
@@ -70,7 +65,6 @@ export const userApi = createApi({
         body: info.newPassword
       }),
       transformResponse: (response: any) => {
-        console.log('editapi', response)
         return response
       }
     })
@@ -87,6 +81,5 @@ export const edit = async (newPassword: string) => {
   const response = await axios.post('https://hiavatar.minoflower.com/my-page', {
     newPassword: newPassword
   })
-  console.log('api', response)
   return response
 }
