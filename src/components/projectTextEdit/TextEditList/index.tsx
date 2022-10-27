@@ -50,7 +50,8 @@ export const TextEditList = () => {
         setAudioFile(data.data.audioFile)
       })
       .catch((error) => {
-        alert(error)
+        console.log(error)
+        // alert(error)
       })
     changeFlag.current = true
   }, [textPreviewData.text])

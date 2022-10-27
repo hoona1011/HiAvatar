@@ -8,8 +8,6 @@ import {
   TooltipIcon
 } from 'components/Icons'
 import React, { useEffect, useRef, useState } from 'react'
-import AudioPlayer, { RHAP_UI } from 'react-h5-audio-player'
-import 'react-h5-audio-player/lib/styles.css'
 import { useParams } from 'react-router-dom'
 import { useAppDispatch, useAppSelector } from 'store'
 import { textsCreatePreview } from 'store/slices/optionSlice'
