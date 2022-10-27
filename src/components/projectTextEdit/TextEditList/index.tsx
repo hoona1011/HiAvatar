@@ -3,13 +3,13 @@ import * as S from './style'
 import { TextPlayer } from '../TextPlayer'
 import { useAppDispatch, useAppSelector } from 'store'
 import { renderText, outFocus } from 'store/slices/optionSlice'
-import { VoiceUploadButton } from 'components/ProjectTextEdit/VoiceUploadButton'
-import { TextEnterButton } from 'components/ProjectTextEdit/TextEnterButton'
-import { ProjectTextModal } from 'components/ProjectTextEdit/ProjectTextModal'
 import {
   ProjectTextEnterButton,
   ProjectVoiceUploadButton,
-  TootipMessage
+  TootipMessage,
+  VoiceUploadButton,
+  TextEnterButton,
+  ProjectTextModal
 } from 'components'
 import { TooltipIcon } from 'components/Icons'
 import { usePostTextMutation } from 'api/optionApi'
