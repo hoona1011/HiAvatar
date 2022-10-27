@@ -1,6 +1,49 @@
-// layout
-export { TheHeader } from './layout/TheHeader'
-export { TheFooter } from './layout/TheFooter'
+//common
+export { CreateProjectButton } from 'components/common/CreateProjectButton' // ProjectCreateButton 개명 희망
+export { Loading } from 'components/common/Loading'
+export { ProjectNav } from 'components/common/ProjectNav'
+export { ProjectRightNav } from 'components/common/ProjectRightNav'
+export { ProjectSaveButton } from 'components/common/ProjectSaveButton'
+export { ProjectTitleEdit } from 'components/common/ProjectTitleEdit'
+export { Spinner } from 'components/common/Spinner'
+export { TheHeader } from 'components/common/TheHeader'
+export { TheFooter } from 'components/common/TheFooter'
+export { TootipMessage } from 'components/common/TootipMessage'
 
-// ui
-export { Button } from './ui/Button'
+//projectAvatar
+export { AvatarBg } from 'components/projectAvatar/AvatarBg'
+export { AvatarPreviewBtn } from 'components/projectAvatar/AvatarPreviewBtn'
+export { AvatarSelector } from 'components/projectAvatar/AvatarSelector'
+export { AvatarSort } from 'components/projectAvatar/AvatarSort'
+export { CompleteButton } from 'components/projectAvatar/CompleteButton'
+export { MainSlider } from 'components/projectAvatar/MainSlider'
+export { PrevButton } from 'components/projectAvatar/PrevButton'
+export { ProjectAvatarModal } from 'components/projectAvatar/ProjectAvatarModal'
+export { ProjectAvatarSaveButton } from 'components/projectAvatar/ProjectAvatarSaveButton'
+export { SelectedAvatar } from 'components/projectAvatar/SelectedAvatar'
+export { SelectedVoiceOptions } from 'components/projectAvatar/SelectedVoiceOptions'
+
+//projectHistory
+export { ProjectHistoryModal } from 'components/projectHistory/ProjectHistoryModal'
+export { ProjectHistoryPlayer } from 'components/projectHistory/ProjectHistoryPlayer'
+export { ProjectList } from 'components/projectHistory/ProjectList'
+export { ProjectVideoList } from 'components/projectHistory/ProjectVideoList'
+
+// projectTextEdit
+export { AvatarVoiceMenu } from 'components/projectTextEdit/AvatarVoiceMenu'
+export { AvatarVoicePlayer } from 'components/projectTextEdit/AvatarVoicePlayer'
+export { NextButton } from 'components/projectTextEdit/NextButton'
+export { ProjectRightMenu } from 'components/projectTextEdit/ProjectRightMenu'
+export { ProjectRightMenuButton } from 'components/projectTextEdit/ProjectRightMenuButton'
+export { ProjectText } from 'components/projectTextEdit/ProjectText'
+export { ProjectTextEnterButton } from 'components/projectTextEdit/ProjectTextEnterButton'
+export { ProjectTextModal } from 'components/projectTextEdit/ProjectTextModal'
+export { ProjectVoiceUploadButton } from 'components/projectTextEdit/ProjectVoiceUploadButton'
+export { RadioButton } from 'components/projectTextEdit/RadioButton'
+export { TextEditList } from 'components/projectTextEdit/TextEditList'
+export { TextEnterButton } from 'components/projectTextEdit/TextEnterButton'
+export { TextPlayer } from 'components/projectTextEdit/TextPlayer'
+export { VoiceController } from 'components/projectTextEdit/VoiceController'
+export { VoiceControlMenu } from 'components/projectTextEdit/VoiceControlMenu'
+export { VoicePreviewPlayer } from 'components/projectTextEdit/VoicePreviewPlayer'
+export { VoiceUploadButton } from 'components/projectTextEdit/VoiceUploadButton'
