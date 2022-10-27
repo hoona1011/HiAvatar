@@ -1,7 +1,6 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { Cookies } from 'react-cookie'
+
 const url = import.meta.env.VITE_SERVICE_URL
-const cookies = new Cookies()
 
 export const optionApi = createApi({
   reducerPath: 'optionApi',
