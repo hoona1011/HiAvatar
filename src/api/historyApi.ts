@@ -65,7 +65,6 @@ export const historyApi = createApi({
       invalidatesTags: (result) =>
         result ? [{ type: 'History', id: 'LIST' }] : [],
       transformResponse: (responseData: Project) => {
-        console.log('응답값', responseData)
         return responseData['data']
       }
     })

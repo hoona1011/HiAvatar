@@ -2,7 +2,6 @@ import React, { useState, useEffect } from 'react'
 import * as S from './style'
 import { useNavigate } from 'react-router'
 import { login, UserInfo } from 'api/userApi'
-import { useCookies, Cookies } from 'react-cookie'
 import { KakaoIcon, GoogleIcon } from 'components/Icons'
 import { useDispatch } from 'react-redux'
 import axios from 'axios'
@@ -14,7 +13,6 @@ interface SignInForm {
 }
 
 export const SignIn = () => {
-  const cookies = new Cookies()
   const navigate = useNavigate()
 
   const [signIn] = useSignInMutation()
@@ -77,12 +75,9 @@ export const SignIn = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault()
-    console.log('로그인버튼클릭')
-    console.log('userinfo', id, password)
 
     const response = await signIn({ id: id, password: password })
     const idValue = id
-    console.log(idValue)
     localStorage.setItem('userid', idValue)
 
     if ((response as any).data == undefined) {
@@ -97,15 +92,11 @@ export const SignIn = () => {
   }
 
   const k = async () => {
-    console.log('카카오로그인')
-    // window.location.href = 'https://hiavatar.minoflower.com/oauth2/authorization/kakao';
     window.open('https://hiavatar.minoflower.com/oauth2/authorization/kakao')
   }
   const g = async () => {
-    console.log('google_login')
     window.location.href =
       'https://hiavatar.minoflower.com/oauth2/authorization/google'
-    // console.log('구글간편로그인');
     let codeValue = new URL(window.location.href).searchParams.get('state')
   }
 

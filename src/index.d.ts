@@ -1,11 +1,3 @@
-//
-
-// 지훈
-
-export interface NextButtonProps {
-  requestFunc: any // 추후 수정
-}
-
 export interface VoiceControllerProps {
   label: string
   min: number

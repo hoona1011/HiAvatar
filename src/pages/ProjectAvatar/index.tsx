@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react'
+import * as S from './style'
 import {
   AvatarSelector,
   AvatarSort,
@@ -17,7 +18,6 @@ import {
   changeSelectedValue,
   changeTotalAvatarData
 } from 'store/slices/avatarSlice'
-import * as S from './style'
 import { useAvatar } from 'hooks'
 
 export const ProjectAvatar = () => {
@@ -27,7 +27,6 @@ export const ProjectAvatar = () => {
   const { avatarName, avatarType, bgName } = totalAvatarData
 
   const avatarListHandler = () => {
-    console.log(data)
     data && dispatch(changeTotalAvatarData(data))
   }
   const selectedValueHandler = () => {

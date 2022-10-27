@@ -1,7 +1,7 @@
 import React from 'react'
-import { TheFooter, TheHeader } from 'components'
-import { useNavigate } from 'react-router-dom'
 import * as S from './style'
+import { useNavigate } from 'react-router-dom'
+import { TheFooter, TheHeader } from 'components'
 
 export const LandingPage = () => {
   const navigate = useNavigate()

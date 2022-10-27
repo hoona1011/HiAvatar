@@ -10,7 +10,6 @@ import {
 } from 'components'
 import { useGetHistoryQuery } from 'api/historyApi'
 import { changeHistory } from 'store/slices/historySlice'
-import { Cookies } from 'react-cookie'
 import { useHistory } from 'hooks'
 
 export const ProjectHistory = () => {
@@ -18,8 +17,6 @@ export const ProjectHistory = () => {
   const { dispatch } = useHistory()
 
   useEffect(() => {
-    // const cookies = new Cookies()
-
     const token = localStorage.getItem('accessToken')
     if (token) {
       data && changeHistoryHandler()

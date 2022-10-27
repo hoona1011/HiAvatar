@@ -118,12 +118,6 @@ export const optionSlice = createSlice({
         return item.sentenceId === itemData.sentenceId
       })
 
-      // console.log('itemData', itemData)
-      // console.log('findTextItem', current(findTextItem))
-
-      // console.log('find', findTextItem.sentenceId)
-      // console.log('splitTextList', current(state.splitTextList))
-
       let i = findTextItem.sentenceId + 1
 
       for (i; i <= state.splitTextList.length; i += 1) {
@@ -173,17 +167,12 @@ export const optionSlice = createSlice({
     },
     changeChnsnSpcng(state, action) {
       const itemData = action.payload
-      console.log(itemData)
-      console.log('splitTextList', current(state.splitTextList))
 
       const findItemData: any = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
       Object.assign(findItemData, itemData)
-
-      // console.log('spacingValue', spacingValue)
-      // console.log('itemData', itemData)
     },
     outFocus(state) {
       state.userSelectedList.map((item: any) => {
@@ -204,7 +193,6 @@ export const optionSlice = createSlice({
         dummyData,
         totalAudioUrl
       } = action.payload
-      // console.log('슬라이스의 더미')
       state.texts = texts
       state.language = language
       state.sex = sex
@@ -219,13 +207,10 @@ export const optionSlice = createSlice({
     textCreatePreview(state, action) {
       const textData = action.payload
       state.textPreviewData = { ...textData }
-      // console.log('textData', textData)
     },
     textsCreatePreview(state, action) {
       const textData = action.payload
       state.textsPreviewData = { ...textData }
-      // console.log(textData)
-      // console.log(current(state))
     }
   }
 })

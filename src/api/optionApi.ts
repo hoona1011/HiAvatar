@@ -26,7 +26,6 @@ export const optionApi = createApi({
       invalidatesTags: (result) =>
         result ? [{ type: 'Text', id: 'LIST' }] : [],
       transformResponse: (response) => {
-        console.log('postOptions 응답값', response)
         return response
       }
     }),
@@ -39,22 +38,9 @@ export const optionApi = createApi({
       invalidatesTags: (result) =>
         result ? [{ type: 'Text', id: 'LIST' }] : [],
       transformResponse: (response) => {
-        console.log('postVoice 응답값', response)
         return response
       }
     }),
-    // getOption: builder.query({
-    //   query: (projectId) => ({
-    //     url: `/projects/${projectId}/save`,
-    //     method: 'GET'
-    //   }),
-    //   providesTags: [{ type: 'Text', id: 'LIST' }],
-    //   transformResponse: (response: any) => {
-    //     // 콘솔로그 삭제시 타입도 같이 삭제
-    //     console.log('getOption 실행', response.data)
-    //     return (response as any).data
-    //   }
-    // }),
     postText: builder.mutation({
       query: (data) => ({
         url: '/projects/save/text',
@@ -70,6 +56,5 @@ export const optionApi = createApi({
 export const {
   usePostOptionsMutation,
   usePostVoiceMutation,
-  // useGetOptionQuery,
   usePostTextMutation
 } = optionApi

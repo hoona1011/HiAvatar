@@ -96,15 +96,12 @@ export const MyPage = () => {
 
   const onSubmit = async (e: any) => {
     e.preventDefault()
-    console.log('비밀번호 변경하기')
     const response = await edit(newPassword)
     if (response.data.code == 401) {
-      console.log('코드401')
       alert('비밀번호 변경에 실패하였습니다.')
     } else if (response.data.code == 200) {
       alert('비밀번호 변경이 완료되었습니다.')
     }
-    console.log('토큰콘솔', localStorage.accessToken)
   }
 
   return (

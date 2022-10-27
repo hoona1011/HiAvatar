@@ -16,15 +16,11 @@ import { useGetOptionQuery } from 'api/avatarApi'
 import { useParams } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { getOption } from 'store/slices/optionSlice'
-import { useAppSelector } from 'store'
 
 export const ProjectTextEdit = () => {
-  //현재
-
-  // 지훈
   const dispatch = useDispatch()
   const { projectId } = useParams()
-  const { data: optionData, isLoading, isError } = useGetOptionQuery(projectId)
+  const { data: optionData } = useGetOptionQuery(projectId)
 
   useEffect(() => {
     optionData && dispatch(getOption(optionData))
