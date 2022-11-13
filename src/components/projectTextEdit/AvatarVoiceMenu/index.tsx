@@ -36,7 +36,6 @@ export const AvatarVoiceMenu = () => {
   }, [])
 
   const avatarVoices = Object.entries(dummyData)
-  console.log('아바타보이스', avatarVoices)
 
   interface Voice {
     characterName: string
