@@ -1,14 +1,20 @@
+import React from 'react'
 import * as S from './style'
-import { RadioButtonProps } from 'index'
 import { useAppSelector } from 'store'
 
+interface RadioButtonProps {
+  name: string
+  value: string
+  content: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+}
 export const RadioButton = ({
   name,
   value,
   content,
   onChange
 }: RadioButtonProps) => {
-  const optionStateValue = useAppSelector((state: any) => state.option[name])
+  const optionStateValue = useAppSelector((state) => state.option[name])
 
   return (
     <S.Container key={value}>

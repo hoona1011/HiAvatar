@@ -36,16 +36,34 @@ export const AvatarVoiceMenu = () => {
   }, [])
 
   const avatarVoices = Object.entries(dummyData)
+  console.log('아바타보이스', avatarVoices)
+
+  interface Voice {
+    characterName: string
+    audioUrl: string
+    characterTags: string[]
+  }
+  interface VoicesBySex {
+    femaleList: Voice[]
+    maleList: Voice[]
+  }
+  type VoicesByLanguage = [string, any]
 
   const filteredVoices = useMemo(() => {
     return avatarVoices
-      .map((voice: any) => {
+      .map((voicesByLanguage: VoicesByLanguage) => {
         switch (selectedSex) {
           case '남자':
-            return { language: voice[0], voices: voice[1].maleList }
+            return {
+              language: voicesByLanguage[0],
+              voices: voicesByLanguage[1].maleList
+            }
 
           case '여자':
-            return { language: voice[0], voices: voice[1].femaleList }
+            return {
+              language: voicesByLanguage[0],
+              voices: voicesByLanguage[1].femaleList
+            }
         }
       })
       .find((data) => {
@@ -103,7 +121,7 @@ export const AvatarVoiceMenu = () => {
         </S.Language>
       </S.OptionContainer>
       <S.VoicePlayerContainer>
-        {filteredVoices?.map((voice: any) => {
+        {filteredVoices?.map((voice: Voice) => {
           const { characterName, audioUrl, characterTags } = voice
           return (
             <AvatarVoicePlayer

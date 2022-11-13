@@ -1,6 +1,6 @@
 import { createSlice, current } from '@reduxjs/toolkit'
 
-const initialState = {
+const initialState: OptionState = {
   texts: '',
   language: '한국어',
   sex: '남자',
@@ -8,6 +8,7 @@ const initialState = {
   speed: 0,
   pitch: 0,
   sentenceSpacing: 0,
+  audioFile: '',
   splitTextList: [
     {
       sentenceId: 1,
