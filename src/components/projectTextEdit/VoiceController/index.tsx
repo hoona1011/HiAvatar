@@ -2,8 +2,15 @@ import React, { useMemo, useCallback } from 'react'
 import * as S from './style'
 import { useAppDispatch } from 'store'
 import { changeOption } from 'store/slices/optionSlice'
-import { VoiceControllerProps } from 'index'
 
+interface VoiceControllerProps {
+  label: string
+  min: number
+  max: number
+  step: number
+  controlType: string
+  optionValue: number
+}
 export const VoiceController = React.memo(
   ({
     label,

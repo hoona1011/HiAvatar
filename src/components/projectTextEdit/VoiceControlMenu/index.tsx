@@ -1,7 +1,7 @@
 import React from 'react'
 import { TooltipIcon } from 'components/Icons'
 import { useAppSelector } from 'store'
-import { VoiceController } from '../../index'
+import { VoiceController } from 'components'
 import { TootipMessage } from 'components/common/TootipMessage'
 import * as S from './style'
 
