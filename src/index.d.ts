@@ -13,6 +13,7 @@ export interface AvatarVoicePlayerProps {
   hashtag3?: string
   buttonType: string
   audioUrl: string
+  selectedCharacter: string
 }
 export interface Modalprops {
   setModal: React.Dispatch<React.SetStateAction<boolean>>
@@ -22,16 +23,6 @@ export interface Modalprops {
 interface ProjectRightMenuProps {
   renderType: string
   setRenderType: React.Dispatch<React.SetStateAction<string>>
-}
-
-export interface RadioButtonProps {
-  name: string
-  value: string
-  content: string
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
-  renderType?: string
-  IconRenderType?: string
-  defaultChecked?: boolean
 }
 
 export interface HistoryPlayerProps {
