@@ -10,6 +10,7 @@ import {
 } from 'store/slices/optionSlice'
 import { useAppDispatch } from 'store'
 import { usePostTextMutation } from 'api/optionApi'
+import { set } from 'immer/dist/internal'
 
 interface ItemData {
   sentenceId: number
@@ -35,22 +36,29 @@ export const TextPlayer = ({ itemData, splitTextList, findData }: Props) => {
   const [audioFile, setAudioFile] = useState()
   const [isPlaying, setIsPlaying] = useState(false)
   const audioElem: any = useRef()
+  const isChanged = useRef(false)
+  console.log(isPlaying)
+  useEffect(() => {
+    // changeFlag.current = true
+    isChanged.current = true
+  }, [itemData.text])
 
   useEffect(() => {
     if (isPlaying) {
-      audioElem.current!.play()
+      audioElem?.current!.play()
     } else {
-      audioElem.current!.pause()
+      audioElem?.current!.pause()
     }
-  }, [audioFile, isPlaying])
+  }, [isPlaying])
 
   useEffect(() => {
     audioElem.current.onended = () => {
       audioElem.current.pause()
       audioElem.current.currentTime = 0
       setIsPlaying(false)
+      console.log('온엔디드')
     }
-  })
+  }, [])
 
   const userInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
@@ -75,17 +83,25 @@ export const TextPlayer = ({ itemData, splitTextList, findData }: Props) => {
   const playPause = () => {
     const textData = { text: itemData.text }
     if (!isPlaying) {
-      postText(textData)
-        .unwrap()
-        .then((data) => {
-          setAudioFile(data.data.audioFile)
-        })
-        .catch((error) => {
-          alert(error)
-        })
+      isChanged.current &&
+        postText(textData)
+          .unwrap()
+          .then((data) => {
+            setAudioFile(data.data.audioFile)
+            isChanged.current = false
+            setIsPlaying(true)
+            console.log('요청')
+          })
+          .catch((error) => {
+            alert(error)
+          })
+      !isChanged.current && setIsPlaying(true)
+      // setIsPlaying(true)
+    } else {
+      setIsPlaying(false)
     }
-
-    setIsPlaying(!isPlaying)
+    // changeFlag.current = false
+    // console.log(changeFlag)
   }
 
   const stop = () => {
