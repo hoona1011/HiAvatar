@@ -4,24 +4,26 @@ import * as S from './style'
 import { TootipMessage } from 'components/common/TootipMessage'
 import { TooltipIcon } from 'components/Icons'
 
+interface SplitTextList {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
+interface UserSelected {
+  focus: boolean
+  sentenceId: number
+}
+
+interface Props {
+  splitTextList: SplitTextList[]
+  userSelectedList: UserSelected[]
+}
+
 export const ProjectText = () => {
   const { splitTextList, userSelectedList } = useAppSelector(
     (state) => state.option
   )
-
-  const render = splitTextList.map((item) => {
-    let orginData = item
-
-    const findData = userSelectedList.find((item) => {
-      return orginData.sentenceId === item.sentenceId
-    })
-
-    return (
-      <div key={item.sentenceId}>
-        <S.TextBox findData={findData?.focus}>{item.text}</S.TextBox>
-      </div>
-    )
-  })
 
   return (
     <S.Wrapper>
@@ -39,7 +41,31 @@ export const ProjectText = () => {
         </S.Psition>
         <span className='title'>전체 텍스트를 확인해주세요</span>
       </S.Title>
-      <S.TextGroup>{render}</S.TextGroup>
+      <S.TextGroup>
+        <RenderList
+          splitTextList={splitTextList}
+          userSelectedList={userSelectedList}
+        />
+      </S.TextGroup>
     </S.Wrapper>
+  )
+}
+
+function RenderList({ splitTextList, userSelectedList }: Props) {
+  return (
+    <>
+      {splitTextList.map((item) => {
+        let orginData = item
+        const findData = userSelectedList.find((item) => {
+          return orginData.sentenceId === item.sentenceId
+        })
+        console.log(findData)
+        return (
+          <div key={item.sentenceId}>
+            <S.TextBox findData={findData?.focus}>{item.text}</S.TextBox>
+          </div>
+        )
+      })}
+    </>
   )
 }

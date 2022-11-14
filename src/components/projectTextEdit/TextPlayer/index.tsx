@@ -60,8 +60,6 @@ export const TextPlayer = ({
     }
   }, [onendedAudio.current])
 
-  console.log('자식', audioElem.current)
-
   // const [isPlaying, setIsPlaying] = useState(false)
   // const audioElem: any = useRef()
   // const [audioFile, setAudioFile] = useState()
