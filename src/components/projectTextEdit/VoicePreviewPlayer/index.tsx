@@ -14,23 +14,23 @@ import { textsCreatePreview } from 'store/slices/optionSlice'
 import { TootipMessage } from 'components/common/TootipMessage'
 import * as S from './style'
 
-// 타입스크립트 추가 예정
-
 export const VoicePreviewPlayer = () => {
-  const audioElem: any = useRef(null)
-  const ProjectTextEditOption: any = useAppSelector((state) => state.option)
+  const audioElem: React.RefObject<HTMLAudioElement> = useRef(null)
+  const ProjectTextEditOption = useAppSelector((state) => state.option)
   const dispatch = useAppDispatch()
-  const [projectData, setProjectData] = useState()
   const [isPlaying, setIsPlaying] = useState(false)
   const [audioDurationTime, setAudioDurationTime] = useState(0)
   const [audioCurrentTime, setAudioCurrentTime] = useState(0)
-  const player: any = useRef()
-  const [textsPreviewUrl, setTextsPreviewUrl]: any = useState()
+  const [textsPreviewUrl, setTextsPreviewUrl] = useState()
   // const textsPreviewUrl = useRef()
   const [postOptions] = usePostOptionsMutation()
   const { projectId } = useParams()
 
-  const changeFlag: any = useRef(false)
+  const changeFlag = useRef(false)
+
+  interface Time {
+    audioDurationTime: number
+  }
 
   useEffect(() => {
     const projectData = ProjectTextEditOption.textsPreviewData
@@ -38,7 +38,7 @@ export const VoicePreviewPlayer = () => {
     if (Object.keys(ProjectTextEditOption.textsPreviewData).length) {
       postOptions({ projectData, projectId })
         .unwrap()
-        .then((data: any) => {
+        .then((data) => {
           setTextsPreviewUrl(data.data.totalAudioUrl)
         })
         .catch((error) => {
@@ -50,13 +50,13 @@ export const VoicePreviewPlayer = () => {
 
   useEffect(() => {
     if (isPlaying) {
-      textsPreviewUrl && audioElem.current.play()
+      textsPreviewUrl && audioElem.current!.play()
     } else {
-      audioElem.current.pause()
+      audioElem.current!.pause()
     }
-    audioElem.current.onended = () => {
-      audioElem.current.pause()
-      audioElem.current.currentTime = 0
+    audioElem.current!.onended = () => {
+      audioElem.current!.pause()
+      audioElem.current!.currentTime = 0
       setIsPlaying(false)
     }
   }, [textsPreviewUrl])
@@ -64,13 +64,13 @@ export const VoicePreviewPlayer = () => {
   useEffect(() => {
     if (!changeFlag.current) {
       if (isPlaying) {
-        textsPreviewUrl && audioElem.current.play()
+        textsPreviewUrl && audioElem.current!.play()
       } else {
-        audioElem.current.pause()
+        audioElem.current!.pause()
       }
-      audioElem.current.onended = () => {
-        audioElem.current.pause()
-        audioElem.current.currentTime = 0
+      audioElem.current!.onended = () => {
+        audioElem.current!.pause()
+        audioElem.current!.currentTime = 0
         setIsPlaying(false)
       }
     }
@@ -85,29 +85,32 @@ export const VoicePreviewPlayer = () => {
       dummyData,
       totalAudioUrl,
       ...textData
-    }: any = ProjectTextEditOption
+    } = ProjectTextEditOption
     dispatch(textsCreatePreview(textData))
     setIsPlaying(!isPlaying)
     changeFlag.current = false
   }
 
   const stop = () => {
-    audioElem.current.pause()
-    audioElem.current.currentTime = 0
+    audioElem.current!.pause()
+    audioElem.current!.currentTime = 0
     setIsPlaying(false)
   }
 
   const onPlaying = () => {
-    setAudioDurationTime(parseInt(audioElem.current.duration))
-    setAudioCurrentTime(parseInt(audioElem.current.currentTime))
+    const duration = String(audioElem.current?.duration)
+    const currentTime = String(audioElem.current?.currentTime)
+    setAudioDurationTime(parseInt(duration))
+    setAudioCurrentTime(parseInt(currentTime))
   }
 
-  const userCurrentTimeHandeler = (e: any) => {
-    audioElem.current.currentTime = e.target.value
+  const userCurrentTimeHandeler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const currentTime = Number(e.target.value)
+    audioElem.current!.currentTime = currentTime
   }
 
-  const RenderTime = (time: any) => {
-    let seconds: any = Object.values(time)
+  const RenderTime = (time: Time) => {
+    let seconds = Object.values(time)
 
     // let min = parseInt((seconds[0] % 3600) / 60)
     let min = Math.floor((seconds[0] % 3600) / 60)

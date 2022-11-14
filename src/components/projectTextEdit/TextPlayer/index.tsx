@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import * as S from './style'
 import { PlayIcon, PauseIcon, StopIcon, CloseIcon } from '../../Icons'
 import {
@@ -9,24 +9,50 @@ import {
   changeChnsnSpcng,
   textCreatePreview
 } from 'store/slices/optionSlice'
-import { usePostTextMutation } from 'api/optionApi'
+import { useAppDispatch } from 'store'
+
+interface ItemData {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
+interface Props {
+  itemData: ItemData
+  splitTextList: ItemData[]
+  findData:
+    | {
+        focus: boolean
+        sentenceId: number
+      }
+    | undefined
+  isPlaying: boolean
+  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
+  audioFile: string | undefined
+  audioElem: React.RefObject<HTMLAudioElement>
+  changeFlag: {
+    current: boolean
+  }
+  onendedAudio: {
+    current: boolean
+  }
+}
 
 export const TextPlayer = ({
   itemData,
   splitTextList,
   findData,
-  textPreviewData,
-  dispatch,
   isPlaying,
   setIsPlaying,
   audioFile,
   audioElem,
   changeFlag,
   onendedAudio
-}: any) => {
+}: Props) => {
   const [spacingValue, setSpacingValue] = useState(0)
 
   const [buttonChange, setButtonChange] = useState(false)
+  const dispatch = useAppDispatch()
 
   useEffect(() => {
     if (!onendedAudio.current) {
@@ -81,7 +107,7 @@ export const TextPlayer = ({
   //   }
   // }, [isPlaying])
 
-  const userInputHandler = (e: any) => {
+  const userInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
     // setInputData({ ...inputData, [name]: value })
     dispatch(changeText({ ...itemData, [name]: value }))
@@ -95,7 +121,9 @@ export const TextPlayer = ({
     dispatch(editText(itemData))
   }
 
-  const userSelectedHandler = (e: any) => {
+  const userSelectedHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     e.stopPropagation()
     dispatch(selectedText({ itemData, splitTextList }))
   }
@@ -117,13 +145,14 @@ export const TextPlayer = ({
   // }
 
   const stop = () => {
-    audioElem.current.pause()
-    audioElem.current.currentTime = 0
+    audioElem.current!.pause()
+    audioElem.current!.currentTime = 0
     setIsPlaying(false)
   }
 
-  const chnsnSpcng = (e: any) => {
-    setSpacingValue(e.target.value)
+  const chnsnSpcng = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let spacingValue = Number(e.target.value)
+    setSpacingValue(spacingValue)
     dispatch(
       changeChnsnSpcng({ ...itemData, sentenceSpacing: Number(e.target.value) })
     )
