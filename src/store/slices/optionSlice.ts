@@ -82,6 +82,12 @@ interface TextPlayerItem {
   sentenceId: number
 }
 
+interface FindTextItem {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
 export const optionSlice = createSlice({
   name: 'option',
   initialState,
@@ -102,7 +108,7 @@ export const optionSlice = createSlice({
         return item.sentenceId === inputData.sentenceId
       })
 
-      Object.assign(findTextItem, inputData)
+      Object.assign(findTextItem as FindTextItem, inputData)
 
       // state.texts를 갱신하는 로직
       let updateTexts = ''
@@ -214,7 +220,7 @@ export const optionSlice = createSlice({
         return item.sentenceId === itemData.sentenceId
       })
 
-      Object.assign(findItemData, itemData)
+      Object.assign(findItemData as FindTextItem, itemData)
     },
     outFocus(state) {
       state.userSelectedList.map((item: TextPlayerItem) => {
