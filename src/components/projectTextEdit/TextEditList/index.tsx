@@ -32,12 +32,6 @@ interface UserSelectedList {
 interface Props {
   splitTextList: SplitTextList[]
   userSelectedList: UserSelectedList[]
-  isPlaying: boolean
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  audioFile: string
-  audioElem: React.RefObject<HTMLAudioElement>
-  changeFlag: ChangeFlag
-  onendedAudio: React.MutableRefObject<boolean>
 }
 
 export const TextEditList = () => {
@@ -46,13 +40,6 @@ export const TextEditList = () => {
     useAppSelector((state) => state.option)
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)
-
-  const [postText] = usePostTextMutation()
-  const [audioFile, setAudioFile] = useState('')
-  const changeFlag: ChangeFlag = useRef(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const audioElem = useRef<HTMLAudioElement>(null)
-  const onendedAudio = useRef(false)
 
   useEffect(() => {
     if (texts.length) {
@@ -68,47 +55,6 @@ export const TextEditList = () => {
       sentenceSpacing: 0
     }
   })
-
-  useEffect(() => {
-    postText(textPreviewData)
-      .unwrap()
-      .then((data) => {
-        setAudioFile(data.data.audioFile)
-      })
-      .catch((error) => {
-        console.log(error)
-        // alert(error)
-      })
-    changeFlag.current = true
-  }, [textPreviewData.text])
-
-  useEffect(() => {
-    if (isPlaying) {
-      audioElem.current!.play()
-    } else {
-      audioElem.current?.pause()
-    }
-  }, [audioFile])
-
-  useEffect(() => {
-    if (!changeFlag.current) {
-      if (isPlaying) {
-        audioElem.current!.play()
-      } else {
-        audioElem.current!.pause()
-      }
-    }
-    onendedAudio.current = true
-  }, [isPlaying])
-
-  if (audioElem.current) {
-    audioElem.current.onended = () => {
-      audioElem.current!.pause()
-      audioElem.current!.currentTime = 0
-      setIsPlaying(false)
-      onendedAudio.current = false
-    }
-  }
 
   const userOutFocusHandler = () => {
     dispatch(outFocus())
@@ -152,16 +98,9 @@ export const TextEditList = () => {
             <TextEnterButton setModal={setModal} />
           </S.StartPage>
         ) : (
-          // <>{renderList}</>
           <RenderList
             splitTextList={splitTextList}
             userSelectedList={userSelectedList}
-            isPlaying={isPlaying}
-            setIsPlaying={setIsPlaying}
-            audioFile={audioFile}
-            audioElem={audioElem}
-            changeFlag={changeFlag}
-            onendedAudio={onendedAudio}
           />
         )}
       </>
@@ -169,17 +108,7 @@ export const TextEditList = () => {
   )
 }
 
-function RenderList({
-  splitTextList,
-  userSelectedList,
-  isPlaying,
-  setIsPlaying,
-  audioFile,
-  audioElem,
-  changeFlag,
-  onendedAudio
-}: Props) {
-  console.log(changeFlag)
+function RenderList({ splitTextList, userSelectedList }: Props) {
   return (
     <>
       {splitTextList.length &&
@@ -195,12 +124,6 @@ function RenderList({
               itemData={item}
               splitTextList={splitTextList}
               findData={findData}
-              isPlaying={isPlaying}
-              setIsPlaying={setIsPlaying}
-              audioFile={audioFile}
-              audioElem={audioElem}
-              changeFlag={changeFlag}
-              onendedAudio={onendedAudio}
             />
           )
         })}

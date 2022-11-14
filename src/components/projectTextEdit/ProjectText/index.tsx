@@ -59,7 +59,6 @@ function RenderList({ splitTextList, userSelectedList }: Props) {
         const findData = userSelectedList.find((item) => {
           return orginData.sentenceId === item.sentenceId
         })
-        console.log(findData)
         return (
           <div key={item.sentenceId}>
             <S.TextBox findData={findData?.focus}>{item.text}</S.TextBox>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { PlayIcon, PauseIcon, StopIcon, CloseIcon } from '../../Icons'
 import {
@@ -6,10 +6,10 @@ import {
   removeText,
   changeText,
   selectedText,
-  changeChnsnSpcng,
-  textCreatePreview
+  changeChnsnSpcng
 } from 'store/slices/optionSlice'
 import { useAppDispatch } from 'store'
+import { usePostTextMutation } from 'api/optionApi'
 
 interface ItemData {
   sentenceId: number
@@ -26,90 +26,34 @@ interface Props {
         sentenceId: number
       }
     | undefined
-  isPlaying: boolean
-  setIsPlaying: React.Dispatch<React.SetStateAction<boolean>>
-  audioFile: string | undefined
-  audioElem: React.RefObject<HTMLAudioElement>
-  changeFlag: {
-    current: boolean
-  }
-  onendedAudio: {
-    current: boolean
-  }
 }
 
-export const TextPlayer = ({
-  itemData,
-  splitTextList,
-  findData,
-  isPlaying,
-  setIsPlaying,
-  audioFile,
-  audioElem,
-  changeFlag,
-  onendedAudio
-}: Props) => {
+export const TextPlayer = ({ itemData, splitTextList, findData }: Props) => {
   const [spacingValue, setSpacingValue] = useState(0)
-
-  const [buttonChange, setButtonChange] = useState(false)
   const dispatch = useAppDispatch()
+  const [postText] = usePostTextMutation()
+  const [audioFile, setAudioFile] = useState()
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioElem: any = useRef()
 
   useEffect(() => {
-    if (!onendedAudio.current) {
-      setButtonChange(false)
+    if (isPlaying) {
+      audioElem.current!.play()
+    } else {
+      audioElem.current!.pause()
     }
-  }, [onendedAudio.current])
+  }, [audioFile, isPlaying])
 
-  // const [isPlaying, setIsPlaying] = useState(false)
-  // const audioElem: any = useRef()
-  // const [audioFile, setAudioFile] = useState()
-  // const [postText] = usePostTextMutation()
-  // const changeFlag: any = useRef(false)
-
-  // useEffect(() => {
-  //   postText(textPreviewData)
-  //     .unwrap()
-  //     .then((data) => {
-  //       setAudioFile(data.data.audioFile)
-  //     })
-  //     .catch((error) => {
-  //       alert(error)
-  //     })
-  //   changeFlag.current = true
-  // }, [textPreviewData.text])
-
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     audioElem.current.play()
-  //   } else {
-  //     audioElem.current.pause()
-  //   }
-  //   audioElem.current.onended = () => {
-  //     audioElem.current.pause()
-  //     audioElem.current.currentTime = 0
-  //     setIsPlaying(false)
-  //   }
-  // }, [audioFile])
-
-  // useEffect(() => {
-  //   if (!changeFlag.current) {
-  //     // console.log(isPlaying)
-  //     if (isPlaying) {
-  //       audioElem.current.play()
-  //     } else {
-  //       audioElem.current.pause()
-  //     }
-  //   }
-  //   audioElem.current.onended = () => {
-  //     audioElem.current.pause()
-  //     audioElem.current.currentTime = 0
-  //     setIsPlaying(false)
-  //   }
-  // }, [isPlaying])
+  useEffect(() => {
+    audioElem.current.onended = () => {
+      audioElem.current.pause()
+      audioElem.current.currentTime = 0
+      setIsPlaying(false)
+    }
+  })
 
   const userInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    // setInputData({ ...inputData, [name]: value })
     dispatch(changeText({ ...itemData, [name]: value }))
   }
 
@@ -127,22 +71,22 @@ export const TextPlayer = ({
     e.stopPropagation()
     dispatch(selectedText({ itemData, splitTextList }))
   }
+
   const playPause = () => {
     const textData = { text: itemData.text }
-    dispatch(textCreatePreview(textData))
+    if (!isPlaying) {
+      postText(textData)
+        .unwrap()
+        .then((data) => {
+          setAudioFile(data.data.audioFile)
+        })
+        .catch((error) => {
+          alert(error)
+        })
+    }
 
     setIsPlaying(!isPlaying)
-    setButtonChange(!buttonChange)
-    changeFlag.current = false
   }
-
-  // if (audioFile) {
-  //   audioElem.current.onended = () => {
-  //     audioElem.current.pause()
-  //     audioElem.current.currentTime = 0
-  //     setIsPlaying(false)
-  //   }
-  // }
 
   const stop = () => {
     audioElem.current!.pause()
@@ -165,7 +109,7 @@ export const TextPlayer = ({
           <div>
             <audio src={`data:audio/wav;base64,${audioFile}`} ref={audioElem} />
             <div onClick={playPause}>
-              {buttonChange ? (
+              {isPlaying ? (
                 <PauseIcon
                   width='32'
                   height='32'
