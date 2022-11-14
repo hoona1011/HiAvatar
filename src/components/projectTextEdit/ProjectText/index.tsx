@@ -12,7 +12,7 @@ export const ProjectText = () => {
   const render = splitTextList.map((item) => {
     let orginData = item
 
-    const findData: any = userSelectedList.find((item: any) => {
+    const findData = userSelectedList.find((item) => {
       return orginData.sentenceId === item.sentenceId
     })
 
