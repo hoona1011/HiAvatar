@@ -38,20 +38,11 @@
 
 ## 📚 사용한 메인 기술 및 라이브러리
 
-<img src="https://img.shields.io/badge/html-ededed?style=for-the-badge&logo=html5&logoColor=E34F26">
-<img src="https://img.shields.io/badge/css-ededed?style=for-the-badge&logo=css3&logoColor=1572B6">
-<img src="https://img.shields.io/badge/javaScript-ededed?style=for-the-badge&logo=javaScript&logoColor=F7DF1E">
-<img src="https://img.shields.io/badge/TypeScript-ededed?style=for-the-badge&logo=TypeScript&logoColor=3178C6">
+<img src="https://img.shields.io/badge/html-ededed?style=for-the-badge&logo=html5&logoColor=E34F26"> <img src="https://img.shields.io/badge/css-ededed?style=for-the-badge&logo=css3&logoColor=1572B6"> <img src="https://img.shields.io/badge/javaScript-ededed?style=for-the-badge&logo=javaScript&logoColor=F7DF1E"> <img src="https://img.shields.io/badge/TypeScript-ededed?style=for-the-badge&logo=TypeScript&logoColor=3178C6">
 <br>
-<img src="https://img.shields.io/badge/react-ededed?style=for-the-badge&logo=react&logoColor=61DAFB">
-<img src="https://img.shields.io/badge/redux-ededed?style=for-the-badge&logo=redux&logoColor=764ABC">
-<img src="https://img.shields.io/badge/React Router-ededed?style=for-the-badge&logo=ReactRouter&logoColor=CA4245"/>
-<img src="https://img.shields.io/badge/styled components-ededed?style=for-the-badge&logo=styled-components&logoColor=DB7093">
+<img src="https://img.shields.io/badge/react-ededed?style=for-the-badge&logo=react&logoColor=61DAFB"> <img src="https://img.shields.io/badge/redux-ededed?style=for-the-badge&logo=redux&logoColor=764ABC"> <img src="https://img.shields.io/badge/React Router-ededed?style=for-the-badge&logo=ReactRouter&logoColor=CA4245"/> <img src="https://img.shields.io/badge/styled components-ededed?style=for-the-badge&logo=styled-components&logoColor=DB7093">
 <br>
-<img src="https://img.shields.io/badge/yarn-ededed?style=for-the-badge&logo=yarn&logoColor=2C8EBB">
-<img src="https://img.shields.io/badge/Prettier-ededed?style=for-the-badge&logo=Prettier&logoColor=F7B93E">
-<img src="https://img.shields.io/badge/ESLint-ededed?style=for-the-badge&logo=ESLint&logoColor=4B32C3">
-<img src="https://img.shields.io/badge/Netlify-ededed?style=for-the-badge&logo=Netlify&logoColor=00C7B7">
+<img src="https://img.shields.io/badge/yarn-ededed?style=for-the-badge&logo=yarn&logoColor=2C8EBB"> <img src="https://img.shields.io/badge/Prettier-ededed?style=for-the-badge&logo=Prettier&logoColor=F7B93E"> <img src="https://img.shields.io/badge/ESLint-ededed?style=for-the-badge&logo=ESLint&logoColor=4B32C3"> <img src="https://img.shields.io/badge/Netlify-ededed?style=for-the-badge&logo=Netlify&logoColor=00C7B7">
 
 ## ✨ 기술 선정 이유
 
