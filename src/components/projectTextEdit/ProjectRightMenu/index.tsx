@@ -17,7 +17,6 @@ export const ProjectRightMenu = ({
         value={'ProjectText'}
         content={'전체 텍스트'}
         onChange={onChangeHandler}
-        defaultChecked={true}
         renderType={renderType}
         IconRenderType={'AllTexts'}
       />

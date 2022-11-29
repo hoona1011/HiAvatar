@@ -1,10 +1,11 @@
+import React from 'react'
 import { TooltipIcon } from 'components/Icons'
 import { useAppSelector } from 'store'
-import { VoiceController } from '../../index'
+import { VoiceController } from 'components'
 import { TootipMessage } from 'components/common/TootipMessage'
 import * as S from './style'
 
-export const VoiceControlMenu = () => {
+export const VoiceControlMenu = React.memo(() => {
   const { speed, pitch, sentenceSpacing } = useAppSelector(
     (state) => state.option
   )
@@ -58,4 +59,4 @@ export const VoiceControlMenu = () => {
       </S.VoiceControllerContainer>
     </S.Container>
   )
-}
+})

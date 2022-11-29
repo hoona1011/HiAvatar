@@ -14,19 +14,32 @@ import {
 import { TooltipIcon } from 'components/Icons'
 import { usePostTextMutation } from 'api/optionApi'
 
+interface ChangeFlag {
+  current: boolean
+}
+
+interface SplitTextList {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
+interface UserSelectedList {
+  focus: boolean
+  sentenceId: number
+}
+
+interface Props {
+  splitTextList: SplitTextList[]
+  userSelectedList: UserSelectedList[]
+}
+
 export const TextEditList = () => {
   const dispatch = useAppDispatch()
-  const { texts, splitTextList, userSelectedList, textPreviewData }: any =
+  const { texts, splitTextList, userSelectedList, textPreviewData } =
     useAppSelector((state) => state.option)
   const [modalText, setModalText] = useState('')
   const [modal, setModal] = useState(false)
-
-  const [postText] = usePostTextMutation()
-  const [audioFile, setAudioFile] = useState()
-  const changeFlag: any = useRef(false)
-  const [isPlaying, setIsPlaying] = useState(false)
-  const audioElem: any = useRef()
-  const onendedAudio = useRef(false)
 
   useEffect(() => {
     if (texts.length) {
@@ -34,7 +47,7 @@ export const TextEditList = () => {
     }
   }, [texts])
 
-  const textDatas = texts.split('.').map((item: any, index: any) => {
+  const textDatas = texts.split('.').map((item, index) => {
     return {
       ...splitTextList[0],
       sentenceId: index + 1,
@@ -43,84 +56,9 @@ export const TextEditList = () => {
     }
   })
 
-  useEffect(() => {
-    postText(textPreviewData)
-      .unwrap()
-      .then((data) => {
-        setAudioFile(data.data.audioFile)
-      })
-      .catch((error) => {
-        console.log(error)
-        // alert(error)
-      })
-    changeFlag.current = true
-  }, [textPreviewData.text])
-
-  useEffect(() => {
-    if (isPlaying) {
-      audioElem.current.play()
-    } else {
-      audioElem.current?.pause()
-    }
-    // audioElem.current.onended = () => {
-    //   audioElem.current.pause()
-    //   audioElem.current.currentTime = 0
-    //   setIsPlaying(false)
-    // }
-  }, [audioFile])
-
-  useEffect(() => {
-    if (!changeFlag.current) {
-      if (isPlaying) {
-        audioElem.current.play()
-      } else {
-        audioElem.current.pause()
-      }
-    }
-    // audioElem.current.onended = () => {
-    //   audioElem.current.pause()
-    //   audioElem.current.currentTime = 0
-    //   setIsPlaying(false)
-    // }
-    onendedAudio.current = true
-  }, [isPlaying])
-
-  if (audioFile) {
-    audioElem.current.onended = () => {
-      audioElem.current.pause()
-      audioElem.current.currentTime = 0
-      setIsPlaying(false)
-      onendedAudio.current = false
-    }
-  }
-
   const userOutFocusHandler = () => {
     dispatch(outFocus())
   }
-
-  const render = splitTextList.map((item: any) => {
-    let orginData = item
-
-    const findData = userSelectedList.find((item: any) => {
-      return orginData.sentenceId === item.sentenceId
-    })
-    return (
-      <TextPlayer
-        key={item.sentenceId}
-        itemData={item}
-        splitTextList={splitTextList}
-        textPreviewData={textPreviewData}
-        findData={findData}
-        dispatch={dispatch}
-        isPlaying={isPlaying}
-        setIsPlaying={setIsPlaying}
-        audioFile={audioFile}
-        audioElem={audioElem}
-        changeFlag={changeFlag}
-        onendedAudio={onendedAudio}
-      />
-    )
-  })
 
   return (
     <S.Wrapper onClick={userOutFocusHandler}>
@@ -160,9 +98,35 @@ export const TextEditList = () => {
             <TextEnterButton setModal={setModal} />
           </S.StartPage>
         ) : (
-          <>{render}</>
+          <RenderList
+            splitTextList={splitTextList}
+            userSelectedList={userSelectedList}
+          />
         )}
       </>
     </S.Wrapper>
+  )
+}
+
+function RenderList({ splitTextList, userSelectedList }: Props) {
+  return (
+    <>
+      {splitTextList.length &&
+        splitTextList.map((item) => {
+          let orginData = item
+
+          const findData = userSelectedList.find((item) => {
+            return orginData.sentenceId === item.sentenceId
+          })
+          return (
+            <TextPlayer
+              key={item.sentenceId}
+              itemData={item}
+              splitTextList={splitTextList}
+              findData={findData}
+            />
+          )
+        })}
+    </>
   )
 }

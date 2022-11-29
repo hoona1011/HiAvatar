@@ -1,6 +1,15 @@
 import * as S from './style'
-import { RadioButtonProps } from 'index'
 import { AllTexts, VoiceModels, VoiceOptions } from 'components/Icons'
+
+interface ProjectRightMenuButtonProps {
+  name: string
+  value: string
+  content: string
+  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void
+  renderType: string
+  IconRenderType: string
+}
+
 export const ProjectRightMenuButton = ({
   name,
   value,
@@ -8,7 +17,7 @@ export const ProjectRightMenuButton = ({
   onChange,
   renderType,
   IconRenderType
-}: RadioButtonProps) => {
+}: ProjectRightMenuButtonProps) => {
   const isSelected = renderType === value
   const Icon = () => {
     switch (IconRenderType) {

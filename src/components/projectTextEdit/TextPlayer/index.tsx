@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import * as S from './style'
 import { PlayIcon, PauseIcon, StopIcon, CloseIcon } from '../../Icons'
 import {
@@ -6,84 +6,62 @@ import {
   removeText,
   changeText,
   selectedText,
-  changeChnsnSpcng,
-  textCreatePreview
+  changeChnsnSpcng
 } from 'store/slices/optionSlice'
+import { useAppDispatch } from 'store'
 import { usePostTextMutation } from 'api/optionApi'
+import { set } from 'immer/dist/internal'
 
-export const TextPlayer = ({
-  itemData,
-  splitTextList,
-  findData,
-  textPreviewData,
-  dispatch,
-  isPlaying,
-  setIsPlaying,
-  audioFile,
-  audioElem,
-  changeFlag,
-  onendedAudio
-}: any) => {
+interface ItemData {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
+interface Props {
+  itemData: ItemData
+  splitTextList: ItemData[]
+  findData:
+    | {
+        focus: boolean
+        sentenceId: number
+      }
+    | undefined
+}
+
+export const TextPlayer = ({ itemData, splitTextList, findData }: Props) => {
   const [spacingValue, setSpacingValue] = useState(0)
-
-  const [buttonChange, setButtonChange] = useState(false)
+  const dispatch = useAppDispatch()
+  const [postText] = usePostTextMutation()
+  const [audioFile, setAudioFile] = useState()
+  const [isPlaying, setIsPlaying] = useState(false)
+  const audioElem: any = useRef()
+  const isChanged = useRef(false)
+  console.log(isPlaying)
+  useEffect(() => {
+    // changeFlag.current = true
+    isChanged.current = true
+  }, [itemData.text])
 
   useEffect(() => {
-    if (!onendedAudio.current) {
-      setButtonChange(false)
+    if (isPlaying) {
+      audioElem?.current!.play()
+    } else {
+      audioElem?.current!.pause()
     }
-  }, [onendedAudio.current])
+  }, [isPlaying])
 
-  // const [isPlaying, setIsPlaying] = useState(false)
-  // const audioElem: any = useRef()
-  // const [audioFile, setAudioFile] = useState()
-  // const [postText] = usePostTextMutation()
-  // const changeFlag: any = useRef(false)
+  useEffect(() => {
+    audioElem.current.onended = () => {
+      audioElem.current.pause()
+      audioElem.current.currentTime = 0
+      setIsPlaying(false)
+      console.log('온엔디드')
+    }
+  }, [])
 
-  // useEffect(() => {
-  //   postText(textPreviewData)
-  //     .unwrap()
-  //     .then((data) => {
-  //       setAudioFile(data.data.audioFile)
-  //     })
-  //     .catch((error) => {
-  //       alert(error)
-  //     })
-  //   changeFlag.current = true
-  // }, [textPreviewData.text])
-
-  // useEffect(() => {
-  //   if (isPlaying) {
-  //     audioElem.current.play()
-  //   } else {
-  //     audioElem.current.pause()
-  //   }
-  //   audioElem.current.onended = () => {
-  //     audioElem.current.pause()
-  //     audioElem.current.currentTime = 0
-  //     setIsPlaying(false)
-  //   }
-  // }, [audioFile])
-
-  // useEffect(() => {
-  //   if (!changeFlag.current) {
-  //     // console.log(isPlaying)
-  //     if (isPlaying) {
-  //       audioElem.current.play()
-  //     } else {
-  //       audioElem.current.pause()
-  //     }
-  //   }
-  //   audioElem.current.onended = () => {
-  //     audioElem.current.pause()
-  //     audioElem.current.currentTime = 0
-  //     setIsPlaying(false)
-  //   }
-  // }, [isPlaying])
-
-  const userInputHandler = (e: any) => {
+  const userInputHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target
-    // setInputData({ ...inputData, [name]: value })
     dispatch(changeText({ ...itemData, [name]: value }))
   }
 
@@ -95,35 +73,46 @@ export const TextPlayer = ({
     dispatch(editText(itemData))
   }
 
-  const userSelectedHandler = (e: any) => {
+  const userSelectedHandler = (
+    e: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
     e.stopPropagation()
     dispatch(selectedText({ itemData, splitTextList }))
   }
+
   const playPause = () => {
     const textData = { text: itemData.text }
-    dispatch(textCreatePreview(textData))
-
-    setIsPlaying(!isPlaying)
-    setButtonChange(!buttonChange)
-    changeFlag.current = false
+    if (!isPlaying) {
+      isChanged.current &&
+        postText(textData)
+          .unwrap()
+          .then((data) => {
+            setAudioFile(data.data.audioFile)
+            isChanged.current = false
+            setIsPlaying(true)
+            console.log('요청')
+          })
+          .catch((error) => {
+            alert(error)
+          })
+      !isChanged.current && setIsPlaying(true)
+      // setIsPlaying(true)
+    } else {
+      setIsPlaying(false)
+    }
+    // changeFlag.current = false
+    // console.log(changeFlag)
   }
 
-  // if (audioFile) {
-  //   audioElem.current.onended = () => {
-  //     audioElem.current.pause()
-  //     audioElem.current.currentTime = 0
-  //     setIsPlaying(false)
-  //   }
-  // }
-
   const stop = () => {
-    audioElem.current.pause()
-    audioElem.current.currentTime = 0
+    audioElem.current!.pause()
+    audioElem.current!.currentTime = 0
     setIsPlaying(false)
   }
 
-  const chnsnSpcng = (e: any) => {
-    setSpacingValue(e.target.value)
+  const chnsnSpcng = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let spacingValue = Number(e.target.value)
+    setSpacingValue(spacingValue)
     dispatch(
       changeChnsnSpcng({ ...itemData, sentenceSpacing: Number(e.target.value) })
     )
@@ -136,7 +125,7 @@ export const TextPlayer = ({
           <div>
             <audio src={`data:audio/wav;base64,${audioFile}`} ref={audioElem} />
             <div onClick={playPause}>
-              {buttonChange ? (
+              {isPlaying ? (
                 <PauseIcon
                   width='32'
                   height='32'

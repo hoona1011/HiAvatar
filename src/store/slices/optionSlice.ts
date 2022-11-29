@@ -1,6 +1,7 @@
 import { createSlice, current } from '@reduxjs/toolkit'
+import { string } from 'yup'
 
-const initialState = {
+const initialState: OptionState = {
   texts: '',
   language: '한국어',
   sex: '남자',
@@ -8,6 +9,7 @@ const initialState = {
   speed: 0,
   pitch: 0,
   sentenceSpacing: 0,
+  audioFile: '',
   splitTextList: [
     {
       sentenceId: 1,
@@ -18,11 +20,38 @@ const initialState = {
   userSelectedList: [],
   dummyData: {},
   totalAudioUrl: '',
-  textPreviewData: {},
-  textsPreviewData: {}
+  textPreviewData: {
+    text: ''
+  },
+  textsPreviewData: {
+    characterName: '가영',
+    language: '한국어',
+    pitch: 0,
+    sentenceSpacing: 0,
+    sex: '여자',
+    speed: 0,
+    splitTextList: [
+      {
+        sentenceId: 1,
+        text: '',
+        sentenceSpacing: 0
+      }
+    ],
+    texts: ''
+  }
 }
 export interface X {
   [key: string]: string | number | any[] | any // 추후 수정
+}
+interface SplitTextList {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
+interface UserSelectedList {
+  focus: boolean
+  sentenceId: number
 }
 interface OptionState extends X {
   texts: string
@@ -32,14 +61,33 @@ interface OptionState extends X {
   speed: number
   pitch: number
   sentenceSpacing: number
-  audioFile: string
-  splitTextList: any[]
-  userSelectedList: any[]
+  splitTextList: SplitTextList[]
+  userSelectedList: UserSelectedList[]
   dummyData: any
   totalAudioUrl: string
-  textPreviewData: any
-  textsPreviewData: any
+  textPreviewData: { text: string }
+  textsPreviewData: {
+    characterName: string
+    language: string
+    pitch: number
+    sentenceSpacing: number
+    sex: string
+    speed: number
+    splitTextList: SplitTextList[]
+    texts: string
+  }
 }
+interface TextPlayerItem {
+  focus: boolean
+  sentenceId: number
+}
+
+interface FindTextItem {
+  sentenceId: number
+  sentenceSpacing: number
+  text: string
+}
+
 export const optionSlice = createSlice({
   name: 'option',
   initialState,
@@ -56,11 +104,11 @@ export const optionSlice = createSlice({
     changeText(state, action) {
       const inputData = action.payload
 
-      const findTextItem: any = state.splitTextList.find((item) => {
+      const findTextItem = state.splitTextList.find((item) => {
         return item.sentenceId === inputData.sentenceId
       })
 
-      Object.assign(findTextItem, inputData)
+      Object.assign(findTextItem as FindTextItem, inputData)
 
       // state.texts를 갱신하는 로직
       let updateTexts = ''
@@ -77,11 +125,11 @@ export const optionSlice = createSlice({
       const filterdSplitData = state.splitTextList.filter((item) => {
         return item.sentenceId !== itemData.sentenceId
       })
-      const findTextItem: any = state.splitTextList.find((item) => {
+      const findTextItem = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
-      let i = findTextItem.sentenceId + 1
+      let i = findTextItem!.sentenceId + 1
 
       for (i; i <= state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
@@ -114,11 +162,11 @@ export const optionSlice = createSlice({
     },
     editText(state, action) {
       const itemData = action.payload
-      const findTextItem: any = state.splitTextList.find((item) => {
+      const findTextItem = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
-      let i = findTextItem.sentenceId + 1
+      let i = findTextItem!.sentenceId + 1
 
       for (i; i <= state.splitTextList.length; i += 1) {
         state.splitTextList.forEach((item) => {
@@ -131,7 +179,7 @@ export const optionSlice = createSlice({
       state.splitTextList = [
         ...state.splitTextList,
         {
-          sentenceId: findTextItem.sentenceId + 1,
+          sentenceId: findTextItem!.sentenceId + 1,
           text: '',
           sentenceSpacing: 0
         }
@@ -151,9 +199,9 @@ export const optionSlice = createSlice({
       state.texts = ''
       state.texts = updateTexts.slice(0, -1)
     },
-    selectedText(state: any, action) {
+    selectedText(state, action) {
       const { splitTextList, itemData } = action.payload
-      const selectedTextList = splitTextList.map((item: any) => {
+      const selectedTextList = splitTextList.map((item: TextPlayerItem) => {
         let focuseItem
         if (item.sentenceId === itemData?.sentenceId) {
           focuseItem = { sentenceId: item.sentenceId, focus: true }
@@ -168,14 +216,14 @@ export const optionSlice = createSlice({
     changeChnsnSpcng(state, action) {
       const itemData = action.payload
 
-      const findItemData: any = state.splitTextList.find((item) => {
+      const findItemData = state.splitTextList.find((item) => {
         return item.sentenceId === itemData.sentenceId
       })
 
-      Object.assign(findItemData, itemData)
+      Object.assign(findItemData as FindTextItem, itemData)
     },
     outFocus(state) {
-      state.userSelectedList.map((item: any) => {
+      state.userSelectedList.map((item: TextPlayerItem) => {
         item.focus = false
       })
     },

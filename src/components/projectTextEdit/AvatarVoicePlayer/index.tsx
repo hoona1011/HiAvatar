@@ -1,8 +1,8 @@
 import * as S from './style'
-import { useState, useRef } from 'react'
+import React, { useState, useRef, useCallback } from 'react'
 import { PlayIcon, PauseIcon, StopIcon } from '../../Icons'
 import { AvatarVoicePlayerProps } from 'index'
-import { useAppDispatch, useAppSelector } from 'store'
+import { useAppDispatch } from 'store'
 import { changeOption } from 'store/slices/optionSlice'
 
 export const AvatarVoicePlayer = ({
@@ -11,43 +11,49 @@ export const AvatarVoicePlayer = ({
   hashtag2,
   hashtag3,
   buttonType,
-  audioUrl
+  audioUrl,
+  selectedCharacter
 }: AvatarVoicePlayerProps) => {
   const [isPlaying, setIsPlaying] = useState(false)
   const dispatch = useAppDispatch()
-  const selectedCharacter = useAppSelector(
-    (state) => state.option.characterName
-  )
+
   const audioRef = useRef(new Audio(audioUrl))
   const audio = audioRef.current
 
   const isSelected = selectedCharacter === characterName
-  // HANDLERS
-  const playerHandler = (action: string) => {
-    switch (action) {
-      case 'play':
-        setIsPlaying(true)
-        audio.play()
-        break
-      case 'stop':
-        setIsPlaying(false)
-        audio.pause()
-        audio.currentTime = 0
-        break
 
-      case 'pause':
-        setIsPlaying(false)
-        audio.pause()
-    }
-  }
+  const playerHandler = useCallback(
+    (action: string) => {
+      switch (action) {
+        case 'play':
+          setIsPlaying(true)
+          audio.play()
+          break
+        case 'stop':
+          setIsPlaying(false)
+          audio.pause()
+          audio.currentTime = 0
+          break
+
+        case 'pause':
+          setIsPlaying(false)
+          audio.pause()
+      }
+    },
+    [audio]
+  )
+
   audio.addEventListener('ended', () => {
     playerHandler('stop')
   })
 
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    dispatch(changeOption({ name, value }))
-  }
+  const onChangeHandler = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      dispatch(changeOption({ name, value }))
+    },
+    []
+  )
   return (
     <S.Container>
       <input

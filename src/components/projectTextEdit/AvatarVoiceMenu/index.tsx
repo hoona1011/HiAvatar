@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback, useMemo } from 'react'
 import { TooltipIcon } from 'components/Icons'
 import { useAppDispatch } from 'store'
 import { changeOption } from 'store/slices/optionSlice'
@@ -11,14 +11,20 @@ export const AvatarVoiceMenu = () => {
   const {
     dummyData,
     sex: selectedSex,
-    language: selectedLanguage
+    language: selectedLanguage,
+    characterName: selectedCharacter
   } = useAppSelector((state) => state.option)
+
   const dispatch = useAppDispatch()
-  const onChangeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = e.target
-    dispatch(changeOption({ name, value }))
-  }
-  const languageConverter = (language: any) => {
+
+  const onChangeHandler = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      const { name, value } = e.target
+      dispatch(changeOption({ name, value }))
+    },
+    []
+  )
+  const languageConverter = useCallback((language: string) => {
     switch (language) {
       case '한국어':
         return 'korean'
@@ -27,23 +33,42 @@ export const AvatarVoiceMenu = () => {
       case '중국어':
         return 'chinese'
     }
-  }
+  }, [])
 
   const avatarVoices = Object.entries(dummyData)
-  const filteredVoices = avatarVoices
-    .map((voice: any) => {
-      switch (selectedSex) {
-        case '남자':
-          return { language: voice[0], voices: voice[1].maleList }
 
-        case '여자':
-          return { language: voice[0], voices: voice[1].femaleList }
-      }
-    })
-    .find((data) => {
-      return data!.language === languageConverter(selectedLanguage)
-    })?.voices
+  interface Voice {
+    characterName: string
+    audioUrl: string
+    characterTags: string[]
+  }
+  interface VoicesBySex {
+    femaleList: Voice[]
+    maleList: Voice[]
+  }
+  type VoicesByLanguage = [string, any]
 
+  const filteredVoices = useMemo(() => {
+    return avatarVoices
+      .map((voicesByLanguage: VoicesByLanguage) => {
+        switch (selectedSex) {
+          case '남자':
+            return {
+              language: voicesByLanguage[0],
+              voices: voicesByLanguage[1].maleList
+            }
+
+          case '여자':
+            return {
+              language: voicesByLanguage[0],
+              voices: voicesByLanguage[1].femaleList
+            }
+        }
+      })
+      .find((data) => {
+        return data!.language === languageConverter(selectedLanguage)
+      })?.voices
+  }, [avatarVoices, selectedSex, selectedLanguage])
   return (
     <S.Container>
       <S.Title>
@@ -95,7 +120,7 @@ export const AvatarVoiceMenu = () => {
         </S.Language>
       </S.OptionContainer>
       <S.VoicePlayerContainer>
-        {filteredVoices?.map((voice: any) => {
+        {filteredVoices?.map((voice: Voice) => {
           const { characterName, audioUrl, characterTags } = voice
           return (
             <AvatarVoicePlayer
@@ -106,6 +131,7 @@ export const AvatarVoiceMenu = () => {
               hashtag3={characterTags[2]}
               buttonType={'characterName'}
               audioUrl={audioUrl}
+              selectedCharacter={selectedCharacter}
             />
           )
         })}
